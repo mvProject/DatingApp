@@ -1,3 +1,11 @@
+/*
+ * Create by Medvediev Viktor
+ * last update: 07.06.23, 12:03
+ *
+ * Copyright (c) 2023
+ *
+ */
+
 package com.mvproject.datingapp
 
 import android.os.Bundle
