@@ -1,0 +1,29 @@
+<!--
+  ~ Create by Medvediev Viktor
+  ~ last update: 07.06.23, 12:03
+  ~
+  ~ Copyright (c) 2023
+  ~
+  -->
+
+<resources>
+    <string name="scr_reset_password_title">Reset password</string>
+    <string name="scr_reset_password_description">The password must contain at least 6 characters, contain numbers and capital letters</string>
+
+    <string name="scr_request_reset_password_title">Can\'t sign in?</string>
+    <string name="scr_request_reset_password_description">Enter your email and we will send you a verification code:</string>
+
+    <string name="scr_code_verify_title">Enter verify code</string>
+    <string name="scr_code_verify_code_send">We have sent a verification code to this email:</string>
+    <string name="scr_code_verify_code_receive">You will receive a message within 29 sec.We sent it to </string>
+    <string name="scr_code_verify_change_email">Change email?</string>
+
+    <string name="scr_auth_title_welcome">Welcome back!</string>
+    <string name="scr_auth_title_no_account">Don’t have an account?</string>
+    <string name="scr_auth_title_or">or</string>
+
+    <string name="scr_auth_gender_title">I am a …</string>
+    <string name="scr_auth_gender_man">Man</string>
+    <string name="scr_auth_gender_woman">Woman</string>
+
+</resources>

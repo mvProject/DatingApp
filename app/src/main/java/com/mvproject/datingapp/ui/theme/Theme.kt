@@ -17,39 +17,81 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+private val LightColorScheme = lightColorScheme(
+    primary = white,
+    onPrimary = black,
+    primaryContainer = black,
+    onPrimaryContainer = white,
+    secondary = blueviolet,
+    onSecondary = black,
+    secondaryContainer = bluevioletDark,
+    onSecondaryContainer = black,
+    tertiary = hotpink,
+    onTertiary = white,
+    tertiaryContainer = lightcoral,
+    onTertiaryContainer = white,
+    error = md_theme_light_error,
+    errorContainer = md_theme_light_errorContainer,
+    onError = md_theme_light_onError,
+    onErrorContainer = md_theme_light_onErrorContainer,
+    background = white,
+    onBackground = black,
+    surface = white,
+    onSurface = graydark,
+    surfaceVariant = white,
+    onSurfaceVariant = graylight,
+    outline = grayverylite,
+    inverseOnSurface = md_theme_light_inverseOnSurface,
+    inverseSurface = md_theme_light_inverseSurface,
+    inversePrimary = darkslateblue,
+    surfaceTint = md_theme_light_surfaceTint,
+    outlineVariant = md_theme_light_outlineVariant,
+    scrim = md_theme_light_scrim
 )
 
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+private val DarkColorScheme = darkColorScheme(
+    primary = white,
+    onPrimary = black,
+    primaryContainer = black,
+    onPrimaryContainer = white,
+    secondary = blueviolet,
+    onSecondary = black,
+    secondaryContainer = bluevioletDark,
+    onSecondaryContainer = black,
+    tertiary = hotpink,
+    onTertiary = white,
+    tertiaryContainer = lightcoral,
+    onTertiaryContainer = white,
+    error = md_theme_light_error,
+    errorContainer = md_theme_light_errorContainer,
+    onError = md_theme_light_onError,
+    onErrorContainer = md_theme_light_onErrorContainer,
+    background = white,
+    onBackground = black,
+    surface = white,
+    onSurface = graydark,
+    surfaceVariant = white,
+    onSurfaceVariant = graylight,
+    outline = grayverylite,
+    inverseOnSurface = md_theme_light_inverseOnSurface,
+    inverseSurface = md_theme_light_inverseSurface,
+    inversePrimary = darkslateblue,
+    surfaceTint = md_theme_light_surfaceTint,
+    outlineVariant = md_theme_light_outlineVariant,
+    scrim = md_theme_light_scrim
 )
 
 @Composable
 fun DatingAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
@@ -69,10 +111,14 @@ fun DatingAppTheme(
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }
-
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content
-    )
+    CompositionLocalProvider(
+        LocalDimens provides Dimens(),
+    ) {
+        MaterialTheme(
+            colorScheme = colorScheme,
+            typography = Typography,
+            shapes = shapes,
+            content = content
+        )
+    }
 }

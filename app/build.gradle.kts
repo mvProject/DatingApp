@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
+    id("com.google.devtools.ksp")
     id("dagger.hilt.android.plugin")
     id("kotlinx-serialization")
 }
@@ -61,12 +62,16 @@ android {
 
 dependencies {
     implementation("androidx.core:core-ktx:1.10.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.1")
     implementation("com.jakewharton.timber:timber:5.0.1")
 
     // Integration with activity and viewmodels
     implementation("androidx.activity:activity-compose:1.7.1")
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+
+    implementation("com.github.leonard-palm:compose-state-events:1.2.3")
 
     // Coroutine
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
@@ -85,8 +90,9 @@ dependencies {
     // DateTime
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
 
-    //Logging
-    implementation("io.github.aakira:napier:2.6.1")
+    // Navigation
+    implementation("io.github.raamcosta.compose-destinations:core:1.8.42-beta")
+    ksp("io.github.raamcosta.compose-destinations:ksp:1.8.42-beta")
 
     val composeBom = platform("androidx.compose:compose-bom:2023.05.01")
     implementation(composeBom)
@@ -95,6 +101,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+
 
     // Tests
     testImplementation("junit:junit:4.13.2")
