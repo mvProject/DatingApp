@@ -30,6 +30,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
+import com.mvproject.datingapp.ui.screens.authorization.state.ProfileGender
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 
@@ -39,8 +40,7 @@ fun GenderSelector(
     title: String = "",
     titleMan: String = "",
     titleWoman: String = "",
-    onManSelect: () -> Unit = {},
-    onWomanSelect: () -> Unit = {},
+    onGenderSelect: (ProfileGender) -> Unit = {}
 ) {
     Column(
         modifier = modifier,
@@ -63,7 +63,7 @@ fun GenderSelector(
             Card(
                 modifier = Modifier
                     .clickable {
-                        onWomanSelect()
+                        onGenderSelect(ProfileGender.GENDER_WOMAN)
                     }
                     .height(MaterialTheme.dimens.size130)
                     .width(MaterialTheme.dimens.size156)
@@ -98,7 +98,7 @@ fun GenderSelector(
             Card(
                 modifier = Modifier
                     .clickable {
-                        onManSelect()
+                        onGenderSelect(ProfileGender.GENDER_MAN)
                     }
                     .height(MaterialTheme.dimens.size130)
                     .width(MaterialTheme.dimens.size156)

@@ -19,10 +19,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -36,16 +32,13 @@ import com.mvproject.datingapp.ui.theme.dimens
 @Composable
 fun InputText(
     modifier: Modifier = Modifier,
+    initial: String = "",
     title: String = "",
     descriptionBefore: String = "",
     descriptionAfter: String = "",
     hint: String = stringResource(id = R.string.hint_email),
     onValueChange: (String) -> Unit = {}
 ) {
-    var entered by remember {
-        mutableStateOf("")
-    }
-
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.Top,
@@ -74,10 +67,9 @@ fun InputText(
         TextField(
             modifier = Modifier
                 .fillMaxWidth(),
-            value = entered,
+            value = initial,
             onValueChange = {
-                entered = it
-                onValueChange(entered)
+                onValueChange(it)
             },
             placeholder = {
                 Text(

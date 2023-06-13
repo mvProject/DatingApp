@@ -26,4 +26,30 @@
     <string name="scr_auth_gender_man">Man</string>
     <string name="scr_auth_gender_woman">Woman</string>
 
+
+    <string name="scr_auth_date_select_title">Nice to meet you %1$s. When is your birthday?</string>
+    <string name="scr_auth_date_select_description">Your profile only shows your age.</string>
+
+    <string name="scr_auth_name_select_title">My name is …</string>
+    <string name="scr_auth_name_select_description">This name will appear on the profile.</string>
+
+    <string name="scr_auth_mail_select_title">Enter your email</string>
+    <string name="scr_auth_mail_select_description">This is required to verify your account.</string>
+
+    <string name="scr_auth_pswd_select_title">Choose password</string>
+    <string name="scr_auth_pswd_select_description">It must be unique, contain at least 8 characters, and not be used anywhere else.</string>
+
+    <string name="scr_auth_goal_select_title">What are you interested in?</string>
+    <string name="scr_auth_goal_select_date">I want to date</string>
+    <string name="scr_auth_goal_select_relationship">I want a relationship</string>
+    <string name="scr_auth_goal_select_chat">I just want to chat</string>
+    <string name="scr_auth_goal_select_love">I want to find love</string>
+    <string name="scr_auth_goal_select_misc">I haven\'t decided yet</string>
+
+    <string name="scr_auth_privacy_email">We will not share your email with anyone</string>
+    <string name="scr_auth_privacy_birthdate">We do not use this data for other purposes</string>
+
+    <string name="scr_auth_photo_select_title">Add your photos</string>
+    <string name="scr_auth_photo_select_description">Upload 2 photos to get started. Profiles with more than 4 photos get more likes.</string>
+
 </resources>

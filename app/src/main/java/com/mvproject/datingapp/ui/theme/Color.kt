@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 
 val graydark = Color(0xFF939091)
 val graylight = Color(0xFFBDBDBD)
+val graywhite = Color(0xFFFAFAFA)
 val grayverylite = Color(0xFFDDDDDD)
 val black = Color(0xFF130f10)
 val white = Color(0xFFFFFFFF)
