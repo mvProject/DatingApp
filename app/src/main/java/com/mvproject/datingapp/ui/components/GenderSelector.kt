@@ -8,7 +8,7 @@
 
 package com.mvproject.datingapp.ui.components
 
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -21,18 +21,29 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
-import com.mvproject.datingapp.ui.screens.authorization.state.ProfileGender
+import com.mvproject.datingapp.data.ProfileGender
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
+import com.mvproject.datingapp.utils.backColor
+import com.mvproject.datingapp.utils.borderColor
+import com.mvproject.datingapp.utils.textColor
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun GenderSelector(
@@ -42,6 +53,13 @@ fun GenderSelector(
     titleWoman: String = "",
     onGenderSelect: (ProfileGender) -> Unit = {}
 ) {
+
+    var selected by remember {
+        mutableStateOf<ProfileGender?>(null)
+    }
+
+    val scope = rememberCoroutineScope()
+
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.Top,
@@ -63,13 +81,18 @@ fun GenderSelector(
             Card(
                 modifier = Modifier
                     .clickable {
-                        onGenderSelect(ProfileGender.GENDER_WOMAN)
+                        selected = ProfileGender.FEMALE
+                        scope.launch {
+                            delay(1000)
+                            onGenderSelect(ProfileGender.FEMALE)
+                        }
                     }
                     .height(MaterialTheme.dimens.size130)
                     .width(MaterialTheme.dimens.size156)
+                    .background(color = backColor(selected == ProfileGender.FEMALE))
                     .border(
                         width = MaterialTheme.dimens.size1,
-                        color = MaterialTheme.colorScheme.outline,
+                        color = borderColor(selected == ProfileGender.FEMALE),
                         shape = MaterialTheme.shapes.medium
                     )
             ) {
@@ -78,18 +101,19 @@ fun GenderSelector(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
-                    Image(
+                    Icon(
                         modifier = Modifier
                             .size(MaterialTheme.dimens.size40),
                         painter = painterResource(id = R.drawable.ic_gender_woman),
-                        contentDescription = titleWoman
+                        contentDescription = titleWoman,
+                        tint = textColor(selected == ProfileGender.FEMALE)
                     )
 
                     Spacer(modifier = Modifier.height(MaterialTheme.dimens.size16))
 
                     Text(
                         text = titleWoman,
-                        color = MaterialTheme.colorScheme.onPrimary,
+                        color = textColor(selected == ProfileGender.FEMALE),
                         style = MaterialTheme.typography.labelLarge
                     )
                 }
@@ -98,13 +122,18 @@ fun GenderSelector(
             Card(
                 modifier = Modifier
                     .clickable {
-                        onGenderSelect(ProfileGender.GENDER_MAN)
+                        selected = ProfileGender.MALE
+                        scope.launch {
+                            delay(1000)
+                            onGenderSelect(ProfileGender.MALE)
+                        }
                     }
                     .height(MaterialTheme.dimens.size130)
                     .width(MaterialTheme.dimens.size156)
+                    .background(color = backColor(selected == ProfileGender.MALE))
                     .border(
                         width = MaterialTheme.dimens.size1,
-                        color = MaterialTheme.colorScheme.outline,
+                        color = borderColor(selected == ProfileGender.MALE),
                         shape = MaterialTheme.shapes.medium
                     )
             ) {
@@ -113,18 +142,19 @@ fun GenderSelector(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
-                    Image(
+                    Icon(
                         modifier = Modifier
                             .size(MaterialTheme.dimens.size40),
                         painter = painterResource(id = R.drawable.ic_gender_man),
-                        contentDescription = titleMan
+                        contentDescription = titleMan,
+                        tint = textColor(selected == ProfileGender.MALE)
                     )
 
                     Spacer(modifier = Modifier.height(MaterialTheme.dimens.size16))
 
                     Text(
                         text = titleMan,
-                        color = MaterialTheme.colorScheme.onPrimary,
+                        color = textColor(selected == ProfileGender.MALE),
                         style = MaterialTheme.typography.labelLarge
                     )
                 }

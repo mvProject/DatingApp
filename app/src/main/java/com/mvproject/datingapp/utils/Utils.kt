@@ -6,7 +6,7 @@
  *
  */
 
-package com.mvproject.datingapp
+package com.mvproject.datingapp.utils
 
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
