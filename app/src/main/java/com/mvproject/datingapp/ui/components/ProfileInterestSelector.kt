@@ -8,7 +8,7 @@
 
 package com.mvproject.datingapp.ui.components
 
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
@@ -30,16 +31,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
-import com.mvproject.datingapp.ui.screens.authorization.state.ProfileGoal
+import com.mvproject.datingapp.data.ProfileInterest
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
+import com.mvproject.datingapp.utils.backColor
+import com.mvproject.datingapp.utils.borderColor
+import com.mvproject.datingapp.utils.textColor
 
 @Composable
-fun ProfileGoalSelector(
+fun ProfileInterestSelector(
     modifier: Modifier = Modifier,
     selectedOption: String = "",
-    radioOptions: List<ProfileGoal> = ProfileGoal.values().toList(),
-    title: String = stringResource(id = R.string.scr_auth_goal_select_title),
+    radioOptions: List<ProfileInterest> = ProfileInterest.values().toList(),
+    title: String = stringResource(id = R.string.scr_auth_interest_select_title),
     onOptionSelected: (String) -> Unit = {}
 ) {
     Column(
@@ -63,30 +67,33 @@ fun ProfileGoalSelector(
         Column {
             radioOptions.forEach { option ->
                 val text = stringResource(id = option.title)
+                val isSelected = text == selectedOption
 
                 Row(
                     Modifier
                         .fillMaxWidth()
                         .selectable(
-                            selected = (text == selectedOption),
+                            selected = (isSelected),
                             onClick = {
                                 onOptionSelected(text)
                             }
                         )
+                        .background(color = backColor(isSelected))
                         .border(
                             MaterialTheme.dimens.size1,
-                            color = MaterialTheme.colorScheme.outline,
+                            color = borderColor(isSelected),
                             shape = MaterialTheme.shapes.large
                         )
                         .padding(horizontal = MaterialTheme.dimens.size8),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Image(
+                    Icon(
                         modifier = Modifier
                             .padding(start = MaterialTheme.dimens.size8),
                         painter = painterResource(id = option.logo),
-                        contentDescription = text
+                        contentDescription = text,
+                        tint = textColor(isSelected)
                     )
 
                     Text(
@@ -95,12 +102,14 @@ fun ProfileGoalSelector(
                             .padding(start = MaterialTheme.dimens.size12),
                         text = text,
                         style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onPrimary,
+                        color = textColor(isSelected),
                     )
 
                     RadioButton(
-                        selected = (text == selectedOption),
-                        onClick = { onOptionSelected(text) },
+                        selected = (isSelected),
+                        onClick = {
+                            onOptionSelected(text)
+                        },
                         colors = RadioButtonDefaults.colors(
                             selectedColor = MaterialTheme.colorScheme.secondaryContainer,
                         )
@@ -115,9 +124,9 @@ fun ProfileGoalSelector(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeProfileGoalSelector() {
+fun PreviewCodeProfileInterestSelector() {
     DatingAppTheme {
-        ProfileGoalSelector(
+        ProfileInterestSelector(
 
         )
     }
@@ -125,10 +134,10 @@ fun PreviewCodeProfileGoalSelector() {
 
 @Preview(showBackground = true)
 @Composable
-fun DarkPreviewProfileGoalSelector() {
+fun DarkPreviewProfileInterestSelector() {
     DatingAppTheme(darkTheme = true) {
-        ProfileGoalSelector(
-
+        ProfileInterestSelector(
+            selectedOption = stringResource(id = R.string.scr_auth_interest_select_relationship)
         )
     }
 }
