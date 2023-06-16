@@ -10,6 +10,9 @@ package com.mvproject.datingapp.utils
 
 import android.text.TextUtils
 import android.widget.EditText
+import timber.log.Timber
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 fun String.isEmpty(): Boolean {
     return (TextUtils.isEmpty(this)
@@ -45,4 +48,28 @@ fun String.isValidPassword(): String? {
         }*/
 
     return null
+}
+
+fun String.toDatePattern(): String {
+    return if (this.length == 8) {
+        StringBuilder(this).apply {
+            insert(4, '/')
+            insert(2, '/')
+        }.toString()
+    } else this
+}
+
+fun String.isDateValid(): Boolean {
+    return if (this.length > 2) {
+        val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        try {
+            val dateParse = formatter.parse(this)
+            Timber.w("testing from:$this parsed date: $dateParse")
+            true
+        } catch (ex: Exception) {
+            Timber.w("testing $this not parse ${ex.localizedMessage}")
+            false
+        }
+    } else true
+
 }

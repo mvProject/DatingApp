@@ -38,8 +38,10 @@ fun DateTextField(
     dateCount: Int = 8,
     onDateTextChange: (String, Boolean) -> Unit
 ) {
+    val date = dateText.replace("/", "")
+
     LaunchedEffect(Unit) {
-        if (dateText.length > dateCount) {
+        if (date.length > dateCount) {
             throw IllegalArgumentException("Otp text value must not have more than otpCount: $dateCount characters")
         }
     }
@@ -47,8 +49,8 @@ fun DateTextField(
     BasicTextField(
         modifier = modifier,
         value = TextFieldValue(
-            dateText,
-            selection = TextRange(dateText.length)
+            date,
+            selection = TextRange(date.length)
         ),
         onValueChange = {
             if (it.text.length <= dateCount) {
@@ -63,7 +65,7 @@ fun DateTextField(
                 repeat(dateCount) { index ->
                     CharView(
                         index = index,
-                        text = dateText
+                        text = date
                     )
                     Spacer(modifier = Modifier.width(MaterialTheme.dimens.size4))
                     if (index == 1 || index == 3) {

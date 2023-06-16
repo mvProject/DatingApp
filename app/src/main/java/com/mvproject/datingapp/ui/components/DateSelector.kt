@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -28,6 +29,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
+import com.mvproject.datingapp.utils.isDateValid
+import com.mvproject.datingapp.utils.toDatePattern
 
 @Composable
 fun DateSelector(
@@ -37,6 +40,15 @@ fun DateSelector(
     description: String = stringResource(id = R.string.scr_auth_date_select_description),
     onDateFilled: (String) -> Unit = {}
 ) {
+
+    var dateValue by remember {
+        mutableStateOf(initial)
+    }
+
+    val isDateValid by remember {
+        derivedStateOf { dateValue.isDateValid() }
+    }
+
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.Top,
@@ -52,21 +64,21 @@ fun DateSelector(
 
         Spacer(modifier = Modifier.height(MaterialTheme.dimens.size24))
 
-        var dateValue by remember {
-            mutableStateOf(initial)
-        }
-
         DateTextField(
             modifier = Modifier
                 .padding(horizontal = MaterialTheme.dimens.size32),
             dateText = dateValue,
             onDateTextChange = { value, dateFilled ->
-                dateValue = value
+                dateValue = value.toDatePattern()
                 if (dateFilled) {
                     onDateFilled(dateValue)
                 }
             }
         )
+
+        if (!isDateValid) {
+            ErrorMessage(text = "* entered date is invalid")
+        }
 
         Spacer(modifier = Modifier.height(MaterialTheme.dimens.size16))
 

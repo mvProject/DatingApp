@@ -83,7 +83,7 @@ fun GenderSelector(
                     .clickable {
                         selected = ProfileGender.FEMALE
                         scope.launch {
-                            delay(1000)
+                            delay(500)
                             onGenderSelect(ProfileGender.FEMALE)
                         }
                     }
@@ -124,7 +124,7 @@ fun GenderSelector(
                     .clickable {
                         selected = ProfileGender.MALE
                         scope.launch {
-                            delay(1000)
+                            delay(500)
                             onGenderSelect(ProfileGender.MALE)
                         }
                     }
