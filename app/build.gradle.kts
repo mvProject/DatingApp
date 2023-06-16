@@ -5,6 +5,7 @@ plugins {
     id("com.google.devtools.ksp")
     id("dagger.hilt.android.plugin")
     id("kotlinx-serialization")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -91,6 +92,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
 
     // Navigation
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("io.github.raamcosta.compose-destinations:core:1.8.42-beta")
     ksp("io.github.raamcosta.compose-destinations:ksp:1.8.42-beta")
 
@@ -102,7 +104,17 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
 
+    val firebaseBom = platform("com.google.firebase:firebase-bom:31.3.0")
+    implementation(firebaseBom)
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-auth-ktx")
+    //implementation("com.google.firebase:firebase-crashlytics-ktx")
+    implementation("com.google.firebase:firebase-database-ktx")
+    implementation("com.google.firebase:firebase-storage-ktx")
 
+    implementation("com.google.android.gms:play-services-auth:20.5.0")
+
+    implementation("io.coil-kt:coil-compose:2.1.0")
     // Tests
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
