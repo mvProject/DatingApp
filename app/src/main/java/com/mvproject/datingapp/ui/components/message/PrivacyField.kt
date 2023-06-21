@@ -1,13 +1,14 @@
 /*
  * Create by Medvediev Viktor
- * last update: 12.06.23, 18:50
+ * last update: 13.06.23, 19:34
  *
  * Copyright (c) 2023
  *
  */
 
-package com.mvproject.datingapp.ui.components
+package com.mvproject.datingapp.ui.components.message
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
@@ -24,7 +26,7 @@ import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 
 @Composable
-fun ErrorMessage(
+fun PrivacyField(
     modifier: Modifier = Modifier,
     text: String
 ) {
@@ -35,6 +37,10 @@ fun ErrorMessage(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
+        Image(
+            painter = painterResource(id = R.drawable.ic_privacy_content),
+            contentDescription = text
+        )
 
         Text(
             modifier = Modifier
@@ -42,7 +48,7 @@ fun ErrorMessage(
                 .padding(start = MaterialTheme.dimens.size10),
             text = text,
             style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.error,
+            color = MaterialTheme.colorScheme.onSurface,
         )
 
     }
@@ -50,9 +56,9 @@ fun ErrorMessage(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeErrorMessage() {
+fun PreviewCodePrivacyMessage() {
     DatingAppTheme {
-        ErrorMessage(
+        PrivacyField(
             text = stringResource(id = R.string.scr_auth_privacy_email),
         )
     }
@@ -60,9 +66,9 @@ fun PreviewCodeErrorMessage() {
 
 @Preview(showBackground = true)
 @Composable
-fun DarkPreviewErrorMessage() {
+fun DarkPreviewPrivacyMessage() {
     DatingAppTheme(darkTheme = true) {
-        ErrorMessage(
+        PrivacyField(
             text = stringResource(id = R.string.scr_auth_privacy_email),
         )
     }
