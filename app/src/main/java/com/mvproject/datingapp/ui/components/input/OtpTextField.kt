@@ -1,12 +1,12 @@
 /*
  * Create by Medvediev Viktor
- * last update: 08.06.23, 19:29
+ * last update: 09.06.23, 19:12
  *
  * Copyright (c) 2023
  *
  */
 
-package com.mvproject.datingapp.ui.components
+package com.mvproject.datingapp.ui.components.input
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
