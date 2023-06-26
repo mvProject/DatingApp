@@ -1,12 +1,12 @@
 /*
  * Create by Medvediev Viktor
- * last update: 08.06.23, 20:19
+ * last update: 09.06.23, 18:12
  *
  * Copyright (c) 2023
  *
  */
 
-package com.mvproject.datingapp.ui.components
+package com.mvproject.datingapp.ui.components.dialog
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -46,12 +46,12 @@ import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.ui.theme.hotpink
 
 @Composable
-fun ConfirmDialog(
+fun InfoDialog(
     isDialogOpen: MutableState<Boolean>,
     title: String,
-    description: String,
-    btnText: String,
-    image: Painter,
+    description: String? = null,
+    btnText: String = stringResource(id = R.string.btn_title_ok),
+    image: Painter? = null,
     onConfirm: () -> Unit = {}
 ) {
     if (isDialogOpen.value) {
@@ -71,15 +71,16 @@ fun ConfirmDialog(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
+                    image?.let {
+                        Image(
+                            modifier = Modifier
+                                .size(MaterialTheme.dimens.size128),
+                            painter = it,
+                            contentDescription = title
+                        )
 
-                    Image(
-                        modifier = Modifier
-                            .size(MaterialTheme.dimens.size128),
-                        painter = image,
-                        contentDescription = title
-                    )
-
-                    Spacer(modifier = Modifier.height(MaterialTheme.dimens.size32))
+                        Spacer(modifier = Modifier.height(MaterialTheme.dimens.size32))
+                    }
 
                     Text(
                         text = title,
@@ -89,15 +90,17 @@ fun ConfirmDialog(
 
                     Spacer(modifier = Modifier.height(MaterialTheme.dimens.size16))
 
-                    Text(
-                        modifier = Modifier
-                            .padding(horizontal = MaterialTheme.dimens.size24),
-                        text = description,
-                        color = MaterialTheme.colorScheme.onSurface,
-                        style = MaterialTheme.typography.labelMedium
-                    )
+                    description?.let {
+                        Text(
+                            modifier = Modifier
+                                .padding(horizontal = MaterialTheme.dimens.size24),
+                            text = it,
+                            color = MaterialTheme.colorScheme.onSurface,
+                            style = MaterialTheme.typography.labelMedium
+                        )
 
-                    Spacer(modifier = Modifier.height(MaterialTheme.dimens.size24))
+                        Spacer(modifier = Modifier.height(MaterialTheme.dimens.size24))
+                    }
 
                     Button(
                         modifier = Modifier
@@ -140,11 +143,11 @@ fun ConfirmDialog(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewConfirmDialog() {
+fun PreviewInfoDialog() {
     DatingAppTheme {
         val isDialogOpen = remember { mutableStateOf(true) }
 
-        ConfirmDialog(
+        InfoDialog(
             isDialogOpen = isDialogOpen,
             title = stringResource(id = R.string.scr_reset_password_title),
             description = stringResource(id = R.string.scr_reset_password_description),
@@ -156,11 +159,11 @@ fun PreviewConfirmDialog() {
 
 @Preview(showBackground = true)
 @Composable
-fun DarkPreviewConfirmDialog() {
+fun DarkPreviewInfoDialog() {
     DatingAppTheme(darkTheme = true) {
         val isDialogOpen = remember { mutableStateOf(true) }
 
-        ConfirmDialog(
+        InfoDialog(
             isDialogOpen = isDialogOpen,
             title = stringResource(id = R.string.scr_reset_password_title),
             description = stringResource(id = R.string.scr_reset_password_description),

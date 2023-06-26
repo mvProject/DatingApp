@@ -27,18 +27,34 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
+import com.mvproject.datingapp.data.VerifyType
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
+import com.mvproject.datingapp.utils.isValidEmail
 
 @Composable
 fun InputText(
     modifier: Modifier = Modifier,
     initial: String = "",
     hint: String = stringResource(id = R.string.hint_email),
+    verifyType: VerifyType = VerifyType.NONE,
     onValueChange: (String) -> Unit = {}
 ) {
     var entered by remember {
         mutableStateOf(initial)
     }
+    val focusedTextColor = if (verifyType == VerifyType.EMAIL) {
+        if (entered.isValidEmail())
+            MaterialTheme.colorScheme.onPrimary
+        else
+            MaterialTheme.colorScheme.error
+    } else MaterialTheme.colorScheme.onPrimary
+
+    val unFocusedTextColor = if (verifyType == VerifyType.EMAIL) {
+        if (entered.isValidEmail())
+            MaterialTheme.colorScheme.onSurface
+        else
+            MaterialTheme.colorScheme.error
+    } else MaterialTheme.colorScheme.onSurface
 
     TextField(
         modifier = modifier,
@@ -63,7 +79,8 @@ fun InputText(
         ),
         textStyle = MaterialTheme.typography.bodyLarge,
         colors = TextFieldDefaults.colors(
-            focusedTextColor = MaterialTheme.colorScheme.onPrimary,
+            focusedTextColor = focusedTextColor,
+            unfocusedTextColor = unFocusedTextColor,
             focusedContainerColor = Color.Transparent,
             unfocusedContainerColor = Color.Transparent,
             cursorColor = MaterialTheme.colorScheme.onSurfaceVariant,

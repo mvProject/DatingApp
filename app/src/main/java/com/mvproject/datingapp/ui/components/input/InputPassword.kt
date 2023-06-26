@@ -89,7 +89,8 @@ fun InputPassword(
             imeAction = ImeAction.Done,
             keyboardType = KeyboardType.Password
         ),
-        visualTransformation = if (pswdVisibility) VisualTransformation.None
+        visualTransformation = if (pswdVisibility)
+            VisualTransformation.None
         else PasswordVisualTransformation(),
         textStyle = MaterialTheme.typography.bodyLarge,
         colors = TextFieldDefaults.colors(
@@ -104,7 +105,7 @@ fun InputPassword(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeInputPasswordWithDescription() {
+fun PreviewCodeInputPassword() {
     DatingAppTheme {
         InputPassword()
     }
@@ -112,7 +113,7 @@ fun PreviewCodeInputPasswordWithDescription() {
 
 @Preview(showBackground = true)
 @Composable
-fun DarkPreviewInputPasswordWithDescription() {
+fun DarkPreviewInputPassword() {
     DatingAppTheme(darkTheme = true) {
         InputPassword()
     }

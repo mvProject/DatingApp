@@ -32,22 +32,27 @@ fun String.isValidEmail(): Boolean {
     return !this.isEmpty() && this.matches(emailPattern)
 }
 
-fun String.isValidPassword(): String? {
+fun String.isValidPassword(): Boolean {
     val passwordText = this
     if (passwordText.length < 8) {
-        return "Minimum 8 Character Password"
+        Timber.e("testing validation Minimum 8 Character Password")
+        return false
     }
-    /*    if(!passwordText.matches(".*[A-Z].*".toRegex())) {
-            return "Must Contain 1 Upper-case Character"
-        }
-        if(!passwordText.matches(".*[a-z].*".toRegex())) {
-            return "Must Contain 1 Lower-case Character"
-        }
-        if(!passwordText.matches(".*[@#\$%^&+=].*".toRegex())) {
-            return "Must Contain 1 Special Character (@#\$%^&+=)"
-        }*/
-
-    return null
+    if (!passwordText.matches("(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)".toRegex())) {
+        Timber.e("testing validation Minimum 8 Character Password")
+        return false
+    }
+    /*
+if (!passwordText.matches(".*[A-Z].*".toRegex())) {
+    return "Must Contain 1 Upper-case Character"
+}
+if (!passwordText.matches(".*[a-z].*".toRegex())) {
+    return "Must Contain 1 Lower-case Character"
+}
+if(!passwordText.matches(".*[@#\$%^&+=].*".toRegex())) {
+    return "Must Contain 1 Special Character (@#\$%^&+=)"
+}*/
+    return true
 }
 
 fun String.toDatePattern(): String {

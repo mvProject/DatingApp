@@ -11,13 +11,13 @@ package com.mvproject.datingapp.data
 import android.net.Uri
 
 data class User(
-    val name: String = "",
+    val name: String? = null,
     val birthdate: String = "",
     val email: String = "",
     val password: String = "",
     val interest: String = "",
     val gender: String = "",
     val uid: String = "",
-    val selectedImage: Uri? = null,
+    val profilePictureUrl: String? = null,
     val images: List<Uri> = emptyList()
 )
