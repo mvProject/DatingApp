@@ -7,12 +7,13 @@
   -->
 
 <resources>
+
     <style name="Theme.DatingApp" parent="android:Theme.Material.Light.NoActionBar" />
 
     <style name="Theme.DatingAppSplashScreenTheme" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/white</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/dating_app_logo</item>
-        <item name="windowSplashScreenAnimationDuration">300</item>
+        <item name="windowSplashScreenAnimationDuration">500</item>
         <item name="postSplashScreenTheme">@style/Theme.DatingApp</item>
     </style>
 </resources>

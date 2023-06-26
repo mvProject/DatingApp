@@ -11,4 +11,7 @@
     <string name="dlg_psw_sent_description">We have sent a verification code to email if an account was linked to it in the database</string>
     <string name="dlg_psw_save_title">New password saved!</string>
     <string name="dlg_psw_save_description">To change your password, you need to go to Profile</string>
+
+    <string name="dlg_sign_in_validation_title">Sorry</string>
+    <string name="dlg_sign_in_validation_description">Entered address or password is incorrect</string>
 </resources>

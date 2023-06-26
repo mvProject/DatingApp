@@ -13,6 +13,7 @@ android {
     compileSdk = 33
 
     defaultConfig {
+        applicationId = "com.mvproject.datingapp"
         minSdk = 26
         targetSdk = 33
         versionCode = 1
@@ -62,17 +63,19 @@ android {
 }
 
 dependencies {
+
+    // Integration with activity, viewmodels, lifecycle
+    implementation("androidx.activity:activity-compose:1.7.1")
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.1")
-    implementation("com.jakewharton.timber:timber:5.0.1")
-
-    // Integration with activity and viewmodels
-    implementation("androidx.activity:activity-compose:1.7.1")
-
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
 
+    // OneShot
     implementation("com.github.leonard-palm:compose-state-events:1.2.3")
+
+    // Logs
+    implementation("com.jakewharton.timber:timber:5.0.1")
 
     // Coroutine
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
@@ -93,9 +96,10 @@ dependencies {
 
     // Navigation
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-    implementation("io.github.raamcosta.compose-destinations:core:1.8.42-beta")
-    ksp("io.github.raamcosta.compose-destinations:ksp:1.8.42-beta")
+    implementation("androidx.navigation:navigation-compose:2.6.0")
+    implementation("com.google.accompanist:accompanist-navigation-animation:0.31.3-beta")
 
+    // Compose
     val composeBom = platform("androidx.compose:compose-bom:2023.05.01")
     implementation(composeBom)
     androidTestImplementation(composeBom)
@@ -104,6 +108,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
 
+    // Firebase
     val firebaseBom = platform("com.google.firebase:firebase-bom:31.3.0")
     implementation(firebaseBom)
     implementation("com.google.firebase:firebase-analytics-ktx")
@@ -112,9 +117,12 @@ dependencies {
     implementation("com.google.firebase:firebase-database-ktx")
     implementation("com.google.firebase:firebase-storage-ktx")
 
+    // Auth
     implementation("com.google.android.gms:play-services-auth:20.5.0")
 
+    // Image
     implementation("io.coil-kt:coil-compose:2.1.0")
+
     // Tests
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

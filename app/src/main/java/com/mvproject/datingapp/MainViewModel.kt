@@ -6,29 +6,28 @@
  *
  */
 
-package com.mvproject.datingapp.ui.screens.main.viewmodel
+package com.mvproject.datingapp
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mvproject.datingapp.utils.DELAY_1_SEC
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
-
-) : ViewModel() {
+class MainViewModel @Inject constructor() : ViewModel() {
 
     private val _isLoading: MutableState<Boolean> = mutableStateOf(true)
     val isLoading: State<Boolean> = _isLoading
 
     init {
         viewModelScope.launch {
-            delay(3000)
+            delay(DELAY_1_SEC)
             _isLoading.value = false
         }
     }

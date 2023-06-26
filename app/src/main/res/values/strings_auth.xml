@@ -26,7 +26,6 @@
     <string name="scr_auth_gender_man">Man</string>
     <string name="scr_auth_gender_woman">Woman</string>
 
-
     <string name="scr_auth_date_select_title">Nice to meet you %1$s. When is your birthday?</string>
     <string name="scr_auth_date_select_description">Your profile only shows your age.</string>
 
