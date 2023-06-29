@@ -34,8 +34,7 @@ fun GradientButton(
 ) {
     Button(
         modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = MaterialTheme.dimens.size8),
+            .fillMaxWidth(),
         colors = ButtonDefaults.buttonColors(
             containerColor = Color.Transparent
         ),

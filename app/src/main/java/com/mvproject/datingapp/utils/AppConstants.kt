@@ -14,3 +14,17 @@ const val ANIM_DURATION_600 = 600
 const val ANIM_DURATION_900 = 900
 
 const val DELAY_1_SEC = 1000L
+const val STRING_SPACE = " "
+const val STRING_EMPTY = ""
+const val STRING_ZERO = "0"
+
+const val INT_ZERO = 0
+const val LONG_ZERO = 0L
+const val DEFAULT_CODE_LENGTH = 6
+const val WEIGHT_1 = 1f
+const val WEIGHT_2 = 2f
+
+
+const val CODE_TIMER_VALUE = 30000L
+const val TIMER_INTERVAL = 1000L
+const val DIVIDER_SECOND = 1000

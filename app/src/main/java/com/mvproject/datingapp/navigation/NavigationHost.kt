@@ -7,10 +7,11 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.mvproject.datingapp.ui.screens.authorization.navigation.navigateToForgot
-import com.mvproject.datingapp.ui.screens.authorization.navigation.navigateToSignUp
+import com.mvproject.datingapp.ui.screens.authorization.restoreAccess.navigation.forgotScreen
+import com.mvproject.datingapp.ui.screens.authorization.restoreAccess.navigation.navigateToForgot
 import com.mvproject.datingapp.ui.screens.authorization.signin.navigation.loginScreen
 import com.mvproject.datingapp.ui.screens.authorization.signin.navigation.navigateToSignInClearStack
+import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.navigateToSignUp
 import com.mvproject.datingapp.ui.screens.main.profile.navigation.navigateToProfileClearStack
 import com.mvproject.datingapp.ui.screens.main.profile.navigation.profileScreen
 
@@ -33,21 +34,21 @@ fun NavigationHost(
             onNavigationHome = navController::navigateToProfileClearStack,
         )
 
+
+        forgotScreen(
+            onNavigateBack = navController::popBackStack,
+            onNavigateNext = navController::navigateToSignInClearStack
+        )
         /*
-                forgotScreen(
-                    onNavigateBack = navController::popBackStack,
-                    onNavigateNext = navController::navigateToSignInClearStack
-                )
+                        signUpScreen(
+                            onNavigateBack = navController::popBackStack,
+                            onNavigateNext = navController::navigateToSignInClearStack
+                        )
 
-                signUpScreen(
-                    onNavigateBack = navController::popBackStack,
-                    onNavigateNext = navController::navigateToSignInClearStack
-                )
-
-                likesScreen()
-                chatScreen()
-                datingScreen()
-        */
+                        likesScreen()
+                        chatScreen()
+                        datingScreen()
+                */
 
         profileScreen(
             onNavigationLogout = navController::navigateToSignInClearStack

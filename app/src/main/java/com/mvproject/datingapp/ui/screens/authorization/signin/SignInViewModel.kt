@@ -10,7 +10,7 @@ package com.mvproject.datingapp.ui.screens.authorization.signin
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mvproject.datingapp.data.PreferenceRepository
+import com.mvproject.datingapp.data.repository.PreferenceRepository
 import com.mvproject.datingapp.helper.FirebaseHelper
 import com.mvproject.datingapp.helper.GoogleSignHelper
 import com.mvproject.datingapp.ui.screens.authorization.signin.action.SignInAction

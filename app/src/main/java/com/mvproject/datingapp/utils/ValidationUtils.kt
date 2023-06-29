@@ -55,6 +55,10 @@ if(!passwordText.matches(".*[@#\$%^&+=].*".toRegex())) {
     return true
 }
 
+fun isPasswordsValidAndConfirmed(password: String, passwordConfirm: String): Boolean {
+    return password.isValidPassword() && passwordConfirm.isValidPassword() && password == passwordConfirm
+}
+
 fun String.toDatePattern(): String {
     return if (this.length == 8) {
         StringBuilder(this).apply {

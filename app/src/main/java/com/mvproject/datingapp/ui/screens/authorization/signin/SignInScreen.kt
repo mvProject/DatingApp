@@ -23,6 +23,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -38,7 +39,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mvproject.datingapp.R
-import com.mvproject.datingapp.data.VerifyType
+import com.mvproject.datingapp.data.enums.VerifyType
 import com.mvproject.datingapp.ui.components.buttons.FacebookButton
 import com.mvproject.datingapp.ui.components.buttons.GoogleButton
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
@@ -52,6 +53,9 @@ import com.mvproject.datingapp.ui.screens.authorization.signin.action.SignInActi
 import com.mvproject.datingapp.ui.screens.authorization.signin.state.SignInViewState
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
+import com.mvproject.datingapp.utils.STRING_EMPTY
+import com.mvproject.datingapp.utils.WEIGHT_1
+import com.mvproject.datingapp.utils.WEIGHT_2
 import com.mvproject.datingapp.utils.isValidEmail
 import com.mvproject.datingapp.utils.isValidPassword
 
@@ -106,175 +110,166 @@ fun SignInView(
         LoadingView()
     }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(
-                vertical = MaterialTheme.dimens.size24,
-                horizontal = MaterialTheme.dimens.size24
-            ),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top
-    ) {
-        var login by remember {
-            mutableStateOf("")
-        }
-
-        var password by remember {
-            mutableStateOf("")
-        }
-
-        Row(
-            modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.app_logo),
-                contentDescription = null
-            )
-        }
-
-        Spacer(modifier = Modifier.weight(1f))
-
-        Text(
-            text = stringResource(id = R.string.scr_auth_title_welcome),
-            color = MaterialTheme.colorScheme.onPrimary,
-            style = MaterialTheme.typography.displayLarge
-        )
-
-        Spacer(modifier = Modifier.weight(2f))
-
-        InputText(
-            modifier = Modifier.fillMaxWidth(),
-            verifyType = VerifyType.EMAIL,
-            onValueChange = {
-                login = it
-            }
-        )
-
-        Spacer(modifier = Modifier.height(MaterialTheme.dimens.size12))
-
-        InputPassword(
-            modifier = Modifier.fillMaxWidth(),
-            onValueChange = {
-                password = it
-            }
-        )
-
-        Spacer(modifier = Modifier.weight(1f))
-
-        GradientButton(
+    Scaffold(modifier = Modifier.fillMaxSize()) {
+        Column(
             modifier = Modifier
-                .fillMaxWidth(),
-            title = stringResource(id = R.string.btn_title_sign_in),
-            onClick = {
-                if (login.isValidEmail() && password.isValidPassword()) {
-                    onSignInAction(SignInAction.SignWithCredentialIn(login, password))
-                } else {
-                    isVerificationDialogOpen.value = true
-                }
-            }
-        )
-
-        Spacer(modifier = Modifier.weight(1f))
-
-        Text(
-            modifier = Modifier.clickable {
-                Toast.makeText(
-                    context,
-                    "ForgotAccess Todo",
-                    Toast.LENGTH_SHORT
-                ).show()
-                // todo implement
-                //onForgotAccessAction()
-            },
-            text = stringResource(id = R.string.btn_title_forgot_password),
-            color = MaterialTheme.colorScheme.secondary,
-            style = MaterialTheme.typography.headlineSmall
-        )
-
-        Spacer(modifier = Modifier.weight(1f))
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
+                .padding(it)
+                .fillMaxSize()
+                .padding(MaterialTheme.dimens.size24),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top
         ) {
-            Divider(
-                modifier = Modifier.width(MaterialTheme.dimens.size60),
-                color = MaterialTheme.colorScheme.onSurface
-            )
-            Spacer(modifier = Modifier.width(MaterialTheme.dimens.size20))
+            var login by remember {
+                mutableStateOf(STRING_EMPTY)
+            }
+
+            var password by remember {
+                mutableStateOf(STRING_EMPTY)
+            }
+
+            Row(
+                modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.app_logo),
+                    contentDescription = null
+                )
+            }
+
+            Spacer(modifier = Modifier.weight(WEIGHT_1))
+
             Text(
-                text = stringResource(id = R.string.scr_auth_title_or),
-                color = MaterialTheme.colorScheme.onSurface,
-                style = MaterialTheme.typography.labelLarge
+                text = stringResource(id = R.string.scr_auth_title_welcome),
+                color = MaterialTheme.colorScheme.onPrimary,
+                style = MaterialTheme.typography.displayLarge
             )
-            Spacer(modifier = Modifier.width(MaterialTheme.dimens.size20))
-            Divider(
-                modifier = Modifier.width(MaterialTheme.dimens.size60),
-                color = MaterialTheme.colorScheme.onSurface
+
+            Spacer(modifier = Modifier.weight(WEIGHT_2))
+
+            InputText(
+                modifier = Modifier.fillMaxWidth(),
+                verifyType = VerifyType.EMAIL,
+                onValueChange = { text ->
+                    login = text
+                }
+            )
+
+            Spacer(modifier = Modifier.height(MaterialTheme.dimens.size12))
+
+            InputPassword(
+                modifier = Modifier.fillMaxWidth(),
+                onValueChange = { text ->
+                    password = text
+                }
+            )
+
+            Spacer(modifier = Modifier.weight(WEIGHT_1))
+
+            GradientButton(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                title = stringResource(id = R.string.btn_title_sign_in),
+                onClick = {
+                    if (login.isValidEmail() && password.isValidPassword()) {
+                        onSignInAction(SignInAction.SignWithCredentialIn(login, password))
+                    } else {
+                        isVerificationDialogOpen.value = true
+                    }
+                }
+            )
+
+            Spacer(modifier = Modifier.weight(WEIGHT_1))
+
+            Text(
+                modifier = Modifier.clickable {
+                    onForgotAccessAction()
+                },
+                text = stringResource(id = R.string.btn_title_forgot_password),
+                color = MaterialTheme.colorScheme.secondary,
+                style = MaterialTheme.typography.headlineSmall
+            )
+
+            Spacer(modifier = Modifier.weight(WEIGHT_1))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Divider(
+                    modifier = Modifier.width(MaterialTheme.dimens.size60),
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Spacer(modifier = Modifier.width(MaterialTheme.dimens.size20))
+                Text(
+                    text = stringResource(id = R.string.scr_auth_title_or),
+                    color = MaterialTheme.colorScheme.onSurface,
+                    style = MaterialTheme.typography.labelLarge
+                )
+                Spacer(modifier = Modifier.width(MaterialTheme.dimens.size20))
+                Divider(
+                    modifier = Modifier.width(MaterialTheme.dimens.size60),
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+            }
+
+            Spacer(modifier = Modifier.weight(WEIGHT_1))
+
+            val googleSignLauncher = rememberGoogleSignLauncher(
+                onAuthComplete = { result ->
+                    onSignInAction(SignInAction.SignWithGoogleIn(result))
+                    isLoading = false
+                },
+                onAuthError = { code ->
+                    Toast.makeText(
+                        context,
+                        "GoogleSign Error $code",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    isLoading = false
+                }
+            )
+
+            GoogleButton(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                onClick = {
+                    googleSignLauncher.launch(signIntent)
+                    isLoading = true
+                }
+            )
+
+            Spacer(modifier = Modifier.height(MaterialTheme.dimens.size8))
+
+            FacebookButton(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                onClick = {
+                    Toast.makeText(
+                        context,
+                        "Facebook Sign Todo",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    // todo implement
+                    //onSignInAction(SignInAction.SignWithFacebookIn)
+                }
+            )
+
+            Spacer(modifier = Modifier.weight(WEIGHT_2))
+
+            NoAccountField(
+                title = stringResource(id = R.string.scr_auth_title_no_account),
+                actionTitle = stringResource(id = R.string.btn_title_sign_up),
+                onAction = {
+                    Toast.makeText(
+                        context,
+                        "SignUp Todo",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                // todo implement
+                // onAction = onSignUpAction
             )
         }
-
-        Spacer(modifier = Modifier.weight(1f))
-
-
-        val googleSignLauncher = rememberGoogleSignLauncher(
-            onAuthComplete = { result ->
-                onSignInAction(SignInAction.SignWithGoogleIn(result))
-                isLoading = false
-            },
-            onAuthError = {
-                Toast.makeText(
-                    context,
-                    "GoogleSign Error $it",
-                    Toast.LENGTH_SHORT
-                ).show()
-                isLoading = false
-            }
-        )
-
-        GoogleButton(
-            modifier = Modifier
-                .padding(MaterialTheme.dimens.size8)
-                .fillMaxWidth(),
-            onClick = {
-                googleSignLauncher.launch(signIntent)
-                isLoading = true
-            }
-        )
-
-        Spacer(modifier = Modifier.height(MaterialTheme.dimens.size8))
-
-        FacebookButton(
-            modifier = Modifier
-                .padding(MaterialTheme.dimens.size8)
-                .fillMaxWidth(),
-            onClick = {
-                Toast.makeText(
-                    context,
-                    "Facebook Sign Todo",
-                    Toast.LENGTH_SHORT
-                ).show()
-                // todo implement
-                //onSignInAction(SignInAction.SignWithFacebookIn)
-            }
-        )
-
-        Spacer(modifier = Modifier.weight(2f))
-
-        NoAccountField(
-            title = stringResource(id = R.string.scr_auth_title_no_account),
-            actionTitle = stringResource(id = R.string.btn_title_sign_up),
-            onAction = {
-                Toast.makeText(
-                    context,
-                    "SignUp Todo",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            // todo implement
-            // onAction = onSignUpAction
-        )
     }
 
     InfoDialog(

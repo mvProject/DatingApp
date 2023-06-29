@@ -14,4 +14,10 @@
 
     <string name="dlg_sign_in_validation_title">Sorry</string>
     <string name="dlg_sign_in_validation_description">Entered address or password is incorrect</string>
+
+    <string name="dlg_code_validation_error_title">Error.</string>
+    <string name="dlg_code_validation_error_description">Your code is not correct</string>
+
+    <string name="dlg_pass_confirm_error_title">Error!</string>
+    <string name="dlg_pass_confirm_error_description">Create password and Confirm password are not validate</string>
 </resources>

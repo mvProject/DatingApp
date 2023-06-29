@@ -10,7 +10,7 @@ package com.mvproject.datingapp.ui.screens.main.home.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mvproject.datingapp.data.PreferenceRepository
+import com.mvproject.datingapp.data.repository.PreferenceRepository
 import com.mvproject.datingapp.helper.FirebaseHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted

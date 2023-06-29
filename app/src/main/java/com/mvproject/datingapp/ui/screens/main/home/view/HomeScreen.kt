@@ -9,7 +9,6 @@
 package com.mvproject.datingapp.ui.screens.main.home.view
 
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.Icon
@@ -62,9 +61,8 @@ fun HomeScreen(
             //  )
         }
     ) { paddingValues ->
-
         NavigationHost(
-            modifier = Modifier.padding(paddingValues),
+//            modifier = Modifier.padding(paddingValues.),
             navController = navController,
             startDestination = startScreen
         )

@@ -1,4 +1,12 @@
-package com.mvproject.datingapp.data
+/*
+ * Create by Medvediev Viktor
+ * last update: 21.06.23, 16:43
+ *
+ * Copyright (c) 2023
+ *
+ */
+
+package com.mvproject.datingapp.data.repository
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

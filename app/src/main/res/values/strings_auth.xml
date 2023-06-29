@@ -15,8 +15,11 @@
 
     <string name="scr_code_verify_title">Enter verify code</string>
     <string name="scr_code_verify_code_send">We have sent a verification code to this email:</string>
-    <string name="scr_code_verify_code_receive">You will receive a message within 29 sec.We sent it to </string>
+    <string name="scr_code_verify_code_receive_timer">You will receive a message within</string>
+    <string name="scr_code_verify_code_receive_value">%1$s sec</string>
+    <string name="scr_code_verify_code_receive">We sent it to </string>
     <string name="scr_code_verify_change_email">Change email?</string>
+    <string name="scr_code_verify_code_send_retry">Try again</string>
 
     <string name="scr_auth_title_welcome">Welcome back!</string>
     <string name="scr_auth_title_no_account">Don’t have an account?</string>

@@ -35,6 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
+import com.mvproject.datingapp.utils.STRING_EMPTY
 
 @Composable
 fun InputPassword(
@@ -43,7 +44,7 @@ fun InputPassword(
     onValueChange: (String) -> Unit = {}
 ) {
     var entered by remember {
-        mutableStateOf("")
+        mutableStateOf(STRING_EMPTY)
     }
 
     var pswdVisibility by remember {
@@ -86,7 +87,7 @@ fun InputPassword(
         },
         singleLine = true,
         keyboardOptions = KeyboardOptions.Default.copy(
-            imeAction = ImeAction.Done,
+            imeAction = ImeAction.Next,
             keyboardType = KeyboardType.Password
         ),
         visualTransformation = if (pswdVisibility)
