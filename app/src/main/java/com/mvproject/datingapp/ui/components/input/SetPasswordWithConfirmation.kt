@@ -38,7 +38,7 @@ import com.mvproject.datingapp.utils.WEIGHT_1
 import com.mvproject.datingapp.utils.isPasswordsValidAndConfirmed
 
 @Composable
-fun InputPasswordWithConfirmation(
+fun SetPasswordWithConfirmation(
     modifier: Modifier = Modifier,
     title: String = STRING_EMPTY,
     descriptionTop: String = STRING_EMPTY,
@@ -79,7 +79,6 @@ fun InputPasswordWithConfirmation(
 
             Text(
                 modifier = Modifier.fillMaxWidth(),
-                //.padding(horizontal = MaterialTheme.dimens.size8),
                 text = descriptionTop,
                 color = MaterialTheme.colorScheme.onSurface,
                 style = MaterialTheme.typography.labelMedium,
@@ -111,8 +110,9 @@ fun InputPasswordWithConfirmation(
             Spacer(modifier = Modifier.height(MaterialTheme.dimens.size24))
 
             Text(
-                modifier = Modifier.fillMaxWidth(),
-                // .padding(horizontal = MaterialTheme.dimens.size24),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = MaterialTheme.dimens.size4),
                 text = descriptionBottom,
                 color = MaterialTheme.colorScheme.onSurface,
                 style = MaterialTheme.typography.labelMedium,
@@ -145,9 +145,9 @@ fun InputPasswordWithConfirmation(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeInputPasswordWithConfirmation() {
+fun PreviewCodeSetPasswordWithConfirmation() {
     DatingAppTheme {
-        InputPasswordWithConfirmation(
+        SetPasswordWithConfirmation(
             title = stringResource(id = R.string.scr_request_reset_password_title),
             descriptionTop = stringResource(id = R.string.scr_request_reset_password_description),
         )
@@ -156,9 +156,9 @@ fun PreviewCodeInputPasswordWithConfirmation() {
 
 @Preview(showBackground = true)
 @Composable
-fun DarkPreviewInputPasswordWithConfirmation() {
+fun DarkPreviewSetPasswordWithConfirmation() {
     DatingAppTheme(darkTheme = true) {
-        InputPasswordWithConfirmation(
+        SetPasswordWithConfirmation(
             title = stringResource(id = R.string.scr_request_reset_password_title),
             descriptionTop = stringResource(id = R.string.scr_request_reset_password_description),
         )

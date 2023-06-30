@@ -37,7 +37,6 @@ import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.DEFAULT_CODE_LENGTH
 import com.mvproject.datingapp.utils.STRING_EMPTY
-import com.mvproject.datingapp.utils.STRING_ZERO
 
 @Composable
 fun OtpTextField(
@@ -103,7 +102,7 @@ private fun CharView(
 ) {
     val isFocused = text.length == index
     val char = when {
-        index == text.length -> STRING_ZERO
+        index == text.length -> STRING_EMPTY
         index > text.length -> STRING_EMPTY
         else -> text[index].toString()
     }

@@ -8,6 +8,7 @@
 
 package com.mvproject.datingapp.ui.components.buttons
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -33,7 +34,11 @@ fun GoogleButton(
         onClick = onClick,
         modifier = modifier,
         colors = ButtonDefaults.buttonColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
+            containerColor = MaterialTheme.colorScheme.primary
+        ),
+        border = BorderStroke(
+            MaterialTheme.dimens.size1,
+            MaterialTheme.colorScheme.outline
         ),
         shape = MaterialTheme.shapes.large
     ) {
@@ -46,7 +51,7 @@ fun GoogleButton(
         Text(
             modifier = Modifier.fillMaxWidth(),
             text = stringResource(id = R.string.btn_title_sign_google),
-            color = MaterialTheme.colorScheme.onPrimaryContainer,
+            color = MaterialTheme.colorScheme.onPrimary,
             style = MaterialTheme.typography.titleSmall,
             textAlign = TextAlign.Center
         )

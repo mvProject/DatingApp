@@ -10,6 +10,7 @@ package com.mvproject.datingapp.ui.screens.authorization.restoreAccess
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mvproject.datingapp.dummy.DUMMY_CODE
 import com.mvproject.datingapp.helper.TimerHelper
 import com.mvproject.datingapp.ui.screens.authorization.restoreAccess.action.RestoreAccessAction
 import com.mvproject.datingapp.ui.screens.authorization.restoreAccess.state.RestoreAccessDataState
@@ -63,7 +64,7 @@ class RestoreAccessViewModel @Inject constructor(
                     _restoreAccessDataState.update {
                         it.copy(
                             isLoading = true,
-                            code = "123456"
+                            code = DUMMY_CODE
                         )
                     }
                     delay(DELAY_1_SEC)

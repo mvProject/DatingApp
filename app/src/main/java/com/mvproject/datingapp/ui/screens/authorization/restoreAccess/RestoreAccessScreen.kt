@@ -36,8 +36,8 @@ import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.enums.VerifyType
 import com.mvproject.datingapp.data.state.TimerState
 import com.mvproject.datingapp.ui.components.dialog.InfoDialog
-import com.mvproject.datingapp.ui.components.input.InputPasswordWithConfirmation
 import com.mvproject.datingapp.ui.components.input.InputTextWithDescription
+import com.mvproject.datingapp.ui.components.input.SetPasswordWithConfirmation
 import com.mvproject.datingapp.ui.components.input.otpCode.CodeVerifier
 import com.mvproject.datingapp.ui.components.loading.LoadingView
 import com.mvproject.datingapp.ui.screens.authorization.restoreAccess.action.RestoreAccessAction
@@ -83,7 +83,7 @@ fun RestoreAccessView(
 ) {
     val isCodeSendDialogOpen = remember { mutableStateOf(false) }
     val isPasswordSetDialogOpen = remember { mutableStateOf(false) }
-    val isVerificationFailedDialogOpen = remember { mutableStateOf(false) }
+    val isVerificationCodeFailedDialogOpen = remember { mutableStateOf(false) }
     val isPasswordSetFailedDialogOpen = remember { mutableStateOf(false) }
 
     BackHandler(true) {
@@ -176,7 +176,7 @@ fun RestoreAccessView(
                             if (isVerified) {
                                 onAction(RestoreAccessAction.NextStep)
                             } else {
-                                isVerificationFailedDialogOpen.value = true
+                                isVerificationCodeFailedDialogOpen.value = true
                             }
                         },
                         onChangeEmail = {
@@ -189,7 +189,7 @@ fun RestoreAccessView(
                 }
 
                 RestoreAccessState.PASSWORD_SET -> {
-                    InputPasswordWithConfirmation(
+                    SetPasswordWithConfirmation(
                         verifyType = VerifyType.PASSWORD,
                         descriptionTop = stringResource(id = R.string.scr_reset_password_description),
                         onConfirmed = { text ->
@@ -233,11 +233,11 @@ fun RestoreAccessView(
         )
 
         InfoDialog(
-            isDialogOpen = isVerificationFailedDialogOpen,
+            isDialogOpen = isVerificationCodeFailedDialogOpen,
             title = stringResource(id = R.string.dlg_code_validation_error_title),
             description = stringResource(id = R.string.dlg_code_validation_error_description),
             onConfirm = {
-                isVerificationFailedDialogOpen.value = false
+                isVerificationCodeFailedDialogOpen.value = false
             }
         )
 

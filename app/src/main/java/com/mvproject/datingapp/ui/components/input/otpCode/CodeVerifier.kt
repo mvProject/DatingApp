@@ -128,39 +128,44 @@ fun CodeVerifier(
 
         Spacer(modifier = Modifier.weight(1f))
 
-        if (timerState.isTimerEnabled) {
-            Row(
-                modifier = Modifier,
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceAround
-            ) {
-                Text(
-                    text = stringResource(id = R.string.scr_code_verify_code_receive_timer),
-                    color = MaterialTheme.colorScheme.onSurface,
-                    style = MaterialTheme.typography.labelSmall
-                )
-                Spacer(modifier = Modifier.width(MaterialTheme.dimens.size2))
-                Text(
-                    modifier = Modifier.width(MaterialTheme.dimens.size60),
-                    text = stringResource(
-                        id = R.string.scr_code_verify_code_receive_value,
-                        timerState.timeLeft
-                    ),
-                    color = MaterialTheme.colorScheme.onSurface,
-                    style = MaterialTheme.typography.labelSmall
-                )
-            }
+        val textColor = if (timerState.isTimerEnabled) {
+            MaterialTheme.colorScheme.outline
         } else {
-            Text(
-                modifier = Modifier
-                    .clickable {
+            MaterialTheme.colorScheme.secondary
+        }
+        Text(
+            modifier = Modifier
+                .clickable {
+                    if (!timerState.isTimerEnabled) {
                         otpValue = STRING_EMPTY
                         onRetry()
                     }
-                    .padding(horizontal = MaterialTheme.dimens.size24),
-                text = stringResource(id = R.string.scr_code_verify_code_send_retry),
-                color = MaterialTheme.colorScheme.secondary,
-                style = MaterialTheme.typography.headlineSmall
+                }
+                .padding(horizontal = MaterialTheme.dimens.size24),
+            text = stringResource(id = R.string.scr_code_verify_code_send_retry),
+            color = textColor,
+            style = MaterialTheme.typography.headlineSmall
+        )
+
+        Row(
+            modifier = Modifier,
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceAround
+        ) {
+            Text(
+                text = stringResource(id = R.string.scr_code_verify_code_receive_timer),
+                color = MaterialTheme.colorScheme.onSurface,
+                style = MaterialTheme.typography.labelSmall
+            )
+            Spacer(modifier = Modifier.width(MaterialTheme.dimens.size2))
+            Text(
+                modifier = Modifier.width(MaterialTheme.dimens.size60),
+                text = stringResource(
+                    id = R.string.scr_code_verify_code_receive_value,
+                    timerState.timeLeft
+                ),
+                color = MaterialTheme.colorScheme.onSurface,
+                style = MaterialTheme.typography.labelSmall
             )
         }
 
