@@ -31,6 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.enums.VerifyType
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
+import com.mvproject.datingapp.ui.components.dialog.InfoDialog
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.STRING_EMPTY
@@ -47,8 +48,7 @@ fun SetPasswordWithConfirmation(
     hint: String = stringResource(id = R.string.hint_password_create),
     hintConfirm: String = stringResource(id = R.string.hint_password_confirm),
     onConfirmed: (String) -> Unit = {},
-    onComplete: (String) -> Unit = {},
-    onFailed: () -> Unit = {}
+    onComplete: (String) -> Unit = {}
 ) {
     var entered by remember {
         mutableStateOf(STRING_EMPTY)
@@ -57,6 +57,8 @@ fun SetPasswordWithConfirmation(
     var enteredConfirm by remember {
         mutableStateOf(STRING_EMPTY)
     }
+
+    val isPasswordSetFailedDialogOpen = remember { mutableStateOf(false) }
 
     Column(
         modifier = modifier
@@ -132,7 +134,7 @@ fun SetPasswordWithConfirmation(
                         if (isPasswordsValidAndConfirmed(entered, enteredConfirm)) {
                             onConfirmed(entered)
                         } else {
-                            onFailed()
+                            isPasswordSetFailedDialogOpen.value = true
                         }
                     }
 
@@ -141,6 +143,16 @@ fun SetPasswordWithConfirmation(
             }
         )
     }
+
+    // password not verified
+    InfoDialog(
+        isDialogOpen = isPasswordSetFailedDialogOpen,
+        title = stringResource(id = R.string.dlg_pass_confirm_error_title),
+        description = stringResource(id = R.string.dlg_pass_confirm_error_description),
+        onConfirm = {
+            isPasswordSetFailedDialogOpen.value = false
+        }
+    )
 }
 
 @Preview(showBackground = true)

@@ -37,6 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.state.TimerState
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
+import com.mvproject.datingapp.ui.components.dialog.InfoDialog
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.STRING_EMPTY
@@ -54,8 +55,10 @@ fun CodeVerifier(
     descriptionBottom: String = stringResource(id = R.string.scr_code_verify_code_receive),
     onChangeEmail: () -> Unit = {},
     onRetry: () -> Unit = {},
-    onVerify: (Boolean) -> Unit = {}
+    onCodeVerify: () -> Unit = {}
 ) {
+
+    val isVerificationCodeFailedDialogOpen = remember { mutableStateOf(false) }
 
     Column(
         modifier = modifier
@@ -199,10 +202,23 @@ fun CodeVerifier(
             title = stringResource(id = R.string.btn_title_continue),
             onClick = {
                 Timber.w("testing entered:$otpValue, target:$code")
-                onVerify(otpFilled && otpValue == code)
+                if (otpFilled && otpValue == code) {
+                    onCodeVerify()
+                } else {
+                    isVerificationCodeFailedDialogOpen.value = true
+                }
             }
         )
     }
+
+    InfoDialog(
+        isDialogOpen = isVerificationCodeFailedDialogOpen,
+        title = stringResource(id = R.string.dlg_code_validation_error_title),
+        description = stringResource(id = R.string.dlg_code_validation_error_description),
+        onConfirm = {
+            isVerificationCodeFailedDialogOpen.value = false
+        }
+    )
 }
 
 @Preview(showBackground = true)

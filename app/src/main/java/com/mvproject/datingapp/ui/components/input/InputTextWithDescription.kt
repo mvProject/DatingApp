@@ -123,9 +123,8 @@ fun InputTextWithDescription(
             PrivacyField(
                 text = privacyText
             )
+            Spacer(modifier = Modifier.height(MaterialTheme.dimens.size16))
         }
-
-        Spacer(modifier = Modifier.height(MaterialTheme.dimens.size16))
 
         GradientButton(
             modifier = Modifier

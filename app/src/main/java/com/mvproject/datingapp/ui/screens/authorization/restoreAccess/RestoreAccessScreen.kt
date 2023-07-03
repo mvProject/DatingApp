@@ -83,8 +83,6 @@ fun RestoreAccessView(
 ) {
     val isCodeSendDialogOpen = remember { mutableStateOf(false) }
     val isPasswordSetDialogOpen = remember { mutableStateOf(false) }
-    val isVerificationCodeFailedDialogOpen = remember { mutableStateOf(false) }
-    val isPasswordSetFailedDialogOpen = remember { mutableStateOf(false) }
 
     BackHandler(true) {
         if (state.currentStep.isStartState()) {
@@ -172,12 +170,8 @@ fun RestoreAccessView(
                         timerState = timerState,
                         email = state.email,
                         code = state.code,
-                        onVerify = { isVerified ->
-                            if (isVerified) {
-                                onAction(RestoreAccessAction.NextStep)
-                            } else {
-                                isVerificationCodeFailedDialogOpen.value = true
-                            }
+                        onCodeVerify = {
+                            onAction(RestoreAccessAction.NextStep)
                         },
                         onChangeEmail = {
                             onAction(RestoreAccessAction.PrevStep)
@@ -195,9 +189,6 @@ fun RestoreAccessView(
                         onConfirmed = { text ->
                             onAction(RestoreAccessAction.UpdatePassword(text))
                             onAction(RestoreAccessAction.SendPassword)
-                        },
-                        onFailed = {
-                            isPasswordSetFailedDialogOpen.value = true
                         }
                     )
                 }
@@ -229,24 +220,6 @@ fun RestoreAccessView(
             onConfirm = {
                 isPasswordSetDialogOpen.value = false
                 onNavigateNext()
-            }
-        )
-
-        InfoDialog(
-            isDialogOpen = isVerificationCodeFailedDialogOpen,
-            title = stringResource(id = R.string.dlg_code_validation_error_title),
-            description = stringResource(id = R.string.dlg_code_validation_error_description),
-            onConfirm = {
-                isVerificationCodeFailedDialogOpen.value = false
-            }
-        )
-
-        InfoDialog(
-            isDialogOpen = isPasswordSetFailedDialogOpen,
-            title = stringResource(id = R.string.dlg_pass_confirm_error_title),
-            description = stringResource(id = R.string.dlg_pass_confirm_error_description),
-            onConfirm = {
-                isPasswordSetFailedDialogOpen.value = false
             }
         )
     }
