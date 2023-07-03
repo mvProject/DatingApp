@@ -31,6 +31,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.enums.VerifyType
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
+import com.mvproject.datingapp.ui.components.message.ErrorMessage
+import com.mvproject.datingapp.ui.components.message.PrivacyField
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.STRING_EMPTY
@@ -44,11 +46,16 @@ fun InputTextWithDescription(
     verifyType: VerifyType = VerifyType.NONE,
     descriptionBottom: String = STRING_EMPTY,
     descriptionTop: String = STRING_EMPTY,
+    privacyText: String = STRING_EMPTY,
     hint: String = stringResource(id = R.string.hint_email),
     onSendClick: (String) -> Unit = {}
 ) {
     var entered by remember {
         mutableStateOf(initial)
+    }
+
+    var showNotVerifiedError by remember {
+        mutableStateOf(false)
     }
 
     Column(
@@ -86,9 +93,16 @@ fun InputTextWithDescription(
             verifyType = verifyType,
             hint = hint,
             onValueChange = { text ->
+                showNotVerifiedError = false
                 entered = text
             }
         )
+
+        if (showNotVerifiedError) {
+            ErrorMessage(
+                text = "Incorrect email address"
+            )
+        }
 
         if (descriptionBottom.isNotEmpty()) {
             Spacer(modifier = Modifier.height(MaterialTheme.dimens.size24))
@@ -105,6 +119,14 @@ fun InputTextWithDescription(
 
         Spacer(modifier = Modifier.weight(1f))
 
+        if (privacyText.isNotEmpty()) {
+            PrivacyField(
+                text = privacyText
+            )
+        }
+
+        Spacer(modifier = Modifier.height(MaterialTheme.dimens.size16))
+
         GradientButton(
             modifier = Modifier
                 .fillMaxWidth(),
@@ -112,6 +134,7 @@ fun InputTextWithDescription(
             onClick = {
                 when (verifyType) {
                     VerifyType.EMAIL -> {
+                        showNotVerifiedError = !entered.isValidEmail()
                         if (entered.isValidEmail()) {
                             onSendClick(entered)
                         }

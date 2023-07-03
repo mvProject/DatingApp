@@ -67,7 +67,7 @@ fun InputPassword(
             Text(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = MaterialTheme.dimens.size24),
+                    .padding(start = MaterialTheme.dimens.size40),
                 text = hint,
                 style = MaterialTheme.typography.labelLarge,
                 color = MaterialTheme.colorScheme.onSurface,

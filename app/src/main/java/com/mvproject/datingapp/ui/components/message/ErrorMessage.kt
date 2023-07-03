@@ -31,15 +31,14 @@ fun ErrorMessage(
     Row(
         modifier
             .fillMaxWidth()
-            .padding(horizontal = MaterialTheme.dimens.size28),
+            .padding(horizontal = MaterialTheme.dimens.size16),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
 
         Text(
             modifier = Modifier
-                .weight(1f)
-                .padding(start = MaterialTheme.dimens.size10),
+                .weight(1f),
             text = text,
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.error,
