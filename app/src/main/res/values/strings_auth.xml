@@ -48,6 +48,11 @@
     <string name="scr_auth_interest_select_love">I want to find love</string>
     <string name="scr_auth_interest_select_misc">I haven\'t decided yet</string>
 
+    <string name="scr_auth_location_select_title">Where are you from?</string>
+    <string name="scr_auth_location_country_title">Country</string>
+    <string name="scr_auth_location_region_title">Region</string>
+    <string name="scr_auth_location_city_title">City</string>
+
     <string name="scr_auth_privacy_email">We will not share your email with anyone</string>
     <string name="scr_auth_privacy_birthdate">We do not use this data for other purposes</string>
 

@@ -47,3 +47,5 @@ fun Modifier.gradientBackground(colors: List<Color>, angle: Float) = this.then(
         )
     }
 )
+
+fun String.emailToFileName() = this.replace('@', '_')

@@ -8,7 +8,6 @@
 
 package com.mvproject.datingapp.ui.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -18,6 +17,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
@@ -28,7 +28,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,32 +35,34 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
-import com.mvproject.datingapp.data.ProfileGender
+import com.mvproject.datingapp.data.enums.ProfileGender
+import com.mvproject.datingapp.ui.components.buttons.GradientButton
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
-import com.mvproject.datingapp.utils.backColor
+import com.mvproject.datingapp.utils.WEIGHT_1
 import com.mvproject.datingapp.utils.borderColor
 import com.mvproject.datingapp.utils.textColor
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 @Composable
 fun GenderSelector(
     modifier: Modifier = Modifier,
-    title: String = "",
-    titleMan: String = "",
-    titleWoman: String = "",
+    title: String = stringResource(id = R.string.scr_auth_gender_title),
+    titleMan: String = stringResource(id = R.string.scr_auth_gender_man),
+    titleWoman: String = stringResource(id = R.string.scr_auth_gender_woman),
     onGenderSelect: (ProfileGender) -> Unit = {}
 ) {
 
     var selected by remember {
-        mutableStateOf<ProfileGender?>(null)
+        mutableStateOf(ProfileGender.MALE)
     }
 
-    val scope = rememberCoroutineScope()
-
     Column(
-        modifier = modifier,
+        modifier = modifier
+            .fillMaxSize()
+            .padding(
+                vertical = MaterialTheme.dimens.size12,
+                horizontal = MaterialTheme.dimens.size16
+            ),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -82,14 +83,10 @@ fun GenderSelector(
                 modifier = Modifier
                     .clickable {
                         selected = ProfileGender.FEMALE
-                        scope.launch {
-                            delay(500)
-                            onGenderSelect(ProfileGender.FEMALE)
-                        }
                     }
                     .height(MaterialTheme.dimens.size130)
                     .width(MaterialTheme.dimens.size156)
-                    .background(color = backColor(selected == ProfileGender.FEMALE))
+                    //  .background(color = backColor(selected == ProfileGender.FEMALE))
                     .border(
                         width = MaterialTheme.dimens.size1,
                         color = borderColor(selected == ProfileGender.FEMALE),
@@ -123,14 +120,10 @@ fun GenderSelector(
                 modifier = Modifier
                     .clickable {
                         selected = ProfileGender.MALE
-                        scope.launch {
-                            delay(500)
-                            onGenderSelect(ProfileGender.MALE)
-                        }
                     }
                     .height(MaterialTheme.dimens.size130)
                     .width(MaterialTheme.dimens.size156)
-                    .background(color = backColor(selected == ProfileGender.MALE))
+                    //  .background(color = backColor(selected == ProfileGender.MALE))
                     .border(
                         width = MaterialTheme.dimens.size1,
                         color = borderColor(selected == ProfileGender.MALE),
@@ -160,6 +153,16 @@ fun GenderSelector(
                 }
             }
         }
+
+        Spacer(modifier = Modifier.weight(WEIGHT_1))
+
+        GradientButton(
+            modifier = Modifier.fillMaxWidth(),
+            title = stringResource(id = R.string.btn_title_continue),
+            onClick = {
+                onGenderSelect(selected)
+            }
+        )
     }
 }
 
@@ -167,11 +170,7 @@ fun GenderSelector(
 @Composable
 fun PreviewCodeGenderSelector() {
     DatingAppTheme {
-        GenderSelector(
-            title = stringResource(id = R.string.scr_auth_gender_title),
-            titleMan = stringResource(id = R.string.scr_auth_gender_man),
-            titleWoman = stringResource(id = R.string.scr_auth_gender_woman),
-        )
+        GenderSelector()
     }
 }
 
@@ -179,10 +178,6 @@ fun PreviewCodeGenderSelector() {
 @Composable
 fun DarkPreviewGenderSelector() {
     DatingAppTheme(darkTheme = true) {
-        GenderSelector(
-            title = stringResource(id = R.string.scr_auth_gender_title),
-            titleMan = stringResource(id = R.string.scr_auth_gender_man),
-            titleWoman = stringResource(id = R.string.scr_auth_gender_woman),
-        )
+        GenderSelector()
     }
 }

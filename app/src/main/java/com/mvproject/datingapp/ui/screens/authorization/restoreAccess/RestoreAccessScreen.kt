@@ -168,6 +168,7 @@ fun RestoreAccessView(
                     CodeVerifier(
                         modifier = Modifier.fillMaxWidth(),
                         timerState = timerState,
+                        isEmailChangeEnabled = true,
                         email = state.email,
                         code = state.code,
                         onCodeVerify = {

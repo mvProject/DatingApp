@@ -33,6 +33,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.text.isDigitsOnly
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.DEFAULT_CODE_LENGTH
@@ -73,9 +74,11 @@ fun OtpTextField(
             selection = TextRange(otpText.length)
         ),
         onValueChange = {
-            if (it.text.length <= otpCount) {
-                otpFilled = it.text.length == otpCount
-                onOtpTextChange.invoke(it.text, otpFilled)
+            if (it.text.isDigitsOnly()) {
+                if (it.text.length <= otpCount) {
+                    otpFilled = it.text.length == otpCount
+                    onOtpTextChange.invoke(it.text, otpFilled)
+                }
             }
         },
         keyboardOptions = KeyboardOptions(

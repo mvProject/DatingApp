@@ -6,7 +6,7 @@
  *
  */
 
-package com.mvproject.datingapp.data
+package com.mvproject.datingapp.data.enums
 
 
 enum class ProfileGender {

@@ -20,4 +20,8 @@
 
     <string name="dlg_pass_confirm_error_title">Error!</string>
     <string name="dlg_pass_confirm_error_description">Create password and Confirm password are not validate</string>
+
+    <string name="dlg_date_validation_error_title">Error.</string>
+    <string name="dlg_date_validation_error_description">Your birthday is not correct</string>
+    <string name="dlg_age_validation_error_description">Your younger…</string>
 </resources>

@@ -50,6 +50,7 @@ fun CodeVerifier(
     timerState: TimerState = TimerState(),
     email: String = STRING_EMPTY,
     code: String = STRING_EMPTY,
+    isEmailChangeEnabled: Boolean = false,
     title: String = stringResource(id = R.string.scr_code_verify_title),
     descriptionTop: String = stringResource(id = R.string.scr_code_verify_code_send),
     descriptionBottom: String = stringResource(id = R.string.scr_code_verify_code_receive),
@@ -117,16 +118,19 @@ fun CodeVerifier(
             textAlign = TextAlign.Center
         )
 
-        Text(
-            modifier = Modifier
-                .clickable {
-                    onChangeEmail()
-                }
-                .padding(horizontal = MaterialTheme.dimens.size24),
-            text = stringResource(id = R.string.scr_code_verify_change_email),
-            color = MaterialTheme.colorScheme.secondary,
-            style = MaterialTheme.typography.headlineSmall
-        )
+        if (isEmailChangeEnabled) {
+            Text(
+                modifier = Modifier
+                    .clickable {
+                        onChangeEmail()
+                    }
+                    .padding(horizontal = MaterialTheme.dimens.size24),
+                text = stringResource(id = R.string.scr_code_verify_change_email),
+                color = MaterialTheme.colorScheme.secondary,
+                style = MaterialTheme.typography.headlineSmall
+            )
+        }
+
 
 
         Spacer(modifier = Modifier.weight(1f))

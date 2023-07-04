@@ -47,6 +47,7 @@ fun SetPasswordWithConfirmation(
     verifyType: VerifyType = VerifyType.NONE,
     hint: String = stringResource(id = R.string.hint_password_create),
     hintConfirm: String = stringResource(id = R.string.hint_password_confirm),
+    btnTitle: String = stringResource(id = R.string.btn_title_save_password),
     onConfirmed: (String) -> Unit = {},
     onComplete: (String) -> Unit = {}
 ) {
@@ -125,9 +126,8 @@ fun SetPasswordWithConfirmation(
         Spacer(modifier = Modifier.weight(WEIGHT_1))
 
         GradientButton(
-            modifier = Modifier
-                .fillMaxWidth(),
-            title = stringResource(id = R.string.btn_title_save_password),
+            modifier = Modifier.fillMaxWidth(),
+            title = btnTitle,
             onClick = {
                 when (verifyType) {
                     VerifyType.PASSWORD -> {
