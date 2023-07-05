@@ -1,12 +1,12 @@
 /*
  * Create by Medvediev Viktor
- * last update: 09.06.23, 16:39
+ * last update: 05.07.23, 18:34
  *
  * Copyright (c) 2023
  *
  */
 
-package com.mvproject.datingapp.ui.components
+package com.mvproject.datingapp.ui.components.selectors
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -61,7 +61,7 @@ fun GenderSelector(
             .fillMaxSize()
             .padding(
                 vertical = MaterialTheme.dimens.size12,
-                horizontal = MaterialTheme.dimens.size16
+                horizontal = MaterialTheme.dimens.size24
             ),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -86,7 +86,6 @@ fun GenderSelector(
                     }
                     .height(MaterialTheme.dimens.size130)
                     .width(MaterialTheme.dimens.size156)
-                    //  .background(color = backColor(selected == ProfileGender.FEMALE))
                     .border(
                         width = MaterialTheme.dimens.size1,
                         color = borderColor(selected == ProfileGender.FEMALE),
@@ -123,7 +122,6 @@ fun GenderSelector(
                     }
                     .height(MaterialTheme.dimens.size130)
                     .width(MaterialTheme.dimens.size156)
-                    //  .background(color = backColor(selected == ProfileGender.MALE))
                     .border(
                         width = MaterialTheme.dimens.size1,
                         color = borderColor(selected == ProfileGender.MALE),
@@ -158,7 +156,6 @@ fun GenderSelector(
 
         GradientButton(
             modifier = Modifier.fillMaxWidth(),
-            title = stringResource(id = R.string.btn_title_continue),
             onClick = {
                 onGenderSelect(selected)
             }

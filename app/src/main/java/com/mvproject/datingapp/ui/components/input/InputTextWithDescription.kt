@@ -35,7 +35,9 @@ import com.mvproject.datingapp.ui.components.message.ErrorMessage
 import com.mvproject.datingapp.ui.components.message.PrivacyField
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
+import com.mvproject.datingapp.utils.INT_ZERO
 import com.mvproject.datingapp.utils.STRING_EMPTY
+import com.mvproject.datingapp.utils.isEmpty
 import com.mvproject.datingapp.utils.isValidEmail
 
 @Composable
@@ -47,6 +49,8 @@ fun InputTextWithDescription(
     descriptionBottom: String = STRING_EMPTY,
     descriptionTop: String = STRING_EMPTY,
     privacyText: String = STRING_EMPTY,
+    btnTitle: String = stringResource(id = R.string.btn_title_continue),
+    maxLength: Int = INT_ZERO,
     hint: String = stringResource(id = R.string.hint_email),
     onSendClick: (String) -> Unit = {}
 ) {
@@ -55,6 +59,10 @@ fun InputTextWithDescription(
     }
 
     var showNotVerifiedError by remember {
+        mutableStateOf(false)
+    }
+
+    var showEmptyError by remember {
         mutableStateOf(false)
     }
 
@@ -92,15 +100,23 @@ fun InputTextWithDescription(
             modifier = Modifier.fillMaxWidth(),
             verifyType = verifyType,
             hint = hint,
+            maxLength = maxLength,
             onValueChange = { text ->
                 showNotVerifiedError = false
+                showEmptyError = false
                 entered = text
             }
         )
 
         if (showNotVerifiedError) {
             ErrorMessage(
-                text = "Incorrect email address"
+                text = stringResource(id = R.string.dlg_mail_error_description)
+            )
+        }
+
+        if (showEmptyError) {
+            ErrorMessage(
+                text = stringResource(id = R.string.dlg_name_empty_error_description)
             )
         }
 
@@ -129,12 +145,19 @@ fun InputTextWithDescription(
         GradientButton(
             modifier = Modifier
                 .fillMaxWidth(),
-            title = stringResource(id = R.string.btn_title_send),
+            title = btnTitle,
             onClick = {
                 when (verifyType) {
                     VerifyType.EMAIL -> {
                         showNotVerifiedError = !entered.isValidEmail()
                         if (entered.isValidEmail()) {
+                            onSendClick(entered)
+                        }
+                    }
+
+                    VerifyType.NAME -> {
+                        showEmptyError = entered.isEmpty()
+                        if (entered.isNotEmpty()) {
                             onSendClick(entered)
                         }
                     }

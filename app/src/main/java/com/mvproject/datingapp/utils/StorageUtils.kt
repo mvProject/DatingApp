@@ -8,49 +8,18 @@
 
 package com.mvproject.datingapp.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
+import android.provider.OpenableColumns
 import androidx.core.net.toUri
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.io.IOException
-
-
-fun Context.savePhotoToInternalStorage(uri: Uri, filename: String): Boolean {
-    return try {
-        contentResolver.openInputStream(uri).use { input ->
-            val bitmap = BitmapFactory.decodeStream(input)
-            openFileOutput("$filename.jpg", MODE_PRIVATE).use { stream ->
-                if (!bitmap.compress(Bitmap.CompressFormat.JPEG, 95, stream)) {
-                    throw IOException("Couldn't save bitmap.")
-                }
-            }
-        }
-        true
-    } catch (e: IOException) {
-        e.printStackTrace()
-        false
-    }
-}
-
-data class InternalStoragePhoto(
-    val name: String,
-    val bmp: Bitmap
-)
-
-suspend fun Context.loadPhotosFromInternalStorage(): List<InternalStoragePhoto> {
-    return withContext(Dispatchers.IO) {
-        val files = filesDir.listFiles()
-        files?.filter { it.canRead() && it.isFile && it.name.endsWith(".jpg") }?.map {
-            val bytes = it.readBytes()
-            val bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-            InternalStoragePhoto(it.name, bmp)
-        } ?: listOf()
-    }
-}
+import timber.log.Timber
+import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
+import kotlin.math.min
 
 suspend fun Context.loadPhotosUrisFromInternalStorage(): List<Uri> {
     return withContext(Dispatchers.IO) {
@@ -68,7 +37,42 @@ fun Context.deletePhotoFromInternalStorage(filename: String): Boolean {
     return try {
         deleteFile(filename)
     } catch (e: Exception) {
-        e.printStackTrace()
+        Timber.e("testing deletePhotoFromInternalStorage ${e.message}")
         false
     }
+}
+
+@SuppressLint("Recycle")
+fun Context.getRealPathFromURI(contentUri: Uri, filename: String): String? {
+    val returnCursor = contentResolver.query(
+        contentUri, null, null, null, null
+    )
+    val nameIndex = returnCursor!!.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+    val sizeIndex = returnCursor.getColumnIndex(OpenableColumns.SIZE)
+    returnCursor.moveToFirst()
+    val size = returnCursor.getLong(sizeIndex).toString()
+    val file = File(filesDir, filename)
+    try {
+        val inputStream: InputStream? = contentResolver.openInputStream(contentUri)
+        val outputStream = FileOutputStream(file)
+        var read = 0
+        val maxBufferSize = 1 * 1024 * 1024
+        val bytesAvailable: Int = inputStream?.available() ?: 0
+        //int bufferSize = 1024;
+        val bufferSize = min(bytesAvailable, maxBufferSize)
+        val buffers = ByteArray(bufferSize)
+        while (inputStream?.read(buffers).also {
+                if (it != null) {
+                    read = it
+                }
+            } != -1) {
+            outputStream.write(buffers, 0, read)
+        }
+        inputStream?.close()
+        outputStream.close()
+        Timber.w("testing getRealPathFromURI path:${file.path}, size:${file.length()}")
+    } catch (e: java.lang.Exception) {
+        Timber.e("testing getRealPathFromURI ${e.message}")
+    }
+    return file.path
 }

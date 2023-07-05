@@ -24,4 +24,7 @@
     <string name="dlg_date_validation_error_title">Error.</string>
     <string name="dlg_date_validation_error_description">Your birthday is not correct</string>
     <string name="dlg_age_validation_error_description">Your younger…</string>
+
+    <string name="dlg_mail_error_description">Incorrect email address</string>
+    <string name="dlg_name_empty_error_description">Name must not be empty</string>
 </resources>

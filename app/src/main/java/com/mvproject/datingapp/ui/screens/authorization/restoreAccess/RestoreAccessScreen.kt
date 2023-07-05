@@ -156,6 +156,7 @@ fun RestoreAccessView(
                         initial = state.email,
                         title = stringResource(id = R.string.scr_request_reset_password_title),
                         verifyType = VerifyType.EMAIL,
+                        btnTitle = stringResource(id = R.string.btn_title_send),
                         descriptionTop = stringResource(id = R.string.scr_request_reset_password_description),
                         onSendClick = { text ->
                             onAction(RestoreAccessAction.UpdateEmail(text))
@@ -168,7 +169,6 @@ fun RestoreAccessView(
                     CodeVerifier(
                         modifier = Modifier.fillMaxWidth(),
                         timerState = timerState,
-                        isEmailChangeEnabled = true,
                         email = state.email,
                         code = state.code,
                         onCodeVerify = {

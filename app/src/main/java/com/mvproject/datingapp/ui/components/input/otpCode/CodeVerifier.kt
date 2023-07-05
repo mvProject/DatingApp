@@ -50,7 +50,7 @@ fun CodeVerifier(
     timerState: TimerState = TimerState(),
     email: String = STRING_EMPTY,
     code: String = STRING_EMPTY,
-    isEmailChangeEnabled: Boolean = false,
+    isEmailChangeEnabled: Boolean = true,
     title: String = stringResource(id = R.string.scr_code_verify_title),
     descriptionTop: String = stringResource(id = R.string.scr_code_verify_code_send),
     descriptionBottom: String = stringResource(id = R.string.scr_code_verify_code_receive),
@@ -58,7 +58,6 @@ fun CodeVerifier(
     onRetry: () -> Unit = {},
     onCodeVerify: () -> Unit = {}
 ) {
-
     val isVerificationCodeFailedDialogOpen = remember { mutableStateOf(false) }
 
     Column(
@@ -131,8 +130,6 @@ fun CodeVerifier(
             )
         }
 
-
-
         Spacer(modifier = Modifier.weight(1f))
 
         val textColor = if (timerState.isTimerEnabled) {
@@ -203,9 +200,8 @@ fun CodeVerifier(
         GradientButton(
             modifier = Modifier
                 .fillMaxWidth(),
-            title = stringResource(id = R.string.btn_title_continue),
             onClick = {
-                Timber.w("testing entered:$otpValue, target:$code")
+                Timber.i("entered:$otpValue, target:$code")
                 if (otpFilled && otpValue == code) {
                     onCodeVerify()
                 } else {

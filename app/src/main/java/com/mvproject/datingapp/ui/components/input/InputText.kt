@@ -29,6 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.enums.VerifyType
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
+import com.mvproject.datingapp.utils.INT_ZERO
 import com.mvproject.datingapp.utils.STRING_EMPTY
 import com.mvproject.datingapp.utils.isValidEmail
 
@@ -38,6 +39,7 @@ fun InputText(
     initial: String = STRING_EMPTY,
     hint: String = stringResource(id = R.string.hint_email),
     verifyType: VerifyType = VerifyType.NONE,
+    maxLength: Int = INT_ZERO,
     onValueChange: (String) -> Unit = {}
 ) {
     var entered by remember {
@@ -61,8 +63,15 @@ fun InputText(
         modifier = modifier,
         value = entered,
         onValueChange = {
-            entered = it
-            onValueChange(entered)
+            if (maxLength > INT_ZERO) {
+                if (it.length <= maxLength) {
+                    entered = it
+                    onValueChange(entered)
+                }
+            } else {
+                entered = it
+                onValueChange(entered)
+            }
         },
         placeholder = {
             Text(

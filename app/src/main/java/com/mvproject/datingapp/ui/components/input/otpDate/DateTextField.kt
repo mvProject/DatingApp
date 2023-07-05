@@ -1,12 +1,12 @@
 /*
  * Create by Medvediev Viktor
- * last update: 16.06.23, 16:56
+ * last update: 21.06.23, 19:43
  *
  * Copyright (c) 2023
  *
  */
 
-package com.mvproject.datingapp.ui.components.input
+package com.mvproject.datingapp.ui.components.input.otpDate
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,13 +21,21 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.text.isDigitsOnly
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 
@@ -38,23 +46,39 @@ fun DateTextField(
     dateCount: Int = 8,
     onDateTextChange: (String, Boolean) -> Unit
 ) {
-    val date = dateText.replace("/", "")
+    val focusRequester = remember { FocusRequester() }
+    val focusManager = LocalFocusManager.current
 
     LaunchedEffect(Unit) {
-        if (date.length > dateCount) {
+        if (dateText.length > dateCount) {
             throw IllegalArgumentException("Otp text value must not have more than otpCount: $dateCount characters")
+        }
+        focusRequester.requestFocus()
+    }
+
+    var dateFilled by remember {
+        mutableStateOf(false)
+    }
+
+    LaunchedEffect(dateFilled) {
+        if (dateFilled) {
+            focusManager.clearFocus()
         }
     }
 
     BasicTextField(
-        modifier = modifier,
+        modifier = modifier
+            .focusRequester(focusRequester),
         value = TextFieldValue(
-            date,
-            selection = TextRange(date.length)
+            dateText,
+            selection = TextRange(dateText.length)
         ),
         onValueChange = {
-            if (it.text.length <= dateCount) {
-                onDateTextChange.invoke(it.text, it.text.length == dateCount)
+            if (it.text.isDigitsOnly()) {
+                if (it.text.length <= dateCount) {
+                    dateFilled = it.text.length == dateCount
+                    onDateTextChange.invoke(it.text, dateFilled)
+                }
             }
         },
         keyboardOptions = KeyboardOptions(
@@ -65,7 +89,7 @@ fun DateTextField(
                 repeat(dateCount) { index ->
                     CharView(
                         index = index,
-                        text = date
+                        text = dateText
                     )
                     Spacer(modifier = Modifier.width(MaterialTheme.dimens.size4))
                     if (index == 1 || index == 3) {

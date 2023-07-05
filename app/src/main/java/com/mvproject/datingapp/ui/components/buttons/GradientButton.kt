@@ -21,6 +21,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import com.mvproject.datingapp.R
 import com.mvproject.datingapp.ui.theme.bluevioletDark
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.ui.theme.hotpink
@@ -29,12 +31,11 @@ import com.mvproject.datingapp.utils.gradientBackground
 @Composable
 fun GradientButton(
     modifier: Modifier = Modifier,
-    title: String = "",
+    title: String = stringResource(id = R.string.btn_title_continue),
     onClick: () -> Unit = {}
 ) {
     Button(
-        modifier = modifier
-            .fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         colors = ButtonDefaults.buttonColors(
             containerColor = Color.Transparent
         ),

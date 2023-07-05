@@ -11,6 +11,7 @@ package com.mvproject.datingapp.utils
 const val ANIM_DURATION_200 = 200
 const val ANIM_DURATION_300 = 300
 const val ANIM_DURATION_600 = 600
+const val ANIM_DURATION_500 = 500
 const val ANIM_DURATION_900 = 900
 
 const val DELAY_1_SEC = 1000L
@@ -30,3 +31,6 @@ const val STEP_1 = 1
 const val CODE_TIMER_VALUE = 30000L
 const val TIMER_INTERVAL = 1000L
 const val DIVIDER_SECOND = 1000
+
+const val NAME_MAX_LENGTH = 35
+const val PHOTO_MIN_COUNT = 2

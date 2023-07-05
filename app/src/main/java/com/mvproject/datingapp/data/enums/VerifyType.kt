@@ -12,5 +12,6 @@ package com.mvproject.datingapp.data.enums
 enum class VerifyType {
     NONE,
     EMAIL,
+    NAME,
     PASSWORD
 }
