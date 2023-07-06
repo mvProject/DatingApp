@@ -15,6 +15,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.mvproject.datingapp.data.model.User
+import com.mvproject.datingapp.utils.STRING_EMPTY
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.tasks.await
 import timber.log.Timber
@@ -42,16 +43,13 @@ class GoogleSignHelper @Inject constructor(
         val credentials = GoogleAuthProvider.getCredential(token, null)
         val user = Firebase.auth.signInWithCredential(credentials).await().user
         return if (user != null) {
-            val userDb = User(
-                name = user.displayName,
+            User(
+                name = user.displayName ?: STRING_EMPTY,
                 email = user.email!!,
                 uid = user.uid,
             )
-            //saveUserToFirebase(userDb)
-            //getUserFromFirebase()
-            userDb
         } else {
-            Timber.e("testing signInWithGoogleAccessToken failure")
+            Timber.e("testing signInWithGoogle error: user is null")
             null
         }
     }
@@ -59,10 +57,10 @@ class GoogleSignHelper @Inject constructor(
     suspend fun signOutGoogleAccount() {
         return try {
             _googleSignClient.signOut().await()
-            Timber.w("testing signOutGoogleNormal complete")
+            Timber.w("testing signOutGoogleAccount complete")
         } catch (e: Exception) {
             e.printStackTrace()
-            Timber.e("testing signOutGoogleNormal failure: ${e.localizedMessage} ")
+            Timber.e("testing signOutGoogleAccount failure: ${e.localizedMessage} ")
         }
     }
 }

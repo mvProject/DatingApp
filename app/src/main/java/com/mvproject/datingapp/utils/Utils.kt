@@ -13,17 +13,10 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import timber.log.Timber
 import kotlin.math.PI
 import kotlin.math.pow
 
-fun calculateProgramProgress(current: Int, total: Int): Float {
-    val progressValue = current / total.toFloat()
-    Timber.w("testing current:$current, total:$total, progressValue:$progressValue")
-    return progressValue
-}
-
-fun Modifier.gradientBackground(colors: List<Color>, angle: Float) = this.then(
+fun Modifier.gradientBackground(colors: List<Color>, angle: Float = 0f) = this.then(
     Modifier.drawBehind {
         val angleRad = angle / 180f * PI
         val x = kotlin.math.cos(angleRad).toFloat() //Fractional x
