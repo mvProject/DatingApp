@@ -1,12 +1,12 @@
 /*
  * Create by Medvediev Viktor
- * last update: 13.06.23, 13:04
+ * last update: 15.06.23, 19:33
  *
  * Copyright (c) 2023
  *
  */
 
-package com.mvproject.datingapp.ui.components
+package com.mvproject.datingapp.ui.components.input.image
 
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -43,7 +43,8 @@ import com.mvproject.datingapp.ui.theme.dimens
 @Composable
 fun ImageGridView(
     modifier: Modifier = Modifier,
-    onImageSelect: (String) -> Unit = {}
+    onImageSelect: (String) -> Unit = {},
+    onImageRemove: (String) -> Unit = {}
 ) {
     var selectedImageUri by remember {
         mutableStateOf<Uri?>(null)
@@ -98,6 +99,7 @@ fun ImageGridView(
             IconButton(
                 onClick = {
                     if (selectedImageUri != null) {
+                        onImageRemove(selectedImageUri.toString())
                         selectedImageUri = null
                     } else {
                         singlePhotoPickerLauncher.launch(

@@ -13,10 +13,9 @@ import androidx.lifecycle.viewModelScope
 import com.mvproject.datingapp.data.repository.PreferenceRepository
 import com.mvproject.datingapp.helper.FirebaseHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -25,12 +24,16 @@ class HomeViewModel @Inject constructor(
     private val preferenceRepository: PreferenceRepository
 ) : ViewModel() {
 
-    val authState: StateFlow<Boolean> = preferenceRepository
-        .getUserLoggedState().map { isLogged ->
-            isLogged
-        }.stateIn(
-            scope = viewModelScope,
-            initialValue = false,
-            started = SharingStarted.WhileSubscribed(5_000),
-        )
+    private val _authState = MutableStateFlow(false)
+    val authState = _authState.asStateFlow()
+
+    init {
+        viewModelScope.launch {
+            _authState.value = preferenceRepository
+                .getUserLoggedState()
+        }
+
+    }
+
+
 }

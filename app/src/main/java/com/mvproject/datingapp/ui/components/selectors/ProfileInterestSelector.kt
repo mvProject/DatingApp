@@ -19,6 +19,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
@@ -32,6 +34,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -79,9 +82,8 @@ fun ProfileInterestSelector(
     ) {
 
         Text(
-            modifier = modifier.padding(
-                horizontal = MaterialTheme.dimens.size24
-            ),
+            modifier = modifier
+                .padding(horizontal = MaterialTheme.dimens.size24),
             text = title,
             color = MaterialTheme.colorScheme.onPrimary,
             style = MaterialTheme.typography.displayLarge,
@@ -95,52 +97,14 @@ fun ProfileInterestSelector(
                 val text = stringResource(id = option.title)
                 val isSelected = text == selected
 
-                Row(
-                    Modifier
-                        .fillMaxWidth()
-                        .selectable(
-                            selected = (isSelected),
-                            onClick = {
-                                selected = text
-                            }
-                        )
-                        .background(color = backColor(isSelected))
-                        .border(
-                            MaterialTheme.dimens.size1,
-                            color = borderColor(isSelected),
-                            shape = MaterialTheme.shapes.large
-                        )
-                        .padding(horizontal = MaterialTheme.dimens.size8),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Icon(
-                        modifier = Modifier
-                            .padding(start = MaterialTheme.dimens.size8),
-                        painter = painterResource(id = option.logo),
-                        contentDescription = text,
-                        tint = textColor(isSelected)
-                    )
-
-                    Text(
-                        modifier = Modifier
-                            .weight(1f)
-                            .padding(start = MaterialTheme.dimens.size12),
-                        text = text,
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = textColor(isSelected),
-                    )
-
-                    RadioButton(
-                        selected = (isSelected),
-                        onClick = {
-                            selected = text
-                        },
-                        colors = RadioButtonDefaults.colors(
-                            selectedColor = MaterialTheme.colorScheme.secondaryContainer,
-                        )
-                    )
-                }
+                RadioSelector(
+                    text = text,
+                    logo = painterResource(id = option.logo),
+                    isSelected = isSelected,
+                    onSelect = {
+                        selected = text
+                    }
+                )
 
                 Spacer(modifier = Modifier.height(MaterialTheme.dimens.size10))
             }
@@ -153,6 +117,127 @@ fun ProfileInterestSelector(
             onClick = {
                 onOptionSelected(selectedInterest)
             }
+        )
+    }
+}
+
+@Composable
+fun RadioSelector(
+    text: String,
+    logo: Painter? = null,
+    isSelected: Boolean,
+    onSelect: (String) -> Unit = {}
+) {
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .selectable(
+                selected = isSelected,
+                onClick = {
+                    onSelect(text)
+                }
+            )
+            .background(
+                color = backColor(isSelected),
+                shape = MaterialTheme.shapes.large
+            )
+            .border(
+                MaterialTheme.dimens.size1,
+                color = borderColor(isSelected),
+                shape = MaterialTheme.shapes.large
+            )
+            .padding(horizontal = MaterialTheme.dimens.size8),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        logo?.let { img ->
+            Icon(
+                modifier = Modifier
+                    .padding(start = MaterialTheme.dimens.size8),
+                painter = img,
+                contentDescription = text,
+                tint = textColor(isSelected)
+            )
+        }
+
+        Text(
+            modifier = Modifier
+                .weight(1f)
+                .padding(start = MaterialTheme.dimens.size12),
+            text = text,
+            style = MaterialTheme.typography.bodyLarge,
+            color = textColor(isSelected),
+        )
+
+        RadioButton(
+            selected = isSelected,
+            onClick = {
+                onSelect(text)
+            },
+            colors = RadioButtonDefaults.colors(
+                selectedColor = MaterialTheme.colorScheme.secondaryContainer,
+            )
+        )
+    }
+}
+
+@Composable
+fun CheckSelector(
+    text: String,
+    logo: Painter? = null,
+    isSelected: Boolean,
+    onSelect: (String) -> Unit = {}
+) {
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .selectable(
+                selected = isSelected,
+                onClick = {
+                    onSelect(text)
+                }
+            )
+            .background(
+                color = backColor(isSelected),
+                shape = MaterialTheme.shapes.large
+            )
+            .border(
+                MaterialTheme.dimens.size1,
+                color = borderColor(isSelected),
+                shape = MaterialTheme.shapes.large
+            )
+            .padding(horizontal = MaterialTheme.dimens.size8),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        logo?.let { img ->
+            Icon(
+                modifier = Modifier
+                    .padding(start = MaterialTheme.dimens.size8),
+                painter = img,
+                contentDescription = text,
+                tint = textColor(isSelected)
+            )
+        }
+
+        Text(
+            modifier = Modifier
+                .weight(1f)
+                .padding(start = MaterialTheme.dimens.size12),
+            text = text,
+            style = MaterialTheme.typography.bodyLarge,
+            color = textColor(isSelected),
+        )
+
+        Checkbox(
+            checked = isSelected,
+            onCheckedChange = {
+                onSelect(text)
+            },
+            colors = CheckboxDefaults.colors(
+                checkedColor = MaterialTheme.colorScheme.secondaryContainer,
+                checkmarkColor = MaterialTheme.colorScheme.onPrimaryContainer
+            )
         )
     }
 }
