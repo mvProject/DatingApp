@@ -259,15 +259,7 @@ fun SignInView(
             NoAccountField(
                 title = stringResource(id = R.string.scr_auth_title_no_account),
                 actionTitle = stringResource(id = R.string.btn_title_sign_up),
-                onAction = {
-                    Toast.makeText(
-                        context,
-                        "SignUp Todo",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                // todo implement
-                // onAction = onSignUpAction
+                onAction = onSignUpAction
             )
         }
     }

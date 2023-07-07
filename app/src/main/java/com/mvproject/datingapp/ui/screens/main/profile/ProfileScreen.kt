@@ -25,6 +25,7 @@ fun ProfileScreen(
     onNavigationLogout: () -> Unit,
 ) {
     val viewState by viewModel.profileUiState.collectAsStateWithLifecycle()
+    val profileState by viewModel.profileState.collectAsStateWithLifecycle()
     when (viewState) {
         ProfileViewState.Loading -> {
             LoadingView()
@@ -32,6 +33,7 @@ fun ProfileScreen(
 
         ProfileViewState.LoggedIn -> {
             ProfileView(
+                state = profileState,
                 onLogout = viewModel::logoutProfile
             )
         }
@@ -46,8 +48,39 @@ fun ProfileScreen(
 
 @Composable
 fun ProfileView(
+    state: ProfileViewModel.UserState = ProfileViewModel.UserState(),
     onLogout: () -> Unit = {}
 ) {
+    /*    Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = state.profileName,
+                color = MaterialTheme.colorScheme.inversePrimary,
+                style = MaterialTheme.typography.titleMedium,
+                textAlign = TextAlign.Center
+            )
+            Spacer(modifier = Modifier.height(MaterialTheme.dimens.size12))
+
+            AsyncImage(
+                model = Uri.parse(state.profileImage),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(MaterialTheme.dimens.size130)
+                    .clip(CircleShape),
+                contentScale = ContentScale.Crop
+            )
+
+            Spacer(modifier = Modifier.height(MaterialTheme.dimens.size12))
+            GradientButton(
+                modifier = Modifier.fillMaxWidth(),
+                title = "Logout",
+                onClick = onLogout
+            )
+
+        }*/
     DummyScreen(
         title = AppRoutes.PROFILE.route,
         buttonFirstTitle = "Logout",

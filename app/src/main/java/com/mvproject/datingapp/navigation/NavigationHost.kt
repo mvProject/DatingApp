@@ -12,6 +12,7 @@ import com.mvproject.datingapp.ui.screens.authorization.restoreAccess.navigation
 import com.mvproject.datingapp.ui.screens.authorization.signin.navigation.loginScreen
 import com.mvproject.datingapp.ui.screens.authorization.signin.navigation.navigateToSignInClearStack
 import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.navigateToSignUp
+import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.signUpScreen
 import com.mvproject.datingapp.ui.screens.main.profile.navigation.navigateToProfileClearStack
 import com.mvproject.datingapp.ui.screens.main.profile.navigation.profileScreen
 
@@ -39,16 +40,16 @@ fun NavigationHost(
             onNavigateBack = navController::popBackStack,
             onNavigateNext = navController::navigateToSignInClearStack
         )
-        /*
-                        signUpScreen(
-                            onNavigateBack = navController::popBackStack,
-                            onNavigateNext = navController::navigateToSignInClearStack
-                        )
 
-                        likesScreen()
-                        chatScreen()
-                        datingScreen()
-                */
+        signUpScreen(
+            onNavigateBack = navController::popBackStack,
+            onNavigateNext = navController::navigateToSignInClearStack
+        )
+        /*
+                               likesScreen()
+                               chatScreen()
+                               datingScreen()
+                       */
 
         profileScreen(
             onNavigationLogout = navController::navigateToSignInClearStack

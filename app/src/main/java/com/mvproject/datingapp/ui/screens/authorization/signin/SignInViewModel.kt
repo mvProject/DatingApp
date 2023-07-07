@@ -16,11 +16,10 @@ import com.mvproject.datingapp.helper.GoogleSignHelper
 import com.mvproject.datingapp.ui.screens.authorization.signin.action.SignInAction
 import com.mvproject.datingapp.ui.screens.authorization.signin.state.SignInViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,21 +27,22 @@ class SignInViewModel @Inject constructor(
     private val firebaseHelper: FirebaseHelper,
     private val preferenceRepository: PreferenceRepository,
     private val googleSignHelper: GoogleSignHelper
-
 ) : ViewModel() {
+
+    private val _signInUiState = MutableStateFlow<SignInViewState>(SignInViewState.Loading)
+    val signInUiState = _signInUiState.asStateFlow()
 
     val googleSignIntent = googleSignHelper.googleSignClient.signInIntent
 
-    val signInUiState: StateFlow<SignInViewState> = preferenceRepository
-        .getUserLoggedState().map { isLogged ->
-            if (isLogged)
+    init {
+        viewModelScope.launch {
+            val isLogged = preferenceRepository.getUserLoggedState()
+            Timber.w("testing isLogged:$isLogged")
+            _signInUiState.value = if (isLogged)
                 SignInViewState.LoggedIn
             else SignInViewState.NotLoggedIn
-        }.stateIn(
-            scope = viewModelScope,
-            initialValue = SignInViewState.Loading,
-            started = SharingStarted.WhileSubscribed(5_000),
-        )
+        }
+    }
 
     fun processSignInAction(action: SignInAction) {
         when (action) {
@@ -64,7 +64,7 @@ class SignInViewModel @Inject constructor(
         viewModelScope.launch {
             val user = googleSignHelper.signInWithGoogle(googleToken)
             if (user != null) {
-                preferenceRepository.setUserLoggedState(true)
+                setUserLogged()
             }
         }
     }
@@ -72,8 +72,13 @@ class SignInViewModel @Inject constructor(
 
     private fun signWithCredentials(login: String, password: String) {
         // todo dummy
+        setUserLogged()
+    }
+
+    private fun setUserLogged() {
         viewModelScope.launch {
             preferenceRepository.setUserLoggedState(true)
+            _signInUiState.value = SignInViewState.LoggedIn
         }
     }
 }

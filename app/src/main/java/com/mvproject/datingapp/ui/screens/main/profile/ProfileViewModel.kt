@@ -15,10 +15,9 @@ import com.mvproject.datingapp.helper.FirebaseHelper
 import com.mvproject.datingapp.helper.GoogleSignHelper
 import com.mvproject.datingapp.ui.screens.main.profile.state.ProfileViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -29,21 +28,42 @@ class ProfileViewModel @Inject constructor(
     private val googleSignHelper: GoogleSignHelper
 ) : ViewModel() {
 
-    val profileUiState: StateFlow<ProfileViewState> = preferenceRepository
-        .getUserLoggedState().map { isLogged ->
-            if (isLogged)
+    private val _profileUiState = MutableStateFlow<ProfileViewState>(ProfileViewState.Loading)
+    val profileUiState = _profileUiState.asStateFlow()
+
+    private val _profileState = MutableStateFlow(UserState())
+    val profileState = _profileState.asStateFlow()
+
+    init {
+        viewModelScope.launch {
+            val isLogged = preferenceRepository
+                .getUserLoggedState()
+            _profileUiState.value = if (isLogged)
                 ProfileViewState.LoggedIn
             else ProfileViewState.NotLoggedIn
-        }.stateIn(
-            scope = viewModelScope,
-            initialValue = ProfileViewState.Loading,
-            started = SharingStarted.WhileSubscribed(5_000),
-        )
+        }
+
+        viewModelScope.launch {
+            val user = preferenceRepository.getUser()
+            _profileState.update {
+                it.copy(
+                    profileName = user.name,
+                    profileImage = user.profilePictureUrl
+                )
+            }
+        }
+    }
 
     fun logoutProfile() {
         viewModelScope.launch {
             googleSignHelper.signOutGoogleAccount()
             preferenceRepository.setUserLoggedState(false)
+            _profileUiState.value = ProfileViewState.NotLoggedIn
         }
     }
+
+    data class UserState(
+        val profileName: String = "",
+        val profileImage: String = "",
+    )
 }
