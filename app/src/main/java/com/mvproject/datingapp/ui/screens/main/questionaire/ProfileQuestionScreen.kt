@@ -77,7 +77,7 @@ fun ProfileQuestionView(
 ) {
     BackHandler(true) {
         if (state.currentStep.isStartState()) {
-            onNavigateBack()
+            onNavigateNext()
         } else {
             onAction(ProfileQuestionsAction.PrevStep)
         }
