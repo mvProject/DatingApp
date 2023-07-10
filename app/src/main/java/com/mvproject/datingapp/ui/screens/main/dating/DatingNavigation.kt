@@ -25,6 +25,13 @@ fun NavController.navigateToDating(navOptions: NavOptions? = null) {
     this.navigate(AppRoutes.DATING.route, navOptions)
 }
 
+fun NavController.navigateToDatingClearStack() {
+    this.popBackStack()
+    this.navigate(AppRoutes.DATING.route) {
+        launchSingleTop = true
+    }
+}
+
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.datingScreen(
     onAction: () -> Unit = {}

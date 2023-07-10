@@ -16,6 +16,8 @@
     <string name="btn_title_send">Send</string>
     <string name="btn_title_continue">Continue</string>
     <string name="btn_title_save">Save</string>
+    <string name="btn_title_start">Start</string>
+    <string name="btn_title_not_now">Not now</string>
     <string name="btn_title_select_photo">Select photo</string>
     <string name="btn_title_save_password">Save new password</string>
 </resources>

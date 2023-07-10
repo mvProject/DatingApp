@@ -53,19 +53,19 @@ class SignUpViewModel @Inject constructor(
     fun processAction(action: SignUpAction) {
         when (action) {
             SignUpAction.NextStep -> {
-                val isLastState = _profileDataState.value.currentStep.isLastState()
+                val isLastState = profileDataState.value.currentStep.isLastState()
                 if (!isLastState) {
                     updateState(
-                        newState = _profileDataState.value.currentStep.nextState()
+                        newState = profileDataState.value.currentStep.nextState()
                     )
                 }
             }
 
             SignUpAction.PrevStep -> {
-                val isFirstState = _profileDataState.value.currentStep.isStartState()
+                val isFirstState = profileDataState.value.currentStep.isStartState()
                 if (!isFirstState) {
                     updateState(
-                        newState = _profileDataState.value.currentStep.previousState()
+                        newState = profileDataState.value.currentStep.previousState()
                     )
                 }
             }

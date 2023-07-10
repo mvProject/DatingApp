@@ -43,12 +43,12 @@ import com.mvproject.datingapp.data.state.TimerState
 import com.mvproject.datingapp.ui.components.dialog.InfoDialog
 import com.mvproject.datingapp.ui.components.input.InputTextWithDescription
 import com.mvproject.datingapp.ui.components.input.SetPasswordWithConfirmation
-import com.mvproject.datingapp.ui.components.input.image.ProfileImageSelector
 import com.mvproject.datingapp.ui.components.input.otpCode.CodeVerifier
 import com.mvproject.datingapp.ui.components.input.otpDate.DateSelector
 import com.mvproject.datingapp.ui.components.selectors.GenderSelector
 import com.mvproject.datingapp.ui.components.selectors.LocationSelector
 import com.mvproject.datingapp.ui.components.selectors.ProfileInterestSelector
+import com.mvproject.datingapp.ui.components.selectors.image.ProfileImageSelector
 import com.mvproject.datingapp.ui.screens.authorization.signup.actions.SignUpAction
 import com.mvproject.datingapp.ui.screens.authorization.signup.state.SignUpProfileDataState
 import com.mvproject.datingapp.ui.screens.authorization.signup.state.SignUpState

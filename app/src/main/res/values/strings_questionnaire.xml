@@ -1,0 +1,27 @@
+<!--
+  ~ Create by Medvediev Viktor
+  ~ last update: 07.06.23, 12:03
+  ~
+  ~ Copyright (c) 2023
+  ~
+  -->
+
+<resources>
+    <string name="questionnaire_start_title">Complete your profile by answering a few questions about yourself</string>
+    <string name="questionnaire_start_description">Complete your profile in minutes</string>
+    <string name="questionnaire_about_title">Write a little about yourself</string>
+    <string name="questionnaire_orientation_title">What is your sexual orientation?</string>
+    <string name="questionnaire_marital_status_title">What is your marital status?</string>
+    <string name="questionnaire_children_title">How about children?</string>
+    <string name="questionnaire_height_title">How height are you?</string>
+    <string name="questionnaire_zodiac_title">What is your zodiac sign?</string>
+    <string name="questionnaire_alcohol_title">Do you drink alcohol?</string>
+    <string name="questionnaire_smoke_title">Do you smoke?</string>
+    <string name="questionnaire_vert_title">Are you an introvert or an extrovert?</string>
+    <string name="questionnaire_religion_title">What religion do you profess?</string>
+    <string name="questionnaire_languages_title">What languages do you speak?</string>
+    <string name="questionnaire_pets_title">Do you have pets?</string>
+    <string name="questionnaire_work_title">Where do you work?</string>
+    <string name="questionnaire_end_title">Thank you!</string>
+    <string name="questionnaire_end_description">You have successfully filled out the questionnaire!</string>
+</resources>

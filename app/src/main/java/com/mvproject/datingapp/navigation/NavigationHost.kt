@@ -13,8 +13,11 @@ import com.mvproject.datingapp.ui.screens.authorization.signin.navigation.loginS
 import com.mvproject.datingapp.ui.screens.authorization.signin.navigation.navigateToSignInClearStack
 import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.navigateToSignUp
 import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.signUpScreen
+import com.mvproject.datingapp.ui.screens.main.dating.datingScreen
+import com.mvproject.datingapp.ui.screens.main.dating.navigateToDatingClearStack
 import com.mvproject.datingapp.ui.screens.main.profile.navigation.navigateToProfileClearStack
 import com.mvproject.datingapp.ui.screens.main.profile.navigation.profileScreen
+import com.mvproject.datingapp.ui.screens.main.questionaire.navigation.profileQuestionsScreen
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -45,15 +48,23 @@ fun NavigationHost(
             onNavigateBack = navController::popBackStack,
             onNavigateNext = navController::navigateToSignInClearStack
         )
+
         /*
                                likesScreen()
                                chatScreen()
-                               datingScreen()
                        */
+
+        profileQuestionsScreen(
+            onNavigateBack = navController::popBackStack,
+            onNavigateNext = navController::navigateToDatingClearStack
+        )
 
         profileScreen(
             onNavigationLogout = navController::navigateToSignInClearStack
         )
+
+        datingScreen()
+
     }
 }
 
