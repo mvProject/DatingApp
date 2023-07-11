@@ -137,7 +137,7 @@ private fun CharView(
     ) {
         Text(
             modifier = Modifier
-                .width(MaterialTheme.dimens.size34)
+                .width(MaterialTheme.dimens.size32)
                 .padding(MaterialTheme.dimens.size2),
             text = char,
             style = MaterialTheme.typography.bodyLarge,

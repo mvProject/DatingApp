@@ -45,7 +45,7 @@ import timber.log.Timber
 fun DateSelector(
     modifier: Modifier = Modifier,
     initial: String = STRING_EMPTY,
-    title: String = stringResource(id = R.string.scr_auth_date_select_title, "Test"),
+    title: String = stringResource(id = R.string.scr_auth_date_select_title, STRING_EMPTY),
     description: String = stringResource(id = R.string.scr_auth_date_select_description),
     privacyText: String = STRING_EMPTY,
     onDateSelected: (Long) -> Unit = {}
@@ -83,8 +83,6 @@ fun DateSelector(
         Spacer(modifier = Modifier.height(MaterialTheme.dimens.size24))
 
         DateTextField(
-            modifier = Modifier
-                .padding(horizontal = MaterialTheme.dimens.size16),
             dateText = dateValue,
             onDateTextChange = { value, dateFilled ->
                 dateValue = value
