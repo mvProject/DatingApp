@@ -24,4 +24,16 @@
     <string name="questionnaire_work_title">Where do you work?</string>
     <string name="questionnaire_end_title">Thank you!</string>
     <string name="questionnaire_end_description">You have successfully filled out the questionnaire!</string>
+
+    <string name="option_not_set">I prefer not to answer</string>
+
+    <string name="option_orientation_hetero">Heterosexual</string>
+    <string name="option_orientation_gay">Gay</string>
+    <string name="option_orientation_lesbian">Lesbian</string>
+    <string name="option_orientation_bisexual">Bisexual</string>
+    <string name="option_orientation_asexual">Asexual</string>
+    <string name="option_orientation_demisexual">Demisexual</string>
+    <string name="option_orientation_pansexual">Pansexual</string>
+    <string name="option_orientation_queer">Queer</string>
+    <string name="option_orientation_search_myself">Searching for myself</string>
 </resources>

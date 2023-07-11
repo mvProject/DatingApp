@@ -21,6 +21,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -59,16 +60,23 @@ class ProfileQuestionViewModel @Inject constructor(
                 }
 
             }
+
+            is ProfileQuestionsAction.UpdateProfileOrientation -> {
+                _profileQuestionsDataState.update {
+                    it.copy(profileOrientation = action.data)
+                }
+            }
         }
 
-        _profileQuestionsDataState.update {
-            it.copy(currentStepProgress = profileQuestionsDataState.value.currentStep.completeContentProgress())
-        }
+        Timber.w("testing user info ${profileQuestionsDataState.value}")
     }
 
     private fun updateState(newState: ProfileQuestionsState) {
         _profileQuestionsDataState.update {
-            it.copy(currentStep = newState)
+            it.copy(
+                currentStep = newState,
+                currentStepProgress = newState.completeContentProgress()
+            )
         }
     }
 }

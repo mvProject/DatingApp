@@ -8,11 +8,13 @@
 
 package com.mvproject.datingapp.ui.screens.main.questionaire.state
 
+import com.mvproject.datingapp.data.enums.ProfileOrientation
 import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestionsState.Companion.completeContentProgress
 import com.mvproject.datingapp.utils.STRING_EMPTY
 
 data class ProfileQuestionsDataState(
     val profileAbout: String = STRING_EMPTY,
+    val profileOrientation: ProfileOrientation = ProfileOrientation.ORIENTATION_HETERO,
     val currentStep: ProfileQuestionsState = ProfileQuestionsState.START,
     val currentStepProgress: Float = ProfileQuestionsState.START.completeContentProgress(),
     val isComplete: Boolean = false

@@ -44,6 +44,7 @@ import coil.compose.rememberAsyncImagePainter
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
 import com.mvproject.datingapp.ui.components.input.about.AboutInput
+import com.mvproject.datingapp.ui.components.selectors.OrientationSelector
 import com.mvproject.datingapp.ui.screens.main.questionaire.action.ProfileQuestionsAction
 import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestionsDataState
 import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestionsState
@@ -51,7 +52,6 @@ import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestio
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.WEIGHT_1
-import timber.log.Timber
 
 @Composable
 fun ProfileQuestionScreen(
@@ -307,18 +307,19 @@ fun ProfileQuestionView(
                 when (state.currentStep) {
                     ProfileQuestionsState.ABOUT -> {
                         AboutInput() { text ->
-                            Timber.w("testing about $text")
                             onAction(ProfileQuestionsAction.UpdateProfileAbout(text))
                             onAction(ProfileQuestionsAction.NextStep)
                         }
                     }
 
                     ProfileQuestionsState.ORIENTATION -> {
-                        Button(onClick = {
-                            onAction(ProfileQuestionsAction.NextStep)
-                        }) {
-                            Text(state.currentStep.toString())
-                        }
+                        OrientationSelector(
+                            selectedOption = stringResource(id = state.profileOrientation.title),
+                            onOptionSelected = { orientation ->
+                                onAction(ProfileQuestionsAction.UpdateProfileOrientation(orientation))
+                                onAction(ProfileQuestionsAction.NextStep)
+                            }
+                        )
                     }
 
                     ProfileQuestionsState.MARITAL_STATUS -> {
