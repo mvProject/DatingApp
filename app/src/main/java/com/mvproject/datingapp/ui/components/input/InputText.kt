@@ -39,6 +39,7 @@ fun InputText(
     initial: String = STRING_EMPTY,
     hint: String = stringResource(id = R.string.hint_email),
     verifyType: VerifyType = VerifyType.NONE,
+    isErrorEntered: Boolean = false,
     maxLength: Int = INT_ZERO,
     onValueChange: (String) -> Unit = {}
 ) {
@@ -58,6 +59,20 @@ fun InputText(
         else
             MaterialTheme.colorScheme.error
     } else MaterialTheme.colorScheme.onSurface
+
+    val unFocusedIndicatorColor = if (verifyType == VerifyType.EMAIL) {
+        if (isErrorEntered)
+            MaterialTheme.colorScheme.error
+        else
+            MaterialTheme.colorScheme.onSurfaceVariant
+    } else MaterialTheme.colorScheme.onSurfaceVariant
+
+    val focusedIndicatorColor = if (verifyType == VerifyType.EMAIL) {
+        if (isErrorEntered)
+            MaterialTheme.colorScheme.error
+        else
+            MaterialTheme.colorScheme.secondary
+    } else MaterialTheme.colorScheme.secondary
 
     TextField(
         modifier = modifier,
@@ -91,10 +106,13 @@ fun InputText(
         colors = TextFieldDefaults.colors(
             focusedTextColor = focusedTextColor,
             unfocusedTextColor = unFocusedTextColor,
+            errorIndicatorColor = focusedTextColor,
+            errorTextColor = focusedTextColor,
             focusedContainerColor = Color.Transparent,
             unfocusedContainerColor = Color.Transparent,
             cursorColor = MaterialTheme.colorScheme.onSurfaceVariant,
-            focusedIndicatorColor = MaterialTheme.colorScheme.secondary
+            focusedIndicatorColor = focusedIndicatorColor,
+            unfocusedIndicatorColor = unFocusedIndicatorColor
         )
     )
 }

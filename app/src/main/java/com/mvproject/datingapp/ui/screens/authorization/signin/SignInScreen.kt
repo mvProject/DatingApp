@@ -27,6 +27,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -44,10 +45,10 @@ import com.mvproject.datingapp.ui.components.buttons.FacebookButton
 import com.mvproject.datingapp.ui.components.buttons.GoogleButton
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
 import com.mvproject.datingapp.ui.components.composable.rememberGoogleSignLauncher
-import com.mvproject.datingapp.ui.components.dialog.InfoDialog
 import com.mvproject.datingapp.ui.components.input.InputPassword
 import com.mvproject.datingapp.ui.components.input.InputText
 import com.mvproject.datingapp.ui.components.loading.LoadingView
+import com.mvproject.datingapp.ui.components.message.ErrorMessage
 import com.mvproject.datingapp.ui.components.message.NoAccountField
 import com.mvproject.datingapp.ui.screens.authorization.signin.action.SignInAction
 import com.mvproject.datingapp.ui.screens.authorization.signin.state.SignInViewState
@@ -102,8 +103,18 @@ fun SignInView(
         mutableStateOf(false)
     }
 
-    val isVerificationDialogOpen = remember {
+    var isEmailVerificationFailed by remember {
         mutableStateOf(false)
+    }
+
+    var isPasswordVerificationFailed by remember {
+        mutableStateOf(false)
+    }
+
+    val isVerificationFailed by remember {
+        derivedStateOf {
+            isEmailVerificationFailed || isPasswordVerificationFailed
+        }
     }
 
     if (isLoading) {
@@ -149,8 +160,11 @@ fun SignInView(
             InputText(
                 modifier = Modifier.fillMaxWidth(),
                 verifyType = VerifyType.EMAIL,
+                isErrorEntered = isEmailVerificationFailed,
                 onValueChange = { text ->
                     login = text
+                    isEmailVerificationFailed = false
+                    isPasswordVerificationFailed = false
                 }
             )
 
@@ -158,10 +172,19 @@ fun SignInView(
 
             InputPassword(
                 modifier = Modifier.fillMaxWidth(),
+                isErrorEntered = isPasswordVerificationFailed,
                 onValueChange = { text ->
                     password = text
+                    isEmailVerificationFailed = false
+                    isPasswordVerificationFailed = false
                 }
             )
+
+            if (isVerificationFailed) {
+                ErrorMessage(
+                    text = stringResource(id = R.string.msg_error_login_validation)
+                )
+            }
 
             Spacer(modifier = Modifier.weight(WEIGHT_1))
 
@@ -173,7 +196,12 @@ fun SignInView(
                     if (login.isValidEmail() && password.isValidPassword()) {
                         onSignInAction(SignInAction.SignWithCredentialIn(login, password))
                     } else {
-                        isVerificationDialogOpen.value = true
+                        if (!login.isValidEmail()) {
+                            isEmailVerificationFailed = true
+                        }
+                        if (!password.isValidPassword()) {
+                            isPasswordVerificationFailed = true
+                        }
                     }
                 }
             )
@@ -263,15 +291,6 @@ fun SignInView(
             )
         }
     }
-
-    InfoDialog(
-        isDialogOpen = isVerificationDialogOpen,
-        title = stringResource(id = R.string.dlg_sign_in_validation_title),
-        description = stringResource(id = R.string.dlg_sign_in_validation_description),
-        onConfirm = {
-            isVerificationDialogOpen.value = false
-        }
-    )
 }
 
 @Preview(showBackground = true)
