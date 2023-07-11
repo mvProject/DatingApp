@@ -43,6 +43,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.rememberAsyncImagePainter
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
+import com.mvproject.datingapp.ui.components.input.about.AboutInput
 import com.mvproject.datingapp.ui.screens.main.questionaire.action.ProfileQuestionsAction
 import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestionsDataState
 import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestionsState
@@ -50,6 +51,7 @@ import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestio
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.WEIGHT_1
+import timber.log.Timber
 
 @Composable
 fun ProfileQuestionScreen(
@@ -113,7 +115,7 @@ fun ProfileQuestionView(
             ProfileQuestionsState.ZODIAC -> R.string.questionnaire_zodiac_title
             ProfileQuestionsState.ALCOHOL -> R.string.questionnaire_alcohol_title
             ProfileQuestionsState.SMOKE -> R.string.questionnaire_smoke_title
-            ProfileQuestionsState.VERT -> R.string.questionnaire_vert_title
+            ProfileQuestionsState.PSY_ORIENTATION -> R.string.questionnaire_vert_title
             ProfileQuestionsState.RELIGION -> R.string.questionnaire_religion_title
             ProfileQuestionsState.LANGUAGES -> R.string.questionnaire_languages_title
             ProfileQuestionsState.PETS -> R.string.questionnaire_pets_title
@@ -131,7 +133,7 @@ fun ProfileQuestionView(
             ProfileQuestionsState.ZODIAC -> R.drawable.questions_zodiac
             ProfileQuestionsState.ALCOHOL -> R.drawable.questions_alcohol
             ProfileQuestionsState.SMOKE -> R.drawable.questions_smoke
-            ProfileQuestionsState.VERT -> R.drawable.questions_vert
+            ProfileQuestionsState.PSY_ORIENTATION -> R.drawable.questions_vert
             ProfileQuestionsState.RELIGION -> R.drawable.questions_religion
             ProfileQuestionsState.LANGUAGES -> R.drawable.questions_languages
             ProfileQuestionsState.PETS -> R.drawable.questions_pets
@@ -299,12 +301,15 @@ fun ProfileQuestionView(
 
                     }
                 }
+
+                Spacer(modifier = Modifier.height(MaterialTheme.dimens.size16))
+
                 when (state.currentStep) {
                     ProfileQuestionsState.ABOUT -> {
-                        Button(onClick = {
+                        AboutInput() { text ->
+                            Timber.w("testing about $text")
+                            onAction(ProfileQuestionsAction.UpdateProfileAbout(text))
                             onAction(ProfileQuestionsAction.NextStep)
-                        }) {
-                            Text(state.currentStep.toString())
                         }
                     }
 
@@ -364,7 +369,7 @@ fun ProfileQuestionView(
                         }
                     }
 
-                    ProfileQuestionsState.VERT -> {
+                    ProfileQuestionsState.PSY_ORIENTATION -> {
                         Button(onClick = {
                             onAction(ProfileQuestionsAction.NextStep)
                         }) {

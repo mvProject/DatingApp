@@ -21,7 +21,7 @@ enum class ProfileQuestionsState {
     ZODIAC,
     ALCOHOL,
     SMOKE,
-    VERT,
+    PSY_ORIENTATION,
     RELIGION,
     LANGUAGES,
     PETS,

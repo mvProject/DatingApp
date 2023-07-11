@@ -49,6 +49,16 @@ class ProfileQuestionViewModel @Inject constructor(
                     )
                 }
             }
+
+            is ProfileQuestionsAction.UpdateProfileAbout -> {
+                val aboutInfo = action.data
+                if (aboutInfo.isNotEmpty()) {
+                    _profileQuestionsDataState.update {
+                        it.copy(profileAbout = aboutInfo)
+                    }
+                }
+
+            }
         }
 
         _profileQuestionsDataState.update {

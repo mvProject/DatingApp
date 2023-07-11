@@ -31,3 +31,10 @@ fun textColor(isSelected: Boolean) = if (isSelected) {
 } else {
     MaterialTheme.colorScheme.onPrimary
 }
+
+@Composable
+fun textSplitColor(isSelected: Boolean) = if (isSelected) {
+    MaterialTheme.colorScheme.secondaryContainer
+} else {
+    MaterialTheme.colorScheme.onSurface
+}

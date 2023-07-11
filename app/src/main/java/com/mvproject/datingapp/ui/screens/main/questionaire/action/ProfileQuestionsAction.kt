@@ -9,6 +9,7 @@
 package com.mvproject.datingapp.ui.screens.main.questionaire.action
 
 sealed class ProfileQuestionsAction {
+    data class UpdateProfileAbout(val data: String) : ProfileQuestionsAction()
     object NextStep : ProfileQuestionsAction()
     object PrevStep : ProfileQuestionsAction()
 }

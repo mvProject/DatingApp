@@ -47,7 +47,8 @@ fun HomeScreen(
             if (authState)
                 AppRoutes.PROFILE.route
             else
-                AppRoutes.SignIn.route
+            //   AppRoutes.SignIn.route
+                AppRoutes.ProfileQuestions.route
         }
     }
 

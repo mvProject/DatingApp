@@ -24,6 +24,7 @@ const val LONG_ZERO = 0L
 const val DEFAULT_CODE_LENGTH = 6
 const val WEIGHT_1 = 1f
 const val WEIGHT_2 = 2f
+const val WEIGHT_5 = 5f
 
 const val STEP_1 = 1
 
@@ -33,4 +34,5 @@ const val TIMER_INTERVAL = 1000L
 const val DIVIDER_SECOND = 1000
 
 const val NAME_MAX_LENGTH = 35
+const val ABOUT_MAX_LENGTH = 500
 const val PHOTO_MIN_COUNT = 2

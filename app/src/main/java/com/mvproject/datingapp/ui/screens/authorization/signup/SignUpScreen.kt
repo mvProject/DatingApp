@@ -46,8 +46,8 @@ import com.mvproject.datingapp.ui.components.input.SetPasswordWithConfirmation
 import com.mvproject.datingapp.ui.components.input.otpCode.CodeVerifier
 import com.mvproject.datingapp.ui.components.input.otpDate.DateSelector
 import com.mvproject.datingapp.ui.components.selectors.GenderSelector
+import com.mvproject.datingapp.ui.components.selectors.InterestSelector
 import com.mvproject.datingapp.ui.components.selectors.LocationSelector
-import com.mvproject.datingapp.ui.components.selectors.ProfileInterestSelector
 import com.mvproject.datingapp.ui.components.selectors.image.ProfileImageSelector
 import com.mvproject.datingapp.ui.screens.authorization.signup.actions.SignUpAction
 import com.mvproject.datingapp.ui.screens.authorization.signup.state.SignUpProfileDataState
@@ -251,7 +251,7 @@ fun SignUpView(
                         }
 
                         SignUpState.INTEREST -> {
-                            ProfileInterestSelector(
+                            InterestSelector(
                                 selectedOption = stringResource(id = state.interest.title),
                                 onOptionSelected = { interest ->
                                     Timber.w("testing selected $interest")
