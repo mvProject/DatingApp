@@ -33,6 +33,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
+import com.mvproject.datingapp.data.enums.VerifyType
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.STRING_EMPTY
@@ -41,6 +42,8 @@ import com.mvproject.datingapp.utils.STRING_EMPTY
 fun InputPassword(
     modifier: Modifier = Modifier,
     hint: String = stringResource(id = R.string.hint_password),
+    verifyType: VerifyType = VerifyType.PASSWORD,
+    isErrorEntered: Boolean = false,
     onValueChange: (String) -> Unit = {}
 ) {
     var entered by remember {
@@ -56,6 +59,21 @@ fun InputPassword(
     } else {
         painterResource(id = R.drawable.ic_pswd_invisible)
     }
+
+    val unFocusedIndicatorColor = if (verifyType == VerifyType.PASSWORD) {
+        if (isErrorEntered)
+            MaterialTheme.colorScheme.error
+        else
+            MaterialTheme.colorScheme.onSurfaceVariant
+    } else MaterialTheme.colorScheme.onSurfaceVariant
+
+    val focusedIndicatorColor = if (verifyType == VerifyType.PASSWORD) {
+        if (isErrorEntered)
+            MaterialTheme.colorScheme.error
+        else
+            MaterialTheme.colorScheme.secondary
+    } else MaterialTheme.colorScheme.secondary
+
     TextField(
         modifier = modifier,
         value = entered,
@@ -80,7 +98,7 @@ fun InputPassword(
             }) {
                 Icon(
                     painter = icon,
-                    contentDescription = "",
+                    contentDescription = hint,
                     tint = MaterialTheme.colorScheme.onPrimary
                 )
             }
@@ -99,7 +117,8 @@ fun InputPassword(
             focusedContainerColor = Color.Transparent,
             unfocusedContainerColor = Color.Transparent,
             cursorColor = MaterialTheme.colorScheme.onSurfaceVariant,
-            focusedIndicatorColor = MaterialTheme.colorScheme.secondary
+            focusedIndicatorColor = focusedIndicatorColor,
+            unfocusedIndicatorColor = unFocusedIndicatorColor
         )
     )
 }

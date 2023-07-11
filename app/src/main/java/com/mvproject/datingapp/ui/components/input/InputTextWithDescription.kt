@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -66,6 +67,12 @@ fun InputTextWithDescription(
         mutableStateOf(false)
     }
 
+    val isVerificationFailed by remember {
+        derivedStateOf {
+            showNotVerifiedError || showEmptyError
+        }
+    }
+
     Column(
         modifier = modifier
             .imePadding()
@@ -100,6 +107,7 @@ fun InputTextWithDescription(
             modifier = Modifier.fillMaxWidth(),
             verifyType = verifyType,
             hint = hint,
+            isErrorEntered = isVerificationFailed,
             maxLength = maxLength,
             onValueChange = { text ->
                 showNotVerifiedError = false
@@ -110,13 +118,13 @@ fun InputTextWithDescription(
 
         if (showNotVerifiedError) {
             ErrorMessage(
-                text = stringResource(id = R.string.dlg_mail_error_description)
+                text = stringResource(id = R.string.msg_error_mail_validation)
             )
         }
 
         if (showEmptyError) {
             ErrorMessage(
-                text = stringResource(id = R.string.dlg_name_empty_error_description)
+                text = stringResource(id = R.string.msg_error_name_empty)
             )
         }
 

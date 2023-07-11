@@ -12,19 +12,12 @@
     <string name="dlg_psw_save_title">New password saved!</string>
     <string name="dlg_psw_save_description">To change your password, you need to go to Profile</string>
 
-    <string name="dlg_sign_in_validation_title">Sorry</string>
-    <string name="dlg_sign_in_validation_description">Entered address or password is incorrect</string>
-
     <string name="dlg_code_validation_error_title">Error.</string>
     <string name="dlg_code_validation_error_description">Your code is not correct</string>
-
-    <string name="dlg_pass_confirm_error_title">Error!</string>
-    <string name="dlg_pass_confirm_error_description">Create password and Confirm password are not validate</string>
 
     <string name="dlg_date_validation_error_title">Error.</string>
     <string name="dlg_date_validation_error_description">Your birthday is not correct</string>
     <string name="dlg_age_validation_error_description">Your younger…</string>
 
-    <string name="dlg_mail_error_description">Incorrect email address</string>
-    <string name="dlg_name_empty_error_description">Name must not be empty</string>
+
 </resources>

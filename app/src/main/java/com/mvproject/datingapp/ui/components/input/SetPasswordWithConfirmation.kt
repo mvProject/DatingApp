@@ -31,7 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.enums.VerifyType
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
-import com.mvproject.datingapp.ui.components.dialog.InfoDialog
+import com.mvproject.datingapp.ui.components.message.ErrorMessage
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.STRING_EMPTY
@@ -59,7 +59,9 @@ fun SetPasswordWithConfirmation(
         mutableStateOf(STRING_EMPTY)
     }
 
-    val isPasswordSetFailedDialogOpen = remember { mutableStateOf(false) }
+    var isPasswordConfirmFailed by remember {
+        mutableStateOf(false)
+    }
 
     Column(
         modifier = modifier
@@ -94,8 +96,10 @@ fun SetPasswordWithConfirmation(
         InputPassword(
             modifier = Modifier.fillMaxWidth(),
             hint = hint,
+            isErrorEntered = isPasswordConfirmFailed,
             onValueChange = { text ->
                 entered = text
+                isPasswordConfirmFailed = false
             }
         )
 
@@ -104,10 +108,18 @@ fun SetPasswordWithConfirmation(
         InputPassword(
             modifier = Modifier.fillMaxWidth(),
             hint = hintConfirm,
+            isErrorEntered = isPasswordConfirmFailed,
             onValueChange = { text ->
                 enteredConfirm = text
+                isPasswordConfirmFailed = false
             }
         )
+
+        if (isPasswordConfirmFailed) {
+            ErrorMessage(
+                text = stringResource(id = R.string.msg_error_pass_create_confirm)
+            )
+        }
 
         if (descriptionBottom.isNotEmpty()) {
             Spacer(modifier = Modifier.height(MaterialTheme.dimens.size24))
@@ -134,7 +146,7 @@ fun SetPasswordWithConfirmation(
                         if (isPasswordsValidAndConfirmed(entered, enteredConfirm)) {
                             onConfirmed(entered)
                         } else {
-                            isPasswordSetFailedDialogOpen.value = true
+                            isPasswordConfirmFailed = true
                         }
                     }
 
@@ -143,16 +155,6 @@ fun SetPasswordWithConfirmation(
             }
         )
     }
-
-    // password not verified
-    InfoDialog(
-        isDialogOpen = isPasswordSetFailedDialogOpen,
-        title = stringResource(id = R.string.dlg_pass_confirm_error_title),
-        description = stringResource(id = R.string.dlg_pass_confirm_error_description),
-        onConfirm = {
-            isPasswordSetFailedDialogOpen.value = false
-        }
-    )
 }
 
 @Preview(showBackground = true)
