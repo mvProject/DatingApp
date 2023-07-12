@@ -38,6 +38,7 @@ import com.mvproject.datingapp.utils.INT_ZERO
 @Composable
 fun WheelSelector(
     items: List<String> = emptyList(),
+    initial: Int = INT_ZERO,
     onSelect: (Int) -> Unit = {}
 ) {
     require(items.isNotEmpty())
@@ -52,7 +53,9 @@ fun WheelSelector(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        val state = rememberFWheelPickerState()
+        val state = rememberFWheelPickerState(
+            initialIndex = initial
+        )
         LaunchedEffect(state) {
             snapshotFlow { state.currentIndex }
                 .collect {
@@ -63,6 +66,7 @@ fun WheelSelector(
         FVerticalWheelPicker(
             modifier = Modifier.width(MaterialTheme.dimens.size96),
             state = state,
+            unfocusedCount = 2,
             count = items.count(),
         ) { index ->
             val color = if (state.currentIndex == index)
@@ -71,9 +75,9 @@ fun WheelSelector(
                 MaterialTheme.colorScheme.onSurface
 
             val style = if (state.currentIndex == index)
-                MaterialTheme.typography.bodyMedium
+                MaterialTheme.typography.bodyLarge
             else
-                MaterialTheme.typography.labelMedium
+                MaterialTheme.typography.labelLarge
             Text(
                 text = items[index],
                 color = color,

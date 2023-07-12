@@ -77,7 +77,7 @@ fun GenderSelector(
         Row(
             modifier = modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceEvenly
+            horizontalArrangement = Arrangement.Center
         ) {
             Card(
                 modifier = Modifier
@@ -114,6 +114,8 @@ fun GenderSelector(
                     )
                 }
             }
+
+            Spacer(modifier = Modifier.width(MaterialTheme.dimens.size16))
 
             Card(
                 modifier = Modifier

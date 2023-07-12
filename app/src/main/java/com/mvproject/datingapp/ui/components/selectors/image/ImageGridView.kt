@@ -15,6 +15,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -53,6 +54,9 @@ fun ImageGridView(
     val singlePhotoPickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickVisualMedia(),
         onResult = { uri ->
+            if (selectedImageUri != null) {
+                onImageRemove(selectedImageUri.toString())
+            }
             selectedImageUri = uri
             onImageSelect(selectedImageUri.toString())
         }
@@ -81,6 +85,11 @@ fun ImageGridView(
                     model = selectedImageUri,
                     contentDescription = null,
                     modifier = modifier
+                        .clickable {
+                            singlePhotoPickerLauncher.launch(
+                                PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                            )
+                        }
                         .fillMaxSize()
                         .align(Alignment.Center),
                     contentScale = ContentScale.Crop
@@ -88,6 +97,11 @@ fun ImageGridView(
             } else {
                 Image(
                     modifier = modifier
+                        .clickable {
+                            singlePhotoPickerLauncher.launch(
+                                PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                            )
+                        }
                         .fillMaxSize()
                         .align(Alignment.Center),
                     contentScale = ContentScale.Inside,

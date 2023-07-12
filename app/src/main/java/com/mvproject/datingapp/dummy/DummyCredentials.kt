@@ -10,6 +10,8 @@ package com.mvproject.datingapp.dummy
 
 const val DUMMY_CODE = "123456"
 
+const val DEFAULT_LOCATION_INDEX = 2
+
 val countries = listOf(
     "Ukraine",
     "Poland",

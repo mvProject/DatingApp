@@ -34,9 +34,10 @@ import com.mvproject.datingapp.R
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
+import com.mvproject.datingapp.utils.PHOTO_COLUMNS_COUNT
 import com.mvproject.datingapp.utils.PHOTO_MIN_COUNT
+import com.mvproject.datingapp.utils.STRING_EMPTY
 import com.mvproject.datingapp.utils.WEIGHT_1
-import timber.log.Timber
 
 @Composable
 fun ProfileImageSelector(
@@ -46,12 +47,19 @@ fun ProfileImageSelector(
     onPhotoSelected: (List<String>) -> Unit = {}
 ) {
     val listUri = remember {
-        mutableStateListOf<String>()
+        mutableStateListOf(
+            STRING_EMPTY,
+            STRING_EMPTY,
+            STRING_EMPTY,
+            STRING_EMPTY,
+            STRING_EMPTY,
+            STRING_EMPTY,
+        )
     }
 
     val isCanComplete by remember {
         derivedStateOf {
-            listUri.size >= PHOTO_MIN_COUNT
+            listUri.filter { it != STRING_EMPTY }.size >= PHOTO_MIN_COUNT
         }
     }
 
@@ -75,21 +83,21 @@ fun ProfileImageSelector(
         Spacer(modifier = Modifier.height(MaterialTheme.dimens.size16))
 
         LazyVerticalGrid(
-            columns = GridCells.Fixed(3),
+            columns = GridCells.Fixed(PHOTO_COLUMNS_COUNT),
             state = rememberLazyGridState(),
             verticalArrangement = Arrangement.spacedBy(MaterialTheme.dimens.size8),
             horizontalArrangement = Arrangement.spacedBy(MaterialTheme.dimens.size8),
             contentPadding = PaddingValues(MaterialTheme.dimens.size2),
             content = {
-                items(6) { item ->
+                items(listUri.size) { index ->
                     ImageGridView(
                         modifier = Modifier
                             .fillMaxSize(),
                         onImageSelect = { uri ->
-                            listUri.add(uri)
+                            listUri[index] = uri
                         },
-                        onImageRemove = { uri ->
-                            listUri.remove(uri)
+                        onImageRemove = { _ ->
+                            listUri[index] = STRING_EMPTY
                         }
                     )
                 }
@@ -118,8 +126,8 @@ fun ProfileImageSelector(
             title = textBtn,
             onClick = {
                 if (isCanComplete) {
-                    Timber.w("testing list uri ${listUri.toList()}")
-                    onPhotoSelected(listUri.toList())
+                    val uriList = listUri.filter { it != STRING_EMPTY }.toList()
+                    onPhotoSelected(uriList)
                 }
             }
         )

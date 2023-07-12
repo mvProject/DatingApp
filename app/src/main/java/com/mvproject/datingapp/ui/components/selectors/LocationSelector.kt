@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -30,6 +31,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.model.UserLocation
+import com.mvproject.datingapp.dummy.DEFAULT_LOCATION_INDEX
 import com.mvproject.datingapp.dummy.cities
 import com.mvproject.datingapp.dummy.countries
 import com.mvproject.datingapp.dummy.regions
@@ -56,6 +58,12 @@ fun LocationSelector(
     val isRegionSelectEnabled = remember { mutableStateOf(false) }
     val isCitySelectEnabled = remember { mutableStateOf(false) }
 
+    val isCanOpenSelector by remember {
+        derivedStateOf {
+            !isCountrySelectEnabled.value && !isRegionSelectEnabled.value && !isCitySelectEnabled.value
+        }
+    }
+
     Box(modifier = modifier.fillMaxSize()) {
         Column(
             modifier = modifier
@@ -80,7 +88,9 @@ fun LocationSelector(
                 title = stringResource(id = R.string.scr_auth_location_country_title),
                 selected = currentLocation.country,
                 onChange = {
-                    isCountrySelectEnabled.value = true
+                    if (isCanOpenSelector) {
+                        isCountrySelectEnabled.value = true
+                    }
                 }
             )
 
@@ -90,7 +100,9 @@ fun LocationSelector(
                 title = stringResource(id = R.string.scr_auth_location_region_title),
                 selected = currentLocation.region,
                 onChange = {
-                    isRegionSelectEnabled.value = true
+                    if (isCanOpenSelector) {
+                        isRegionSelectEnabled.value = true
+                    }
                 }
             )
             Spacer(modifier = Modifier.height(MaterialTheme.dimens.size8))
@@ -99,7 +111,9 @@ fun LocationSelector(
                 title = stringResource(id = R.string.scr_auth_location_city_title),
                 selected = currentLocation.city,
                 onChange = {
-                    isCitySelectEnabled.value = true
+                    if (isCanOpenSelector) {
+                        isCitySelectEnabled.value = true
+                    }
                 }
             )
 
@@ -120,6 +134,7 @@ fun LocationSelector(
         ) {
             WheelSelector(
                 items = countries,
+                initial = DEFAULT_LOCATION_INDEX,
                 onSelect = {
                     val country = countries[it]
                     isCountrySelectEnabled.value = false
@@ -134,6 +149,7 @@ fun LocationSelector(
         ) {
             WheelSelector(
                 items = regions,
+                initial = DEFAULT_LOCATION_INDEX,
                 onSelect = {
                     val region = regions[it]
                     isRegionSelectEnabled.value = false
@@ -148,6 +164,7 @@ fun LocationSelector(
         ) {
             WheelSelector(
                 items = cities,
+                initial = DEFAULT_LOCATION_INDEX,
                 onSelect = {
                     val city = cities[it]
                     isCitySelectEnabled.value = false

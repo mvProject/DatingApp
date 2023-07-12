@@ -60,19 +60,18 @@ fun InputText(
             MaterialTheme.colorScheme.error
     } else MaterialTheme.colorScheme.onSurface
 
-    val unFocusedIndicatorColor = if (verifyType == VerifyType.EMAIL) {
+    val unFocusedIndicatorColor =
         if (isErrorEntered)
             MaterialTheme.colorScheme.error
         else
             MaterialTheme.colorScheme.onSurfaceVariant
-    } else MaterialTheme.colorScheme.onSurfaceVariant
 
-    val focusedIndicatorColor = if (verifyType == VerifyType.EMAIL) {
+    val focusedIndicatorColor =
         if (isErrorEntered)
             MaterialTheme.colorScheme.error
         else
             MaterialTheme.colorScheme.secondary
-    } else MaterialTheme.colorScheme.secondary
+
 
     TextField(
         modifier = modifier,
