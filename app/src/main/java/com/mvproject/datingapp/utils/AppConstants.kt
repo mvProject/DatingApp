@@ -24,6 +24,7 @@ const val LONG_ZERO = 0L
 const val DEFAULT_CODE_LENGTH = 6
 const val WEIGHT_1 = 1f
 const val WEIGHT_2 = 2f
+const val WEIGHT_3 = 3f
 const val WEIGHT_5 = 5f
 
 const val STEP_1 = 1

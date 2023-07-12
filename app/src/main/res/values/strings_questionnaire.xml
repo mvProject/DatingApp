@@ -36,4 +36,9 @@
     <string name="option_orientation_pansexual">Pansexual</string>
     <string name="option_orientation_queer">Queer</string>
     <string name="option_orientation_search_myself">Searching for myself</string>
+
+    <string name="option_marital_free">Free</string>
+    <string name="option_marital_in_relationship">In a relationship</string>
+    <string name="option_marital_complicated">It\'s Complicated</string>
+    <string name="option_marital_open_relationship">In an open relationship</string>
 </resources>

@@ -44,14 +44,19 @@ import coil.compose.rememberAsyncImagePainter
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
 import com.mvproject.datingapp.ui.components.input.about.AboutInput
+import com.mvproject.datingapp.ui.components.selectors.MaritalSelector
 import com.mvproject.datingapp.ui.components.selectors.OrientationSelector
 import com.mvproject.datingapp.ui.screens.main.questionaire.action.ProfileQuestionsAction
 import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestionsDataState
 import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestionsState
 import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestionsState.Companion.isStartState
+import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestionsState.Companion.stateLogo
+import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestionsState.Companion.stateNavLogo
+import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestionsState.Companion.stateTitle
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.WEIGHT_1
+import com.mvproject.datingapp.utils.WEIGHT_3
 
 @Composable
 fun ProfileQuestionScreen(
@@ -105,47 +110,6 @@ fun ProfileQuestionView(
             )
         }
 
-        val pageTitle = when (state.currentStep) {
-            ProfileQuestionsState.START -> R.string.questionnaire_start_title
-            ProfileQuestionsState.ABOUT -> R.string.questionnaire_about_title
-            ProfileQuestionsState.ORIENTATION -> R.string.questionnaire_orientation_title
-            ProfileQuestionsState.MARITAL_STATUS -> R.string.questionnaire_marital_status_title
-            ProfileQuestionsState.CHILDREN -> R.string.questionnaire_children_title
-            ProfileQuestionsState.HEIGHT -> R.string.questionnaire_height_title
-            ProfileQuestionsState.ZODIAC -> R.string.questionnaire_zodiac_title
-            ProfileQuestionsState.ALCOHOL -> R.string.questionnaire_alcohol_title
-            ProfileQuestionsState.SMOKE -> R.string.questionnaire_smoke_title
-            ProfileQuestionsState.PSY_ORIENTATION -> R.string.questionnaire_vert_title
-            ProfileQuestionsState.RELIGION -> R.string.questionnaire_religion_title
-            ProfileQuestionsState.LANGUAGES -> R.string.questionnaire_languages_title
-            ProfileQuestionsState.PETS -> R.string.questionnaire_pets_title
-            ProfileQuestionsState.WORK -> R.string.questionnaire_work_title
-            ProfileQuestionsState.END -> R.string.questionnaire_end_title
-        }
-
-        val pageLogo = when (state.currentStep) {
-            ProfileQuestionsState.START -> R.drawable.questions_start
-            ProfileQuestionsState.ABOUT -> R.drawable.questions_about
-            ProfileQuestionsState.ORIENTATION -> R.drawable.questions_orientation
-            ProfileQuestionsState.MARITAL_STATUS -> R.drawable.questions_marital_status
-            ProfileQuestionsState.CHILDREN -> R.drawable.questions_children
-            ProfileQuestionsState.HEIGHT -> R.drawable.questions_height
-            ProfileQuestionsState.ZODIAC -> R.drawable.questions_zodiac
-            ProfileQuestionsState.ALCOHOL -> R.drawable.questions_alcohol
-            ProfileQuestionsState.SMOKE -> R.drawable.questions_smoke
-            ProfileQuestionsState.PSY_ORIENTATION -> R.drawable.questions_vert
-            ProfileQuestionsState.RELIGION -> R.drawable.questions_religion
-            ProfileQuestionsState.LANGUAGES -> R.drawable.questions_languages
-            ProfileQuestionsState.PETS -> R.drawable.questions_pets
-            ProfileQuestionsState.WORK -> R.drawable.questions_work
-            ProfileQuestionsState.END -> R.drawable.questions_end
-        }
-
-        val navLogo = if (state.currentStep == ProfileQuestionsState.START)
-            R.drawable.ic_close
-        else
-            R.drawable.ic_navigate_back
-
         Scaffold(
             topBar = {
                 if (state.currentStep != ProfileQuestionsState.END) {
@@ -162,7 +126,7 @@ fun ProfileQuestionView(
                                 }
                             ) {
                                 Icon(
-                                    painter = painterResource(id = navLogo),
+                                    painter = painterResource(id = state.currentStep.stateNavLogo()),
                                     contentDescription = "Back",
                                     tint = MaterialTheme.colorScheme.onBackground
                                 )
@@ -186,11 +150,11 @@ fun ProfileQuestionView(
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                val painter = rememberAsyncImagePainter(model = pageLogo)
+                val painter = rememberAsyncImagePainter(model = state.currentStep.stateLogo())
 
                 when (state.currentStep) {
                     ProfileQuestionsState.START -> {
-                        Spacer(modifier = Modifier.height(MaterialTheme.dimens.size38))
+                        Spacer(modifier = Modifier.weight(WEIGHT_1))
 
                         Image(
                             modifier = Modifier
@@ -199,11 +163,11 @@ fun ProfileQuestionView(
                             contentDescription = state.currentStep.toString()
                         )
 
-                        Spacer(modifier = Modifier.height(MaterialTheme.dimens.size38))
+                        Spacer(modifier = Modifier.weight(WEIGHT_1))
 
                         Text(
                             modifier = Modifier.fillMaxWidth(),
-                            text = stringResource(id = pageTitle),
+                            text = stringResource(id = state.currentStep.stateTitle()),
                             color = MaterialTheme.colorScheme.onPrimary,
                             style = MaterialTheme.typography.displayLarge,
                             textAlign = TextAlign.Center
@@ -217,13 +181,14 @@ fun ProfileQuestionView(
                             style = MaterialTheme.typography.labelMedium
                         )
 
-                        Spacer(modifier = Modifier.weight(WEIGHT_1))
+                        Spacer(modifier = Modifier.weight(WEIGHT_3))
 
                         GradientButton(
                             modifier = Modifier.fillMaxWidth(),
                             title = stringResource(id = R.string.btn_title_start),
                             onClick = { onAction(ProfileQuestionsAction.NextStep) }
                         )
+
                         Spacer(modifier = Modifier.height(MaterialTheme.dimens.size16))
 
                         Text(
@@ -257,7 +222,7 @@ fun ProfileQuestionView(
                         Spacer(modifier = Modifier.height(MaterialTheme.dimens.size48))
 
                         Text(
-                            text = stringResource(id = pageTitle),
+                            text = stringResource(id = state.currentStep.stateTitle()),
                             color = MaterialTheme.colorScheme.onPrimary,
                             style = MaterialTheme.typography.headlineLarge,
                             fontSize = MaterialTheme.dimens.font22
@@ -281,6 +246,16 @@ fun ProfileQuestionView(
                         )
                     }
 
+                    ProfileQuestionsState.ABOUT -> {
+                        AboutInput(
+                            title = stringResource(state.currentStep.stateTitle()),
+                            logo = state.currentStep.stateLogo(),
+                        ) { text ->
+                            onAction(ProfileQuestionsAction.UpdateProfileAbout(text))
+                            onAction(ProfileQuestionsAction.NextStep)
+                        }
+                    }
+
                     else -> {
                         Image(
                             modifier = Modifier
@@ -293,25 +268,17 @@ fun ProfileQuestionView(
 
                         Text(
                             modifier = Modifier.fillMaxWidth(),
-                            text = stringResource(id = pageTitle),
+                            text = stringResource(id = state.currentStep.stateTitle()),
                             color = MaterialTheme.colorScheme.onPrimary,
                             style = MaterialTheme.typography.headlineLarge,
                             fontSize = MaterialTheme.dimens.font22
                         )
-
                     }
                 }
 
                 Spacer(modifier = Modifier.height(MaterialTheme.dimens.size16))
 
                 when (state.currentStep) {
-                    ProfileQuestionsState.ABOUT -> {
-                        AboutInput() { text ->
-                            onAction(ProfileQuestionsAction.UpdateProfileAbout(text))
-                            onAction(ProfileQuestionsAction.NextStep)
-                        }
-                    }
-
                     ProfileQuestionsState.ORIENTATION -> {
                         OrientationSelector(
                             selectedOption = stringResource(id = state.profileOrientation.title),
@@ -323,11 +290,13 @@ fun ProfileQuestionView(
                     }
 
                     ProfileQuestionsState.MARITAL_STATUS -> {
-                        Button(onClick = {
-                            onAction(ProfileQuestionsAction.NextStep)
-                        }) {
-                            Text(state.currentStep.toString())
-                        }
+                        MaritalSelector(
+                            selectedOption = stringResource(id = state.profileMarital.title),
+                            onOptionSelected = { status ->
+                                onAction(ProfileQuestionsAction.UpdateProfileMarital(status))
+                                onAction(ProfileQuestionsAction.NextStep)
+                            }
+                        )
                     }
 
                     ProfileQuestionsState.CHILDREN -> {

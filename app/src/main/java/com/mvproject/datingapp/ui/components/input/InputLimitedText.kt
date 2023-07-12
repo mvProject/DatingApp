@@ -73,7 +73,7 @@ fun InputLimitedText(
             )
         },
         keyboardOptions = KeyboardOptions.Default.copy(
-            imeAction = ImeAction.Done,
+            imeAction = ImeAction.Default,
             keyboardType = KeyboardType.Password
         ),
         supportingText = {

@@ -66,6 +66,12 @@ class ProfileQuestionViewModel @Inject constructor(
                     it.copy(profileOrientation = action.data)
                 }
             }
+
+            is ProfileQuestionsAction.UpdateProfileMarital -> {
+                _profileQuestionsDataState.update {
+                    it.copy(profileMarital = action.data)
+                }
+            }
         }
 
         Timber.w("testing user info ${profileQuestionsDataState.value}")
