@@ -1,0 +1,21 @@
+<!--
+  ~ Create by Medvediev Viktor
+  ~ last update: 07.06.23, 12:03
+  ~
+  ~ Copyright (c) 2023
+  ~
+  -->
+
+<resources>
+    <string name="btn_title_sign_in">Sign In</string>
+    <string name="btn_title_sign_google">Continue with Google</string>
+    <string name="btn_title_sign_facebook">Continue with Facebook</string>
+    <string name="btn_title_forgot_password">Forgot password?</string>
+    <string name="btn_title_sign_up">Sign Up</string>
+    <string name="btn_title_ok">Ок</string>
+    <string name="btn_title_send">Send</string>
+    <string name="btn_title_continue">Continue</string>
+    <string name="btn_title_save">Save</string>
+    <string name="btn_title_select_photo">Select photo</string>
+    <string name="btn_title_save_password">Save new password</string>
+</resources>

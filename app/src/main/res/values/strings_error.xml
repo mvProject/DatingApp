@@ -1,0 +1,14 @@
+<!--
+  ~ Create by Medvediev Viktor
+  ~ last update: 07.06.23, 12:03
+  ~
+  ~ Copyright (c) 2023
+  ~
+  -->
+
+<resources>
+    <string name="msg_error_login_validation">Incorrect email address or password</string>
+    <string name="msg_error_mail_validation">Incorrect email address</string>
+    <string name="msg_error_name_empty">Name must not be empty</string>
+    <string name="msg_error_pass_create_confirm">Create password and Confirm password are not validate</string>
+</resources>

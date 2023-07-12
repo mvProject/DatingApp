@@ -1,0 +1,23 @@
+<!--
+  ~ Create by Medvediev Viktor
+  ~ last update: 07.06.23, 12:03
+  ~
+  ~ Copyright (c) 2023
+  ~
+  -->
+
+<resources>
+    <string name="dlg_psw_sent_title">Thank you!</string>
+    <string name="dlg_psw_sent_description">We have sent a verification code to email if an account was linked to it in the database</string>
+    <string name="dlg_psw_save_title">New password saved!</string>
+    <string name="dlg_psw_save_description">To change your password, you need to go to Profile</string>
+
+    <string name="dlg_code_validation_error_title">Error.</string>
+    <string name="dlg_code_validation_error_description">Your code is not correct</string>
+
+    <string name="dlg_date_validation_error_title">Error.</string>
+    <string name="dlg_date_validation_error_description">Your birthday is not correct</string>
+    <string name="dlg_age_validation_error_description">Your younger…</string>
+
+
+</resources>

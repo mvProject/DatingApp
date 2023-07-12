@@ -1,0 +1,62 @@
+<!--
+  ~ Create by Medvediev Viktor
+  ~ last update: 07.06.23, 12:03
+  ~
+  ~ Copyright (c) 2023
+  ~
+  -->
+
+<resources>
+    <string name="scr_reset_password_title">Reset password</string>
+    <string name="scr_reset_password_description">The password must contain at least 8 characters and at least one letter character</string>
+
+    <string name="scr_request_reset_password_title">Can\'t sign in?</string>
+    <string name="scr_request_reset_password_description">Enter your email and we will send you a verification code:</string>
+
+    <string name="scr_code_verify_title">Enter verify code</string>
+    <string name="scr_code_verify_code_send">We have sent a verification code to this email:</string>
+    <string name="scr_code_verify_code_receive_timer">You will receive a message within</string>
+    <string name="scr_code_verify_code_receive_value">%1$s sec</string>
+    <string name="scr_code_verify_code_receive">We sent it to </string>
+    <string name="scr_code_verify_change_email">Change email?</string>
+    <string name="scr_code_verify_code_send_retry">Try again</string>
+
+    <string name="scr_auth_title_welcome">Welcome back!</string>
+    <string name="scr_auth_title_no_account">Don’t have an account?</string>
+    <string name="scr_auth_title_or">or</string>
+
+    <string name="scr_auth_gender_title">I am a …</string>
+    <string name="scr_auth_gender_man">Man</string>
+    <string name="scr_auth_gender_woman">Woman</string>
+
+    <string name="scr_auth_date_select_title">Nice to meet you %1$s. When is your birthday?</string>
+    <string name="scr_auth_date_select_description">Your profile only shows your age.</string>
+
+    <string name="scr_auth_name_select_title">My name is …</string>
+    <string name="scr_auth_name_select_description">This name will appear on the profile.</string>
+
+    <string name="scr_auth_mail_select_title">Enter your email</string>
+    <string name="scr_auth_mail_select_description">This is required to verify your account.</string>
+
+    <string name="scr_auth_pswd_select_title">Choose password</string>
+    <string name="scr_auth_pswd_select_description">It must be unique, contain at least 8 characters, and not be used anywhere else.</string>
+
+    <string name="scr_auth_interest_select_title">What are you interested in?</string>
+    <string name="scr_auth_interest_select_date">I want to date</string>
+    <string name="scr_auth_interest_select_relationship">I want a relationship</string>
+    <string name="scr_auth_interest_select_chat">I just want to chat</string>
+    <string name="scr_auth_interest_select_love">I want to find love</string>
+    <string name="scr_auth_interest_select_misc">I haven\'t decided yet</string>
+
+    <string name="scr_auth_location_select_title">Where are you from?</string>
+    <string name="scr_auth_location_country_title">Country</string>
+    <string name="scr_auth_location_region_title">Region</string>
+    <string name="scr_auth_location_city_title">City</string>
+
+    <string name="scr_auth_privacy_email">We will not share your email with anyone</string>
+    <string name="scr_auth_privacy_birthdate">We do not use this data for other purposes</string>
+
+    <string name="scr_auth_photo_select_title">Add your photos</string>
+    <string name="scr_auth_photo_select_description">Upload 2 photos to get started. Profiles with more than 4 photos get more likes.</string>
+
+</resources>
