@@ -44,6 +44,7 @@ import coil.compose.rememberAsyncImagePainter
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
 import com.mvproject.datingapp.ui.components.input.about.AboutInput
+import com.mvproject.datingapp.ui.components.selectors.ChildrenSelector
 import com.mvproject.datingapp.ui.components.selectors.MaritalSelector
 import com.mvproject.datingapp.ui.components.selectors.OrientationSelector
 import com.mvproject.datingapp.ui.screens.main.questionaire.action.ProfileQuestionsAction
@@ -252,7 +253,6 @@ fun ProfileQuestionView(
                             logo = state.currentStep.stateLogo(),
                         ) { text ->
                             onAction(ProfileQuestionsAction.UpdateProfileAbout(text))
-                            onAction(ProfileQuestionsAction.NextStep)
                         }
                     }
 
@@ -284,7 +284,6 @@ fun ProfileQuestionView(
                             selectedOption = stringResource(id = state.profileOrientation.title),
                             onOptionSelected = { orientation ->
                                 onAction(ProfileQuestionsAction.UpdateProfileOrientation(orientation))
-                                onAction(ProfileQuestionsAction.NextStep)
                             }
                         )
                     }
@@ -294,17 +293,17 @@ fun ProfileQuestionView(
                             selectedOption = stringResource(id = state.profileMarital.title),
                             onOptionSelected = { status ->
                                 onAction(ProfileQuestionsAction.UpdateProfileMarital(status))
-                                onAction(ProfileQuestionsAction.NextStep)
                             }
                         )
                     }
 
                     ProfileQuestionsState.CHILDREN -> {
-                        Button(onClick = {
-                            onAction(ProfileQuestionsAction.NextStep)
-                        }) {
-                            Text(state.currentStep.toString())
-                        }
+                        ChildrenSelector(
+                            selectedOption = stringResource(id = state.profileChildren.title),
+                            onOptionSelected = { status ->
+                                onAction(ProfileQuestionsAction.UpdateProfileChildren(status))
+                            }
+                        )
                     }
 
                     ProfileQuestionsState.HEIGHT -> {

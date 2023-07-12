@@ -41,4 +41,9 @@
     <string name="option_marital_in_relationship">In a relationship</string>
     <string name="option_marital_complicated">It\'s Complicated</string>
     <string name="option_marital_open_relationship">In an open relationship</string>
+
+    <string name="option_children_sometime">I want sometime</string>
+    <string name="option_children_soon">I want soon</string>
+    <string name="option_children_no_want_children">I don\'t want children</string>
+    <string name="option_children_have_children">I have children</string>
 </resources>
