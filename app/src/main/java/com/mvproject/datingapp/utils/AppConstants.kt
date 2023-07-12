@@ -26,6 +26,7 @@ const val WEIGHT_1 = 1f
 const val WEIGHT_2 = 2f
 
 const val STEP_1 = 1
+const val PHOTO_COLUMNS_COUNT = 3
 
 
 const val CODE_TIMER_VALUE = 30000L
