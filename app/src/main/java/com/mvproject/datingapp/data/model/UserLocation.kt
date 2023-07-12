@@ -8,14 +8,15 @@
 
 package com.mvproject.datingapp.data.model
 
+import com.mvproject.datingapp.dummy.DEFAULT_LOCATION_INDEX
 import com.mvproject.datingapp.dummy.cities
 import com.mvproject.datingapp.dummy.countries
 import com.mvproject.datingapp.dummy.regions
 
 data class UserLocation(
-    val country: String = countries.first(),
-    val region: String = regions.first(),
-    val city: String = cities.first(),
+    val country: String = countries[DEFAULT_LOCATION_INDEX],
+    val region: String = regions[DEFAULT_LOCATION_INDEX],
+    val city: String = cities[DEFAULT_LOCATION_INDEX],
 ) {
     override fun toString(): String {
         return "$country;$region;$city"
