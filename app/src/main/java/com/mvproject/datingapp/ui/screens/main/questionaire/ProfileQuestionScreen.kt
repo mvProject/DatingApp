@@ -45,6 +45,7 @@ import com.mvproject.datingapp.R
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
 import com.mvproject.datingapp.ui.components.input.about.AboutInput
 import com.mvproject.datingapp.ui.components.selectors.ChildrenSelector
+import com.mvproject.datingapp.ui.components.selectors.HeightSelector
 import com.mvproject.datingapp.ui.components.selectors.MaritalSelector
 import com.mvproject.datingapp.ui.components.selectors.OrientationSelector
 import com.mvproject.datingapp.ui.screens.main.questionaire.action.ProfileQuestionsAction
@@ -142,10 +143,12 @@ fun ProfileQuestionView(
                     .imePadding()
                     .padding(paddingValues)
                     .fillMaxSize()
+                    // .padding(
+                    //     horizontal = MaterialTheme.dimens.size24
+                    // )
                     .padding(
-                        horizontal = MaterialTheme.dimens.size24
-                    )
-                    .padding(
+                        start = MaterialTheme.dimens.size16,
+                        end = MaterialTheme.dimens.size16,
                         bottom = MaterialTheme.dimens.size16
                     ),
                 verticalArrangement = Arrangement.Top,
@@ -167,7 +170,8 @@ fun ProfileQuestionView(
                         Spacer(modifier = Modifier.weight(WEIGHT_1))
 
                         Text(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .padding(horizontal = MaterialTheme.dimens.size8),
                             text = stringResource(id = state.currentStep.stateTitle()),
                             color = MaterialTheme.colorScheme.onPrimary,
                             style = MaterialTheme.typography.displayLarge,
@@ -185,7 +189,8 @@ fun ProfileQuestionView(
                         Spacer(modifier = Modifier.weight(WEIGHT_3))
 
                         GradientButton(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .padding(horizontal = MaterialTheme.dimens.size8),
                             title = stringResource(id = R.string.btn_title_start),
                             onClick = { onAction(ProfileQuestionsAction.NextStep) }
                         )
@@ -232,6 +237,8 @@ fun ProfileQuestionView(
                         Spacer(modifier = Modifier.height(MaterialTheme.dimens.size16))
 
                         Text(
+                            modifier = Modifier
+                                .padding(horizontal = MaterialTheme.dimens.size8),
                             text = stringResource(id = R.string.questionnaire_end_description),
                             color = MaterialTheme.colorScheme.onPrimary,
                             style = MaterialTheme.typography.labelLarge,
@@ -241,7 +248,8 @@ fun ProfileQuestionView(
                         Spacer(modifier = Modifier.weight(WEIGHT_1))
 
                         GradientButton(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .padding(horizontal = MaterialTheme.dimens.size8),
                             title = stringResource(id = R.string.btn_title_ok),
                             onClick = onNavigateNext
                         )
@@ -249,6 +257,7 @@ fun ProfileQuestionView(
 
                     ProfileQuestionsState.ABOUT -> {
                         AboutInput(
+                            modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
                             title = stringResource(state.currentStep.stateTitle()),
                             logo = state.currentStep.stateLogo(),
                         ) { text ->
@@ -267,7 +276,9 @@ fun ProfileQuestionView(
                         Spacer(modifier = Modifier.height(MaterialTheme.dimens.size24))
 
                         Text(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = MaterialTheme.dimens.size8),
                             text = stringResource(id = state.currentStep.stateTitle()),
                             color = MaterialTheme.colorScheme.onPrimary,
                             style = MaterialTheme.typography.headlineLarge,
@@ -281,6 +292,7 @@ fun ProfileQuestionView(
                 when (state.currentStep) {
                     ProfileQuestionsState.ORIENTATION -> {
                         OrientationSelector(
+                            modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
                             selectedOption = stringResource(id = state.profileOrientation.title),
                             onOptionSelected = { orientation ->
                                 onAction(ProfileQuestionsAction.UpdateProfileOrientation(orientation))
@@ -290,6 +302,7 @@ fun ProfileQuestionView(
 
                     ProfileQuestionsState.MARITAL_STATUS -> {
                         MaritalSelector(
+                            modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
                             selectedOption = stringResource(id = state.profileMarital.title),
                             onOptionSelected = { status ->
                                 onAction(ProfileQuestionsAction.UpdateProfileMarital(status))
@@ -299,6 +312,7 @@ fun ProfileQuestionView(
 
                     ProfileQuestionsState.CHILDREN -> {
                         ChildrenSelector(
+                            modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
                             selectedOption = stringResource(id = state.profileChildren.title),
                             onOptionSelected = { status ->
                                 onAction(ProfileQuestionsAction.UpdateProfileChildren(status))
@@ -307,11 +321,11 @@ fun ProfileQuestionView(
                     }
 
                     ProfileQuestionsState.HEIGHT -> {
-                        Button(onClick = {
-                            onAction(ProfileQuestionsAction.NextStep)
-                        }) {
-                            Text(state.currentStep.toString())
-                        }
+                        HeightSelector(
+                            onOptionSelected = { userHeight ->
+                                onAction(ProfileQuestionsAction.UpdateProfileHeight(userHeight))
+                            }
+                        )
                     }
 
                     ProfileQuestionsState.ZODIAC -> {

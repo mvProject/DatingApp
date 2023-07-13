@@ -51,12 +51,6 @@ class ProfileQuestionViewModel @Inject constructor(
             }
 
             is ProfileQuestionsAction.UpdateProfileAbout -> {
-                /*                val aboutInfo = action.data
-                                if (aboutInfo.isNotEmpty()) {
-                                    _profileQuestionsDataState.update {
-                                        it.copy(profileAbout = action.data)
-                                    }
-                                }*/
                 _profileQuestionsDataState.value = updatedState(
                     newState = profileQuestionsDataState.value.currentStep.nextState()
                 ).copy(profileAbout = action.data)
@@ -66,27 +60,24 @@ class ProfileQuestionViewModel @Inject constructor(
                 _profileQuestionsDataState.value = updatedState(
                     newState = profileQuestionsDataState.value.currentStep.nextState()
                 ).copy(profileOrientation = action.data)
-                // _profileQuestionsDataState.update {
-                //     it.copy(profileOrientation = action.data)
-                // }
             }
 
             is ProfileQuestionsAction.UpdateProfileMarital -> {
-                /*                _profileQuestionsDataState.update {
-                                    it.copy(profileMarital = action.data)
-                                }*/
                 _profileQuestionsDataState.value = updatedState(
                     newState = profileQuestionsDataState.value.currentStep.nextState()
                 ).copy(profileMarital = action.data)
             }
 
             is ProfileQuestionsAction.UpdateProfileChildren -> {
-                /*                _profileQuestionsDataState.update {
-                                    it.copy(profileChildren = action.data)
-                                }*/
                 _profileQuestionsDataState.value = updatedState(
                     newState = profileQuestionsDataState.value.currentStep.nextState()
                 ).copy(profileChildren = action.data)
+            }
+
+            is ProfileQuestionsAction.UpdateProfileHeight -> {
+                _profileQuestionsDataState.value = updatedState(
+                    newState = profileQuestionsDataState.value.currentStep.nextState()
+                ).copy(userHeight = action.data)
             }
         }
 
