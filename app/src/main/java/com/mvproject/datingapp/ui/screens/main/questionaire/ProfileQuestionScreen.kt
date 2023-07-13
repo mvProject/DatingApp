@@ -44,6 +44,7 @@ import coil.compose.rememberAsyncImagePainter
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
 import com.mvproject.datingapp.ui.components.input.about.AboutInput
+import com.mvproject.datingapp.ui.components.selectors.AlcoholSelector
 import com.mvproject.datingapp.ui.components.selectors.ChildrenSelector
 import com.mvproject.datingapp.ui.components.selectors.HeightSelector
 import com.mvproject.datingapp.ui.components.selectors.MaritalSelector
@@ -340,11 +341,13 @@ fun ProfileQuestionView(
                     }
 
                     ProfileQuestionsState.ALCOHOL -> {
-                        Button(onClick = {
-                            onAction(ProfileQuestionsAction.NextStep)
-                        }) {
-                            Text(state.currentStep.toString())
-                        }
+                        AlcoholSelector(
+                            modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                            selectedOption = stringResource(id = state.profileAlcohol.title),
+                            onOptionSelected = { status ->
+                                onAction(ProfileQuestionsAction.UpdateProfileAlcohol(status))
+                            }
+                        )
                     }
 
                     ProfileQuestionsState.SMOKE -> {

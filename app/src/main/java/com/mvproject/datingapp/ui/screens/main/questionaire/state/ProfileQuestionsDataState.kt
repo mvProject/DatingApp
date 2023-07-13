@@ -8,6 +8,7 @@
 
 package com.mvproject.datingapp.ui.screens.main.questionaire.state
 
+import com.mvproject.datingapp.data.enums.ProfileAlcohol
 import com.mvproject.datingapp.data.enums.ProfileChildren
 import com.mvproject.datingapp.data.enums.ProfileMarital
 import com.mvproject.datingapp.data.enums.ProfileOrientation
@@ -24,6 +25,7 @@ data class ProfileQuestionsDataState(
     val currentStep: ProfileQuestionsState = ProfileQuestionsState.START,
     val userHeight: UserHeight = UserHeight(),
     val profileZodiac: ProfileZodiac = ProfileZodiac.ZODIAC_LEO,
+    val profileAlcohol: ProfileAlcohol = ProfileAlcohol.ALCOHOL_OFTEN,
     val currentStepProgress: Float = ProfileQuestionsState.START.completeContentProgress(),
     val isComplete: Boolean = false
 )

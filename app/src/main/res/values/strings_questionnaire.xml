@@ -72,4 +72,9 @@
     <string name="option_zodiac_pisces">Pisces</string>
     <string name="option_zodiac_pisces_date">(Feb 20 — Mar 20)</string>
 
+    <string name="option_alcohol_company">For company</string>
+    <string name="option_alcohol_never">Never</string>
+    <string name="option_alcohol_often">Often</string>
+    <string name="option_alcohol_abstain">I abstain from alcohol</string>
+
 </resources>
