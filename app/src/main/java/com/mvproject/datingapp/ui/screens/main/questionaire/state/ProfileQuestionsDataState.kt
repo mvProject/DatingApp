@@ -12,6 +12,7 @@ import com.mvproject.datingapp.data.enums.ProfileAlcohol
 import com.mvproject.datingapp.data.enums.ProfileChildren
 import com.mvproject.datingapp.data.enums.ProfileMarital
 import com.mvproject.datingapp.data.enums.ProfileOrientation
+import com.mvproject.datingapp.data.enums.ProfileSmoke
 import com.mvproject.datingapp.data.enums.ProfileZodiac
 import com.mvproject.datingapp.data.model.UserHeight
 import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestionsState.Companion.completeContentProgress
@@ -26,6 +27,7 @@ data class ProfileQuestionsDataState(
     val userHeight: UserHeight = UserHeight(),
     val profileZodiac: ProfileZodiac = ProfileZodiac.ZODIAC_LEO,
     val profileAlcohol: ProfileAlcohol = ProfileAlcohol.ALCOHOL_OFTEN,
+    val profileSmoke: ProfileSmoke = ProfileSmoke.SMOKE_SOMETIMES,
     val currentStepProgress: Float = ProfileQuestionsState.START.completeContentProgress(),
     val isComplete: Boolean = false
 )

@@ -77,4 +77,8 @@
     <string name="option_alcohol_often">Often</string>
     <string name="option_alcohol_abstain">I abstain from alcohol</string>
 
+    <string name="option_smoke_yes">Yes</string>
+    <string name="option_smoke_no">No</string>
+    <string name="option_smoke_sometimes">Sometimes</string>
+
 </resources>

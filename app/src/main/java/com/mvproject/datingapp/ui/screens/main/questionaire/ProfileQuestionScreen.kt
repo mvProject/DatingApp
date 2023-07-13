@@ -49,6 +49,7 @@ import com.mvproject.datingapp.ui.components.selectors.ChildrenSelector
 import com.mvproject.datingapp.ui.components.selectors.HeightSelector
 import com.mvproject.datingapp.ui.components.selectors.MaritalSelector
 import com.mvproject.datingapp.ui.components.selectors.OrientationSelector
+import com.mvproject.datingapp.ui.components.selectors.SmokeSelector
 import com.mvproject.datingapp.ui.components.selectors.ZodiacSelector
 import com.mvproject.datingapp.ui.screens.main.questionaire.action.ProfileQuestionsAction
 import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestionsDataState
@@ -351,11 +352,13 @@ fun ProfileQuestionView(
                     }
 
                     ProfileQuestionsState.SMOKE -> {
-                        Button(onClick = {
-                            onAction(ProfileQuestionsAction.NextStep)
-                        }) {
-                            Text(state.currentStep.toString())
-                        }
+                        SmokeSelector(
+                            modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                            selectedOption = stringResource(id = state.profileSmoke.title),
+                            onOptionSelected = { status ->
+                                onAction(ProfileQuestionsAction.UpdateProfileSmoke(status))
+                            }
+                        )
                     }
 
                     ProfileQuestionsState.PSY_ORIENTATION -> {
