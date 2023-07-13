@@ -79,6 +79,12 @@ class ProfileQuestionViewModel @Inject constructor(
                     newState = profileQuestionsDataState.value.currentStep.nextState()
                 ).copy(userHeight = action.data)
             }
+
+            is ProfileQuestionsAction.UpdateProfileZodiac -> {
+                _profileQuestionsDataState.value = updatedState(
+                    newState = profileQuestionsDataState.value.currentStep.nextState()
+                ).copy(profileZodiac = action.data)
+            }
         }
 
         Timber.w("testing user info ${profileQuestionsDataState.value}")

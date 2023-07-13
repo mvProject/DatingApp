@@ -46,4 +46,30 @@
     <string name="option_children_soon">I want soon</string>
     <string name="option_children_no_want_children">I don\'t want children</string>
     <string name="option_children_have_children">I have children</string>
+
+    <string name="option_zodiac_aries">Aries</string>
+    <string name="option_zodiac_aries_date">(Mar 21 — Apr 20)</string>
+    <string name="option_zodiac_taurus">Taurus</string>
+    <string name="option_zodiac_taurus_date">(Apr 21 — May 22)</string>
+    <string name="option_zodiac_gemini">Gemini</string>
+    <string name="option_zodiac_gemini_date">(May 23 — Jun 21)</string>
+    <string name="option_zodiac_cancer">Cancer</string>
+    <string name="option_zodiac_cancer_date">(Jun 22 — Jul 22)</string>
+    <string name="option_zodiac_leo">Leo</string>
+    <string name="option_zodiac_leo_date">(Jul 23 — Aug 22)</string>
+    <string name="option_zodiac_virgo">Virgo</string>
+    <string name="option_zodiac_virgo_date">(Aug 23 — Sep 22)</string>
+    <string name="option_zodiac_libra">Libra</string>
+    <string name="option_zodiac_libra_date">(Sep 23 — Oct 22)</string>
+    <string name="option_zodiac_scorpio">Scorpio</string>
+    <string name="option_zodiac_scorpio_date">(Oct 23 — Nov 21)</string>
+    <string name="option_zodiac_sagittarius">Sagittarius</string>
+    <string name="option_zodiac_sagittarius_date">(Nov 22 — Dec 22)</string>
+    <string name="option_zodiac_capricorn">Capricorn</string>
+    <string name="option_zodiac_capricorn_date">(Dec 23 — Jan 20)</string>
+    <string name="option_zodiac_aquarius">Aquarius</string>
+    <string name="option_zodiac_aquarius_date">(Jan 21 — Feb 19)</string>
+    <string name="option_zodiac_pisces">Pisces</string>
+    <string name="option_zodiac_pisces_date">(Feb 20 — Mar 20)</string>
+
 </resources>
