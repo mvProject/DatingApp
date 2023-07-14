@@ -85,4 +85,19 @@
     <string name="option_psy_orientation_extravert">Extravert</string>
     <string name="option_psy_orientation_between">Somewhere between</string>
 
+    <string name="option_religion_agnosticism">Agnosticism</string>
+    <string name="option_religion_atheism">Atheism</string>
+    <string name="option_religion_buddhism">Buddhism</string>
+    <string name="option_religion_catholicism">Catholicism</string>
+    <string name="option_religion_christianity">Christianity</string>
+    <string name="option_religion_hinduism">Hinduism</string>
+    <string name="option_religion_jainism">Jainism</string>
+    <string name="option_religion_judaism">Judaism</string>
+    <string name="option_religion_mormonism">Mormonism</string>
+    <string name="option_religion_islam">Islam</string>
+    <string name="option_religion_zoroastrianism">Zoroastrianism</string>
+    <string name="option_religion_sikhism">Sikhism</string>
+    <string name="option_religion_spiritualism">Spiritualism</string>
+    <string name="option_religion_other">Other</string>
+
 </resources>

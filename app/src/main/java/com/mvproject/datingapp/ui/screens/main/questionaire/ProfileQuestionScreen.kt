@@ -50,6 +50,7 @@ import com.mvproject.datingapp.ui.components.selectors.HeightSelector
 import com.mvproject.datingapp.ui.components.selectors.MaritalSelector
 import com.mvproject.datingapp.ui.components.selectors.OrientationSelector
 import com.mvproject.datingapp.ui.components.selectors.PsyOrientationSelector
+import com.mvproject.datingapp.ui.components.selectors.ReligionSelector
 import com.mvproject.datingapp.ui.components.selectors.SmokeSelector
 import com.mvproject.datingapp.ui.components.selectors.ZodiacSelector
 import com.mvproject.datingapp.ui.screens.main.questionaire.action.ProfileQuestionsAction
@@ -376,11 +377,13 @@ fun ProfileQuestionView(
                     }
 
                     ProfileQuestionsState.RELIGION -> {
-                        Button(onClick = {
-                            onAction(ProfileQuestionsAction.NextStep)
-                        }) {
-                            Text(state.currentStep.toString())
-                        }
+                        ReligionSelector(
+                            modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                            selectedOption = stringResource(id = state.profileReligion.title),
+                            onOptionSelected = { religion ->
+                                onAction(ProfileQuestionsAction.UpdateProfileReligion(religion))
+                            }
+                        )
                     }
 
                     ProfileQuestionsState.LANGUAGES -> {

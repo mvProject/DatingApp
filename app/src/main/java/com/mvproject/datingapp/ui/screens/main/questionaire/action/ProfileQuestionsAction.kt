@@ -13,6 +13,7 @@ import com.mvproject.datingapp.data.enums.ProfileChildren
 import com.mvproject.datingapp.data.enums.ProfileMarital
 import com.mvproject.datingapp.data.enums.ProfileOrientation
 import com.mvproject.datingapp.data.enums.ProfilePsyOrientation
+import com.mvproject.datingapp.data.enums.ProfileReligion
 import com.mvproject.datingapp.data.enums.ProfileSmoke
 import com.mvproject.datingapp.data.enums.ProfileZodiac
 import com.mvproject.datingapp.data.model.UserHeight
@@ -28,6 +29,8 @@ sealed class ProfileQuestionsAction {
     data class UpdateProfileSmoke(val data: ProfileSmoke) : ProfileQuestionsAction()
     data class UpdateProfilePsyOrientation(val data: ProfilePsyOrientation) :
         ProfileQuestionsAction()
+
+    data class UpdateProfileReligion(val data: ProfileReligion) : ProfileQuestionsAction()
     object NextStep : ProfileQuestionsAction()
     object PrevStep : ProfileQuestionsAction()
 }

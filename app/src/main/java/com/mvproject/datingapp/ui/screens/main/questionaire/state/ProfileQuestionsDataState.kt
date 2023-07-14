@@ -13,6 +13,7 @@ import com.mvproject.datingapp.data.enums.ProfileChildren
 import com.mvproject.datingapp.data.enums.ProfileMarital
 import com.mvproject.datingapp.data.enums.ProfileOrientation
 import com.mvproject.datingapp.data.enums.ProfilePsyOrientation
+import com.mvproject.datingapp.data.enums.ProfileReligion
 import com.mvproject.datingapp.data.enums.ProfileSmoke
 import com.mvproject.datingapp.data.enums.ProfileZodiac
 import com.mvproject.datingapp.data.model.UserHeight
@@ -30,6 +31,7 @@ data class ProfileQuestionsDataState(
     val profileAlcohol: ProfileAlcohol = ProfileAlcohol.ALCOHOL_OFTEN,
     val profileSmoke: ProfileSmoke = ProfileSmoke.SMOKE_SOMETIMES,
     val profilePsyOrientation: ProfilePsyOrientation = ProfilePsyOrientation.PSY_ORIENTATION_BETWEEN,
+    val profileReligion: ProfileReligion = ProfileReligion.RELIGION_CATHOLICISM,
     val currentStepProgress: Float = ProfileQuestionsState.START.completeContentProgress(),
     val isComplete: Boolean = false
 )
