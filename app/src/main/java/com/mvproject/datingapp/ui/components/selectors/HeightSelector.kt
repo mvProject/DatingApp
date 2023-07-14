@@ -29,12 +29,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.model.UserHeight
-import com.mvproject.datingapp.ui.components.RadioSelectorInverted
+import com.mvproject.datingapp.ui.components.CheckSelectorInverted
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.WEIGHT_1
-import timber.log.Timber
 
 @Composable
 fun HeightSelector(
@@ -70,12 +69,11 @@ fun HeightSelector(
             value = sliderValue,
             onValueChange = { value ->
                 sliderValue = value
-                isHeightNotVisible = false
             },
             steps = 0,
             valueRange = 150f..200f,
             onValueChangeFinished = {
-                Timber.w("testing sliderValue = ${sliderValue.toInt()}")
+                isHeightNotVisible = false
             },
             colors = SliderDefaults.colors(
                 activeTrackColor = MaterialTheme.colorScheme.secondary,
@@ -83,12 +81,12 @@ fun HeightSelector(
             )
         )
 
-        RadioSelectorInverted(
+        CheckSelectorInverted(
             modifier = Modifier.fillMaxWidth(),
             text = stringResource(id = R.string.option_not_set),
             isSelected = isHeightNotVisible,
             onSelect = {
-                isHeightNotVisible = true
+                isHeightNotVisible = !isHeightNotVisible
             }
         )
 

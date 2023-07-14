@@ -12,9 +12,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.RadioButton
-import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,7 +24,7 @@ import com.mvproject.datingapp.utils.WEIGHT_1
 import com.mvproject.datingapp.utils.textColor
 
 @Composable
-fun RadioSelectorInverted(
+fun CheckSelectorInverted(
     modifier: Modifier = Modifier,
     text: String,
     isSelected: Boolean,
@@ -40,11 +40,14 @@ fun RadioSelectorInverted(
         horizontalArrangement = Arrangement.SpaceAround
 
     ) {
-        RadioButton(
-            selected = isSelected,
-            onClick = { onSelect(text) },
-            colors = RadioButtonDefaults.colors(
-                selectedColor = MaterialTheme.colorScheme.secondaryContainer,
+        Checkbox(
+            checked = isSelected,
+            onCheckedChange = {
+                onSelect(text)
+            },
+            colors = CheckboxDefaults.colors(
+                checkedColor = MaterialTheme.colorScheme.secondaryContainer,
+                checkmarkColor = MaterialTheme.colorScheme.onPrimaryContainer
             )
         )
 
