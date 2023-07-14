@@ -10,6 +10,7 @@ package com.mvproject.datingapp.ui.screens.main.questionaire.action
 
 import com.mvproject.datingapp.data.enums.ProfileAlcohol
 import com.mvproject.datingapp.data.enums.ProfileChildren
+import com.mvproject.datingapp.data.enums.ProfileLanguage
 import com.mvproject.datingapp.data.enums.ProfileMarital
 import com.mvproject.datingapp.data.enums.ProfileOrientation
 import com.mvproject.datingapp.data.enums.ProfilePsyOrientation
@@ -31,6 +32,7 @@ sealed class ProfileQuestionsAction {
         ProfileQuestionsAction()
 
     data class UpdateProfileReligion(val data: ProfileReligion) : ProfileQuestionsAction()
+    data class UpdateProfileLanguages(val data: List<ProfileLanguage>) : ProfileQuestionsAction()
     object NextStep : ProfileQuestionsAction()
     object PrevStep : ProfileQuestionsAction()
 }

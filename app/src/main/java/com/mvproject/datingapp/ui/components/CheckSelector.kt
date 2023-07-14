@@ -35,7 +35,8 @@ fun CheckSelector(
     text: String,
     logo: Painter? = null,
     isSelected: Boolean,
-    onSelect: (String) -> Unit = {}
+    onSelect: (String) -> Unit = {},
+    onDeselect: (String) -> Unit = {}
 ) {
     Row(
         Modifier
@@ -43,7 +44,11 @@ fun CheckSelector(
             .selectable(
                 selected = isSelected,
                 onClick = {
-                    onSelect(text)
+                    if (isSelected) {
+                        onDeselect(text)
+                    } else {
+                        onSelect(text)
+                    }
                 }
             )
             .background(
@@ -81,7 +86,11 @@ fun CheckSelector(
         Checkbox(
             checked = isSelected,
             onCheckedChange = {
-                onSelect(text)
+                if (isSelected) {
+                    onDeselect(text)
+                } else {
+                    onSelect(text)
+                }
             },
             colors = CheckboxDefaults.colors(
                 checkedColor = MaterialTheme.colorScheme.secondaryContainer,

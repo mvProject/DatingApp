@@ -100,4 +100,19 @@
     <string name="option_religion_spiritualism">Spiritualism</string>
     <string name="option_religion_other">Other</string>
 
+    <string name="option_language_english">English</string>
+    <string name="option_language_ukrainian">Ukrainian</string>
+    <string name="option_language_latvian">Latvian</string>
+    <string name="option_language_german">German</string>
+    <string name="option_language_french">French</string>
+    <string name="option_language_spanish">Spanish</string>
+    <string name="option_language_italian">Italian</string>
+    <string name="option_language_portuguese">Portuguese</string>
+    <string name="option_language_chinese">Chinese</string>
+    <string name="option_language_japanese">Japanese</string>
+    <string name="option_language_dutch">Dutch</string>
+    <string name="option_language_polish">Polish</string>
+    <string name="option_language_turkish">Turkish</string>
+    <string name="option_language_czech">Czech</string>
+
 </resources>

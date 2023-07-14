@@ -109,6 +109,12 @@ class ProfileQuestionViewModel @Inject constructor(
                     newState = profileQuestionsDataState.value.currentStep.nextState()
                 ).copy(profileReligion = action.data)
             }
+
+            is ProfileQuestionsAction.UpdateProfileLanguages -> {
+                _profileQuestionsDataState.value = updatedState(
+                    newState = profileQuestionsDataState.value.currentStep.nextState()
+                ).copy(profileLanguages = action.data)
+            }
         }
 
         Timber.w("testing user info ${profileQuestionsDataState.value}")

@@ -47,6 +47,7 @@ import com.mvproject.datingapp.ui.components.input.about.AboutInput
 import com.mvproject.datingapp.ui.components.selectors.AlcoholSelector
 import com.mvproject.datingapp.ui.components.selectors.ChildrenSelector
 import com.mvproject.datingapp.ui.components.selectors.HeightSelector
+import com.mvproject.datingapp.ui.components.selectors.LanguagesSelector
 import com.mvproject.datingapp.ui.components.selectors.MaritalSelector
 import com.mvproject.datingapp.ui.components.selectors.OrientationSelector
 import com.mvproject.datingapp.ui.components.selectors.PsyOrientationSelector
@@ -387,11 +388,13 @@ fun ProfileQuestionView(
                     }
 
                     ProfileQuestionsState.LANGUAGES -> {
-                        Button(onClick = {
-                            onAction(ProfileQuestionsAction.NextStep)
-                        }) {
-                            Text(state.currentStep.toString())
-                        }
+                        LanguagesSelector(
+                            modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                            selectedOptions = state.profileLanguages,
+                            onOptionSelected = { languages ->
+                                onAction(ProfileQuestionsAction.UpdateProfileLanguages(languages))
+                            }
+                        )
                     }
 
                     ProfileQuestionsState.PETS -> {

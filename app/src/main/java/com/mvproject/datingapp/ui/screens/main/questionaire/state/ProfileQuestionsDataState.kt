@@ -10,6 +10,7 @@ package com.mvproject.datingapp.ui.screens.main.questionaire.state
 
 import com.mvproject.datingapp.data.enums.ProfileAlcohol
 import com.mvproject.datingapp.data.enums.ProfileChildren
+import com.mvproject.datingapp.data.enums.ProfileLanguage
 import com.mvproject.datingapp.data.enums.ProfileMarital
 import com.mvproject.datingapp.data.enums.ProfileOrientation
 import com.mvproject.datingapp.data.enums.ProfilePsyOrientation
@@ -32,6 +33,11 @@ data class ProfileQuestionsDataState(
     val profileSmoke: ProfileSmoke = ProfileSmoke.SMOKE_SOMETIMES,
     val profilePsyOrientation: ProfilePsyOrientation = ProfilePsyOrientation.PSY_ORIENTATION_BETWEEN,
     val profileReligion: ProfileReligion = ProfileReligion.RELIGION_CATHOLICISM,
+    val profileLanguages: List<ProfileLanguage> = listOf(
+        ProfileLanguage.LANGUAGE_ENGLISH,
+        ProfileLanguage.LANGUAGE_UKRAINIAN,
+        ProfileLanguage.LANGUAGE_POLISH,
+    ),
     val currentStepProgress: Float = ProfileQuestionsState.START.completeContentProgress(),
     val isComplete: Boolean = false
 )
