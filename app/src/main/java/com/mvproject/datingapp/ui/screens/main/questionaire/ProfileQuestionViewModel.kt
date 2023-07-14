@@ -97,6 +97,12 @@ class ProfileQuestionViewModel @Inject constructor(
                     newState = profileQuestionsDataState.value.currentStep.nextState()
                 ).copy(profileSmoke = action.data)
             }
+
+            is ProfileQuestionsAction.UpdateProfilePsyOrientation -> {
+                _profileQuestionsDataState.value = updatedState(
+                    newState = profileQuestionsDataState.value.currentStep.nextState()
+                ).copy(profilePsyOrientation = action.data)
+            }
         }
 
         Timber.w("testing user info ${profileQuestionsDataState.value}")

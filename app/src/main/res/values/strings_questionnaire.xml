@@ -81,4 +81,8 @@
     <string name="option_smoke_no">No</string>
     <string name="option_smoke_sometimes">Sometimes</string>
 
+    <string name="option_psy_orientation_introvert">Introvert</string>
+    <string name="option_psy_orientation_extravert">Extravert</string>
+    <string name="option_psy_orientation_between">Somewhere between</string>
+
 </resources>

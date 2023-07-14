@@ -49,6 +49,7 @@ import com.mvproject.datingapp.ui.components.selectors.ChildrenSelector
 import com.mvproject.datingapp.ui.components.selectors.HeightSelector
 import com.mvproject.datingapp.ui.components.selectors.MaritalSelector
 import com.mvproject.datingapp.ui.components.selectors.OrientationSelector
+import com.mvproject.datingapp.ui.components.selectors.PsyOrientationSelector
 import com.mvproject.datingapp.ui.components.selectors.SmokeSelector
 import com.mvproject.datingapp.ui.components.selectors.ZodiacSelector
 import com.mvproject.datingapp.ui.screens.main.questionaire.action.ProfileQuestionsAction
@@ -362,11 +363,16 @@ fun ProfileQuestionView(
                     }
 
                     ProfileQuestionsState.PSY_ORIENTATION -> {
-                        Button(onClick = {
-                            onAction(ProfileQuestionsAction.NextStep)
-                        }) {
-                            Text(state.currentStep.toString())
-                        }
+                        PsyOrientationSelector(
+                            selectedOption = stringResource(id = state.profilePsyOrientation.title),
+                            onOptionSelected = { orientation ->
+                                onAction(
+                                    ProfileQuestionsAction.UpdateProfilePsyOrientation(
+                                        orientation
+                                    )
+                                )
+                            }
+                        )
                     }
 
                     ProfileQuestionsState.RELIGION -> {
