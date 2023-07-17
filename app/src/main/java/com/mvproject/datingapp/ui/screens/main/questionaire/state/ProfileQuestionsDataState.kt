@@ -13,6 +13,7 @@ import com.mvproject.datingapp.data.enums.ProfileChildren
 import com.mvproject.datingapp.data.enums.ProfileLanguage
 import com.mvproject.datingapp.data.enums.ProfileMarital
 import com.mvproject.datingapp.data.enums.ProfileOrientation
+import com.mvproject.datingapp.data.enums.ProfilePets
 import com.mvproject.datingapp.data.enums.ProfilePsyOrientation
 import com.mvproject.datingapp.data.enums.ProfileReligion
 import com.mvproject.datingapp.data.enums.ProfileSmoke
@@ -37,6 +38,11 @@ data class ProfileQuestionsDataState(
         ProfileLanguage.LANGUAGE_ENGLISH,
         ProfileLanguage.LANGUAGE_UKRAINIAN,
         ProfileLanguage.LANGUAGE_POLISH,
+    ),
+    val profilePets: List<ProfilePets> = listOf(
+        ProfilePets.PETS_MOUSE,
+        ProfilePets.PETS_SCORPION,
+        ProfilePets.PETS_LIZARD,
     ),
     val currentStepProgress: Float = ProfileQuestionsState.START.completeContentProgress(),
     val isComplete: Boolean = false

@@ -50,6 +50,7 @@ import com.mvproject.datingapp.ui.components.selectors.HeightSelector
 import com.mvproject.datingapp.ui.components.selectors.LanguagesSelector
 import com.mvproject.datingapp.ui.components.selectors.MaritalSelector
 import com.mvproject.datingapp.ui.components.selectors.OrientationSelector
+import com.mvproject.datingapp.ui.components.selectors.PetSelector
 import com.mvproject.datingapp.ui.components.selectors.PsyOrientationSelector
 import com.mvproject.datingapp.ui.components.selectors.ReligionSelector
 import com.mvproject.datingapp.ui.components.selectors.SmokeSelector
@@ -398,11 +399,13 @@ fun ProfileQuestionView(
                     }
 
                     ProfileQuestionsState.PETS -> {
-                        Button(onClick = {
-                            onAction(ProfileQuestionsAction.NextStep)
-                        }) {
-                            Text(state.currentStep.toString())
-                        }
+                        PetSelector(
+                            modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                            selectedOptions = state.profilePets,
+                            onOptionSelected = { pets ->
+                                onAction(ProfileQuestionsAction.UpdateProfilePets(pets))
+                            }
+                        )
                     }
 
                     ProfileQuestionsState.WORK -> {

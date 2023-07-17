@@ -115,4 +115,21 @@
     <string name="option_language_turkish">Turkish</string>
     <string name="option_language_czech">Czech</string>
 
+    <string name="option_pets_dog">Dog</string>
+    <string name="option_pets_puppy">Puppy</string>
+    <string name="option_pets_cat">Cat</string>
+    <string name="option_pets_kitten">Kitten</string>
+    <string name="option_pets_parrot">Parrot</string>
+    <string name="option_pets_hamster">Hamster</string>
+    <string name="option_pets_chinchilla">Chinchilla</string>
+    <string name="option_pets_guinea_pig">Guinea pig</string>
+    <string name="option_pets_mouse">Mouse</string>
+    <string name="option_pets_rat">Rat</string>
+    <string name="option_pets_spider">Spider</string>
+    <string name="option_pets_turtle">Turtle</string>
+    <string name="option_pets_snake">Snake</string>
+    <string name="option_pets_lizard">Lizard</string>
+    <string name="option_pets_scorpion">Scorpion</string>
+    <string name="option_pets_no">No</string>
+
 </resources>

@@ -13,6 +13,7 @@ import com.mvproject.datingapp.data.enums.ProfileChildren
 import com.mvproject.datingapp.data.enums.ProfileLanguage
 import com.mvproject.datingapp.data.enums.ProfileMarital
 import com.mvproject.datingapp.data.enums.ProfileOrientation
+import com.mvproject.datingapp.data.enums.ProfilePets
 import com.mvproject.datingapp.data.enums.ProfilePsyOrientation
 import com.mvproject.datingapp.data.enums.ProfileReligion
 import com.mvproject.datingapp.data.enums.ProfileSmoke
@@ -33,6 +34,7 @@ sealed class ProfileQuestionsAction {
 
     data class UpdateProfileReligion(val data: ProfileReligion) : ProfileQuestionsAction()
     data class UpdateProfileLanguages(val data: List<ProfileLanguage>) : ProfileQuestionsAction()
+    data class UpdateProfilePets(val data: List<ProfilePets>) : ProfileQuestionsAction()
     object NextStep : ProfileQuestionsAction()
     object PrevStep : ProfileQuestionsAction()
 }
