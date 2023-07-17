@@ -28,5 +28,16 @@ enum class ProfileChildren(
     ),
     CHILDREN_NOT_SET(
         title = R.string.option_not_set
-    )
+    );
+
+    companion object {
+        fun fromStringOrDefault(str: String?): ProfileChildren {
+            if (str == null) return CHILDREN_NO_WANT
+            return try {
+                ProfileChildren.valueOf(str)
+            } catch (ex: Exception) {
+                CHILDREN_NO_WANT
+            }
+        }
+    }
 }

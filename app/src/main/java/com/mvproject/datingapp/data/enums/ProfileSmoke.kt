@@ -25,5 +25,16 @@ enum class ProfileSmoke(
     ),
     SMOKE_NOT_SET(
         title = R.string.option_not_set
-    )
+    );
+
+    companion object {
+        fun fromStringOrDefault(str: String?): ProfileSmoke {
+            if (str == null) return SMOKE_SOMETIMES
+            return try {
+                ProfileSmoke.valueOf(str)
+            } catch (ex: Exception) {
+                SMOKE_SOMETIMES
+            }
+        }
+    }
 }

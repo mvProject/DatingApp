@@ -27,6 +27,13 @@ fun NavController.navigateToSignUp(navOptions: NavOptions? = null) {
     this.navigate(AppRoutes.SignUp.route, navOptions)
 }
 
+fun NavController.navigateToSignUpClearStack() {
+    this.popBackStack()
+    this.navigate(AppRoutes.SignUp.route) {
+        launchSingleTop = true
+    }
+}
+
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.signUpScreen(
     onNavigateBack: () -> Unit,

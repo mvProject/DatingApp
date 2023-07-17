@@ -15,15 +15,15 @@ sealed class AppRoutes(val route: String) {
     object RestoreAccess : AppRoutes(ROUTE_RESTORE_ACCESS)
     object ProfileQuestions : AppRoutes(ROUTE_PROFILE_QUESTIONS)
 
-    object PROFILE : AppRoutes(ROUTE_PROFILE)
+    object Profile : AppRoutes(ROUTE_PROFILE)
     object CHAT : AppRoutes(ROUTE_CHAT)
     object LIKES : AppRoutes(ROUTE_LIKES)
-    object DATING : AppRoutes(ROUTE_DATING)
+    object Dating : AppRoutes(ROUTE_DATING)
 
 
     object BottomBar {
         val routes = listOf(
-            DATING, CHAT, LIKES, PROFILE
+            Dating, CHAT, LIKES, Profile
         )
     }
 }

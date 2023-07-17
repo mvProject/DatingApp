@@ -22,12 +22,12 @@ import com.mvproject.datingapp.utils.ANIM_DURATION_600
 import timber.log.Timber
 
 fun NavController.navigateToDating(navOptions: NavOptions? = null) {
-    this.navigate(AppRoutes.DATING.route, navOptions)
+    this.navigate(AppRoutes.Dating.route, navOptions)
 }
 
 fun NavController.navigateToDatingClearStack() {
     this.popBackStack()
-    this.navigate(AppRoutes.DATING.route) {
+    this.navigate(AppRoutes.Dating.route) {
         launchSingleTop = true
     }
 }
@@ -37,7 +37,7 @@ fun NavGraphBuilder.datingScreen(
     onAction: () -> Unit = {}
 ) {
     composable(
-        route = AppRoutes.DATING.route,
+        route = AppRoutes.Dating.route,
         enterTransition = {
             fadeIn(animationSpec = tween(ANIM_DURATION_600))
         },
@@ -47,7 +47,7 @@ fun NavGraphBuilder.datingScreen(
     ) {
         Timber.w("testing DatingNavigation")
         DummyScreen(
-            title = AppRoutes.DATING.route,
+            title = AppRoutes.Dating.route,
         )
     }
 }

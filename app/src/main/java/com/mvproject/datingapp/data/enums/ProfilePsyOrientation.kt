@@ -25,5 +25,16 @@ enum class ProfilePsyOrientation(
     ),
     PSY_ORIENTATION_NOT_SET(
         title = R.string.option_not_set
-    )
+    );
+
+    companion object {
+        fun fromStringOrDefault(str: String?): ProfilePsyOrientation {
+            if (str == null) return PSY_ORIENTATION_BETWEEN
+            return try {
+                ProfilePsyOrientation.valueOf(str)
+            } catch (ex: Exception) {
+                PSY_ORIENTATION_BETWEEN
+            }
+        }
+    }
 }

@@ -11,13 +11,13 @@ import com.mvproject.datingapp.ui.screens.authorization.restoreAccess.navigation
 import com.mvproject.datingapp.ui.screens.authorization.restoreAccess.navigation.navigateToForgot
 import com.mvproject.datingapp.ui.screens.authorization.signin.navigation.loginScreen
 import com.mvproject.datingapp.ui.screens.authorization.signin.navigation.navigateToSignInClearStack
-import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.navigateToSignUp
+import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.navigateToSignUpClearStack
 import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.signUpScreen
 import com.mvproject.datingapp.ui.screens.main.dating.datingScreen
 import com.mvproject.datingapp.ui.screens.main.dating.navigateToDatingClearStack
 import com.mvproject.datingapp.ui.screens.main.profile.navigation.navigateToProfileClearStack
 import com.mvproject.datingapp.ui.screens.main.profile.navigation.profileScreen
-import com.mvproject.datingapp.ui.screens.main.questionaire.navigation.navigateToProfileQuestions
+import com.mvproject.datingapp.ui.screens.main.questionaire.navigation.navigateToProfileQuestionsClearStack
 import com.mvproject.datingapp.ui.screens.main.questionaire.navigation.profileQuestionsScreen
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -35,7 +35,7 @@ fun NavigationHost(
 
         loginScreen(
             onNavigationForgotAccess = navController::navigateToForgot,
-            onNavigationSignUp = navController::navigateToSignUp,
+            onNavigationSignUp = navController::navigateToSignUpClearStack,
             onNavigationHome = navController::navigateToProfileClearStack,
         )
 
@@ -47,7 +47,7 @@ fun NavigationHost(
 
         signUpScreen(
             onNavigateBack = navController::popBackStack,
-            onNavigateNext = navController::navigateToProfileQuestions
+            onNavigateNext = navController::navigateToProfileQuestionsClearStack
         )
 
         /*

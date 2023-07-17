@@ -58,5 +58,16 @@ enum class ProfileReligion(
     ),
     RELIGION_NOT_SET(
         title = R.string.option_not_set
-    )
+    );
+
+    companion object {
+        fun fromStringOrDefault(str: String?): ProfileReligion {
+            if (str == null) return RELIGION_CATHOLICISM
+            return try {
+                ProfileReligion.valueOf(str)
+            } catch (ex: Exception) {
+                RELIGION_CATHOLICISM
+            }
+        }
+    }
 }

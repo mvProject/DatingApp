@@ -12,6 +12,7 @@ import com.mvproject.datingapp.dummy.DEFAULT_LOCATION_INDEX
 import com.mvproject.datingapp.dummy.cities
 import com.mvproject.datingapp.dummy.countries
 import com.mvproject.datingapp.dummy.regions
+import com.mvproject.datingapp.utils.STRING_SEPARATOR
 
 data class UserLocation(
     val country: String = countries[DEFAULT_LOCATION_INDEX],
@@ -24,7 +25,7 @@ data class UserLocation(
 
     companion object {
         fun fromString(s: String): UserLocation {
-            val splitted = s.split(";")
+            val splitted = s.split(STRING_SEPARATOR)
             return UserLocation(
                 country = splitted[0],
                 region = splitted[1],

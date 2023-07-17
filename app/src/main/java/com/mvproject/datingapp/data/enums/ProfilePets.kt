@@ -10,6 +10,7 @@ package com.mvproject.datingapp.data.enums
 
 import androidx.annotation.StringRes
 import com.mvproject.datingapp.R
+import com.mvproject.datingapp.utils.STRING_SEPARATOR
 
 enum class ProfilePets(
     @StringRes val title: Int
@@ -61,5 +62,26 @@ enum class ProfilePets(
     ),
     PETS_NO(
         title = R.string.option_pets_no
-    )
+    );
+
+    companion object {
+        val defaultPetList = listOf(
+            PETS_MOUSE,
+            PETS_SCORPION,
+            PETS_LIZARD,
+        )
+
+        fun fromStringOrDefault(str: String?): List<ProfilePets> {
+            if (str == null) return defaultPetList
+            return try {
+                str.split(STRING_SEPARATOR)
+                    .toList()
+                    .map {
+                        ProfilePets.valueOf(it)
+                    }
+            } catch (ex: Exception) {
+                defaultPetList
+            }
+        }
+    }
 }

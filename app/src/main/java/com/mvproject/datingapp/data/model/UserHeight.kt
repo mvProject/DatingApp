@@ -8,6 +8,8 @@
 
 package com.mvproject.datingapp.data.model
 
+import com.mvproject.datingapp.utils.STRING_SEPARATOR
+
 data class UserHeight(
     val height: Int = 170,
     val isHeightNotVisible: Boolean = false
@@ -17,12 +19,17 @@ data class UserHeight(
     }
 
     companion object {
-        fun fromString(s: String): UserHeight {
-            val splitted = s.split(";")
-            return UserHeight(
-                height = splitted[0].toInt(),
-                isHeightNotVisible = splitted[1].toBoolean(),
-            )
+        fun fromStringOrDefault(str: String?): UserHeight {
+            if (str == null) return UserHeight()
+            return try {
+                val splitted = str.split(STRING_SEPARATOR)
+                UserHeight(
+                    height = splitted[0].toInt(),
+                    isHeightNotVisible = splitted[1].toBoolean(),
+                )
+            } catch (ex: Exception) {
+                UserHeight()
+            }
         }
     }
 }

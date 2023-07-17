@@ -67,6 +67,7 @@ import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.WEIGHT_1
 import com.mvproject.datingapp.utils.WEIGHT_3
+import timber.log.Timber
 
 @Composable
 fun ProfileQuestionScreen(
@@ -91,6 +92,7 @@ fun ProfileQuestionView(
 ) {
     LaunchedEffect(key1 = state) {
         if (state.isComplete) {
+            Timber.w("testing is ProfileQuestionView complete")
             onNavigateNext()
         }
     }

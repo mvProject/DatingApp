@@ -27,6 +27,13 @@ fun NavController.navigateToProfileQuestions(navOptions: NavOptions? = null) {
     this.navigate(AppRoutes.ProfileQuestions.route, navOptions)
 }
 
+fun NavController.navigateToProfileQuestionsClearStack() {
+    this.popBackStack()
+    this.navigate(AppRoutes.ProfileQuestions.route) {
+        launchSingleTop = true
+    }
+}
+
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.profileQuestionsScreen(
     onNavigateNext: () -> Unit,

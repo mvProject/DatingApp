@@ -34,6 +34,10 @@ class ProfileQuestionViewModel @Inject constructor(
     private val _profileQuestionsDataState = MutableStateFlow(ProfileQuestionsDataState())
     val profileQuestionsDataState = _profileQuestionsDataState.asStateFlow()
 
+    init {
+        Timber.w("testing ProfileQuestionViewModel Init")
+    }
+
     fun processAction(action: ProfileQuestionsAction) {
         when (action) {
             ProfileQuestionsAction.NextStep -> {
@@ -135,6 +139,7 @@ class ProfileQuestionViewModel @Inject constructor(
             is ProfileQuestionsAction.SaveProfileInfo -> {
                 viewModelScope.launch {
                     val user = preferenceRepository.getUser()
+
                     val updatedUser = user.copy(
                         profileAbout = profileQuestionsDataState.value.profileAbout,
                         profileOrientation = profileQuestionsDataState.value.profileOrientation,
@@ -153,9 +158,6 @@ class ProfileQuestionViewModel @Inject constructor(
 
                     preferenceRepository.saveUser(user = updatedUser)
 
-                    val userLoad = preferenceRepository.getUser()
-                    Timber.e("testing user $userLoad")
-
                     _profileQuestionsDataState.update {
                         it.copy(isComplete = true)
                     }
@@ -169,6 +171,10 @@ class ProfileQuestionViewModel @Inject constructor(
             currentStep = newState,
             currentStepProgress = newState.completeContentProgress()
         )
+    }
 
+    override fun onCleared() {
+        super.onCleared()
+        Timber.w("testing ProfileQuestionViewModel onCleared")
     }
 }

@@ -82,7 +82,7 @@ fun ProfileView(
 
         }*/
     DummyScreen(
-        title = AppRoutes.PROFILE.route,
+        title = AppRoutes.Profile.route,
         buttonFirstTitle = "Logout",
         buttonFirstAction = onLogout
     )

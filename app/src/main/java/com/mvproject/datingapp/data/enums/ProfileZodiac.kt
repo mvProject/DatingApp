@@ -67,5 +67,16 @@ enum class ProfileZodiac(
     ZODIAC_NOT_SET(
         title = R.string.option_not_set,
         date = INT_ZERO
-    )
+    );
+
+    companion object {
+        fun fromStringOrDefault(str: String?): ProfileZodiac {
+            if (str == null) return ZODIAC_LEO
+            return try {
+                ProfileZodiac.valueOf(str)
+            } catch (ex: Exception) {
+                ZODIAC_LEO
+            }
+        }
+    }
 }

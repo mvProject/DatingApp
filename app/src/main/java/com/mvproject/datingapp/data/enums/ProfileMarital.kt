@@ -28,5 +28,16 @@ enum class ProfileMarital(
     ),
     MARITAL_NOT_SET(
         title = R.string.option_not_set
-    )
+    );
+
+    companion object {
+        fun fromStringOrDefault(str: String?): ProfileMarital {
+            if (str == null) return MARITAL_COMPLICATED
+            return try {
+                ProfileMarital.valueOf(str)
+            } catch (ex: Exception) {
+                MARITAL_COMPLICATED
+            }
+        }
+    }
 }

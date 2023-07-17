@@ -35,16 +35,8 @@ data class ProfileQuestionsDataState(
     val profileSmoke: ProfileSmoke = ProfileSmoke.SMOKE_SOMETIMES,
     val profilePsyOrientation: ProfilePsyOrientation = ProfilePsyOrientation.PSY_ORIENTATION_BETWEEN,
     val profileReligion: ProfileReligion = ProfileReligion.RELIGION_CATHOLICISM,
-    val profileLanguages: List<ProfileLanguage> = listOf(
-        ProfileLanguage.LANGUAGE_ENGLISH,
-        ProfileLanguage.LANGUAGE_UKRAINIAN,
-        ProfileLanguage.LANGUAGE_POLISH,
-    ),
-    val profilePets: List<ProfilePets> = listOf(
-        ProfilePets.PETS_MOUSE,
-        ProfilePets.PETS_SCORPION,
-        ProfilePets.PETS_LIZARD,
-    ),
+    val profileLanguages: List<ProfileLanguage> = ProfileLanguage.defaultLanguageList,
+    val profilePets: List<ProfilePets> = ProfilePets.defaultPetList,
     val userWork: UserWork = UserWork(),
     val currentStepProgress: Float = ProfileQuestionsState.START.completeContentProgress(),
     val isComplete: Boolean = false

@@ -28,5 +28,16 @@ enum class ProfileAlcohol(
     ),
     ALCOHOL_NOT_SET(
         title = R.string.option_not_set
-    )
+    );
+
+    companion object {
+        fun fromStringOrDefault(str: String?): ProfileAlcohol {
+            if (str == null) return ALCOHOL_OFTEN
+            return try {
+                ProfileAlcohol.valueOf(str)
+            } catch (ex: Exception) {
+                ALCOHOL_OFTEN
+            }
+        }
+    }
 }
