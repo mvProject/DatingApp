@@ -38,6 +38,7 @@ fun InputText(
     modifier: Modifier = Modifier,
     initial: String = STRING_EMPTY,
     hint: String = stringResource(id = R.string.hint_email),
+    hintAlign: TextAlign? = TextAlign.Center,
     verifyType: VerifyType = VerifyType.NONE,
     isErrorEntered: Boolean = false,
     maxLength: Int = INT_ZERO,
@@ -93,7 +94,7 @@ fun InputText(
                 text = hint,
                 style = MaterialTheme.typography.labelLarge,
                 color = MaterialTheme.colorScheme.onSurface,
-                textAlign = TextAlign.Center
+                textAlign = hintAlign
             )
         },
         singleLine = true,

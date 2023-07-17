@@ -19,6 +19,7 @@ import com.mvproject.datingapp.data.enums.ProfileReligion
 import com.mvproject.datingapp.data.enums.ProfileSmoke
 import com.mvproject.datingapp.data.enums.ProfileZodiac
 import com.mvproject.datingapp.data.model.UserHeight
+import com.mvproject.datingapp.data.model.UserWork
 import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestionsState.Companion.completeContentProgress
 import com.mvproject.datingapp.utils.STRING_EMPTY
 
@@ -44,6 +45,7 @@ data class ProfileQuestionsDataState(
         ProfilePets.PETS_SCORPION,
         ProfilePets.PETS_LIZARD,
     ),
+    val userWork: UserWork = UserWork(),
     val currentStepProgress: Float = ProfileQuestionsState.START.completeContentProgress(),
     val isComplete: Boolean = false
 )

@@ -22,7 +22,6 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -32,6 +31,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -44,6 +44,7 @@ import coil.compose.rememberAsyncImagePainter
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
 import com.mvproject.datingapp.ui.components.input.about.AboutInput
+import com.mvproject.datingapp.ui.components.input.work.WorkInput
 import com.mvproject.datingapp.ui.components.selectors.AlcoholSelector
 import com.mvproject.datingapp.ui.components.selectors.ChildrenSelector
 import com.mvproject.datingapp.ui.components.selectors.HeightSelector
@@ -70,7 +71,6 @@ import com.mvproject.datingapp.utils.WEIGHT_3
 @Composable
 fun ProfileQuestionScreen(
     viewModel: ProfileQuestionViewModel,
-    onNavigateBack: () -> Unit,
     onNavigateNext: () -> Unit,
 ) {
     val state by viewModel.profileQuestionsDataState.collectAsStateWithLifecycle()
@@ -78,7 +78,6 @@ fun ProfileQuestionScreen(
     ProfileQuestionView(
         state = state,
         onAction = viewModel::processAction,
-        onNavigateBack = onNavigateBack,
         onNavigateNext = onNavigateNext
     )
 }
@@ -88,9 +87,14 @@ fun ProfileQuestionScreen(
 fun ProfileQuestionView(
     state: ProfileQuestionsDataState,
     onAction: (ProfileQuestionsAction) -> Unit = {},
-    onNavigateBack: () -> Unit = {},
     onNavigateNext: () -> Unit = {}
 ) {
+    LaunchedEffect(key1 = state) {
+        if (state.isComplete) {
+            onNavigateNext()
+        }
+    }
+
     BackHandler(true) {
         if (state.currentStep.isStartState()) {
             onNavigateNext()
@@ -258,7 +262,9 @@ fun ProfileQuestionView(
                             modifier = Modifier
                                 .padding(horizontal = MaterialTheme.dimens.size8),
                             title = stringResource(id = R.string.btn_title_ok),
-                            onClick = onNavigateNext
+                            onClick = {
+                                onAction(ProfileQuestionsAction.SaveProfileInfo)
+                            }
                         )
                     }
 
@@ -269,6 +275,16 @@ fun ProfileQuestionView(
                             logo = state.currentStep.stateLogo(),
                         ) { text ->
                             onAction(ProfileQuestionsAction.UpdateProfileAbout(text))
+                        }
+                    }
+
+                    ProfileQuestionsState.WORK -> {
+                        WorkInput(
+                            modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                            title = stringResource(state.currentStep.stateTitle()),
+                            logo = state.currentStep.stateLogo(),
+                        ) { workInfo ->
+                            onAction(ProfileQuestionsAction.UpdateProfileWork(workInfo))
                         }
                     }
 
@@ -406,14 +422,6 @@ fun ProfileQuestionView(
                                 onAction(ProfileQuestionsAction.UpdateProfilePets(pets))
                             }
                         )
-                    }
-
-                    ProfileQuestionsState.WORK -> {
-                        Button(onClick = {
-                            onAction(ProfileQuestionsAction.NextStep)
-                        }) {
-                            Text(state.currentStep.toString())
-                        }
                     }
 
                     else -> {

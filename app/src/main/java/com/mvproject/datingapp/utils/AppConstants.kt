@@ -17,6 +17,7 @@ const val ANIM_DURATION_900 = 900
 const val DELAY_1_SEC = 1000L
 const val STRING_SPACE = " "
 const val STRING_EMPTY = ""
+const val STRING_SEPARATOR = ";"
 const val STRING_ZERO = "0"
 
 const val INT_ZERO = 0
@@ -36,5 +37,6 @@ const val TIMER_INTERVAL = 1000L
 const val DIVIDER_SECOND = 1000
 
 const val NAME_MAX_LENGTH = 35
+const val INFO_MAX_LENGTH = 35
 const val ABOUT_MAX_LENGTH = 500
 const val PHOTO_MIN_COUNT = 2

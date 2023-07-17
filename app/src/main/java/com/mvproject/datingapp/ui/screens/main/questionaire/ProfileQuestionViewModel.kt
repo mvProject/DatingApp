@@ -9,6 +9,8 @@
 package com.mvproject.datingapp.ui.screens.main.questionaire
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.mvproject.datingapp.data.repository.PreferenceRepository
 import com.mvproject.datingapp.ui.screens.main.questionaire.action.ProfileQuestionsAction
 import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestionsDataState
 import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestionsState
@@ -20,12 +22,14 @@ import com.mvproject.datingapp.ui.screens.main.questionaire.state.ProfileQuestio
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class ProfileQuestionViewModel @Inject constructor(
-
+    private val preferenceRepository: PreferenceRepository,
 ) : ViewModel() {
     private val _profileQuestionsDataState = MutableStateFlow(ProfileQuestionsDataState())
     val profileQuestionsDataState = _profileQuestionsDataState.asStateFlow()
@@ -121,9 +125,43 @@ class ProfileQuestionViewModel @Inject constructor(
                     newState = profileQuestionsDataState.value.currentStep.nextState()
                 ).copy(profilePets = action.data)
             }
-        }
 
-        Timber.w("testing user info ${profileQuestionsDataState.value}")
+            is ProfileQuestionsAction.UpdateProfileWork -> {
+                _profileQuestionsDataState.value = updatedState(
+                    newState = profileQuestionsDataState.value.currentStep.nextState()
+                ).copy(userWork = action.data)
+            }
+
+            is ProfileQuestionsAction.SaveProfileInfo -> {
+                viewModelScope.launch {
+                    val user = preferenceRepository.getUser()
+                    val updatedUser = user.copy(
+                        profileAbout = profileQuestionsDataState.value.profileAbout,
+                        profileOrientation = profileQuestionsDataState.value.profileOrientation,
+                        profileMarital = profileQuestionsDataState.value.profileMarital,
+                        profileChildren = profileQuestionsDataState.value.profileChildren,
+                        profileHeight = profileQuestionsDataState.value.userHeight,
+                        profileZodiac = profileQuestionsDataState.value.profileZodiac,
+                        profileAlcohol = profileQuestionsDataState.value.profileAlcohol,
+                        profileSmoke = profileQuestionsDataState.value.profileSmoke,
+                        profilePsyOrientation = profileQuestionsDataState.value.profilePsyOrientation,
+                        profileReligion = profileQuestionsDataState.value.profileReligion,
+                        profileLanguages = profileQuestionsDataState.value.profileLanguages,
+                        profilePets = profileQuestionsDataState.value.profilePets,
+                        profileWork = profileQuestionsDataState.value.userWork,
+                    )
+
+                    preferenceRepository.saveUser(user = updatedUser)
+
+                    val userLoad = preferenceRepository.getUser()
+                    Timber.e("testing user $userLoad")
+
+                    _profileQuestionsDataState.update {
+                        it.copy(isComplete = true)
+                    }
+                }
+            }
+        }
     }
 
     private fun updatedState(newState: ProfileQuestionsState): ProfileQuestionsDataState {

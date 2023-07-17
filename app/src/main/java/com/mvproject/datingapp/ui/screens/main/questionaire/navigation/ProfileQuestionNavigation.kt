@@ -24,12 +24,11 @@ import com.mvproject.datingapp.utils.ANIM_DURATION_600
 import timber.log.Timber
 
 fun NavController.navigateToProfileQuestions(navOptions: NavOptions? = null) {
-    this.navigate(AppRoutes.SignUp.route, navOptions)
+    this.navigate(AppRoutes.ProfileQuestions.route, navOptions)
 }
 
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.profileQuestionsScreen(
-    onNavigateBack: () -> Unit,
     onNavigateNext: () -> Unit,
 ) {
     composable(
@@ -46,8 +45,7 @@ fun NavGraphBuilder.profileQuestionsScreen(
 
         ProfileQuestionScreen(
             viewModel = profileQuestionViewModel,
-            onNavigateNext = onNavigateNext,
-            onNavigateBack = onNavigateBack
+            onNavigateNext = onNavigateNext
         )
     }
 }

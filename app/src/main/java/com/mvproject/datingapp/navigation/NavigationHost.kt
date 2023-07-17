@@ -17,6 +17,7 @@ import com.mvproject.datingapp.ui.screens.main.dating.datingScreen
 import com.mvproject.datingapp.ui.screens.main.dating.navigateToDatingClearStack
 import com.mvproject.datingapp.ui.screens.main.profile.navigation.navigateToProfileClearStack
 import com.mvproject.datingapp.ui.screens.main.profile.navigation.profileScreen
+import com.mvproject.datingapp.ui.screens.main.questionaire.navigation.navigateToProfileQuestions
 import com.mvproject.datingapp.ui.screens.main.questionaire.navigation.profileQuestionsScreen
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -46,7 +47,7 @@ fun NavigationHost(
 
         signUpScreen(
             onNavigateBack = navController::popBackStack,
-            onNavigateNext = navController::navigateToSignInClearStack
+            onNavigateNext = navController::navigateToProfileQuestions
         )
 
         /*
@@ -55,7 +56,6 @@ fun NavigationHost(
                        */
 
         profileQuestionsScreen(
-            onNavigateBack = navController::popBackStack,
             onNavigateNext = navController::navigateToDatingClearStack
         )
 

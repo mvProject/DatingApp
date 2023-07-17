@@ -24,6 +24,7 @@ import com.mvproject.datingapp.ui.screens.authorization.signup.state.SignUpState
 import com.mvproject.datingapp.ui.screens.authorization.signup.state.SignUpState.Companion.isStartState
 import com.mvproject.datingapp.ui.screens.authorization.signup.state.SignUpState.Companion.nextState
 import com.mvproject.datingapp.ui.screens.authorization.signup.state.SignUpState.Companion.previousState
+import com.mvproject.datingapp.utils.STRING_EMPTY
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -162,7 +163,7 @@ class SignUpViewModel @Inject constructor(
             interest = data.interest.name,
             gender = data.gender.name,
             location = data.location.toString(),
-            profilePictureUrl = data.images.first(),
+            profilePictureUrl = if (data.images.isNotEmpty()) data.images.first() else STRING_EMPTY,
             photos = data.images
         )
     }
