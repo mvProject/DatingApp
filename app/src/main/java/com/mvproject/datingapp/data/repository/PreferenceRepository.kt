@@ -25,6 +25,7 @@ import com.mvproject.datingapp.data.enums.ProfileReligion
 import com.mvproject.datingapp.data.enums.ProfileSmoke
 import com.mvproject.datingapp.data.enums.ProfileZodiac
 import com.mvproject.datingapp.data.model.User
+import com.mvproject.datingapp.data.model.UserActivation
 import com.mvproject.datingapp.data.model.UserHeight
 import com.mvproject.datingapp.data.model.UserWork
 import com.mvproject.datingapp.utils.LONG_ZERO
@@ -49,6 +50,21 @@ class PreferenceRepository @Inject constructor(
         preferences[IS_USER_LOGGED] ?: false
     }.first()
 
+    suspend fun setActivationState(activation: UserActivation) {
+        dataStore.edit { settings ->
+            settings[ACTIVATION_STATUS] = activation.status
+            settings[ACTIVATION_PERIOD] = activation.period
+
+        }
+        Timber.w("testing activation is saved")
+    }
+
+    suspend fun getActivationState() = dataStore.data.map { preferences ->
+        UserActivation(
+            status = preferences[ACTIVATION_STATUS] ?: false,
+            period = preferences[ACTIVATION_PERIOD] ?: LONG_ZERO
+        )
+    }.first()
 
     suspend fun saveUser(user: User) {
         dataStore.edit { settings ->
@@ -130,5 +146,8 @@ class PreferenceRepository @Inject constructor(
         val USER_LANGUAGES = stringPreferencesKey("userLanguages")
         val USER_PETS = stringPreferencesKey("userPets")
         val USER_WORK = stringPreferencesKey("userWork")
+
+        val ACTIVATION_STATUS = booleanPreferencesKey("activationStatus")
+        val ACTIVATION_PERIOD = longPreferencesKey("activationPeriod")
     }
 }

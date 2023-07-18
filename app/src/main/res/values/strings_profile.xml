@@ -1,0 +1,15 @@
+<!--
+  ~ Create by Medvediev Viktor
+  ~ last update: 07.06.23, 12:03
+  ~
+  ~ Copyright (c) 2023
+  ~
+  -->
+
+<resources>
+    <string name="screen_title_profile">Profile</string>
+    <string name="unlock_profile_title">Dating App Pro</string>
+    <string name="unlock_profile_description">Activate Pro and get all the benefits of this application</string>
+    <string name="profile_complete_percentage">%1$s %%</string>
+
+</resources>
