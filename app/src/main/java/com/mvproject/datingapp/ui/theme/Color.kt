@@ -23,6 +23,7 @@ val hotpink = Color(0xFFea40ad)
 val darkslateblue = Color(0xFF3b579d)
 val ghostwhite = Color(0xFFfbf8fe)
 val darkslategray = Color(0xFF4D494A)
+val whitesmoke = Color(0xFFF5F5F5)
 
 val md_theme_light_error = Color(0xFFBA1A1A)
 val md_theme_light_errorContainer = Color(0xFFFFDAD6)

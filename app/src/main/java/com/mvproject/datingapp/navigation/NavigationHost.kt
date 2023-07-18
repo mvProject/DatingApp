@@ -13,8 +13,10 @@ import com.mvproject.datingapp.ui.screens.authorization.signin.navigation.loginS
 import com.mvproject.datingapp.ui.screens.authorization.signin.navigation.navigateToSignInClearStack
 import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.navigateToSignUpClearStack
 import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.signUpScreen
+import com.mvproject.datingapp.ui.screens.main.chat.chatScreen
 import com.mvproject.datingapp.ui.screens.main.dating.datingScreen
 import com.mvproject.datingapp.ui.screens.main.dating.navigateToDatingClearStack
+import com.mvproject.datingapp.ui.screens.main.likes.likesScreen
 import com.mvproject.datingapp.ui.screens.main.profile.navigation.navigateToProfileClearStack
 import com.mvproject.datingapp.ui.screens.main.profile.navigation.profileScreen
 import com.mvproject.datingapp.ui.screens.main.questionaire.navigation.navigateToProfileQuestionsClearStack
@@ -50,11 +52,6 @@ fun NavigationHost(
             onNavigateNext = navController::navigateToProfileQuestionsClearStack
         )
 
-        /*
-                               likesScreen()
-                               chatScreen()
-                       */
-
         profileQuestionsScreen(
             onNavigateNext = navController::navigateToDatingClearStack
         )
@@ -64,7 +61,8 @@ fun NavigationHost(
         )
 
         datingScreen()
-
+        likesScreen()
+        chatScreen()
     }
 }
 
