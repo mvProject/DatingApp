@@ -1,12 +1,12 @@
 /*
  * Create by Medvediev Viktor
- * last update: 21.06.23, 19:47
+ * last update: 18.07.23, 17:04
  *
  * Copyright (c) 2023
  *
  */
 
-package com.mvproject.datingapp.ui.screens.main.profile
+package com.mvproject.datingapp.ui.screens.main.profile.view
 
 import android.net.Uri
 import androidx.compose.foundation.Image
@@ -57,7 +57,8 @@ import com.mvproject.datingapp.R
 import com.mvproject.datingapp.ui.components.buttons.ColorButton
 import com.mvproject.datingapp.ui.components.info.InterestInfo
 import com.mvproject.datingapp.ui.components.loading.LoadingView
-import com.mvproject.datingapp.ui.screens.main.profile.state.ProfileViewState
+import com.mvproject.datingapp.ui.screens.main.profile.view.state.ProfileDataState
+import com.mvproject.datingapp.ui.screens.main.profile.view.state.ProfileViewState
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.bluevioletDark
 import com.mvproject.datingapp.ui.theme.dimens
@@ -70,7 +71,9 @@ import com.mvproject.datingapp.utils.gradientBackground
 @Composable
 fun ProfileScreen(
     viewModel: ProfileViewModel,
-    onNavigationLogout: () -> Unit,
+    onNavigationLogout: () -> Unit = {},
+    onNavigationSettings: () -> Unit = {},
+    onNavigationEdit: () -> Unit = {}
 ) {
     val viewState by viewModel.profileUiState.collectAsStateWithLifecycle()
     val profileState by viewModel.profileState.collectAsStateWithLifecycle()
@@ -82,7 +85,9 @@ fun ProfileScreen(
         ProfileViewState.LoggedIn -> {
             ProfileView(
                 state = profileState,
-                onActivateClick = viewModel::activateFeatures
+                onActivateClick = viewModel::activateFeatures,
+                onSettingsClick = onNavigationSettings,
+                onEditClick = onNavigationEdit
             )
         }
 
@@ -97,7 +102,7 @@ fun ProfileScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileView(
-    state: ProfileViewModel.UserState = ProfileViewModel.UserState(),
+    state: ProfileDataState = ProfileDataState(),
     onActivateClick: () -> Unit = {},
     onSettingsClick: () -> Unit = {},
     onEditClick: () -> Unit = {}

@@ -4,7 +4,7 @@ import androidx.annotation.DrawableRes
 import com.mvproject.datingapp.ui.screens.main.chat.Chat
 import com.mvproject.datingapp.ui.screens.main.dating.Dating
 import com.mvproject.datingapp.ui.screens.main.likes.Likes
-import com.mvproject.datingapp.ui.screens.main.profile.navigation.Profile
+import com.mvproject.datingapp.ui.screens.main.profile.view.navigation.Profile
 
 val AppBottomRoutes = listOf(
     Dating, Chat, Likes, Profile

@@ -1,12 +1,12 @@
 /*
  * Create by Medvediev Viktor
- * last update: 21.06.23, 14:01
+ * last update: 18.07.23, 18:51
  *
  * Copyright (c) 2023
  *
  */
 
-package com.mvproject.datingapp.ui.screens.main.profile.navigation
+package com.mvproject.datingapp.ui.screens.main.profile.view.navigation
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
@@ -20,10 +20,9 @@ import com.google.accompanist.navigation.animation.composable
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.navigation.BottomNavItem
 import com.mvproject.datingapp.navigation.NavConstants
-import com.mvproject.datingapp.ui.screens.main.profile.ProfileScreen
-import com.mvproject.datingapp.ui.screens.main.profile.ProfileViewModel
+import com.mvproject.datingapp.ui.screens.main.profile.view.ProfileScreen
+import com.mvproject.datingapp.ui.screens.main.profile.view.ProfileViewModel
 import com.mvproject.datingapp.utils.ANIM_DURATION_600
-import timber.log.Timber
 
 val Profile = BottomNavItem(NavConstants.ROUTE_PROFILE, R.drawable.ic_nav_profile)
 
@@ -32,15 +31,18 @@ fun NavController.navigateToProfile(navOptions: NavOptions? = null) {
 }
 
 fun NavController.navigateToProfileClearStack() {
-    this.popBackStack()
     this.navigate(Profile.route) {
-        launchSingleTop = true
+        popUpTo(this@navigateToProfileClearStack.graph.id) {
+            inclusive = false
+        }
     }
 }
 
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.profileScreen(
-    onNavigationLogout: () -> Unit = {}
+    onNavigationLogout: () -> Unit = {},
+    onNavigationSettings: () -> Unit = {},
+    onNavigationEdit: () -> Unit = {}
 ) {
     composable(
         route = Profile.route,
@@ -51,11 +53,12 @@ fun NavGraphBuilder.profileScreen(
             fadeOut(animationSpec = tween(ANIM_DURATION_600))
         }
     ) {
-        Timber.w("testing ProfileNavigation")
         val profileViewModel = hiltViewModel<ProfileViewModel>()
         ProfileScreen(
             viewModel = profileViewModel,
-            onNavigationLogout = onNavigationLogout
+            onNavigationLogout = onNavigationLogout,
+            onNavigationSettings = onNavigationSettings,
+            onNavigationEdit = onNavigationEdit
         )
     }
 }

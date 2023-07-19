@@ -36,7 +36,7 @@ import com.mvproject.datingapp.navigation.BottomNavItem
 import com.mvproject.datingapp.navigation.NavigationHost
 import com.mvproject.datingapp.navigation.bottomNavigateToRoute
 import com.mvproject.datingapp.ui.screens.main.home.viewmodel.HomeViewModel
-import com.mvproject.datingapp.ui.screens.main.profile.navigation.Profile
+import com.mvproject.datingapp.ui.screens.main.profile.view.navigation.Profile
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 

@@ -23,9 +23,10 @@ fun NavController.navigateToSignIn(navOptions: NavOptions? = null) {
 }
 
 fun NavController.navigateToSignInClearStack() {
-    this.popBackStack()
     this.navigate(AppRoutes.SignIn.route) {
-        launchSingleTop = true
+        popUpTo(this@navigateToSignInClearStack.graph.id) {
+            inclusive = false
+        }
     }
 }
 

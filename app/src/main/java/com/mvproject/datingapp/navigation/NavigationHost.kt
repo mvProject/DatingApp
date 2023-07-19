@@ -17,8 +17,12 @@ import com.mvproject.datingapp.ui.screens.main.chat.chatScreen
 import com.mvproject.datingapp.ui.screens.main.dating.datingScreen
 import com.mvproject.datingapp.ui.screens.main.dating.navigateToDatingClearStack
 import com.mvproject.datingapp.ui.screens.main.likes.likesScreen
-import com.mvproject.datingapp.ui.screens.main.profile.navigation.navigateToProfileClearStack
-import com.mvproject.datingapp.ui.screens.main.profile.navigation.profileScreen
+import com.mvproject.datingapp.ui.screens.main.profile.changePassword.navigation.changePasswordScreen
+import com.mvproject.datingapp.ui.screens.main.profile.changePassword.navigation.navigateToChangePassword
+import com.mvproject.datingapp.ui.screens.main.profile.settings.navigation.navigateToSettings
+import com.mvproject.datingapp.ui.screens.main.profile.settings.navigation.settingsScreen
+import com.mvproject.datingapp.ui.screens.main.profile.view.navigation.navigateToProfileClearStack
+import com.mvproject.datingapp.ui.screens.main.profile.view.navigation.profileScreen
 import com.mvproject.datingapp.ui.screens.main.questionaire.navigation.navigateToProfileQuestionsClearStack
 import com.mvproject.datingapp.ui.screens.main.questionaire.navigation.profileQuestionsScreen
 
@@ -34,7 +38,6 @@ fun NavigationHost(
         navController = navController,
         startDestination = startDestination
     ) {
-
         loginScreen(
             onNavigationForgotAccess = navController::navigateToForgot,
             onNavigationSignUp = navController::navigateToSignUpClearStack,
@@ -57,12 +60,31 @@ fun NavigationHost(
         )
 
         profileScreen(
-            onNavigationLogout = navController::navigateToSignInClearStack
+            onNavigationLogout = navController::navigateToSignInClearStack,
+            onNavigationSettings = navController::navigateToSettings
+        )
+
+        settingsScreen(
+            onNavigationLogout = navController::navigateToSignInClearStack,
+            onNavigationChange = navController::navigateToChangePassword,
+            onNavigationBack = navController::popBackStack
+        )
+
+        changePasswordScreen(
+            onNavigationBack = navController::popBackStack
         )
 
         datingScreen()
         likesScreen()
         chatScreen()
+
+        /*        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+                    val cont = controller.currentBackStack.value
+                    Timber.e("testing after navigate to ${destination.route}")
+                    cont.forEach {
+                        Timber.e("testing stack is ${it.destination.route}")
+                    }
+                }*/
     }
 }
 
