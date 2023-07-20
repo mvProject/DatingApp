@@ -10,6 +10,7 @@ package com.mvproject.datingapp.data.repository
 
 import android.content.Context
 import android.net.Uri
+import com.mvproject.datingapp.utils.STRING_EMPTY
 import com.mvproject.datingapp.utils.emailToFileName
 import com.mvproject.datingapp.utils.getRealPathFromURI
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -26,19 +27,19 @@ class StorageRepository @Inject constructor(
 
     suspend fun setUserPhotos(username: String, source: List<String>): List<String> {
 
-        val uris = source.map {
-            Uri.parse(it)
-        }
-
         val result = buildList {
             withContext(Dispatchers.IO) {
-                uris.forEachIndexed { index, uri ->
-                    val filename = "${username.emailToFileName()}_photo_${index}"
-                    Timber.w("testing saving $filename from uri $uri")
-                    context.getRealPathFromURI(uri, filename)?.let {
-                        add(it)
+                source.forEachIndexed { index, uriStr ->
+                    if (uriStr.isNotEmpty()) {
+                        val uri = Uri.parse(uriStr)
+                        val filename = "${username.emailToFileName()}_photo_${index}"
+                        Timber.w("testing saving $filename from uri $uri")
+                        context.getRealPathFromURI(uri, filename)?.let {
+                            add(it)
+                        }
+                    } else {
+                        add(STRING_EMPTY)
                     }
-
                 }
             }
         }

@@ -29,7 +29,7 @@ import com.mvproject.datingapp.ui.theme.dimens
 @Composable
 fun InterestInfo(
     modifier: Modifier = Modifier,
-    selectedInterest: ProfileInterest,
+    selectedInterest: ProfileInterest
 ) {
     Row(
         modifier
@@ -42,7 +42,10 @@ fun InterestInfo(
                 color = MaterialTheme.colorScheme.onPrimary,
                 shape = MaterialTheme.shapes.large
             )
-            .padding(horizontal = MaterialTheme.dimens.size8),
+            .padding(
+                vertical = MaterialTheme.dimens.size2,
+                horizontal = MaterialTheme.dimens.size8
+            ),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
