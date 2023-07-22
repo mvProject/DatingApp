@@ -9,6 +9,8 @@
 <resources>
     <string name="screen_title_profile">Profile</string>
     <string name="screen_title_profile_settings">Settings</string>
+    <string name="screen_title_profile_edit">Edit Profile</string>
+    <string name="screen_title_profile_preview">Profile view</string>
     <string name="screen_title_profile_change_password">Change password</string>
     <string name="unlock_profile_title">Dating App Pro</string>
     <string name="unlock_profile_description">Activate Pro and get all the benefits of this application</string>
@@ -25,5 +27,25 @@
     <string name="profile_settings_option_change_password">Change password</string>
     <string name="profile_settings_option_blocked_users">Blocked Users</string>
     <string name="profile_settings_option_delete_account">Delete account</string>
+
+    <string name="profile_edit_option_what_do_i_want">What do I want?</string>
+    <string name="profile_edit_option_about_me">About me</string>
+    <string name="profile_edit_option_basic_information">Basic information</string>
+    <string name="profile_edit_option_work">Work</string>
+    <string name="profile_edit_option_location">Location</string>
+    <string name="profile_edit_option_sexual_orientation">Sexual orientation</string>
+    <string name="profile_edit_option_marital_status">Marital status</string>
+    <string name="profile_edit_option_children">Children</string>
+    <string name="profile_edit_option_height">Height</string>
+    <string name="profile_edit_option_zodiac_sign">Zodiac sign</string>
+    <string name="profile_edit_option_alcohol">Alcohol</string>
+    <string name="profile_edit_option_smoking">Smoking</string>
+    <string name="profile_edit_option_character">Character</string>
+    <string name="profile_edit_option_religion">Religion</string>
+    <string name="profile_edit_option_languages">Languages</string>
+    <string name="profile_edit_option_pets">Pets</string>
+
+    <string name="profile_edit_option_work_data">%1$s in company %2$s</string>
+    <string name="profile_edit_option_height_data">%1$s cm</string>
 
 </resources>

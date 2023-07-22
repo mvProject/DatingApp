@@ -43,6 +43,7 @@ fun ZodiacSelector(
     modifier: Modifier = Modifier,
     selectedOption: String = stringResource(ProfileZodiac.ZODIAC_LEO.title),
     radioOptions: List<ProfileZodiac> = ProfileZodiac.values().toList(),
+    btnTitle: String = stringResource(id = R.string.btn_title_next),
     onOptionSelected: (ProfileZodiac) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -92,7 +93,7 @@ fun ZodiacSelector(
 
         GradientButton(
             modifier = Modifier.fillMaxWidth(),
-            title = stringResource(id = R.string.btn_title_next),
+            title = btnTitle,
             onClick = {
                 onOptionSelected(selectedZodiac)
             }
@@ -102,7 +103,7 @@ fun ZodiacSelector(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeProfileZodiacSelector() {
+fun PreviewZodiacSelector() {
     DatingAppTheme {
         ZodiacSelector(
 
@@ -112,7 +113,7 @@ fun PreviewCodeProfileZodiacSelector() {
 
 @Preview(showBackground = true)
 @Composable
-fun DarkPreviewProfileZodiacSelector() {
+fun DarkPreviewZodiacSelector() {
     DatingAppTheme(darkTheme = true) {
         ZodiacSelector(
             selectedOption = stringResource(ProfileZodiac.ZODIAC_AQUARIUS.title)

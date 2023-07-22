@@ -167,7 +167,7 @@ fun GenderSelector(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeGenderSelector() {
+fun PreviewGenderSelector() {
     DatingAppTheme {
         GenderSelector()
     }

@@ -29,7 +29,7 @@ enum class ProfileMarital(
     MARITAL_NOT_SET(
         title = R.string.option_not_set
     );
-
+    fun display() = if (this == MARITAL_NOT_SET) R.string.title_not_set else title
     companion object {
         fun fromStringOrDefault(str: String?): ProfileMarital {
             if (str == null) return MARITAL_COMPLICATED

@@ -74,7 +74,7 @@ enum class ProfileLanguage(
                         ProfileLanguage.valueOf(it)
                     }
             } catch (ex: Exception) {
-                defaultLanguageList
+                emptyList()
             }
         }
     }

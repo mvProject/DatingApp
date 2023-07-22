@@ -47,3 +47,16 @@ fun String.emailToFileName() = this.replace('@', '_')
 fun Uri?.notNullOrEmpty(): Boolean {
     return this != null && this != Uri.EMPTY
 }
+
+fun prepareImages(images: List<String> = emptyList()): List<String> {
+    val count = images.count()
+    val neededCount = PHOTO_MAX_COUNT - count
+    return buildList {
+        images.forEach {
+            add(it)
+        }
+        repeat(neededCount) {
+            add(STRING_EMPTY)
+        }
+    }.sortedBy { it.isEmpty() }
+}

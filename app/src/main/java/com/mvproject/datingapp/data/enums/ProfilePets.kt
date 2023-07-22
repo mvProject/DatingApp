@@ -80,7 +80,7 @@ enum class ProfilePets(
                         ProfilePets.valueOf(it)
                     }
             } catch (ex: Exception) {
-                defaultPetList
+                emptyList()
             }
         }
     }

@@ -41,6 +41,7 @@ fun SmokeSelector(
     modifier: Modifier = Modifier,
     selectedOption: String = stringResource(ProfileSmoke.SMOKE_SOMETIMES.title),
     radioOptions: List<ProfileSmoke> = ProfileSmoke.values().toList(),
+    btnTitle: String = stringResource(id = R.string.btn_title_next),
     onOptionSelected: (ProfileSmoke) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -85,7 +86,7 @@ fun SmokeSelector(
 
         GradientButton(
             modifier = Modifier.fillMaxWidth(),
-            title = stringResource(id = R.string.btn_title_next),
+            title = btnTitle,
             onClick = {
                 onOptionSelected(selectedSmoke)
             }
@@ -95,7 +96,7 @@ fun SmokeSelector(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeProfileSmokeSelector() {
+fun PreviewSmokeSelector() {
     DatingAppTheme {
         SmokeSelector(
 
@@ -105,7 +106,7 @@ fun PreviewCodeProfileSmokeSelector() {
 
 @Preview(showBackground = true)
 @Composable
-fun DarkPreviewProfileSmokeSelector() {
+fun DarkPreviewSmokeSelector() {
     DatingAppTheme(darkTheme = true) {
         SmokeSelector(
             selectedOption = stringResource(ProfileSmoke.SMOKE_NO.title)

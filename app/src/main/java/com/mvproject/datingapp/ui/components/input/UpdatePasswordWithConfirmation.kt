@@ -9,7 +9,6 @@
 package com.mvproject.datingapp.ui.components.input
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -40,7 +39,6 @@ import com.mvproject.datingapp.utils.STRING_EMPTY
 import com.mvproject.datingapp.utils.WEIGHT_1
 import com.mvproject.datingapp.utils.isPasswordsValidAndConfirmed
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun UpdatePasswordWithConfirmation(
     modifier: Modifier = Modifier,

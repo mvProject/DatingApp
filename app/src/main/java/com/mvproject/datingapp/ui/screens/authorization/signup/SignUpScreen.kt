@@ -263,6 +263,7 @@ fun SignUpView(
 
                         SignUpState.LOCATION -> {
                             LocationSelector(
+                                userLocation = state.location,
                                 onLocationSelected = { location ->
                                     onAction(SignUpAction.UpdateLocation(location))
                                     onAction(SignUpAction.NextStep)

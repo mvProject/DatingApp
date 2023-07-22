@@ -41,6 +41,7 @@ fun PsyOrientationSelector(
     modifier: Modifier = Modifier,
     selectedOption: String = stringResource(ProfilePsyOrientation.PSY_ORIENTATION_BETWEEN.title),
     radioOptions: List<ProfilePsyOrientation> = ProfilePsyOrientation.values().toList(),
+    btnTitle: String = stringResource(id = R.string.btn_title_next),
     onOptionSelected: (ProfilePsyOrientation) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -85,7 +86,7 @@ fun PsyOrientationSelector(
 
         GradientButton(
             modifier = Modifier.fillMaxWidth(),
-            title = stringResource(id = R.string.btn_title_next),
+            title = btnTitle,
             onClick = {
                 onOptionSelected(selectedPsyOrientation)
             }
@@ -95,7 +96,7 @@ fun PsyOrientationSelector(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeProfilePsyOrientationSelector() {
+fun PreviewPsyOrientationSelector() {
     DatingAppTheme {
         PsyOrientationSelector(
 
@@ -105,7 +106,7 @@ fun PreviewCodeProfilePsyOrientationSelector() {
 
 @Preview(showBackground = true)
 @Composable
-fun DarkPreviewProfilePsyOrientationSelector() {
+fun DarkPreviewPsyOrientationSelector() {
     DatingAppTheme(darkTheme = true) {
         PsyOrientationSelector(
             selectedOption = stringResource(ProfilePsyOrientation.PSY_ORIENTATION_EXTRAVERT.title)
