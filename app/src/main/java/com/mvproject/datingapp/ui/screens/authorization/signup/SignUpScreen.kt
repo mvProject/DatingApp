@@ -10,7 +10,6 @@ package com.mvproject.datingapp.ui.screens.authorization.signup
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -148,13 +147,12 @@ fun SignUpView(
         ) { paddingValues ->
             Box(
                 modifier = Modifier
-                    .imePadding()
                     .padding(paddingValues)
                     .fillMaxSize()
+                    .imePadding()
 
             ) {
                 Column(
-                    verticalArrangement = Arrangement.Top,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     when (state.currentStep) {

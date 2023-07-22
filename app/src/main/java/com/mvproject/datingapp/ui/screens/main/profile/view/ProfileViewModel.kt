@@ -48,19 +48,20 @@ class ProfileViewModel @Inject constructor(
         }
 
         viewModelScope.launch {
-            val user = preferenceRepository.getUser()
-            val activationState = preferenceRepository.getActivationState()
-
-            _profileState.update {
-                it.copy(
-                    profileName = user.name,
-                    profileImage = user.profilePictureUrl,
-                    profileAge = calculatAgeMillis(user.birthdate),
-                    profileInterest = ProfileInterest.fromStringOrDefault(user.interest),
-                    activationStatus = activationState.status,
-                    activationExpires = activationState.period
-                )
-            }
+            preferenceRepository.getUserFlow()
+                .collect { user ->
+                    val activationState = preferenceRepository.getActivationState()
+                    _profileState.update {
+                        it.copy(
+                            profileName = user.name,
+                            profileImage = user.profilePictureUrl,
+                            profileAge = calculatAgeMillis(user.birthdate),
+                            profileInterest = ProfileInterest.fromStringOrDefault(user.interest),
+                            activationStatus = activationState.status,
+                            activationExpires = activationState.period
+                        )
+                    }
+                }
         }
     }
 

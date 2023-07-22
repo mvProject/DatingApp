@@ -30,9 +30,10 @@ fun NavController.navigateToDating(navOptions: NavOptions? = null) {
 }
 
 fun NavController.navigateToDatingClearStack() {
-    this.popBackStack()
     this.navigate(Dating.route) {
-        launchSingleTop = true
+        popUpTo(this@navigateToDatingClearStack.graph.id) {
+            inclusive = false
+        }
     }
 }
 
