@@ -11,7 +11,7 @@ import com.mvproject.datingapp.ui.screens.authorization.restoreAccess.navigation
 import com.mvproject.datingapp.ui.screens.authorization.restoreAccess.navigation.navigateToForgot
 import com.mvproject.datingapp.ui.screens.authorization.signin.navigation.loginScreen
 import com.mvproject.datingapp.ui.screens.authorization.signin.navigation.navigateToSignInClearStack
-import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.navigateToSignUpClearStack
+import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.navigateToSignUp
 import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.signUpScreen
 import com.mvproject.datingapp.ui.screens.main.chat.chatScreen
 import com.mvproject.datingapp.ui.screens.main.dating.datingScreen
@@ -19,6 +19,10 @@ import com.mvproject.datingapp.ui.screens.main.dating.navigateToDatingClearStack
 import com.mvproject.datingapp.ui.screens.main.likes.likesScreen
 import com.mvproject.datingapp.ui.screens.main.profile.changePassword.navigation.changePasswordScreen
 import com.mvproject.datingapp.ui.screens.main.profile.changePassword.navigation.navigateToChangePassword
+import com.mvproject.datingapp.ui.screens.main.profile.edit.navigation.editOptionScreen
+import com.mvproject.datingapp.ui.screens.main.profile.edit.navigation.editScreen
+import com.mvproject.datingapp.ui.screens.main.profile.edit.navigation.navigateToEdit
+import com.mvproject.datingapp.ui.screens.main.profile.edit.navigation.navigateToEditOption
 import com.mvproject.datingapp.ui.screens.main.profile.settings.navigation.navigateToSettings
 import com.mvproject.datingapp.ui.screens.main.profile.settings.navigation.settingsScreen
 import com.mvproject.datingapp.ui.screens.main.profile.view.navigation.navigateToProfileClearStack
@@ -40,7 +44,7 @@ fun NavigationHost(
     ) {
         loginScreen(
             onNavigationForgotAccess = navController::navigateToForgot,
-            onNavigationSignUp = navController::navigateToSignUpClearStack,
+            onNavigationSignUp = navController::navigateToSignUp,
             onNavigationHome = navController::navigateToProfileClearStack,
         )
 
@@ -61,12 +65,22 @@ fun NavigationHost(
 
         profileScreen(
             onNavigationLogout = navController::navigateToSignInClearStack,
-            onNavigationSettings = navController::navigateToSettings
+            onNavigationSettings = navController::navigateToSettings,
+            onNavigationEdit = navController::navigateToEdit
         )
 
         settingsScreen(
             onNavigationLogout = navController::navigateToSignInClearStack,
             onNavigationChange = navController::navigateToChangePassword,
+            onNavigationBack = navController::popBackStack
+        )
+
+        editScreen(
+            onNavigationChange = navController::navigateToEditOption,
+            onNavigationBack = navController::popBackStack
+        )
+
+        editOptionScreen(
             onNavigationBack = navController::popBackStack
         )
 

@@ -7,6 +7,8 @@ object NavConstants {
     const val ROUTE_RESTORE_ACCESS = "restoreAccess"
     const val ROUTE_PROFILE_QUESTIONS = "profileQuestions"
     const val ROUTE_SETTINGS = "settings"
+    const val ROUTE_EDIT = "edit"
+    const val ROUTE_EDIT_OPTION = "editOption"
     const val ROUTE_CHANGE_PASSWORD = "changePassword"
 
     const val ROUTE_PROFILE = "profile"

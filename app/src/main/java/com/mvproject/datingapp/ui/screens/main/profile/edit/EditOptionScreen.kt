@@ -106,7 +106,7 @@ fun EditOptionView(
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize()
-                .padding(MaterialTheme.dimens.size16),
+                .padding(vertical = MaterialTheme.dimens.size16),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             when (state.currentOption) {
@@ -132,7 +132,7 @@ fun EditOptionView(
 
                 EditProfileOption.ABOUT -> {
                     AboutInput(
-                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size24),
                         initial = state.profileAbout,
                         title = stringResource(state.currentOption.stateTitle()),
                         logo = state.currentOption.stateLogo(),
@@ -144,7 +144,7 @@ fun EditOptionView(
 
                 EditProfileOption.WORK -> {
                     WorkInput(
-                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size24),
                         initial = state.profileWork,
                         title = stringResource(state.currentOption.stateTitle()),
                         logo = state.currentOption.stateLogo(),
@@ -167,7 +167,7 @@ fun EditOptionView(
                     Text(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = MaterialTheme.dimens.size8),
+                            .padding(horizontal = MaterialTheme.dimens.size24),
                         text = stringResource(id = state.currentOption.stateTitle()),
                         color = MaterialTheme.colorScheme.onPrimary,
                         style = MaterialTheme.typography.headlineLarge,
@@ -181,7 +181,7 @@ fun EditOptionView(
             when (state.currentOption) {
                 EditProfileOption.ORIENTATION -> {
                     OrientationSelector(
-                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size24),
                         selectedOption = stringResource(id = state.profileOrientation.title),
                         btnTitle = stringResource(id = R.string.btn_title_ok),
                         onOptionSelected = { orientation ->
@@ -192,7 +192,7 @@ fun EditOptionView(
 
                 EditProfileOption.MARITAL_STATUS -> {
                     MaritalSelector(
-                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size24),
                         selectedOption = stringResource(id = state.profileMarital.title),
                         btnTitle = stringResource(id = R.string.btn_title_ok),
                         onOptionSelected = { status ->
@@ -203,7 +203,7 @@ fun EditOptionView(
 
                 EditProfileOption.CHILDREN -> {
                     ChildrenSelector(
-                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size24),
                         selectedOption = stringResource(id = state.profileChildren.title),
                         btnTitle = stringResource(id = R.string.btn_title_ok),
                         onOptionSelected = { status ->
@@ -214,6 +214,7 @@ fun EditOptionView(
 
                 EditProfileOption.HEIGHT -> {
                     HeightSelector(
+                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size16),
                         initial = state.profileHeight,
                         btnTitle = stringResource(id = R.string.btn_title_ok),
                         onOptionSelected = { userHeight ->
@@ -224,7 +225,7 @@ fun EditOptionView(
 
                 EditProfileOption.ZODIAC -> {
                     ZodiacSelector(
-                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size24),
                         selectedOption = stringResource(id = state.profileZodiac.title),
                         btnTitle = stringResource(id = R.string.btn_title_ok),
                         onOptionSelected = { sign ->
@@ -235,7 +236,7 @@ fun EditOptionView(
 
                 EditProfileOption.ALCOHOL -> {
                     AlcoholSelector(
-                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size24),
                         selectedOption = stringResource(id = state.profileAlcohol.title),
                         btnTitle = stringResource(id = R.string.btn_title_ok),
                         onOptionSelected = { status ->
@@ -246,7 +247,7 @@ fun EditOptionView(
 
                 EditProfileOption.SMOKE -> {
                     SmokeSelector(
-                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size24),
                         selectedOption = stringResource(id = state.profileSmoke.title),
                         btnTitle = stringResource(id = R.string.btn_title_ok),
                         onOptionSelected = { status ->
@@ -257,6 +258,7 @@ fun EditOptionView(
 
                 EditProfileOption.PSY_ORIENTATION -> {
                     PsyOrientationSelector(
+                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size24),
                         selectedOption = stringResource(id = state.profilePsyOrientation.title),
                         btnTitle = stringResource(id = R.string.btn_title_ok),
                         onOptionSelected = { orientation ->
@@ -271,7 +273,7 @@ fun EditOptionView(
 
                 EditProfileOption.RELIGION -> {
                     ReligionSelector(
-                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size24),
                         selectedOption = stringResource(id = state.profileReligion.title),
                         btnTitle = stringResource(id = R.string.btn_title_ok),
                         onOptionSelected = { religion ->
@@ -282,7 +284,7 @@ fun EditOptionView(
 
                 EditProfileOption.LANGUAGES -> {
                     LanguagesSelector(
-                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size24),
                         selectedOptions = state.profileLanguages,
                         btnTitle = stringResource(id = R.string.btn_title_ok),
                         onOptionSelected = { languages ->
@@ -293,7 +295,7 @@ fun EditOptionView(
 
                 EditProfileOption.PETS -> {
                     PetSelector(
-                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                        modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size24),
                         selectedOptions = state.profilePets,
                         btnTitle = stringResource(id = R.string.btn_title_ok),
                         onOptionSelected = { pets ->
