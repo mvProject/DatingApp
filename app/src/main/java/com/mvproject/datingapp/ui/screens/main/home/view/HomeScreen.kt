@@ -9,8 +9,9 @@
 package com.mvproject.datingapp.ui.screens.main.home.view
 
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.List
+import androidx.compose.material3.Badge
+import androidx.compose.material3.BadgedBox
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -23,6 +24,7 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -30,9 +32,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.mvproject.datingapp.navigation.AppRoutes
+import com.mvproject.datingapp.navigation.BottomNavItem
 import com.mvproject.datingapp.navigation.NavigationHost
+import com.mvproject.datingapp.navigation.bottomNavigateToRoute
 import com.mvproject.datingapp.ui.screens.main.home.viewmodel.HomeViewModel
+import com.mvproject.datingapp.ui.screens.main.profile.view.navigation.Profile
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
+import com.mvproject.datingapp.ui.theme.dimens
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -41,11 +47,12 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val authState by viewModel.authState.collectAsStateWithLifecycle()
+    val routesState by viewModel.routes.collectAsStateWithLifecycle()
 
     val startScreen by remember(authState) {
         derivedStateOf {
             if (authState)
-                AppRoutes.Profile.route
+                Profile.route
             else
                 AppRoutes.SignIn.route
         }
@@ -53,12 +60,11 @@ fun HomeScreen(
 
     Scaffold(
         bottomBar = {
-            // todo turn on
-            //  AppBottomNavigation(
-            //      navController = navController,
-            //      bottomNavigationItems = AppRoutes.BottomBar.routes,
-            //      onDestinationClick = navController::bottomNavigateToRoute
-            //  )
+            AppBottomNavigation(
+                navController = navController,
+                bottomNavigationItems = routesState,
+                onDestinationClick = navController::bottomNavigateToRoute
+            )
         }
     ) { paddingValues ->
         NavigationHost(
@@ -69,11 +75,12 @@ fun HomeScreen(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppBottomNavigation(
     modifier: Modifier = Modifier,
     navController: NavHostController,
-    bottomNavigationItems: List<AppRoutes>,
+    bottomNavigationItems: List<BottomNavItem>,
     onDestinationClick: (String) -> Unit = {}
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -87,23 +94,37 @@ fun AppBottomNavigation(
             modifier = modifier
         ) {
             bottomNavigationItems.forEach { screen ->
+                val isSelected = screen.route == currentDestination?.route
                 NavigationBarItem(
                     icon = {
-                        Icon(Icons.Default.List, contentDescription = null)
+                        BadgedBox(
+                            badge = {
+                                if (screen.isWithBadge) {
+                                    Badge(containerColor = MaterialTheme.colorScheme.tertiary)
+                                }
+                            },
+                        ) {
+                            Icon(
+                                painter = painterResource(id = screen.logo),
+                                contentDescription = screen.route
+                            )
+                        }
                     },
                     label = {
                         Text(
-                            text = screen.route
+                            text = screen.route,
+                            style = MaterialTheme.typography.bodySmall,
+                            fontSize = MaterialTheme.dimens.font10
                         )
                     },
                     colors = NavigationBarItemDefaults.colors(
-                        selectedIconColor = MaterialTheme.colorScheme.tertiary,
-                        selectedTextColor = MaterialTheme.colorScheme.tertiary,
+                        selectedIconColor = MaterialTheme.colorScheme.secondary,
+                        selectedTextColor = MaterialTheme.colorScheme.secondary,
                         unselectedIconColor = MaterialTheme.colorScheme.inverseSurface,
                         unselectedTextColor = MaterialTheme.colorScheme.inverseSurface,
                         indicatorColor = MaterialTheme.colorScheme.primary
                     ),
-                    selected = screen.route == currentDestination?.route,
+                    selected = isSelected,
                     onClick = { onDestinationClick(screen.route) }
                 )
             }

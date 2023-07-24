@@ -8,20 +8,17 @@
 
 package com.mvproject.datingapp.ui.components.buttons
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.stringResource
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.ui.theme.dimens
@@ -30,31 +27,30 @@ import com.mvproject.datingapp.ui.theme.dimens
 fun DarkButton(
     modifier: Modifier = Modifier,
     title: String = stringResource(id = R.string.btn_title_continue),
+    logo: Painter? = null,
     onClick: () -> Unit = {}
 ) {
     Button(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier,
+        onClick = onClick,
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color.Transparent
+            containerColor = MaterialTheme.colorScheme.secondary
         ),
-        contentPadding = PaddingValues(),
-        onClick = onClick
+        shape = MaterialTheme.shapes.large
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(color = MaterialTheme.colorScheme.secondary)
-                .clip(MaterialTheme.shapes.large)
-                .padding(
-                    horizontal = MaterialTheme.dimens.size4,
-                    vertical = MaterialTheme.dimens.size8
-                ), contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = title,
-                color = MaterialTheme.colorScheme.onTertiary,
-                style = MaterialTheme.typography.titleSmall
+        logo?.let { painter ->
+            Image(
+                painter = painter,
+                modifier = Modifier.size(MaterialTheme.dimens.size24),
+                contentDescription = null
             )
+            Spacer(modifier = Modifier.width(MaterialTheme.dimens.size8))
         }
+
+        Text(
+            text = title,
+            color = MaterialTheme.colorScheme.onTertiary,
+            style = MaterialTheme.typography.titleSmall
+        )
     }
 }

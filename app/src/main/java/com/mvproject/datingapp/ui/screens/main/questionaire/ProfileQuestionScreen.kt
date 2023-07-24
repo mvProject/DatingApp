@@ -12,13 +12,11 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -153,18 +151,13 @@ fun ProfileQuestionView(
         ) { paddingValues ->
             Column(
                 modifier = Modifier
-                    .imePadding()
                     .padding(paddingValues)
                     .fillMaxSize()
-                    // .padding(
-                    //     horizontal = MaterialTheme.dimens.size24
-                    // )
                     .padding(
                         start = MaterialTheme.dimens.size16,
                         end = MaterialTheme.dimens.size16,
                         bottom = MaterialTheme.dimens.size16
                     ),
-                verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 val painter = rememberAsyncImagePainter(model = state.currentStep.stateLogo())
@@ -273,6 +266,7 @@ fun ProfileQuestionView(
                     ProfileQuestionsState.ABOUT -> {
                         AboutInput(
                             modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                            initial = state.profileAbout,
                             title = stringResource(state.currentStep.stateTitle()),
                             logo = state.currentStep.stateLogo(),
                         ) { text ->
@@ -283,6 +277,7 @@ fun ProfileQuestionView(
                     ProfileQuestionsState.WORK -> {
                         WorkInput(
                             modifier = Modifier.padding(horizontal = MaterialTheme.dimens.size8),
+                            initial = state.userWork,
                             title = stringResource(state.currentStep.stateTitle()),
                             logo = state.currentStep.stateLogo(),
                         ) { workInfo ->
@@ -347,6 +342,7 @@ fun ProfileQuestionView(
 
                     ProfileQuestionsState.HEIGHT -> {
                         HeightSelector(
+                            initial = state.userHeight,
                             onOptionSelected = { userHeight ->
                                 onAction(ProfileQuestionsAction.UpdateProfileHeight(userHeight))
                             }

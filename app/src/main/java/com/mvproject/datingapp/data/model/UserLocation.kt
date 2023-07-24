@@ -23,14 +23,20 @@ data class UserLocation(
         return "$country;$region;$city"
     }
 
+    fun display() = "$country, $region, $city"
+
     companion object {
         fun fromString(s: String): UserLocation {
             val splitted = s.split(STRING_SEPARATOR)
-            return UserLocation(
-                country = splitted[0],
-                region = splitted[1],
-                city = splitted[2],
-            )
+            return try {
+                UserLocation(
+                    country = splitted[0],
+                    region = splitted[1],
+                    city = splitted[2],
+                )
+            } catch (ex: Exception) {
+                UserLocation()
+            }
         }
     }
 }

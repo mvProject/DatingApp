@@ -8,14 +8,15 @@
 
 package com.mvproject.datingapp.ui.components.input
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -65,10 +66,10 @@ fun SetPasswordWithConfirmation(
 
     Column(
         modifier = modifier
+            .fillMaxHeight()
+            .verticalScroll(rememberScrollState())
             .imePadding()
-            .fillMaxSize()
             .padding(vertical = MaterialTheme.dimens.size12),
-        verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         if (title.isNotEmpty()) {

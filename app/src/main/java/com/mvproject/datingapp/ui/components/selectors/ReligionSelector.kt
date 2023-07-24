@@ -41,6 +41,7 @@ fun ReligionSelector(
     modifier: Modifier = Modifier,
     selectedOption: String = stringResource(ProfileReligion.RELIGION_CATHOLICISM.title),
     radioOptions: List<ProfileReligion> = ProfileReligion.values().toList(),
+    btnTitle: String = stringResource(id = R.string.btn_title_next),
     onOptionSelected: (ProfileReligion) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -85,7 +86,7 @@ fun ReligionSelector(
 
         GradientButton(
             modifier = Modifier.fillMaxWidth(),
-            title = stringResource(id = R.string.btn_title_next),
+            title = btnTitle,
             onClick = {
                 onOptionSelected(selectedReligion)
             }
@@ -95,7 +96,7 @@ fun ReligionSelector(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeProfileReligionSelector() {
+fun PreviewReligionSelector() {
     DatingAppTheme {
         ReligionSelector(
 
@@ -105,7 +106,7 @@ fun PreviewCodeProfileReligionSelector() {
 
 @Preview(showBackground = true)
 @Composable
-fun DarkPreviewProfileReligionSelector() {
+fun DarkPreviewReligionSelector() {
     DatingAppTheme(darkTheme = true) {
         ReligionSelector(
             selectedOption = stringResource(ProfileReligion.RELIGION_CATHOLICISM.title)

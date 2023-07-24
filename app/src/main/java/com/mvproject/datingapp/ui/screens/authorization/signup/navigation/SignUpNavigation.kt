@@ -21,7 +21,6 @@ import com.mvproject.datingapp.navigation.AppRoutes
 import com.mvproject.datingapp.ui.screens.authorization.signup.SignUpScreen
 import com.mvproject.datingapp.ui.screens.authorization.signup.SignUpViewModel
 import com.mvproject.datingapp.utils.ANIM_DURATION_600
-import timber.log.Timber
 
 fun NavController.navigateToSignUp(navOptions: NavOptions? = null) {
     this.navigate(AppRoutes.SignUp.route, navOptions)
@@ -48,7 +47,6 @@ fun NavGraphBuilder.signUpScreen(
             fadeOut(animationSpec = tween(ANIM_DURATION_600))
         }
     ) {
-        Timber.w("testing NavigationHost SignUp")
         val signUpViewModel = hiltViewModel<SignUpViewModel>()
 
         SignUpScreen(

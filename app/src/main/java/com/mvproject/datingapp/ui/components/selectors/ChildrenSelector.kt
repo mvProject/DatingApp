@@ -41,6 +41,7 @@ fun ChildrenSelector(
     modifier: Modifier = Modifier,
     selectedOption: String = stringResource(ProfileChildren.CHILDREN_NO_WANT.title),
     radioOptions: List<ProfileChildren> = ProfileChildren.values().toList(),
+    btnTitle: String = stringResource(id = R.string.btn_title_next),
     onOptionSelected: (ProfileChildren) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -85,7 +86,7 @@ fun ChildrenSelector(
 
         GradientButton(
             modifier = Modifier.fillMaxWidth(),
-            title = stringResource(id = R.string.btn_title_next),
+            title = btnTitle,
             onClick = {
                 onOptionSelected(selectedChildren)
             }
@@ -95,7 +96,7 @@ fun ChildrenSelector(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeProfileChildrenSelector() {
+fun PreviewChildrenSelector() {
     DatingAppTheme {
         ChildrenSelector(
 
@@ -105,7 +106,7 @@ fun PreviewCodeProfileChildrenSelector() {
 
 @Preview(showBackground = true)
 @Composable
-fun DarkPreviewProfileChildrenSelector() {
+fun DarkPreviewChildrenSelector() {
     DatingAppTheme(darkTheme = true) {
         ChildrenSelector(
             selectedOption = stringResource(ProfileChildren.CHILDREN_HAVE.title)

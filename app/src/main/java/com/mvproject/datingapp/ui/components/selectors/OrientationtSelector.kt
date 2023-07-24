@@ -41,6 +41,7 @@ fun OrientationSelector(
     modifier: Modifier = Modifier,
     selectedOption: String = stringResource(ProfileOrientation.ORIENTATION_HETERO.title),
     radioOptions: List<ProfileOrientation> = ProfileOrientation.values().toList(),
+    btnTitle: String = stringResource(id = R.string.btn_title_next),
     onOptionSelected: (ProfileOrientation) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -85,7 +86,7 @@ fun OrientationSelector(
 
         GradientButton(
             modifier = Modifier.fillMaxWidth(),
-            title = stringResource(id = R.string.btn_title_next),
+            title = btnTitle,
             onClick = {
                 onOptionSelected(selectedOrientation)
             }
@@ -95,7 +96,7 @@ fun OrientationSelector(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeProfileOrientationSelector() {
+fun PreviewOrientationSelector() {
     DatingAppTheme {
         OrientationSelector(
 
@@ -105,7 +106,7 @@ fun PreviewCodeProfileOrientationSelector() {
 
 @Preview(showBackground = true)
 @Composable
-fun DarkPreviewProfileOrientationSelector() {
+fun DarkPreviewOrientationSelector() {
     DatingAppTheme(darkTheme = true) {
         OrientationSelector(
             selectedOption = stringResource(ProfileOrientation.ORIENTATION_QUEER.title)

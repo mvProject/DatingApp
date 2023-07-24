@@ -44,6 +44,7 @@ fun InterestSelector(
     selectedOption: String = stringResource(ProfileInterest.INTEREST_LOVE.title),
     radioOptions: List<ProfileInterest> = ProfileInterest.values().toList(),
     title: String = stringResource(id = R.string.scr_auth_interest_select_title),
+    btnTitle: String = stringResource(id = R.string.btn_title_continue),
     onOptionSelected: (ProfileInterest) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -103,6 +104,7 @@ fun InterestSelector(
 
         GradientButton(
             modifier = Modifier.fillMaxWidth(),
+            title = btnTitle,
             onClick = {
                 onOptionSelected(selectedInterest)
             }
@@ -112,7 +114,7 @@ fun InterestSelector(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeProfileInterestSelector() {
+fun PreviewInterestSelector() {
     DatingAppTheme {
         InterestSelector(
 
@@ -122,7 +124,7 @@ fun PreviewCodeProfileInterestSelector() {
 
 @Preview(showBackground = true)
 @Composable
-fun DarkPreviewProfileInterestSelector() {
+fun DarkPreviewInterestSelector() {
     DatingAppTheme(darkTheme = true) {
         InterestSelector(
             selectedOption = stringResource(id = R.string.scr_auth_interest_select_relationship)

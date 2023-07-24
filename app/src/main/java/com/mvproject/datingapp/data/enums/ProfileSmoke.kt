@@ -26,6 +26,7 @@ enum class ProfileSmoke(
     SMOKE_NOT_SET(
         title = R.string.option_not_set
     );
+    fun display() = if (this == SMOKE_NOT_SET) R.string.title_not_set else title
 
     companion object {
         fun fromStringOrDefault(str: String?): ProfileSmoke {

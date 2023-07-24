@@ -39,6 +39,7 @@ import com.mvproject.datingapp.utils.WEIGHT_1
 fun HeightSelector(
     modifier: Modifier = Modifier,
     initial: UserHeight = UserHeight(),
+    btnTitle: String = stringResource(id = R.string.btn_title_next),
     onOptionSelected: (UserHeight) -> Unit = {}
 ) {
 
@@ -83,7 +84,7 @@ fun HeightSelector(
 
         CheckSelectorInverted(
             modifier = Modifier.fillMaxWidth(),
-            text = stringResource(id = R.string.option_not_set),
+            text = stringResource(id = R.string.option_not_visible),
             isSelected = isHeightNotVisible,
             onSelect = {
                 isHeightNotVisible = !isHeightNotVisible
@@ -96,7 +97,7 @@ fun HeightSelector(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = MaterialTheme.dimens.size8),
-            title = stringResource(id = R.string.btn_title_next),
+            title = btnTitle,
             onClick = {
                 onOptionSelected(
                     UserHeight(
@@ -111,7 +112,7 @@ fun HeightSelector(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeProfileHeightSelector() {
+fun PreviewHeightSelector() {
     DatingAppTheme {
         HeightSelector(
 
@@ -121,7 +122,7 @@ fun PreviewCodeProfileHeightSelector() {
 
 @Preview(showBackground = true)
 @Composable
-fun DarkPreviewProfileHeightSelector() {
+fun DarkPreviewHeightSelector() {
     DatingAppTheme(darkTheme = true) {
         HeightSelector(
 

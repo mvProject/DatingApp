@@ -21,7 +21,6 @@ import com.mvproject.datingapp.navigation.AppRoutes
 import com.mvproject.datingapp.ui.screens.main.questionaire.ProfileQuestionScreen
 import com.mvproject.datingapp.ui.screens.main.questionaire.ProfileQuestionViewModel
 import com.mvproject.datingapp.utils.ANIM_DURATION_600
-import timber.log.Timber
 
 fun NavController.navigateToProfileQuestions(navOptions: NavOptions? = null) {
     this.navigate(AppRoutes.ProfileQuestions.route, navOptions)
@@ -47,7 +46,6 @@ fun NavGraphBuilder.profileQuestionsScreen(
             fadeOut(animationSpec = tween(ANIM_DURATION_600))
         }
     ) {
-        Timber.w("testing NavigationHost ProfileQuestions")
         val profileQuestionViewModel = hiltViewModel<ProfileQuestionViewModel>()
 
         ProfileQuestionScreen(
