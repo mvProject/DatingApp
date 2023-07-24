@@ -45,7 +45,7 @@ fun HomeScreen(
     val startScreen by remember(authState) {
         derivedStateOf {
             if (authState)
-                AppRoutes.PROFILE.route
+                AppRoutes.Profile.route
             else
                 AppRoutes.SignIn.route
         }

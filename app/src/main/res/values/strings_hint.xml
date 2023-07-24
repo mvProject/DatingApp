@@ -9,7 +9,11 @@
 <resources>
     <string name="hint_name">Your name</string>
     <string name="hint_email">Email</string>
+    <string name="hint_about">Feel free to tell about yourself</string>
+    <string name="hint_characters">%1$s characters</string>
     <string name="hint_password">Password</string>
     <string name="hint_password_create">Create a new password</string>
     <string name="hint_password_confirm">Confirm a new password</string>
+    <string name="hint_job_title">Job title</string>
+    <string name="hint_company">Company</string>
 </resources>

@@ -24,12 +24,12 @@ import com.mvproject.datingapp.utils.ANIM_DURATION_600
 import timber.log.Timber
 
 fun NavController.navigateToProfile(navOptions: NavOptions? = null) {
-    this.navigate(AppRoutes.PROFILE.route, navOptions)
+    this.navigate(AppRoutes.Profile.route, navOptions)
 }
 
 fun NavController.navigateToProfileClearStack() {
     this.popBackStack()
-    this.navigate(AppRoutes.PROFILE.route) {
+    this.navigate(AppRoutes.Profile.route) {
         launchSingleTop = true
     }
 }
@@ -39,7 +39,7 @@ fun NavGraphBuilder.profileScreen(
     onNavigationLogout: () -> Unit = {}
 ) {
     composable(
-        route = AppRoutes.PROFILE.route,
+        route = AppRoutes.Profile.route,
         enterTransition = {
             fadeIn(animationSpec = tween(ANIM_DURATION_600))
         },

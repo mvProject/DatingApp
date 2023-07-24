@@ -1,0 +1,135 @@
+<!--
+  ~ Create by Medvediev Viktor
+  ~ last update: 07.06.23, 12:03
+  ~
+  ~ Copyright (c) 2023
+  ~
+  -->
+
+<resources>
+    <string name="questionnaire_start_title">Complete your profile by answering a few questions about yourself</string>
+    <string name="questionnaire_start_description">Complete your profile in minutes</string>
+    <string name="questionnaire_about_title">Write a little about yourself</string>
+    <string name="questionnaire_orientation_title">What is your sexual orientation?</string>
+    <string name="questionnaire_marital_status_title">What is your marital status?</string>
+    <string name="questionnaire_children_title">How about children?</string>
+    <string name="questionnaire_height_title">How height are you?</string>
+    <string name="questionnaire_zodiac_title">What is your zodiac sign?</string>
+    <string name="questionnaire_alcohol_title">Do you drink alcohol?</string>
+    <string name="questionnaire_smoke_title">Do you smoke?</string>
+    <string name="questionnaire_vert_title">Are you an introvert or an extrovert?</string>
+    <string name="questionnaire_religion_title">What religion do you profess?</string>
+    <string name="questionnaire_languages_title">What languages do you speak?</string>
+    <string name="questionnaire_pets_title">Do you have pets?</string>
+    <string name="questionnaire_work_title">Where do you work?</string>
+    <string name="questionnaire_end_title">Thank you!</string>
+    <string name="questionnaire_end_description">You have successfully filled out the questionnaire!</string>
+
+    <string name="option_not_set">I prefer not to answer</string>
+
+    <string name="option_orientation_hetero">Heterosexual</string>
+    <string name="option_orientation_gay">Gay</string>
+    <string name="option_orientation_lesbian">Lesbian</string>
+    <string name="option_orientation_bisexual">Bisexual</string>
+    <string name="option_orientation_asexual">Asexual</string>
+    <string name="option_orientation_demisexual">Demisexual</string>
+    <string name="option_orientation_pansexual">Pansexual</string>
+    <string name="option_orientation_queer">Queer</string>
+    <string name="option_orientation_search_myself">Searching for myself</string>
+
+    <string name="option_marital_free">Free</string>
+    <string name="option_marital_in_relationship">In a relationship</string>
+    <string name="option_marital_complicated">It\'s Complicated</string>
+    <string name="option_marital_open_relationship">In an open relationship</string>
+
+    <string name="option_children_sometime">I want sometime</string>
+    <string name="option_children_soon">I want soon</string>
+    <string name="option_children_no_want_children">I don\'t want children</string>
+    <string name="option_children_have_children">I have children</string>
+
+    <string name="option_zodiac_aries">Aries</string>
+    <string name="option_zodiac_aries_date">(Mar 21 — Apr 20)</string>
+    <string name="option_zodiac_taurus">Taurus</string>
+    <string name="option_zodiac_taurus_date">(Apr 21 — May 22)</string>
+    <string name="option_zodiac_gemini">Gemini</string>
+    <string name="option_zodiac_gemini_date">(May 23 — Jun 21)</string>
+    <string name="option_zodiac_cancer">Cancer</string>
+    <string name="option_zodiac_cancer_date">(Jun 22 — Jul 22)</string>
+    <string name="option_zodiac_leo">Leo</string>
+    <string name="option_zodiac_leo_date">(Jul 23 — Aug 22)</string>
+    <string name="option_zodiac_virgo">Virgo</string>
+    <string name="option_zodiac_virgo_date">(Aug 23 — Sep 22)</string>
+    <string name="option_zodiac_libra">Libra</string>
+    <string name="option_zodiac_libra_date">(Sep 23 — Oct 22)</string>
+    <string name="option_zodiac_scorpio">Scorpio</string>
+    <string name="option_zodiac_scorpio_date">(Oct 23 — Nov 21)</string>
+    <string name="option_zodiac_sagittarius">Sagittarius</string>
+    <string name="option_zodiac_sagittarius_date">(Nov 22 — Dec 22)</string>
+    <string name="option_zodiac_capricorn">Capricorn</string>
+    <string name="option_zodiac_capricorn_date">(Dec 23 — Jan 20)</string>
+    <string name="option_zodiac_aquarius">Aquarius</string>
+    <string name="option_zodiac_aquarius_date">(Jan 21 — Feb 19)</string>
+    <string name="option_zodiac_pisces">Pisces</string>
+    <string name="option_zodiac_pisces_date">(Feb 20 — Mar 20)</string>
+
+    <string name="option_alcohol_company">For company</string>
+    <string name="option_alcohol_never">Never</string>
+    <string name="option_alcohol_often">Often</string>
+    <string name="option_alcohol_abstain">I abstain from alcohol</string>
+
+    <string name="option_smoke_yes">Yes</string>
+    <string name="option_smoke_no">No</string>
+    <string name="option_smoke_sometimes">Sometimes</string>
+
+    <string name="option_psy_orientation_introvert">Introvert</string>
+    <string name="option_psy_orientation_extravert">Extravert</string>
+    <string name="option_psy_orientation_between">Somewhere between</string>
+
+    <string name="option_religion_agnosticism">Agnosticism</string>
+    <string name="option_religion_atheism">Atheism</string>
+    <string name="option_religion_buddhism">Buddhism</string>
+    <string name="option_religion_catholicism">Catholicism</string>
+    <string name="option_religion_christianity">Christianity</string>
+    <string name="option_religion_hinduism">Hinduism</string>
+    <string name="option_religion_jainism">Jainism</string>
+    <string name="option_religion_judaism">Judaism</string>
+    <string name="option_religion_mormonism">Mormonism</string>
+    <string name="option_religion_islam">Islam</string>
+    <string name="option_religion_zoroastrianism">Zoroastrianism</string>
+    <string name="option_religion_sikhism">Sikhism</string>
+    <string name="option_religion_spiritualism">Spiritualism</string>
+    <string name="option_religion_other">Other</string>
+
+    <string name="option_language_english">English</string>
+    <string name="option_language_ukrainian">Ukrainian</string>
+    <string name="option_language_latvian">Latvian</string>
+    <string name="option_language_german">German</string>
+    <string name="option_language_french">French</string>
+    <string name="option_language_spanish">Spanish</string>
+    <string name="option_language_italian">Italian</string>
+    <string name="option_language_portuguese">Portuguese</string>
+    <string name="option_language_chinese">Chinese</string>
+    <string name="option_language_japanese">Japanese</string>
+    <string name="option_language_dutch">Dutch</string>
+    <string name="option_language_polish">Polish</string>
+    <string name="option_language_turkish">Turkish</string>
+    <string name="option_language_czech">Czech</string>
+
+    <string name="option_pets_dog">Dog</string>
+    <string name="option_pets_puppy">Puppy</string>
+    <string name="option_pets_cat">Cat</string>
+    <string name="option_pets_kitten">Kitten</string>
+    <string name="option_pets_parrot">Parrot</string>
+    <string name="option_pets_hamster">Hamster</string>
+    <string name="option_pets_chinchilla">Chinchilla</string>
+    <string name="option_pets_guinea_pig">Guinea pig</string>
+    <string name="option_pets_mouse">Mouse</string>
+    <string name="option_pets_rat">Rat</string>
+    <string name="option_pets_spider">Spider</string>
+    <string name="option_pets_turtle">Turtle</string>
+    <string name="option_pets_snake">Snake</string>
+    <string name="option_pets_lizard">Lizard</string>
+    <string name="option_pets_scorpion">Scorpion</string>
+    <string name="option_pets_no">No</string>
+
+</resources>

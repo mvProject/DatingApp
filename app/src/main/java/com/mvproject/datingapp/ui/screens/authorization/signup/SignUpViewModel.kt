@@ -24,6 +24,7 @@ import com.mvproject.datingapp.ui.screens.authorization.signup.state.SignUpState
 import com.mvproject.datingapp.ui.screens.authorization.signup.state.SignUpState.Companion.isStartState
 import com.mvproject.datingapp.ui.screens.authorization.signup.state.SignUpState.Companion.nextState
 import com.mvproject.datingapp.ui.screens.authorization.signup.state.SignUpState.Companion.previousState
+import com.mvproject.datingapp.utils.STRING_EMPTY
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -53,19 +54,19 @@ class SignUpViewModel @Inject constructor(
     fun processAction(action: SignUpAction) {
         when (action) {
             SignUpAction.NextStep -> {
-                val isLastState = _profileDataState.value.currentStep.isLastState()
+                val isLastState = profileDataState.value.currentStep.isLastState()
                 if (!isLastState) {
                     updateState(
-                        newState = _profileDataState.value.currentStep.nextState()
+                        newState = profileDataState.value.currentStep.nextState()
                     )
                 }
             }
 
             SignUpAction.PrevStep -> {
-                val isFirstState = _profileDataState.value.currentStep.isStartState()
+                val isFirstState = profileDataState.value.currentStep.isStartState()
                 if (!isFirstState) {
                     updateState(
-                        newState = _profileDataState.value.currentStep.previousState()
+                        newState = profileDataState.value.currentStep.previousState()
                     )
                 }
             }
@@ -162,7 +163,7 @@ class SignUpViewModel @Inject constructor(
             interest = data.interest.name,
             gender = data.gender.name,
             location = data.location.toString(),
-            profilePictureUrl = data.images.first(),
+            profilePictureUrl = if (data.images.isNotEmpty()) data.images.first() else STRING_EMPTY,
             photos = data.images
         )
     }
