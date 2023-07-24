@@ -84,7 +84,7 @@ fun HeightSelector(
 
         CheckSelectorInverted(
             modifier = Modifier.fillMaxWidth(),
-            text = stringResource(id = R.string.option_not_set),
+            text = stringResource(id = R.string.option_not_visible),
             isSelected = isHeightNotVisible,
             onSelect = {
                 isHeightNotVisible = !isHeightNotVisible
