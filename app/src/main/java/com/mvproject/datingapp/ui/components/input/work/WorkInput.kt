@@ -9,12 +9,12 @@
 package com.mvproject.datingapp.ui.components.input.work
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -43,23 +43,25 @@ import com.mvproject.datingapp.utils.WEIGHT_1
 @Composable
 fun WorkInput(
     modifier: Modifier = Modifier,
+    initial: UserWork = UserWork(),
     logo: Int,
     title: String = STRING_EMPTY,
+    btnTitle: String = stringResource(id = R.string.btn_title_next),
     onWorkEntered: (UserWork) -> Unit = {}
 ) {
     var enteredJob by remember {
-        mutableStateOf(STRING_EMPTY)
+        mutableStateOf(initial.jobTitle)
     }
 
     var enteredCompany by remember {
-        mutableStateOf(STRING_EMPTY)
+        mutableStateOf(initial.jobCompany)
     }
 
     Column(
         modifier = modifier
             .fillMaxHeight()
-            .verticalScroll(rememberScrollState()),
-        verticalArrangement = Arrangement.Top,
+            .verticalScroll(rememberScrollState())
+            .imePadding(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
@@ -108,7 +110,7 @@ fun WorkInput(
 
         GradientButton(
             modifier = Modifier.fillMaxWidth(),
-            title = stringResource(id = R.string.btn_title_next),
+            title = btnTitle,
             onClick = {
                 onWorkEntered(
                     UserWork(

@@ -29,6 +29,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
@@ -38,6 +39,7 @@ import com.mvproject.datingapp.utils.PHOTO_COLUMNS_COUNT
 import com.mvproject.datingapp.utils.PHOTO_MIN_COUNT
 import com.mvproject.datingapp.utils.STRING_EMPTY
 import com.mvproject.datingapp.utils.WEIGHT_1
+import com.mvproject.datingapp.utils.prepareImages
 
 @Composable
 fun ProfileImageSelector(
@@ -47,14 +49,9 @@ fun ProfileImageSelector(
     onPhotoSelected: (List<String>) -> Unit = {}
 ) {
     val listUri = remember {
-        mutableStateListOf(
-            STRING_EMPTY,
-            STRING_EMPTY,
-            STRING_EMPTY,
-            STRING_EMPTY,
-            STRING_EMPTY,
-            STRING_EMPTY,
-        )
+        mutableStateListOf<String>().also {
+            it.addAll(prepareImages())
+        }
     }
 
     val isCanComplete by remember {
@@ -111,7 +108,8 @@ fun ProfileImageSelector(
                 .padding(horizontal = MaterialTheme.dimens.size24),
             text = description,
             color = MaterialTheme.colorScheme.onSurface,
-            style = MaterialTheme.typography.labelMedium
+            style = MaterialTheme.typography.labelMedium,
+            textAlign = TextAlign.Center
         )
 
         Spacer(modifier = Modifier.weight(WEIGHT_1))
@@ -126,7 +124,7 @@ fun ProfileImageSelector(
             title = textBtn,
             onClick = {
                 if (isCanComplete) {
-                    val uriList = listUri.filter { it != STRING_EMPTY }.toList()
+                    val uriList = listUri.toList()
                     onPhotoSelected(uriList)
                 }
             }
@@ -136,7 +134,7 @@ fun ProfileImageSelector(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeProfileImageSelector() {
+fun PreviewProfileImageSelector() {
     DatingAppTheme {
         ProfileImageSelector(
 

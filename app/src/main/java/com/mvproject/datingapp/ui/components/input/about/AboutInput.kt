@@ -9,12 +9,12 @@
 package com.mvproject.datingapp.ui.components.input.about
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -42,19 +42,21 @@ import com.mvproject.datingapp.utils.WEIGHT_1
 @Composable
 fun AboutInput(
     modifier: Modifier = Modifier,
+    initial: String = STRING_EMPTY,
     logo: Int,
     title: String = STRING_EMPTY,
+    btnTitle: String = stringResource(id = R.string.btn_title_next),
     onAboutEntered: (String) -> Unit = {}
 ) {
     var entered by remember {
-        mutableStateOf(STRING_EMPTY)
+        mutableStateOf(initial)
     }
 
     Column(
         modifier = modifier
             .fillMaxHeight()
-            .verticalScroll(rememberScrollState()),
-        verticalArrangement = Arrangement.Top,
+            .verticalScroll(rememberScrollState())
+            .imePadding(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
@@ -89,7 +91,7 @@ fun AboutInput(
 
         GradientButton(
             modifier = Modifier.fillMaxWidth(),
-            title = stringResource(id = R.string.btn_title_next),
+            title = btnTitle,
             onClick = {
                 onAboutEntered(entered)
             }
