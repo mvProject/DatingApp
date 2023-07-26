@@ -19,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -29,17 +30,19 @@ import com.mvproject.datingapp.ui.theme.dimens
 @Composable
 fun InterestInfo(
     modifier: Modifier = Modifier,
-    selectedInterest: ProfileInterest
+    selectedInterest: ProfileInterest,
+    frontColor: Color = MaterialTheme.colorScheme.onPrimary,
+    backColor: Color = MaterialTheme.colorScheme.primary,
 ) {
     Row(
         modifier
             .background(
-                color = MaterialTheme.colorScheme.primary,
+                color = backColor,
                 shape = MaterialTheme.shapes.large
             )
             .border(
                 MaterialTheme.dimens.size1,
-                color = MaterialTheme.colorScheme.onPrimary,
+                color = frontColor,
                 shape = MaterialTheme.shapes.large
             )
             .padding(
@@ -54,7 +57,7 @@ fun InterestInfo(
                 .padding(start = MaterialTheme.dimens.size8),
             painter = painterResource(id = selectedInterest.logo),
             contentDescription = stringResource(id = selectedInterest.title),
-            tint = MaterialTheme.colorScheme.onPrimary
+            tint = frontColor
         )
 
         Text(
@@ -62,7 +65,7 @@ fun InterestInfo(
                 .padding(start = MaterialTheme.dimens.size12),
             text = stringResource(id = selectedInterest.title),
             style = MaterialTheme.typography.labelLarge,
-            color = MaterialTheme.colorScheme.onPrimary,
+            color = frontColor,
         )
     }
 }
