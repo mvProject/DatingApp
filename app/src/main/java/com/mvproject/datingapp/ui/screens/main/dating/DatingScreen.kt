@@ -49,6 +49,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.enums.ProfileInterest
 import com.mvproject.datingapp.ui.components.buttons.CircleButton
+import com.mvproject.datingapp.ui.components.composable.EmptyCandidatesView
 import com.mvproject.datingapp.ui.components.indicators.StoryIndicator
 import com.mvproject.datingapp.ui.components.info.ShortProfileInfo
 import com.mvproject.datingapp.ui.components.swipe.Direction
@@ -132,7 +133,11 @@ fun DatingView(
     ) { paddingValues ->
         when {
             state.candidates.isEmpty() -> {
-
+                EmptyCandidatesView(
+                    modifier = Modifier.padding(paddingValues),
+                    profileLogo = state.profileLogo,
+                    onFilterClick = onFilterClick
+                )
             }
 
             state.likeAnimationState || state.dislikeAnimationState -> {
