@@ -47,7 +47,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mvproject.datingapp.R
-import com.mvproject.datingapp.data.enums.ProfileInterest
 import com.mvproject.datingapp.ui.components.buttons.CircleButton
 import com.mvproject.datingapp.ui.components.composable.EmptyCandidatesView
 import com.mvproject.datingapp.ui.components.indicators.StoryIndicator
@@ -73,7 +72,7 @@ import timber.log.Timber
 fun DatingScreen(
     viewModel: DatingViewModel,
     onNavigationFilter: () -> Unit = {},
-    onNavigationDetail: () -> Unit = {}
+    onNavigationDetail: (String) -> Unit = {}
 ) {
     val datingState by viewModel.datingState.collectAsStateWithLifecycle()
 
@@ -90,7 +89,7 @@ fun DatingScreen(
 fun DatingView(
     state: DatingState = DatingState(),
     onFilterClick: () -> Unit = {},
-    onDetailClick: () -> Unit = {},
+    onDetailClick: (String) -> Unit = {},
     onAction: (DatingAction) -> Unit = {}
 ) {
     Scaffold(
@@ -213,7 +212,7 @@ fun DatingView(
                                 backColor = Color.Transparent,
                                 profileName = current.name,
                                 profileAge = calculatAgeMillis(current.birthdate),
-                                profileInterest = ProfileInterest.fromStringOrDefault(current.interest)
+                                profileInterest = current.interest
                             )
 
                             Image(
@@ -224,7 +223,7 @@ fun DatingView(
                                     )
                                     .size(MaterialTheme.dimens.size40)
                                     .clickable {
-                                        onDetailClick()
+                                        onDetailClick(current.id.toString())
                                     }
                                     .align(Alignment.TopEnd),
                                 painter = painterResource(id = R.drawable.ic_profile_about),

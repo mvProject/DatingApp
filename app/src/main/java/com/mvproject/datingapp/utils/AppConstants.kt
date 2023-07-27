@@ -27,6 +27,7 @@ const val STRING_ZERO = "0"
 
 const val INT_ZERO = 0
 const val LONG_ZERO = 0L
+const val FLOAT_ZERO = 0f
 const val DEFAULT_CODE_LENGTH = 6
 const val WEIGHT_1 = 1f
 const val WEIGHT_2 = 2f

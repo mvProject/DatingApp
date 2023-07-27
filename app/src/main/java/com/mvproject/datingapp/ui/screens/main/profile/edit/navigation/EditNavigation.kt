@@ -8,7 +8,6 @@
 
 package com.mvproject.datingapp.ui.screens.main.profile.edit.navigation
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -16,7 +15,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
-import com.google.accompanist.navigation.animation.composable
+import androidx.navigation.compose.composable
 import com.mvproject.datingapp.navigation.AppRoutes
 import com.mvproject.datingapp.ui.screens.main.profile.edit.EditScreen
 import com.mvproject.datingapp.ui.screens.main.profile.edit.EditViewModel
@@ -33,7 +32,6 @@ fun NavController.navigateToEditClearStack() {
     }
 }
 
-@OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.editScreen(
     onNavigationBack: () -> Unit = {},
     onNavigationChange: (String) -> Unit = {}

@@ -8,11 +8,13 @@
 
 package com.mvproject.datingapp.data.enums
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.mvproject.datingapp.R
 
 enum class ProfileSmoke(
-    @StringRes val title: Int
+    @StringRes val title: Int,
+    @DrawableRes val logo: Int = R.drawable.ic_edit_smoking
 ) {
     SMOKE_YES(
         title = R.string.option_smoke_yes
@@ -26,7 +28,10 @@ enum class ProfileSmoke(
     SMOKE_NOT_SET(
         title = R.string.option_not_set
     );
+
     fun display() = if (this == SMOKE_NOT_SET) R.string.title_not_set else title
+
+    val isValueSet get() = this != SMOKE_NOT_SET
 
     companion object {
         fun fromStringOrDefault(str: String?): ProfileSmoke {

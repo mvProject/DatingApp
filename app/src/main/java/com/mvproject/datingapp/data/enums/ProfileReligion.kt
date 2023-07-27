@@ -8,11 +8,13 @@
 
 package com.mvproject.datingapp.data.enums
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.mvproject.datingapp.R
 
 enum class ProfileReligion(
-    @StringRes val title: Int
+    @StringRes val title: Int,
+    @DrawableRes val logo: Int = R.drawable.ic_edit_religion
 ) {
     RELIGION_AGNOSTICISM(
         title = R.string.option_religion_agnosticism
@@ -59,7 +61,11 @@ enum class ProfileReligion(
     RELIGION_NOT_SET(
         title = R.string.option_not_set
     );
+
     fun display() = if (this == RELIGION_NOT_SET) R.string.title_not_set else title
+
+    val isValueSet get() = this != RELIGION_NOT_SET
+
     companion object {
         fun fromStringOrDefault(str: String?): ProfileReligion {
             if (str == null) return RELIGION_CATHOLICISM

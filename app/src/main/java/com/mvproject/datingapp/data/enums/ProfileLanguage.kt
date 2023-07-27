@@ -8,12 +8,14 @@
 
 package com.mvproject.datingapp.data.enums
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.utils.STRING_SEPARATOR
 
 enum class ProfileLanguage(
-    @StringRes val title: Int
+    @StringRes val title: Int,
+    @DrawableRes val logo: Int = R.drawable.ic_edit_languages
 ) {
     LANGUAGE_ENGLISH(
         title = R.string.option_language_english

@@ -8,11 +8,13 @@
 
 package com.mvproject.datingapp.data.enums
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.mvproject.datingapp.R
 
 enum class ProfileChildren(
-    @StringRes val title: Int
+    @StringRes val title: Int,
+    @DrawableRes val logo: Int = R.drawable.ic_edit_children
 ) {
     CHILDREN_WANT_SOMETIME(
         title = R.string.option_children_sometime
@@ -29,7 +31,11 @@ enum class ProfileChildren(
     CHILDREN_NOT_SET(
         title = R.string.option_not_set
     );
+
     fun display() = if (this == CHILDREN_NOT_SET) R.string.title_not_set else title
+
+    val isValueSet get() = this != CHILDREN_NOT_SET
+
     companion object {
         fun fromStringOrDefault(str: String?): ProfileChildren {
             if (str == null) return CHILDREN_NO_WANT

@@ -11,7 +11,6 @@ package com.mvproject.datingapp.ui.screens.main.profile.edit
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mvproject.datingapp.data.enums.ProfileInterest
 import com.mvproject.datingapp.data.model.UserLocation
 import com.mvproject.datingapp.data.repository.PreferenceRepository
 import com.mvproject.datingapp.data.repository.StorageRepository
@@ -58,7 +57,7 @@ class EditViewModel @Inject constructor(
                     _profileState.update {
                         it.copy(
                             currentProfile = user,
-                            profileInterest = ProfileInterest.fromStringOrDefault(user.interest),
+                            profileInterest = user.interest,
                             profileLocation = UserLocation.fromString(user.location),
                             profileHeight = user.profileHeight.height
                         )

@@ -10,7 +10,6 @@ package com.mvproject.datingapp.ui.screens.main.profile.view
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mvproject.datingapp.data.enums.ProfileInterest
 import com.mvproject.datingapp.data.model.UserActivation
 import com.mvproject.datingapp.data.repository.PreferenceRepository
 import com.mvproject.datingapp.ui.screens.main.profile.view.state.ProfileDataState
@@ -56,7 +55,7 @@ class ProfileViewModel @Inject constructor(
                             profileName = user.name,
                             profileImage = user.profilePictureUrl,
                             profileAge = calculatAgeMillis(user.birthdate),
-                            profileInterest = ProfileInterest.fromStringOrDefault(user.interest),
+                            profileInterest = user.interest,
                             activationStatus = activationState.status,
                             activationExpires = activationState.period
                         )

@@ -8,11 +8,13 @@
 
 package com.mvproject.datingapp.data.enums
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.mvproject.datingapp.R
 
 enum class ProfileMarital(
-    @StringRes val title: Int
+    @StringRes val title: Int,
+    @DrawableRes val logo: Int = R.drawable.ic_edit_marital
 ) {
     MARITAL_FREE(
         title = R.string.option_marital_free
@@ -29,7 +31,11 @@ enum class ProfileMarital(
     MARITAL_NOT_SET(
         title = R.string.option_not_set
     );
+
     fun display() = if (this == MARITAL_NOT_SET) R.string.title_not_set else title
+
+    val isValueSet get() = this != MARITAL_NOT_SET
+
     companion object {
         fun fromStringOrDefault(str: String?): ProfileMarital {
             if (str == null) return MARITAL_COMPLICATED

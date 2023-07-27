@@ -17,6 +17,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import com.mvproject.datingapp.data.enums.ProfileAlcohol
 import com.mvproject.datingapp.data.enums.ProfileChildren
 import com.mvproject.datingapp.data.enums.ProfileGender
+import com.mvproject.datingapp.data.enums.ProfileInterest
 import com.mvproject.datingapp.data.enums.ProfileLanguage
 import com.mvproject.datingapp.data.enums.ProfileMarital
 import com.mvproject.datingapp.data.enums.ProfileOrientation
@@ -75,7 +76,7 @@ class PreferenceRepository @Inject constructor(
             settings[USER_NAME] = user.name
             settings[USER_DATE] = user.birthdate
             settings[USER_LOCATION] = user.location
-            settings[USER_INTEREST] = user.interest
+            settings[USER_INTEREST] = user.interest.name
             settings[USER_PROFILE_PHOTO] = user.profilePictureUrl
             settings[USER_PHOTOS] = user.photos.joinToString(STRING_SEPARATOR)
             settings[USER_ABOUT] = user.profileAbout
@@ -104,7 +105,7 @@ class PreferenceRepository @Inject constructor(
             name = preferences[USER_NAME] ?: STRING_EMPTY,
             location = preferences[USER_LOCATION] ?: STRING_EMPTY,
             birthdate = preferences[USER_DATE] ?: LONG_ZERO,
-            interest = preferences[USER_INTEREST] ?: STRING_EMPTY,
+            interest = ProfileInterest.fromStringOrDefault(preferences[USER_INTEREST]),
             profilePictureUrl = preferences[USER_PROFILE_PHOTO] ?: STRING_EMPTY,
             photos = preferences[USER_PHOTOS]?.split(STRING_SEPARATOR)?.toList().orEmpty(),
             profileAbout = preferences[USER_ABOUT] ?: STRING_EMPTY,
@@ -131,7 +132,7 @@ class PreferenceRepository @Inject constructor(
             name = preferences[USER_NAME] ?: STRING_EMPTY,
             location = preferences[USER_LOCATION] ?: STRING_EMPTY,
             birthdate = preferences[USER_DATE] ?: LONG_ZERO,
-            interest = preferences[USER_INTEREST] ?: STRING_EMPTY,
+            interest = ProfileInterest.fromStringOrDefault(preferences[USER_INTEREST]),
             profilePictureUrl = preferences[USER_PROFILE_PHOTO] ?: STRING_EMPTY,
             photos = preferences[USER_PHOTOS]?.split(STRING_SEPARATOR)?.toList().orEmpty(),
             profileAbout = preferences[USER_ABOUT] ?: STRING_EMPTY,

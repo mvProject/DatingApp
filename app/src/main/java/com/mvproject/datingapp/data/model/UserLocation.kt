@@ -17,7 +17,7 @@ import com.mvproject.datingapp.utils.STRING_SEPARATOR
 data class UserLocation(
     val country: String = countries[DEFAULT_LOCATION_INDEX],
     val region: String = regions[DEFAULT_LOCATION_INDEX],
-    val city: String = cities[DEFAULT_LOCATION_INDEX],
+    val city: String = cities[DEFAULT_LOCATION_INDEX]
 ) {
     override fun toString(): String {
         return "$country;$region;$city"

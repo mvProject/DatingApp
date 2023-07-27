@@ -6,7 +6,7 @@
  *
  */
 
-package com.mvproject.datingapp.ui.screens.main.profile.edit.navigation
+package com.mvproject.datingapp.ui.screens.main.dating.navigation
 
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -18,37 +18,37 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import com.mvproject.datingapp.navigation.AppRoutes
-import com.mvproject.datingapp.ui.screens.main.profile.edit.EditOptionScreen
-import com.mvproject.datingapp.ui.screens.main.profile.edit.EditOptionViewModel
+import com.mvproject.datingapp.ui.screens.main.dating.DatingProfileScreen
+import com.mvproject.datingapp.ui.screens.main.dating.DatingProfileViewModel
 import com.mvproject.datingapp.utils.ANIM_DURATION_600
 
-fun NavController.navigateToEditOption(navOptions: NavOptions? = null) {
-    this.navigate(AppRoutes.EditOption.route, navOptions)
+fun NavController.navigateToDatingProfile(navOptions: NavOptions? = null) {
+    this.navigate(AppRoutes.DatingProfile.route, navOptions)
 }
 
-fun NavController.navigateToEditOption(optionId: String) {
-    this.navigate("${AppRoutes.EditOption.route}/$optionId")
+fun NavController.navigateToDatingProfile(profileId: String) {
+    this.navigate("${AppRoutes.DatingProfile.route}/$profileId")
 }
 
-fun NavController.navigateToEditOptionClearStack() {
+fun NavController.navigateToDatingProfileClearStack() {
     this.popBackStack()
-    this.navigate(AppRoutes.EditOption.route) {
+    this.navigate(AppRoutes.DatingProfile.route) {
         launchSingleTop = true
     }
 }
 
-private const val optionIdArg = "optionId"
+private const val profileIdArg = "profileId"
 
-internal class EditOptionArgs(val optionId: String) {
+internal class DatingProfileArgs(val profileId: String) {
     constructor(savedStateHandle: SavedStateHandle) :
-            this(checkNotNull(savedStateHandle[optionIdArg]) as String)
+            this(checkNotNull(savedStateHandle[profileIdArg]) as String)
 }
 
-fun NavGraphBuilder.editOptionScreen(
+fun NavGraphBuilder.datingProfileScreen(
     onNavigationBack: () -> Unit = {}
 ) {
     composable(
-        route = "${AppRoutes.EditOption.route}/{$optionIdArg}",
+        route = "${AppRoutes.DatingProfile.route}/{$profileIdArg}",
         enterTransition = {
             fadeIn(animationSpec = tween(ANIM_DURATION_600))
         },
@@ -56,10 +56,10 @@ fun NavGraphBuilder.editOptionScreen(
             fadeOut(animationSpec = tween(ANIM_DURATION_600))
         }
     ) {
-        val editOptionViewModel = hiltViewModel<EditOptionViewModel>()
+        val datingProfileViewModel = hiltViewModel<DatingProfileViewModel>()
 
-        EditOptionScreen(
-            viewModel = editOptionViewModel,
+        DatingProfileScreen(
+            viewModel = datingProfileViewModel,
             onNavigationBack = onNavigationBack
         )
     }

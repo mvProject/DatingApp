@@ -11,7 +11,6 @@ package com.mvproject.datingapp.ui.screens.main.profile.edit
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mvproject.datingapp.data.enums.ProfileInterest
 import com.mvproject.datingapp.data.model.UserLocation
 import com.mvproject.datingapp.data.repository.PreferenceRepository
 import com.mvproject.datingapp.ui.screens.main.profile.edit.action.EditOptionAction
@@ -42,7 +41,7 @@ class EditOptionViewModel @Inject constructor(
             _profileState.update {
                 it.copy(
                     currentOption = EditProfileOption.valueOf(editOptionArgs.optionId),
-                    profileInterest = ProfileInterest.fromStringOrDefault(user.interest),
+                    profileInterest = user.interest,
                     profileAbout = user.profileAbout,
                     profileOrientation = user.profileOrientation,
                     profileMarital = user.profileMarital,
@@ -67,7 +66,7 @@ class EditOptionViewModel @Inject constructor(
             val user = preferenceRepository.getUser()
             val updatedUser = when (action) {
                 is EditOptionAction.UpdateInterest -> {
-                    user.copy(interest = action.interest.name)
+                    user.copy(interest = action.interest)
                 }
 
                 is EditOptionAction.UpdateLocation -> {

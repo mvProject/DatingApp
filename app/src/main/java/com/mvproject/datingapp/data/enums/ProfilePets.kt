@@ -8,12 +8,14 @@
 
 package com.mvproject.datingapp.data.enums
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.utils.STRING_SEPARATOR
 
 enum class ProfilePets(
-    @StringRes val title: Int
+    @StringRes val title: Int,
+    @DrawableRes val logo: Int = R.drawable.ic_edit_pets
 ) {
     PETS_DOG(
         title = R.string.option_pets_dog

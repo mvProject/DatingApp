@@ -8,11 +8,13 @@
 
 package com.mvproject.datingapp.data.enums
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.mvproject.datingapp.R
 
 enum class ProfileAlcohol(
-    @StringRes val title: Int
+    @StringRes val title: Int,
+    @DrawableRes val logo: Int = R.drawable.ic_edit_alcohol
 ) {
     ALCOHOL_COMPANY(
         title = R.string.option_alcohol_company
@@ -31,6 +33,9 @@ enum class ProfileAlcohol(
     );
 
     fun display() = if (this == ALCOHOL_NOT_SET) R.string.title_not_set else title
+
+    val isValueSet get() = this != ALCOHOL_NOT_SET
+
     companion object {
         fun fromStringOrDefault(str: String?): ProfileAlcohol {
             if (str == null) return ALCOHOL_OFTEN

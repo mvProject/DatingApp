@@ -57,6 +57,8 @@ data class Dimens(
     val size220: Dp = 220.dp,
     val size250: Dp = 250.dp,
     val size286: Dp = 286.dp,
+    val size360: Dp = 360.dp,
+    val size420: Dp = 420.dp,
 
     val font10: TextUnit = 10.sp,
     val font12: TextUnit = 12.sp,

@@ -8,17 +8,19 @@
 
 package com.mvproject.datingapp.data.enums
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.utils.INT_ZERO
 
 enum class ProfileZodiac(
     @StringRes val title: Int,
-    @StringRes val date: Int
+    @StringRes val date: Int,
+    @DrawableRes val logo: Int = R.drawable.ic_edit_zodiac
 ) {
     ZODIAC_ARIES(
         title = R.string.option_zodiac_aries,
-        date = R.string.option_zodiac_aries_date,
+        date = R.string.option_zodiac_aries_date
     ),
     ZODIAC_TAURUS(
         title = R.string.option_zodiac_taurus,
@@ -70,6 +72,8 @@ enum class ProfileZodiac(
     );
 
     fun display() = if (this == ZODIAC_NOT_SET) R.string.title_not_set else title
+
+    val isValueSet get() = this != ZODIAC_NOT_SET
 
     companion object {
         fun fromStringOrDefault(str: String?): ProfileZodiac {
