@@ -12,24 +12,43 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
-import com.mvproject.datingapp.data.enums.ProfileAlcohol
-import com.mvproject.datingapp.data.enums.ProfileChildren
-import com.mvproject.datingapp.data.enums.ProfileGender
-import com.mvproject.datingapp.data.enums.ProfileInterest
-import com.mvproject.datingapp.data.enums.ProfileLanguage
-import com.mvproject.datingapp.data.enums.ProfileMarital
-import com.mvproject.datingapp.data.enums.ProfileOrientation
-import com.mvproject.datingapp.data.enums.ProfilePets
-import com.mvproject.datingapp.data.enums.ProfilePsyOrientation
-import com.mvproject.datingapp.data.enums.ProfileReligion
-import com.mvproject.datingapp.data.enums.ProfileSmoke
-import com.mvproject.datingapp.data.enums.ProfileZodiac
+import com.mvproject.datingapp.data.enums.filter.FilterAlcohol
+import com.mvproject.datingapp.data.enums.filter.FilterCharacter
+import com.mvproject.datingapp.data.enums.filter.FilterChildren
+import com.mvproject.datingapp.data.enums.filter.FilterGender
+import com.mvproject.datingapp.data.enums.filter.FilterInterest
+import com.mvproject.datingapp.data.enums.filter.FilterLanguage
+import com.mvproject.datingapp.data.enums.filter.FilterMarital
+import com.mvproject.datingapp.data.enums.filter.FilterOrientation
+import com.mvproject.datingapp.data.enums.filter.FilterPets
+import com.mvproject.datingapp.data.enums.filter.FilterReligion
+import com.mvproject.datingapp.data.enums.filter.FilterSmoke
+import com.mvproject.datingapp.data.enums.filter.FilterZodiac
+import com.mvproject.datingapp.data.enums.profile.ProfileAlcohol
+import com.mvproject.datingapp.data.enums.profile.ProfileChildren
+import com.mvproject.datingapp.data.enums.profile.ProfileGender
+import com.mvproject.datingapp.data.enums.profile.ProfileInterest
+import com.mvproject.datingapp.data.enums.profile.ProfileLanguage
+import com.mvproject.datingapp.data.enums.profile.ProfileMarital
+import com.mvproject.datingapp.data.enums.profile.ProfileOrientation
+import com.mvproject.datingapp.data.enums.profile.ProfilePets
+import com.mvproject.datingapp.data.enums.profile.ProfilePsyOrientation
+import com.mvproject.datingapp.data.enums.profile.ProfileReligion
+import com.mvproject.datingapp.data.enums.profile.ProfileSmoke
+import com.mvproject.datingapp.data.enums.profile.ProfileZodiac
+import com.mvproject.datingapp.data.model.FilterData
 import com.mvproject.datingapp.data.model.User
 import com.mvproject.datingapp.data.model.UserActivation
 import com.mvproject.datingapp.data.model.UserHeight
 import com.mvproject.datingapp.data.model.UserWork
+import com.mvproject.datingapp.utils.DEFAULT_FILTER_AGE_MAX
+import com.mvproject.datingapp.utils.DEFAULT_FILTER_AGE_MIN
+import com.mvproject.datingapp.utils.DEFAULT_FILTER_DISTANCE
+import com.mvproject.datingapp.utils.DEFAULT_FILTER_HEIGHT_MAX
+import com.mvproject.datingapp.utils.DEFAULT_FILTER_HEIGHT_MIN
 import com.mvproject.datingapp.utils.LONG_ZERO
 import com.mvproject.datingapp.utils.STRING_EMPTY
 import com.mvproject.datingapp.utils.STRING_SEPARATOR
@@ -151,6 +170,52 @@ class PreferenceRepository @Inject constructor(
         )
     }
 
+    suspend fun saveDatingFilters(data: FilterData) {
+        dataStore.edit { settings ->
+            settings[FILTER_DISTANCE] = data.distance
+            settings[FILTER_GENDER] = data.filterGender.name
+            settings[FILTER_INTEREST] = data.filterInterests.joinToString(STRING_SEPARATOR)
+            settings[FILTER_ORIENTATION] = data.filterOrientation.name
+            settings[FILTER_MARITAL] = data.filterMaritals.joinToString(STRING_SEPARATOR)
+            settings[FILTER_CHILDREN] = data.filterChildrens.joinToString(STRING_SEPARATOR)
+            settings[FILTER_START_HEIGHT] = data.startHeight
+            settings[FILTER_END_HEIGHT] = data.endHeight
+            settings[FILTER_START_AGE] = data.startAge
+            settings[FILTER_END_AGE] = data.endAge
+            settings[FILTER_IS_HEIGHT_SET] = data.isHeightSet
+            settings[FILTER_ZODIAC] = data.filterZodiacs.joinToString(STRING_SEPARATOR)
+            settings[FILTER_ALCOHOL] = data.filterAlcohols.joinToString(STRING_SEPARATOR)
+            settings[FILTER_SMOKE] = data.filterSmoke.name
+            settings[FILTER_CHARACTER] = data.filterCharacter.joinToString(STRING_SEPARATOR)
+            settings[FILTER_RELIGION] = data.filterReligions.joinToString(STRING_SEPARATOR)
+            settings[FILTER_LANGUAGE] = data.filterLanguages.joinToString(STRING_SEPARATOR)
+            settings[FILTER_PET] = data.filterPets.joinToString(STRING_SEPARATOR)
+        }
+    }
+
+    suspend fun getDatingFilters() = dataStore.data.map { preferences ->
+        FilterData(
+            distance = preferences[FILTER_DISTANCE] ?: DEFAULT_FILTER_DISTANCE,
+            filterGender = FilterGender.fromStringOrDefault(preferences[FILTER_GENDER]),
+            startHeight = preferences[FILTER_START_HEIGHT] ?: DEFAULT_FILTER_HEIGHT_MIN,
+            endHeight = preferences[FILTER_END_HEIGHT] ?: DEFAULT_FILTER_HEIGHT_MAX,
+            startAge = preferences[FILTER_START_AGE] ?: DEFAULT_FILTER_AGE_MIN,
+            endAge = preferences[FILTER_END_AGE] ?: DEFAULT_FILTER_AGE_MAX,
+            isHeightSet = preferences[FILTER_IS_HEIGHT_SET] ?: false,
+            filterInterests = FilterInterest.fromStringOrDefault(preferences[FILTER_INTEREST]),
+            filterOrientation = FilterOrientation.fromStringOrDefault(preferences[FILTER_ORIENTATION]),
+            filterMaritals = FilterMarital.fromStringOrDefault(preferences[FILTER_MARITAL]),
+            filterChildrens = FilterChildren.fromStringOrDefault(preferences[FILTER_CHILDREN]),
+            filterZodiacs = FilterZodiac.fromStringOrDefault(preferences[FILTER_ZODIAC]),
+            filterAlcohols = FilterAlcohol.fromStringOrDefault(preferences[FILTER_ALCOHOL]),
+            filterSmoke = FilterSmoke.fromStringOrDefault(preferences[FILTER_SMOKE]),
+            filterCharacter = FilterCharacter.fromStringOrDefault(preferences[FILTER_CHARACTER]),
+            filterReligions = FilterReligion.fromStringOrDefault(preferences[FILTER_RELIGION]),
+            filterLanguages = FilterLanguage.fromStringOrDefault(preferences[FILTER_LANGUAGE]),
+            filterPets = FilterPets.fromStringOrDefault(preferences[FILTER_PET]),
+        )
+    }
+
     private companion object {
         val IS_USER_LOGGED = booleanPreferencesKey("isUserLogged")
         val USER_EMAIL = stringPreferencesKey("userEmail")
@@ -178,5 +243,25 @@ class PreferenceRepository @Inject constructor(
 
         val ACTIVATION_STATUS = booleanPreferencesKey("activationStatus")
         val ACTIVATION_PERIOD = longPreferencesKey("activationPeriod")
+
+        val FILTER_IS_HEIGHT_SET = booleanPreferencesKey("filterIsHeightSet")
+        val FILTER_START_AGE = intPreferencesKey("filterStartAge")
+        val FILTER_END_AGE = intPreferencesKey("filterEndAge")
+        val FILTER_START_HEIGHT = intPreferencesKey("filterStartHeight")
+        val FILTER_END_HEIGHT = intPreferencesKey("filterEndHeight")
+        val FILTER_DISTANCE = intPreferencesKey("filterDistance")
+
+        val FILTER_GENDER = stringPreferencesKey("filterGender")
+        val FILTER_ORIENTATION = stringPreferencesKey("filterOrientation")
+        val FILTER_MARITAL = stringPreferencesKey("filterMarital")
+        val FILTER_INTEREST = stringPreferencesKey("filterInterest")
+        val FILTER_CHILDREN = stringPreferencesKey("filterChildren")
+        val FILTER_ZODIAC = stringPreferencesKey("filterZodiac")
+        val FILTER_ALCOHOL = stringPreferencesKey("filterAlcohol")
+        val FILTER_SMOKE = stringPreferencesKey("filterSmoke")
+        val FILTER_CHARACTER = stringPreferencesKey("filterCharacter")
+        val FILTER_RELIGION = stringPreferencesKey("filterReligion")
+        val FILTER_LANGUAGE = stringPreferencesKey("filterLanguage")
+        val FILTER_PET = stringPreferencesKey("filterPet")
     }
 }
