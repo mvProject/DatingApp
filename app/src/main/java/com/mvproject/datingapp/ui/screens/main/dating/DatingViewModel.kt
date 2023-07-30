@@ -17,6 +17,7 @@ import com.mvproject.datingapp.ui.screens.main.dating.state.DatingState
 import com.mvproject.datingapp.utils.DELAY_500
 import com.mvproject.datingapp.utils.INT_ZERO
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -41,6 +42,13 @@ class DatingViewModel @Inject constructor(
                     profileLogo = user.profilePictureUrl,
                     candidates = matchCandidateUsers
                 )
+            }
+        }
+        viewModelScope.launch(Dispatchers.IO) {
+            preferenceRepository.getDatingFilters().collect { data ->
+                _datingState.update {
+                    it.copy(candidates = matchCandidateUsers)
+                }
             }
         }
     }
