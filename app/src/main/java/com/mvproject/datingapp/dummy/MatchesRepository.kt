@@ -9,7 +9,7 @@
 package com.mvproject.datingapp.dummy
 
 import com.mvproject.datingapp.R
-import com.mvproject.datingapp.data.enums.ProfileInterest
+import com.mvproject.datingapp.data.enums.profile.ProfileInterest
 import com.mvproject.datingapp.data.model.UserHeight
 import com.mvproject.datingapp.data.model.UserWork
 

@@ -26,6 +26,8 @@
     <string name="btn_title_profile_activate_expires">Activated until %1$s</string>
     <string name="btn_title_sign_out">Sign out</string>
     <string name="btn_title_filter">Filter</string>
+    <string name="btn_title_filter_apply">Apply filters</string>
+    <string name="btn_title_clean">Clean</string>
 
     <string name="btn_title_set_photo">Set as main photo</string>
     <string name="btn_title_upload_photo">Upload new photo</string>

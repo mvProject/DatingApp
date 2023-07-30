@@ -1,12 +1,12 @@
 /*
  * Create by Medvediev Viktor
- * last update: 15.06.23, 13:04
+ * last update: 26.07.23, 19:03
  *
  * Copyright (c) 2023
  *
  */
 
-package com.mvproject.datingapp.data.enums
+package com.mvproject.datingapp.data.enums.profile
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

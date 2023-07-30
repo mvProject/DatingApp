@@ -8,8 +8,8 @@
 
 package com.mvproject.datingapp.ui.screens.authorization.signup.actions
 
-import com.mvproject.datingapp.data.enums.ProfileGender
-import com.mvproject.datingapp.data.enums.ProfileInterest
+import com.mvproject.datingapp.data.enums.profile.ProfileGender
+import com.mvproject.datingapp.data.enums.profile.ProfileInterest
 import com.mvproject.datingapp.data.model.UserLocation
 
 sealed class SignUpAction {

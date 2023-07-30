@@ -30,7 +30,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
-import com.mvproject.datingapp.data.enums.ProfileInterest
+import com.mvproject.datingapp.data.enums.profile.ProfileInterest
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.STRING_COMA_SPACE

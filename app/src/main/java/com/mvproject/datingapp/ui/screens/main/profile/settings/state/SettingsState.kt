@@ -8,7 +8,7 @@
 
 package com.mvproject.datingapp.ui.screens.main.profile.settings.state
 
-import com.mvproject.datingapp.data.enums.ProfileGender
+import com.mvproject.datingapp.data.enums.profile.ProfileGender
 import com.mvproject.datingapp.utils.LONG_ZERO
 import com.mvproject.datingapp.utils.STRING_EMPTY
 

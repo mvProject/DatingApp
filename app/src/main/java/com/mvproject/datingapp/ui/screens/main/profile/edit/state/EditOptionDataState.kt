@@ -8,17 +8,17 @@
 
 package com.mvproject.datingapp.ui.screens.main.profile.edit.state
 
-import com.mvproject.datingapp.data.enums.ProfileAlcohol
-import com.mvproject.datingapp.data.enums.ProfileChildren
-import com.mvproject.datingapp.data.enums.ProfileInterest
-import com.mvproject.datingapp.data.enums.ProfileLanguage
-import com.mvproject.datingapp.data.enums.ProfileMarital
-import com.mvproject.datingapp.data.enums.ProfileOrientation
-import com.mvproject.datingapp.data.enums.ProfilePets
-import com.mvproject.datingapp.data.enums.ProfilePsyOrientation
-import com.mvproject.datingapp.data.enums.ProfileReligion
-import com.mvproject.datingapp.data.enums.ProfileSmoke
-import com.mvproject.datingapp.data.enums.ProfileZodiac
+import com.mvproject.datingapp.data.enums.profile.ProfileAlcohol
+import com.mvproject.datingapp.data.enums.profile.ProfileChildren
+import com.mvproject.datingapp.data.enums.profile.ProfileInterest
+import com.mvproject.datingapp.data.enums.profile.ProfileLanguage
+import com.mvproject.datingapp.data.enums.profile.ProfileMarital
+import com.mvproject.datingapp.data.enums.profile.ProfileOrientation
+import com.mvproject.datingapp.data.enums.profile.ProfilePets
+import com.mvproject.datingapp.data.enums.profile.ProfilePsyOrientation
+import com.mvproject.datingapp.data.enums.profile.ProfileReligion
+import com.mvproject.datingapp.data.enums.profile.ProfileSmoke
+import com.mvproject.datingapp.data.enums.profile.ProfileZodiac
 import com.mvproject.datingapp.data.model.UserHeight
 import com.mvproject.datingapp.data.model.UserLocation
 import com.mvproject.datingapp.data.model.UserWork

@@ -8,7 +8,7 @@
 
 package com.mvproject.datingapp.ui.screens.main.profile.view.state
 
-import com.mvproject.datingapp.data.enums.ProfileInterest
+import com.mvproject.datingapp.data.enums.profile.ProfileInterest
 import com.mvproject.datingapp.utils.LONG_ZERO
 import com.mvproject.datingapp.utils.STRING_EMPTY
 

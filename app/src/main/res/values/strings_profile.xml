@@ -12,6 +12,7 @@
     <string name="screen_title_profile_edit">Edit Profile</string>
     <string name="screen_title_profile_preview">Profile view</string>
     <string name="screen_title_profile_change_password">Change password</string>
+    <string name="screen_title_profile_filter">Filter</string>
     <string name="unlock_profile_title">Dating App Pro</string>
     <string name="unlock_profile_description">Activate Pro and get all the benefits of this application</string>
     <string name="profile_complete_percentage">%1$s %%</string>

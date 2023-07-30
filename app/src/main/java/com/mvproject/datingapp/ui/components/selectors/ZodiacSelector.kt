@@ -29,7 +29,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
-import com.mvproject.datingapp.data.enums.ProfileZodiac
+import com.mvproject.datingapp.data.enums.profile.ProfileZodiac
 import com.mvproject.datingapp.ui.components.RadioSplitSelector
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
 import com.mvproject.datingapp.ui.theme.DatingAppTheme

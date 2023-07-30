@@ -27,7 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
-import com.mvproject.datingapp.data.enums.ProfileInterest
+import com.mvproject.datingapp.data.enums.profile.ProfileInterest
 import com.mvproject.datingapp.ui.components.info.InterestInfo
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens

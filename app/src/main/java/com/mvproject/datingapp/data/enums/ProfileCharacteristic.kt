@@ -1,6 +1,6 @@
 /*
  * Create by Medvediev Viktor
- * last update: 09.06.23, 17:59
+ * last update: 28.07.23, 15:03
  *
  * Copyright (c) 2023
  *
@@ -8,8 +8,6 @@
 
 package com.mvproject.datingapp.data.enums
 
-
-enum class ProfileGender {
-    MALE,
-    FEMALE
+interface ProfileCharacteristic {
+    val title: Int
 }
