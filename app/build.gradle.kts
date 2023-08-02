@@ -15,7 +15,7 @@ android {
     defaultConfig {
         minSdk = 26
         targetSdk = 33
-        versionCode = 39
+        versionCode = 40
         versionName = "0.0.8"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -121,6 +121,9 @@ dependencies {
 
     // Image
     implementation("io.coil-kt:coil-compose:2.4.0")
+
+    implementation("com.github.skydoves:landscapist-coil:2.2.3")
+    implementation("com.github.skydoves:landscapist-transformation:2.2.3")
 
     // Tests
     testImplementation("junit:junit:4.13.2")

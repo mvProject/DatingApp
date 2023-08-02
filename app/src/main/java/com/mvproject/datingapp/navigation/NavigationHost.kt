@@ -13,7 +13,7 @@ import com.mvproject.datingapp.ui.screens.authorization.signin.navigation.loginS
 import com.mvproject.datingapp.ui.screens.authorization.signin.navigation.navigateToSignInClearStack
 import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.navigateToSignUp
 import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.signUpScreen
-import com.mvproject.datingapp.ui.screens.main.chat.chatScreen
+import com.mvproject.datingapp.ui.screens.main.chat.navigation.chatScreen
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.datingFilterScreen
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.datingProfileScreen
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.datingScreen
@@ -21,6 +21,7 @@ import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToDatin
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToDatingFilter
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToDatingProfile
 import com.mvproject.datingapp.ui.screens.main.likes.likesScreen
+import com.mvproject.datingapp.ui.screens.main.likes.navigateToLikes
 import com.mvproject.datingapp.ui.screens.main.profile.changePassword.navigation.changePasswordScreen
 import com.mvproject.datingapp.ui.screens.main.profile.changePassword.navigation.navigateToChangePassword
 import com.mvproject.datingapp.ui.screens.main.profile.edit.navigation.editOptionScreen
@@ -106,7 +107,12 @@ fun NavigationHost(
         )
 
         likesScreen()
-        chatScreen()
+
+        chatScreen(
+            onNavigationSympathy = { },
+            onNavigationChat = { },
+            onNavigationLikes = navController::navigateToLikes
+        )
 
         /*        navController.addOnDestinationChangedListener { controller, destination, arguments ->
                     val cont = controller.currentBackStack.value
