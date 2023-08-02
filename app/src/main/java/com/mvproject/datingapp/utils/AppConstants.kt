@@ -43,6 +43,8 @@ const val SCALE_30 = 0.3f
 const val SCALE_25 = 0.25f
 
 const val ALPHA_10 = 0.1f
+const val ALPHA_3 = 0.03f
+const val ALPHA_5 = 0.05f
 const val ALPHA_25 = 0.25f
 const val ALPHA_35 = 0.35f
 

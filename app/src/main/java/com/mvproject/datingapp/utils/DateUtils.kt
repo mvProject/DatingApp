@@ -143,6 +143,14 @@ fun Long.convertDateToReadableFormat(): String {
         ).format(this)
 }
 
+fun Long.toTimeReadableFormat(): String {
+    return if (this == LONG_ZERO) STRING_EMPTY else
+        SimpleDateFormat(
+            "HH:mm",
+            Locale.getDefault()
+        ).format(this)
+}
+
 fun Long.convertDateToClearFormat(): String {
     return if (this == LONG_ZERO) STRING_EMPTY else
         SimpleDateFormat(
