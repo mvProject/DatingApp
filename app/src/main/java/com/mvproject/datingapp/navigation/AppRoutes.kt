@@ -1,6 +1,7 @@
 package com.mvproject.datingapp.navigation
 
 import com.mvproject.datingapp.navigation.NavConstants.ROUTE_CHANGE_PASSWORD
+import com.mvproject.datingapp.navigation.NavConstants.ROUTE_CHAT_MESSAGE
 import com.mvproject.datingapp.navigation.NavConstants.ROUTE_DATING_FILTER
 import com.mvproject.datingapp.navigation.NavConstants.ROUTE_DATING_PROFILE
 import com.mvproject.datingapp.navigation.NavConstants.ROUTE_EDIT
@@ -22,4 +23,5 @@ sealed class AppRoutes(val route: String) {
     object DatingProfile : AppRoutes(ROUTE_DATING_PROFILE)
     object DatingFilter : AppRoutes(ROUTE_DATING_FILTER)
     object ChangePassword : AppRoutes(ROUTE_CHANGE_PASSWORD)
+    object ChatMessage : AppRoutes(ROUTE_CHAT_MESSAGE)
 }

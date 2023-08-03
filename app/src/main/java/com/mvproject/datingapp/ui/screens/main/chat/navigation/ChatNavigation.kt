@@ -31,8 +31,8 @@ fun NavController.navigateToChat(navOptions: NavOptions? = null) {
 
 fun NavGraphBuilder.chatScreen(
     onNavigationLikes: () -> Unit = {},
-    onNavigationSympathy: (Int) -> Unit = {},
-    onNavigationChat: (Int) -> Unit = {}
+    onNavigationSympathy: (String) -> Unit = {},
+    onNavigationChat: (String) -> Unit = {}
 ) {
     composable(
         route = Chat.route,

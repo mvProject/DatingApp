@@ -13,7 +13,9 @@ import com.mvproject.datingapp.ui.screens.authorization.signin.navigation.loginS
 import com.mvproject.datingapp.ui.screens.authorization.signin.navigation.navigateToSignInClearStack
 import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.navigateToSignUp
 import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.signUpScreen
+import com.mvproject.datingapp.ui.screens.main.chat.navigation.chatMessageScreen
 import com.mvproject.datingapp.ui.screens.main.chat.navigation.chatScreen
+import com.mvproject.datingapp.ui.screens.main.chat.navigation.navigateToChatMessageScreen
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.datingFilterScreen
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.datingProfileScreen
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.datingScreen
@@ -110,8 +112,13 @@ fun NavigationHost(
 
         chatScreen(
             onNavigationSympathy = { },
-            onNavigationChat = { },
+            onNavigationChat = navController::navigateToChatMessageScreen,
             onNavigationLikes = navController::navigateToLikes
+        )
+
+        chatMessageScreen(
+            onNavigationBack = navController::popBackStack,
+            onNavigationDetail = navController::navigateToDatingProfile
         )
 
         /*        navController.addOnDestinationChangedListener { controller, destination, arguments ->

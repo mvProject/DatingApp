@@ -42,8 +42,8 @@ import com.mvproject.datingapp.ui.theme.dimens
 fun ChatScreen(
     viewModel: ChatViewModel,
     onNavigationLikes: () -> Unit = {},
-    onNavigationSympathy: (Int) -> Unit = {},
-    onNavigationChat: (Int) -> Unit = {}
+    onNavigationSympathy: (String) -> Unit = {},
+    onNavigationChat: (String) -> Unit = {}
 ) {
     val chatState by viewModel.chatState.collectAsStateWithLifecycle()
 
@@ -59,8 +59,8 @@ fun ChatScreen(
 @Composable
 fun ChatView(
     state: ChatState = ChatState(),
-    onSympathyClick: (Int) -> Unit = {},
-    onChatClick: (Int) -> Unit = {},
+    onSympathyClick: (String) -> Unit = {},
+    onChatClick: (String) -> Unit = {},
     onLikesClick: () -> Unit = {}
 ) {
     Scaffold(
@@ -113,7 +113,7 @@ fun ChatView(
                     SympathyUserView(
                         sympathyUser = user,
                         onSympathyClick = {
-                            onSympathyClick(user.id)
+                            onSympathyClick(user.id.toString())
                         }
                     )
                 }
@@ -143,7 +143,7 @@ fun ChatView(
                     ChatUserView(
                         chatUser = user,
                         onChatClick = {
-                            onChatClick(user.id)
+                            onChatClick(user.id.toString())
                         }
                     )
                 }
