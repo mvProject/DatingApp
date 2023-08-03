@@ -47,6 +47,9 @@ const val ALPHA_3 = 0.03f
 const val ALPHA_5 = 0.05f
 const val ALPHA_25 = 0.25f
 const val ALPHA_35 = 0.35f
+const val ALPHA_40 = 0.4f
+const val ALPHA_50 = 0.5f
+const val ALPHA_60 = 0.6f
 
 const val STEP_1 = 1
 const val PHOTO_COLUMNS_COUNT = 3

@@ -10,6 +10,7 @@ package com.mvproject.datingapp.dummy
 
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.enums.profile.ProfileInterest
+import com.mvproject.datingapp.data.model.UserChatMessage
 import com.mvproject.datingapp.data.model.UserHeight
 import com.mvproject.datingapp.data.model.UserWork
 import kotlin.time.Duration.Companion.hours
@@ -249,4 +250,37 @@ val chatUsers = listOf(
         userLastMessage = "Nice to meet you!",
         userLastMessageTime = System.currentTimeMillis() - 2.hours.inWholeMilliseconds,
     )
+)
+
+
+fun chatMessages(
+    sender: String,
+    current: String
+) = listOf(
+    UserChatMessage(
+        message = "hello",
+        senderId = sender,
+        receiverId = current,
+        isMessageLiked = true,
+        sendDate = System.currentTimeMillis() - 4.hours.inWholeMilliseconds
+    ),
+    UserChatMessage(
+        message = "how are you",
+        senderId = sender,
+        receiverId = current,
+        sendDate = System.currentTimeMillis() - 3.hours.inWholeMilliseconds
+    ),
+    UserChatMessage(
+        message = "i'm fine",
+        receiverId = sender,
+        senderId = current,
+        sendDate = System.currentTimeMillis() - 3.hours.inWholeMilliseconds
+    ),
+    UserChatMessage(
+        message = "and you",
+        receiverId = sender,
+        senderId = current,
+        isMessageLiked = true,
+        sendDate = System.currentTimeMillis() - 2.hours.inWholeMilliseconds
+    ),
 )

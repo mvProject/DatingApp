@@ -31,6 +31,8 @@
 
     <string name="btn_title_set_photo">Set as main photo</string>
     <string name="btn_title_upload_photo">Upload new photo</string>
+    <string name="btn_title_view_profile">View profile</string>
+    <string name="btn_title_block_report">Block and report</string>
     <string name="btn_title_delete">Delete</string>
     <string name="btn_title_cancel">Cancel</string>
 </resources>
