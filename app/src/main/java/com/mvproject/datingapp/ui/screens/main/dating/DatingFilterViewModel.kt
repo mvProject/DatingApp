@@ -65,7 +65,8 @@ class DatingFilterViewModel @Inject constructor(
             is FilterChangeAction.HeightFilter -> {
                 datingFilterState.value.filterData.copy(
                     startHeight = action.start,
-                    endHeight = action.end
+                    endHeight = action.end,
+                    isHeightSet = true
                 )
             }
 
