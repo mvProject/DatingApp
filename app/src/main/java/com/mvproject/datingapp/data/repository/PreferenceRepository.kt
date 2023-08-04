@@ -43,6 +43,7 @@ import com.mvproject.datingapp.data.model.FilterData
 import com.mvproject.datingapp.data.model.User
 import com.mvproject.datingapp.data.model.UserActivation
 import com.mvproject.datingapp.data.model.UserHeight
+import com.mvproject.datingapp.data.model.UserLocation
 import com.mvproject.datingapp.data.model.UserWork
 import com.mvproject.datingapp.utils.DEFAULT_FILTER_AGE_MAX
 import com.mvproject.datingapp.utils.DEFAULT_FILTER_AGE_MIN
@@ -94,7 +95,7 @@ class PreferenceRepository @Inject constructor(
             settings[USER_GENDER] = user.gender
             settings[USER_NAME] = user.name
             settings[USER_DATE] = user.birthdate
-            settings[USER_LOCATION] = user.location
+            settings[USER_LOCATION] = user.location.toString()
             settings[USER_INTEREST] = user.interest.name
             settings[USER_PROFILE_PHOTO] = user.profilePictureUrl
             settings[USER_PHOTOS] = user.photos.joinToString(STRING_SEPARATOR)
@@ -122,7 +123,7 @@ class PreferenceRepository @Inject constructor(
             password = preferences[USER_PASS] ?: STRING_EMPTY,
             gender = preferences[USER_GENDER] ?: ProfileGender.MALE.name,
             name = preferences[USER_NAME] ?: STRING_EMPTY,
-            location = preferences[USER_LOCATION] ?: STRING_EMPTY,
+            location = UserLocation.fromStringOrDefault(preferences[USER_LOCATION]),
             birthdate = preferences[USER_DATE] ?: LONG_ZERO,
             interest = ProfileInterest.fromStringOrDefault(preferences[USER_INTEREST]),
             profilePictureUrl = preferences[USER_PROFILE_PHOTO] ?: STRING_EMPTY,
@@ -149,7 +150,7 @@ class PreferenceRepository @Inject constructor(
             password = preferences[USER_PASS] ?: STRING_EMPTY,
             gender = preferences[USER_GENDER] ?: STRING_EMPTY,
             name = preferences[USER_NAME] ?: STRING_EMPTY,
-            location = preferences[USER_LOCATION] ?: STRING_EMPTY,
+            location = UserLocation.fromStringOrDefault(preferences[USER_LOCATION]),
             birthdate = preferences[USER_DATE] ?: LONG_ZERO,
             interest = ProfileInterest.fromStringOrDefault(preferences[USER_INTEREST]),
             profilePictureUrl = preferences[USER_PROFILE_PHOTO] ?: STRING_EMPTY,

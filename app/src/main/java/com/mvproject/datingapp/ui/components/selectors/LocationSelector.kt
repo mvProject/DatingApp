@@ -30,11 +30,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
+import com.mvproject.datingapp.data.dummy.DEFAULT_LOCATION_INDEX
+import com.mvproject.datingapp.data.dummy.cities
+import com.mvproject.datingapp.data.dummy.countries
+import com.mvproject.datingapp.data.dummy.regions
 import com.mvproject.datingapp.data.model.UserLocation
-import com.mvproject.datingapp.dummy.DEFAULT_LOCATION_INDEX
-import com.mvproject.datingapp.dummy.cities
-import com.mvproject.datingapp.dummy.countries
-import com.mvproject.datingapp.dummy.regions
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
 import com.mvproject.datingapp.ui.components.dialog.BottomDialog
 import com.mvproject.datingapp.ui.components.menuoptions.OptionSelector

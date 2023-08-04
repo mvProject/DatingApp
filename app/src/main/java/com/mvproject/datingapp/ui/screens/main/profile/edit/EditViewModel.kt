@@ -11,7 +11,6 @@ package com.mvproject.datingapp.ui.screens.main.profile.edit
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mvproject.datingapp.data.model.UserLocation
 import com.mvproject.datingapp.data.repository.PreferenceRepository
 import com.mvproject.datingapp.data.repository.StorageRepository
 import com.mvproject.datingapp.ui.screens.main.profile.edit.action.EditPhotoAction
@@ -43,11 +42,6 @@ class EditViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            val photos = storageRepository.getAllFiles()
-            Timber.e("testing photos count:${photos.count()}")
-        }
-
-        viewModelScope.launch {
             _userPhotos.addAll(prepareImages(preferenceRepository.getUser().photos))
         }
 
@@ -58,7 +52,7 @@ class EditViewModel @Inject constructor(
                         it.copy(
                             currentProfile = user,
                             profileInterest = user.interest,
-                            profileLocation = UserLocation.fromString(user.location),
+                            profileLocation = user.location,
                             profileHeight = user.profileHeight.height
                         )
                     }

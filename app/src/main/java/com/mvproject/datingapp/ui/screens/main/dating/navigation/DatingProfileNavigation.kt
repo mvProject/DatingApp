@@ -15,16 +15,15 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import com.mvproject.datingapp.navigation.AppRoutes
 import com.mvproject.datingapp.ui.screens.main.dating.DatingProfileScreen
 import com.mvproject.datingapp.ui.screens.main.dating.DatingProfileViewModel
 import com.mvproject.datingapp.utils.ANIM_DURATION_600
 
-fun NavController.navigateToDatingProfile(navOptions: NavOptions? = null) {
+/*fun NavController.navigateToDatingProfile(navOptions: NavOptions? = null) {
     this.navigate(AppRoutes.DatingProfile.route, navOptions)
-}
+}*/
 
 fun NavController.navigateToDatingProfile(profileId: String) {
     this.navigate("${AppRoutes.DatingProfile.route}/$profileId")

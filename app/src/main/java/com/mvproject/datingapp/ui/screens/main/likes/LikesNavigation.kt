@@ -17,7 +17,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import com.google.accompanist.navigation.animation.composable
 import com.mvproject.datingapp.R
-import com.mvproject.datingapp.dummy.DummyScreen
+import com.mvproject.datingapp.data.dummy.DummyScreen
 import com.mvproject.datingapp.navigation.BottomNavItem
 import com.mvproject.datingapp.navigation.NavConstants
 import com.mvproject.datingapp.utils.ANIM_DURATION_600

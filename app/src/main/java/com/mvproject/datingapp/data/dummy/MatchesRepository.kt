@@ -1,12 +1,12 @@
 /*
  * Create by Medvediev Viktor
- * last update: 24.07.23, 18:17
+ * last update: 03.08.23, 21:09
  *
  * Copyright (c) 2023
  *
  */
 
-package com.mvproject.datingapp.dummy
+package com.mvproject.datingapp.data.dummy
 
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.enums.profile.ProfileInterest

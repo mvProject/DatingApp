@@ -12,10 +12,10 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mvproject.datingapp.data.dummy.chatMessages
+import com.mvproject.datingapp.data.dummy.sympathyUsers
 import com.mvproject.datingapp.data.model.UserChatMessage
 import com.mvproject.datingapp.data.repository.PreferenceRepository
-import com.mvproject.datingapp.dummy.chatMessages
-import com.mvproject.datingapp.dummy.sympathyUsers
 import com.mvproject.datingapp.ui.screens.main.chat.action.ChatAction
 import com.mvproject.datingapp.ui.screens.main.chat.navigation.ChatMessageArgs
 import com.mvproject.datingapp.ui.screens.main.chat.state.ChatMessageState

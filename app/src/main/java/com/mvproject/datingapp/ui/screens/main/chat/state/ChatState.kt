@@ -8,8 +8,8 @@
 
 package com.mvproject.datingapp.ui.screens.main.chat.state
 
-import com.mvproject.datingapp.dummy.ChatUser
-import com.mvproject.datingapp.dummy.SympathyUser
+import com.mvproject.datingapp.data.dummy.ChatUser
+import com.mvproject.datingapp.data.dummy.SympathyUser
 import com.mvproject.datingapp.utils.STRING_EMPTY
 
 data class ChatState(

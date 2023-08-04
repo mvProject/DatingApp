@@ -8,7 +8,7 @@
 
 package com.mvproject.datingapp.ui.screens.main.dating.state
 
-import com.mvproject.datingapp.dummy.MatchUser
+import com.mvproject.datingapp.data.dummy.MatchUser
 import com.mvproject.datingapp.utils.STRING_EMPTY
 
 data class DatingState(

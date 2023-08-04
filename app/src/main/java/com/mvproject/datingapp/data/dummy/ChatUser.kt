@@ -6,7 +6,7 @@
  *
  */
 
-package com.mvproject.datingapp.dummy
+package com.mvproject.datingapp.data.dummy
 
 import com.mvproject.datingapp.utils.INT_ZERO
 import com.mvproject.datingapp.utils.LONG_ZERO

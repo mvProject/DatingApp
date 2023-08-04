@@ -28,8 +28,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.mvproject.datingapp.dummy.SympathyUser
-import com.mvproject.datingapp.dummy.sympathyUsers
+import com.mvproject.datingapp.data.dummy.SympathyUser
+import com.mvproject.datingapp.data.dummy.sympathyUsers
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 

@@ -8,7 +8,7 @@
 
 package com.mvproject.datingapp.ui.screens.main.dating.action
 
-import com.mvproject.datingapp.dummy.MatchUser
+import com.mvproject.datingapp.data.dummy.MatchUser
 
 sealed class DatingAction {
     data class Like(val user: MatchUser) : DatingAction()

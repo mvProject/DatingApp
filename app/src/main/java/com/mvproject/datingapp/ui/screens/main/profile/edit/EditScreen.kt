@@ -55,6 +55,7 @@ import com.mvproject.datingapp.ui.screens.main.profile.edit.state.EditProfileOpt
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.INT_ZERO
+import com.mvproject.datingapp.utils.LOCAL_USER
 import com.mvproject.datingapp.utils.PHOTO_COLUMNS_COUNT
 import com.mvproject.datingapp.utils.STRING_COMA_SPACE
 import com.mvproject.datingapp.utils.notNullOrEmpty
@@ -64,7 +65,7 @@ import timber.log.Timber
 fun EditScreen(
     viewModel: EditViewModel,
     onNavigationBack: () -> Unit = {},
-    onNavigationPreview: () -> Unit = {},
+    onNavigationPreview: (String) -> Unit = {},
     onNavigationChange: (String) -> Unit = {}
 ) {
     val profileState by viewModel.profileState.collectAsStateWithLifecycle()
@@ -87,7 +88,7 @@ fun EditView(
     userPhotos: List<String> = emptyList(),
     onPhotoAction: (EditPhotoAction) -> Unit = {},
     onChangeClick: (String) -> Unit = {},
-    onPreviewClick: () -> Unit = {},
+    onPreviewClick: (String) -> Unit = {},
     onBackClick: () -> Unit = {}
 ) {
     Scaffold(
@@ -104,7 +105,7 @@ fun EditView(
                 actions = {
                     Text(
                         modifier = Modifier.clickable {
-                            onPreviewClick()
+                            onPreviewClick(LOCAL_USER)
                         },
                         text = stringResource(id = R.string.screen_title_profile_preview),
                         color = MaterialTheme.colorScheme.secondary,

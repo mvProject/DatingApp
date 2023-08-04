@@ -84,6 +84,7 @@ fun NavigationHost(
 
         editScreen(
             onNavigationChange = navController::navigateToEditOption,
+            onNavigationPreview = navController::navigateToDatingProfile,
             onNavigationBack = navController::popBackStack
         )
 

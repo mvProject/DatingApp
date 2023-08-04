@@ -10,8 +10,8 @@ package com.mvproject.datingapp.ui.screens.main.dating
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mvproject.datingapp.data.dummy.matchCandidateUsers
 import com.mvproject.datingapp.data.repository.PreferenceRepository
-import com.mvproject.datingapp.dummy.matchCandidateUsers
 import com.mvproject.datingapp.ui.screens.main.dating.action.DatingAction
 import com.mvproject.datingapp.ui.screens.main.dating.state.DatingState
 import com.mvproject.datingapp.utils.DELAY_500

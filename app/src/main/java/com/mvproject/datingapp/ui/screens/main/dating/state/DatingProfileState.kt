@@ -8,10 +8,11 @@
 
 package com.mvproject.datingapp.ui.screens.main.dating.state
 
-import com.mvproject.datingapp.data.model.UserLocation
-import com.mvproject.datingapp.dummy.MatchUser
+import com.mvproject.datingapp.data.model.PreviewModel
 
 data class DatingProfileState(
-    val profile: MatchUser = MatchUser(),
-    val profileLocation: UserLocation = UserLocation(),
+    val isLocal: Boolean = false,
+    val previewUser: PreviewModel = PreviewModel(),
+    val userPhotos: List<String> = emptyList(),
+    val matchPhotos: List<Int> = emptyList(),
 )

@@ -31,8 +31,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import com.mvproject.datingapp.dummy.ChatUser
-import com.mvproject.datingapp.dummy.chatUsers
+import com.mvproject.datingapp.data.dummy.ChatUser
+import com.mvproject.datingapp.data.dummy.chatUsers
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.ALPHA_3

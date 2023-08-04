@@ -95,7 +95,7 @@ fun FilterRangeSliderSelector(
             )
         )
 
-        Spacer(modifier = Modifier.height(MaterialTheme.dimens.size16))
+        Spacer(modifier = Modifier.weight(WEIGHT_1))
 
         Row(
             modifier = Modifier.fillMaxWidth(),

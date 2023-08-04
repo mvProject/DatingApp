@@ -6,7 +6,7 @@
  *
  */
 
-package com.mvproject.datingapp.dummy
+package com.mvproject.datingapp.data.dummy
 
 const val DUMMY_CODE = "123456"
 
