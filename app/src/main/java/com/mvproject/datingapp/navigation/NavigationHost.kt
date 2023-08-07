@@ -14,8 +14,12 @@ import com.mvproject.datingapp.ui.screens.authorization.signin.navigation.naviga
 import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.navigateToSignUp
 import com.mvproject.datingapp.ui.screens.authorization.signup.navigation.signUpScreen
 import com.mvproject.datingapp.ui.screens.main.chat.chatScreen
-import com.mvproject.datingapp.ui.screens.main.dating.datingScreen
-import com.mvproject.datingapp.ui.screens.main.dating.navigateToDatingClearStack
+import com.mvproject.datingapp.ui.screens.main.dating.navigation.datingFilterScreen
+import com.mvproject.datingapp.ui.screens.main.dating.navigation.datingProfileScreen
+import com.mvproject.datingapp.ui.screens.main.dating.navigation.datingScreen
+import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToDatingClearStack
+import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToDatingFilter
+import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToDatingProfile
 import com.mvproject.datingapp.ui.screens.main.likes.likesScreen
 import com.mvproject.datingapp.ui.screens.main.profile.changePassword.navigation.changePasswordScreen
 import com.mvproject.datingapp.ui.screens.main.profile.changePassword.navigation.navigateToChangePassword
@@ -88,7 +92,19 @@ fun NavigationHost(
             onNavigationBack = navController::popBackStack
         )
 
-        datingScreen()
+        datingScreen(
+            onNavigationDetail = navController::navigateToDatingProfile,
+            onNavigationFilter = navController::navigateToDatingFilter
+        )
+
+        datingProfileScreen(
+            onNavigationBack = navController::popBackStack,
+        )
+
+        datingFilterScreen(
+            onNavigationBack = navController::popBackStack
+        )
+
         likesScreen()
         chatScreen()
 

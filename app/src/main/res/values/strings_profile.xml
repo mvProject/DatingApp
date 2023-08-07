@@ -12,6 +12,7 @@
     <string name="screen_title_profile_edit">Edit Profile</string>
     <string name="screen_title_profile_preview">Profile view</string>
     <string name="screen_title_profile_change_password">Change password</string>
+    <string name="screen_title_profile_filter">Filter</string>
     <string name="unlock_profile_title">Dating App Pro</string>
     <string name="unlock_profile_description">Activate Pro and get all the benefits of this application</string>
     <string name="profile_complete_percentage">%1$s %%</string>
@@ -47,5 +48,8 @@
 
     <string name="profile_edit_option_work_data">%1$s in company %2$s</string>
     <string name="profile_edit_option_height_data">%1$s cm</string>
+
+    <string name="profile_candidate_over_title">Available profiles are over</string>
+    <string name="profile_candidate_over_description">Change filter settings to see more partners</string>
 
 </resources>

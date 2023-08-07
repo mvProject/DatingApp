@@ -8,8 +8,8 @@
 
 package com.mvproject.datingapp.ui.screens.authorization.signup.state
 
-import com.mvproject.datingapp.data.enums.ProfileGender
-import com.mvproject.datingapp.data.enums.ProfileInterest
+import com.mvproject.datingapp.data.enums.profile.ProfileGender
+import com.mvproject.datingapp.data.enums.profile.ProfileInterest
 import com.mvproject.datingapp.data.model.UserLocation
 import com.mvproject.datingapp.ui.screens.authorization.signup.state.SignUpState.Companion.completeProgress
 import com.mvproject.datingapp.utils.LONG_ZERO

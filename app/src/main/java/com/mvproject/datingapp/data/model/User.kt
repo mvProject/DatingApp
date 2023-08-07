@@ -8,16 +8,17 @@
 
 package com.mvproject.datingapp.data.model
 
-import com.mvproject.datingapp.data.enums.ProfileAlcohol
-import com.mvproject.datingapp.data.enums.ProfileChildren
-import com.mvproject.datingapp.data.enums.ProfileLanguage
-import com.mvproject.datingapp.data.enums.ProfileMarital
-import com.mvproject.datingapp.data.enums.ProfileOrientation
-import com.mvproject.datingapp.data.enums.ProfilePets
-import com.mvproject.datingapp.data.enums.ProfilePsyOrientation
-import com.mvproject.datingapp.data.enums.ProfileReligion
-import com.mvproject.datingapp.data.enums.ProfileSmoke
-import com.mvproject.datingapp.data.enums.ProfileZodiac
+import com.mvproject.datingapp.data.enums.profile.ProfileAlcohol
+import com.mvproject.datingapp.data.enums.profile.ProfileChildren
+import com.mvproject.datingapp.data.enums.profile.ProfileInterest
+import com.mvproject.datingapp.data.enums.profile.ProfileLanguage
+import com.mvproject.datingapp.data.enums.profile.ProfileMarital
+import com.mvproject.datingapp.data.enums.profile.ProfileOrientation
+import com.mvproject.datingapp.data.enums.profile.ProfilePets
+import com.mvproject.datingapp.data.enums.profile.ProfilePsyOrientation
+import com.mvproject.datingapp.data.enums.profile.ProfileReligion
+import com.mvproject.datingapp.data.enums.profile.ProfileSmoke
+import com.mvproject.datingapp.data.enums.profile.ProfileZodiac
 import com.mvproject.datingapp.utils.LONG_ZERO
 import com.mvproject.datingapp.utils.STRING_EMPTY
 
@@ -26,7 +27,7 @@ data class User(
     val birthdate: Long = LONG_ZERO,
     val email: String = STRING_EMPTY,
     val password: String = STRING_EMPTY,
-    val interest: String = STRING_EMPTY,
+    val interest: ProfileInterest = ProfileInterest.INTEREST_DATE,
     val gender: String = STRING_EMPTY,
     val uid: String = STRING_EMPTY,
     val location: String = STRING_EMPTY,

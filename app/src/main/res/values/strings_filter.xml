@@ -1,0 +1,126 @@
+<!--
+  ~ Create by Medvediev Viktor
+  ~ last update: 07.06.23, 12:03
+  ~
+  ~ Copyright (c) 2023
+  ~
+  -->
+
+<resources>
+
+
+    <string name="profile_filter_option_gender_interest">I\'m interested in</string>
+    <string name="profile_filter_option_age">Age</string>
+    <string name="profile_filter_option_distance">Distance (km)</string>
+    <string name="profile_filter_option_sexual_orientation">Sexual orientation</string>
+    <string name="profile_filter_option_marital_status">Marital status</string>
+    <string name="profile_filter_option_interest">Wants</string>
+    <string name="profile_filter_option_children">Children</string>
+    <string name="profile_filter_option_height">Height</string>
+    <string name="profile_filter_option_zodiac_sign">Zodiac sign</string>
+    <string name="profile_filter_option_alcohol">Alcohol</string>
+    <string name="profile_filter_option_smoking">Smoking</string>
+    <string name="profile_filter_option_character">Character</string>
+    <string name="profile_filter_option_religion">Religion</string>
+    <string name="profile_filter_option_languages">Languages</string>
+    <string name="profile_filter_option_pets">Pets</string>
+
+    <string name="profile_filter_age_value">%1$s-%2$s</string>
+    <string name="profile_filter_height_value">%1$s cm - %2$s cm</string>
+
+    <string name="profile_filter_more">MORE FILTERS</string>
+
+    <string name="filter_gender_man">Men</string>
+    <string name="filter_gender_woman">Women</string>
+    <string name="filter_gender_all">All</string>
+
+    <string name="filter_orientation_hetero">Hetero</string>
+    <string name="filter_orientation_without_prejudice">Without prejudice</string>
+    <string name="filter_orientation_bisexual">Bisexual</string>
+    <string name="filter_orientation_gay_lesbian">Gay / Lesbian</string>
+
+    <string name="filter_status_free">Free</string>
+    <string name="filter_status_in_relationship">In a relationship</string>
+    <string name="filter_status_in_open_relationship">In an open relationship</string>
+
+    <string name="filter_interest_date">Date</string>
+    <string name="filter_interest_relationship">Relationship</string>
+    <string name="filter_interest_just_chat">Just chat</string>
+    <string name="filter_interest_find_love">Find love</string>
+
+    <string name="filter_children_yes">Yes</string>
+    <string name="filter_children_no">No</string>
+    <string name="filter_children_wants_children">Wants to have children</string>
+    <string name="filter_children_wants_no_children">Doesn\'t want to have children</string>
+
+    <string name="filter_zodiac_aries">Aries</string>
+    <string name="filter_zodiac_taurus">Taurus</string>
+    <string name="filter_zodiac_gemini">Gemini</string>
+    <string name="filter_zodiac_cancer">Cancer</string>
+    <string name="filter_zodiac_leo">Leo</string>
+    <string name="filter_zodiac_virgo">Virgo</string>
+    <string name="filter_zodiac_libra">Libra</string>
+    <string name="filter_zodiac_scorpio">Scorpio</string>
+    <string name="filter_zodiac_sagittarius">Sagittarius</string>
+    <string name="filter_zodiac_capricorn">Capricorn</string>
+    <string name="filter_zodiac_aquarius">Aquarius</string>
+    <string name="filter_zodiac_pisces">Pisces</string>
+
+    <string name="filter_alcohol_in_company">In friends company</string>
+    <string name="filter_alcohol_never">Never</string>
+    <string name="filter_alcohol_often">Often</string>
+    <string name="filter_alcohol_abstain">Abstain</string>
+
+    <string name="filter_smoke_yes">Yes</string>
+    <string name="filter_smoke_no">No</string>
+
+    <string name="filter_character_extrovert">Extrovert</string>
+    <string name="filter_character_introvert">Introvert</string>
+    <string name="filter_character_somewhere_between">Somewhere between</string>
+
+    <string name="filter_religion_agnosticism">Agnosticism</string>
+    <string name="filter_religion_atheism">Atheism</string>
+    <string name="filter_religion_buddhism">Buddhism</string>
+    <string name="filter_religion_catholicism">Catholicism</string>
+    <string name="filter_religion_christianity">Christianity</string>
+    <string name="filter_religion_hinduism">Hinduism</string>
+    <string name="filter_religion_jainism">Jainism</string>
+    <string name="filter_religion_judaism">Judaism</string>
+    <string name="filter_religion_mormonism">Mormonism</string>
+    <string name="filter_religion_islam">Islam</string>
+    <string name="filter_religion_zoroastrianism">Zoroastrianism</string>
+    <string name="filter_religion_sikhism">Sikhism</string>
+    <string name="filter_religion_spiritualism">Spiritualism</string>
+    <string name="filter_religion_other">Other</string>
+
+    <string name="filter_language_english">English</string>
+    <string name="filter_language_ukrainian">Ukrainian</string>
+    <string name="filter_language_latvian">Latvian</string>
+    <string name="filter_language_german">German</string>
+    <string name="filter_language_french">French</string>
+    <string name="filter_language_spanish">Spanish</string>
+    <string name="filter_language_italian">Italian</string>
+    <string name="filter_language_portuguese">Portuguese</string>
+    <string name="filter_language_chinese">Chinese</string>
+    <string name="filter_language_japanese">Japanese</string>
+    <string name="filter_language_dutch">Dutch</string>
+    <string name="filter_language_polish">Polish</string>
+    <string name="filter_language_turkish">Turkish</string>
+    <string name="filter_language_czech">Czech</string>
+
+    <string name="filter_pets_dog">Dog</string>
+    <string name="filter_pets_puppy">Puppy</string>
+    <string name="filter_pets_cat">Cat</string>
+    <string name="filter_pets_kitten">Kitten</string>
+    <string name="filter_pets_parrot">Parrot</string>
+    <string name="filter_pets_hamster">Hamster</string>
+    <string name="filter_pets_chinchilla">Chinchilla</string>
+    <string name="filter_pets_guinea_pig">Guinea pig</string>
+    <string name="filter_pets_mouse">Mouse</string>
+    <string name="filter_pets_rat">Rat</string>
+    <string name="filter_pets_spider">Spider</string>
+    <string name="filter_pets_turtle">Turtle</string>
+    <string name="filter_pets_snake">Snake</string>
+    <string name="filter_pets_lizard">Lizard</string>
+    <string name="filter_pets_scorpion">Scorpion</string>
+</resources>

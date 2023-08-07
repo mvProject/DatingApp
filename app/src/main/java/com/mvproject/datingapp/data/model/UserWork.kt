@@ -15,6 +15,8 @@ data class UserWork(
     val jobTitle: String = STRING_EMPTY,
     val jobCompany: String = STRING_EMPTY
 ) {
+    val isBothFilled get() = jobTitle.isNotEmpty() && jobCompany.isNotEmpty()
+    val isBothEmpty get() = jobTitle.isEmpty() && jobCompany.isEmpty()
     override fun toString(): String {
         return "$jobTitle;$jobCompany"
     }
