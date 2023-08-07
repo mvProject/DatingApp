@@ -36,5 +36,16 @@ enum class ProfileInterest(
     INTEREST_MISC(
         logo = R.drawable.ic_interest_option_misc,
         title = R.string.scr_auth_interest_select_misc
-    )
+    );
+
+    companion object {
+        fun fromStringOrDefault(str: String?): ProfileInterest {
+            if (str == null) return INTEREST_LOVE
+            return try {
+                ProfileInterest.valueOf(str)
+            } catch (ex: Exception) {
+                INTEREST_LOVE
+            }
+        }
+    }
 }

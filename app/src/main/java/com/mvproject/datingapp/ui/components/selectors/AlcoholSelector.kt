@@ -41,6 +41,7 @@ fun AlcoholSelector(
     modifier: Modifier = Modifier,
     selectedOption: String = stringResource(ProfileAlcohol.ALCOHOL_OFTEN.title),
     radioOptions: List<ProfileAlcohol> = ProfileAlcohol.values().toList(),
+    btnTitle: String = stringResource(id = R.string.btn_title_next),
     onOptionSelected: (ProfileAlcohol) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -85,7 +86,7 @@ fun AlcoholSelector(
 
         GradientButton(
             modifier = Modifier.fillMaxWidth(),
-            title = stringResource(id = R.string.btn_title_next),
+            title = btnTitle,
             onClick = {
                 onOptionSelected(selectedAlcohol)
             }
@@ -95,7 +96,7 @@ fun AlcoholSelector(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeProfileAlcoholSelector() {
+fun PreviewAlcoholSelector() {
     DatingAppTheme {
         AlcoholSelector(
 
@@ -105,7 +106,7 @@ fun PreviewCodeProfileAlcoholSelector() {
 
 @Preview(showBackground = true)
 @Composable
-fun DarkPreviewProfileAlcoholSelector() {
+fun DarkPreviewAlcoholSelector() {
     DatingAppTheme(darkTheme = true) {
         AlcoholSelector(
             selectedOption = stringResource(ProfileAlcohol.ALCOHOL_ABSTAIN.title)

@@ -41,6 +41,7 @@ fun MaritalSelector(
     modifier: Modifier = Modifier,
     selectedOption: String = stringResource(ProfileMarital.MARITAL_COMPLICATED.title),
     radioOptions: List<ProfileMarital> = ProfileMarital.values().toList(),
+    btnTitle: String = stringResource(id = R.string.btn_title_next),
     onOptionSelected: (ProfileMarital) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -85,7 +86,7 @@ fun MaritalSelector(
 
         GradientButton(
             modifier = Modifier.fillMaxWidth(),
-            title = stringResource(id = R.string.btn_title_next),
+            title = btnTitle,
             onClick = {
                 onOptionSelected(selectedMarital)
             }
@@ -95,7 +96,7 @@ fun MaritalSelector(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeProfileMaritalSelector() {
+fun PreviewMaritalSelector() {
     DatingAppTheme {
         MaritalSelector(
 
@@ -105,7 +106,7 @@ fun PreviewCodeProfileMaritalSelector() {
 
 @Preview(showBackground = true)
 @Composable
-fun DarkPreviewProfileMaritalSelector() {
+fun DarkPreviewMaritalSelector() {
     DatingAppTheme(darkTheme = true) {
         MaritalSelector(
             selectedOption = stringResource(ProfileMarital.MARITAL_FREE.title)

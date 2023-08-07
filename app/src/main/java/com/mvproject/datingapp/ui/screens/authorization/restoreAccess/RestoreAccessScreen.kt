@@ -9,7 +9,6 @@
 package com.mvproject.datingapp.ui.screens.authorization.restoreAccess
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -146,7 +145,6 @@ fun RestoreAccessView(
                 .padding(paddingValues)
                 .fillMaxSize()
                 .padding(horizontal = MaterialTheme.dimens.size24),
-            verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 

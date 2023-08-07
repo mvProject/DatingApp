@@ -47,6 +47,7 @@ fun LocationSelector(
     modifier: Modifier = Modifier,
     userLocation: UserLocation = UserLocation(),
     title: String = stringResource(id = R.string.scr_auth_location_select_title),
+    btnTitle: String = stringResource(id = R.string.btn_title_continue),
     onLocationSelected: (UserLocation) -> Unit = {}
 ) {
 
@@ -123,6 +124,7 @@ fun LocationSelector(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(end = MaterialTheme.dimens.size24),
+                title = btnTitle,
                 onClick = {
                     onLocationSelected(currentLocation)
                 }
@@ -178,7 +180,7 @@ fun LocationSelector(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeLocationSelector() {
+fun PreviewLocationSelector() {
     DatingAppTheme {
         LocationSelector()
     }

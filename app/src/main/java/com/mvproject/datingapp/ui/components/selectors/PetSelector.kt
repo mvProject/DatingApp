@@ -40,6 +40,7 @@ fun PetSelector(
     modifier: Modifier = Modifier,
     selectedOptions: List<ProfilePets> = emptyList(),
     radioOptions: List<ProfilePets> = ProfilePets.values().toList(),
+    btnTitle: String = stringResource(id = R.string.btn_title_next),
     onOptionSelected: (List<ProfilePets>) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -95,7 +96,7 @@ fun PetSelector(
 
         GradientButton(
             modifier = Modifier.fillMaxWidth(),
-            title = stringResource(id = R.string.btn_title_next),
+            title = btnTitle,
             onClick = {
                 onOptionSelected(selectedPets.toList())
             }
@@ -105,7 +106,7 @@ fun PetSelector(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeProfilePetSelector() {
+fun PreviewPetSelector() {
     DatingAppTheme {
         PetSelector()
     }
@@ -113,7 +114,7 @@ fun PreviewCodeProfilePetSelector() {
 
 @Preview(showBackground = true)
 @Composable
-fun DarkPreviewProfilePetSelector() {
+fun DarkPreviewPetSelector() {
     DatingAppTheme(darkTheme = true) {
         PetSelector()
     }

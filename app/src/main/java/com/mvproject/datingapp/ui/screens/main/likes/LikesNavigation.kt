@@ -16,13 +16,17 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import com.google.accompanist.navigation.animation.composable
+import com.mvproject.datingapp.R
 import com.mvproject.datingapp.dummy.DummyScreen
-import com.mvproject.datingapp.navigation.AppRoutes
+import com.mvproject.datingapp.navigation.BottomNavItem
+import com.mvproject.datingapp.navigation.NavConstants
 import com.mvproject.datingapp.utils.ANIM_DURATION_600
 import timber.log.Timber
 
+val Likes = BottomNavItem(NavConstants.ROUTE_LIKES, R.drawable.ic_nav_likes)
+
 fun NavController.navigateToLikes(navOptions: NavOptions? = null) {
-    this.navigate(AppRoutes.LIKES.route, navOptions)
+    this.navigate(Likes.route, navOptions)
 }
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -30,7 +34,7 @@ fun NavGraphBuilder.likesScreen(
     onAction: () -> Unit = {}
 ) {
     composable(
-        route = AppRoutes.LIKES.route,
+        route = Likes.route,
         enterTransition = {
             fadeIn(animationSpec = tween(ANIM_DURATION_600))
         },
@@ -40,7 +44,7 @@ fun NavGraphBuilder.likesScreen(
     ) {
         Timber.w("testing LikesNavigation")
         DummyScreen(
-            title = AppRoutes.LIKES.route,
+            title = Likes.route,
         )
     }
 }

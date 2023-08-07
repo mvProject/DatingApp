@@ -44,7 +44,7 @@ enum class ProfileOrientation(
     ORIENTATION_NOT_SET(
         title = R.string.option_not_set
     );
-
+    fun display() = if (this == ORIENTATION_NOT_SET) R.string.title_not_set else title
     companion object {
         fun fromStringOrDefault(str: String?): ProfileOrientation {
             if (str == null) return ORIENTATION_HETERO

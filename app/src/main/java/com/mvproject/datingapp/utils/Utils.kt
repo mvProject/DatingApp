@@ -8,6 +8,7 @@
 
 package com.mvproject.datingapp.utils
 
+import android.net.Uri
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
@@ -42,3 +43,20 @@ fun Modifier.gradientBackground(colors: List<Color>, angle: Float = 0f) = this.t
 )
 
 fun String.emailToFileName() = this.replace('@', '_')
+
+fun Uri?.notNullOrEmpty(): Boolean {
+    return this != null && this != Uri.EMPTY
+}
+
+fun prepareImages(images: List<String> = emptyList()): List<String> {
+    val count = images.count()
+    val neededCount = PHOTO_MAX_COUNT - count
+    return buildList {
+        images.forEach {
+            add(it)
+        }
+        repeat(neededCount) {
+            add(STRING_EMPTY)
+        }
+    }.sortedBy { it.isEmpty() }
+}

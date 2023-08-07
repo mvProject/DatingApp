@@ -21,4 +21,13 @@
     <string name="btn_title_not_now">Not now</string>
     <string name="btn_title_select_photo">Select photo</string>
     <string name="btn_title_save_password">Save new password</string>
+    <string name="btn_title_profile_edit">Edit Profile</string>
+    <string name="btn_title_profile_activate">Activate for $%1$s</string>
+    <string name="btn_title_profile_activate_expires">Activated until %1$s</string>
+    <string name="btn_title_sign_out">Sign out</string>
+
+    <string name="btn_title_set_photo">Set as main photo</string>
+    <string name="btn_title_upload_photo">Upload new photo</string>
+    <string name="btn_title_delete">Delete</string>
+    <string name="btn_title_cancel">Cancel</string>
 </resources>

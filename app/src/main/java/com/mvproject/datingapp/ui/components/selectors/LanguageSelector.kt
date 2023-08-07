@@ -40,6 +40,7 @@ fun LanguagesSelector(
     modifier: Modifier = Modifier,
     selectedOptions: List<ProfileLanguage> = emptyList(),
     radioOptions: List<ProfileLanguage> = ProfileLanguage.values().toList(),
+    btnTitle: String = stringResource(id = R.string.btn_title_next),
     onOptionSelected: (List<ProfileLanguage>) -> Unit = {}
 ) {
 
@@ -90,7 +91,7 @@ fun LanguagesSelector(
 
         GradientButton(
             modifier = Modifier.fillMaxWidth(),
-            title = stringResource(id = R.string.btn_title_next),
+            title = btnTitle,
             onClick = {
                 onOptionSelected(selectedLanguages.toList())
             }
@@ -100,7 +101,7 @@ fun LanguagesSelector(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewCodeProfileLanguageSelector() {
+fun PreviewLanguageSelector() {
     DatingAppTheme {
         LanguagesSelector()
     }
@@ -108,7 +109,7 @@ fun PreviewCodeProfileLanguageSelector() {
 
 @Preview(showBackground = true)
 @Composable
-fun DarkPreviewProfileLanguageSelector() {
+fun DarkPreviewLanguageSelector() {
     DatingAppTheme(darkTheme = true) {
         LanguagesSelector()
     }

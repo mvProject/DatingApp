@@ -30,6 +30,7 @@ import com.mvproject.datingapp.utils.ANIM_DURATION_500
 
 @Composable
 fun BottomDialog(
+    modifier: Modifier = Modifier,
     isVisible: MutableState<Boolean>,
     content: @Composable () -> Unit
 ) {
@@ -45,7 +46,7 @@ fun BottomDialog(
         )
     ) {
         Box(
-            modifier = Modifier.fillMaxSize()
+            modifier = modifier.fillMaxSize()
         ) {
             Card(
                 modifier = Modifier

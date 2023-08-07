@@ -30,6 +30,7 @@ enum class ProfileAlcohol(
         title = R.string.option_not_set
     );
 
+    fun display() = if (this == ALCOHOL_NOT_SET) R.string.title_not_set else title
     companion object {
         fun fromStringOrDefault(str: String?): ProfileAlcohol {
             if (str == null) return ALCOHOL_OFTEN

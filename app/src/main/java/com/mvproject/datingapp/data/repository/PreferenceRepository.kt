@@ -16,6 +16,7 @@ import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.mvproject.datingapp.data.enums.ProfileAlcohol
 import com.mvproject.datingapp.data.enums.ProfileChildren
+import com.mvproject.datingapp.data.enums.ProfileGender
 import com.mvproject.datingapp.data.enums.ProfileLanguage
 import com.mvproject.datingapp.data.enums.ProfileMarital
 import com.mvproject.datingapp.data.enums.ProfileOrientation
@@ -25,6 +26,7 @@ import com.mvproject.datingapp.data.enums.ProfileReligion
 import com.mvproject.datingapp.data.enums.ProfileSmoke
 import com.mvproject.datingapp.data.enums.ProfileZodiac
 import com.mvproject.datingapp.data.model.User
+import com.mvproject.datingapp.data.model.UserActivation
 import com.mvproject.datingapp.data.model.UserHeight
 import com.mvproject.datingapp.data.model.UserWork
 import com.mvproject.datingapp.utils.LONG_ZERO
@@ -49,6 +51,21 @@ class PreferenceRepository @Inject constructor(
         preferences[IS_USER_LOGGED] ?: false
     }.first()
 
+    suspend fun setActivationState(activation: UserActivation) {
+        dataStore.edit { settings ->
+            settings[ACTIVATION_STATUS] = activation.status
+            settings[ACTIVATION_PERIOD] = activation.period
+
+        }
+        Timber.w("testing activation is saved")
+    }
+
+    suspend fun getActivationState() = dataStore.data.map { preferences ->
+        UserActivation(
+            status = preferences[ACTIVATION_STATUS] ?: false,
+            period = preferences[ACTIVATION_PERIOD] ?: LONG_ZERO
+        )
+    }.first()
 
     suspend fun saveUser(user: User) {
         dataStore.edit { settings ->
@@ -83,7 +100,7 @@ class PreferenceRepository @Inject constructor(
         User(
             email = preferences[USER_EMAIL] ?: STRING_EMPTY,
             password = preferences[USER_PASS] ?: STRING_EMPTY,
-            gender = preferences[USER_GENDER] ?: STRING_EMPTY,
+            gender = preferences[USER_GENDER] ?: ProfileGender.MALE.name,
             name = preferences[USER_NAME] ?: STRING_EMPTY,
             location = preferences[USER_LOCATION] ?: STRING_EMPTY,
             birthdate = preferences[USER_DATE] ?: LONG_ZERO,
@@ -105,6 +122,33 @@ class PreferenceRepository @Inject constructor(
             profileWork = UserWork.fromStringOrDefault(preferences[USER_WORK])
         )
     }.first()
+
+    suspend fun getUserFlow() = dataStore.data.map { preferences ->
+        User(
+            email = preferences[USER_EMAIL] ?: STRING_EMPTY,
+            password = preferences[USER_PASS] ?: STRING_EMPTY,
+            gender = preferences[USER_GENDER] ?: STRING_EMPTY,
+            name = preferences[USER_NAME] ?: STRING_EMPTY,
+            location = preferences[USER_LOCATION] ?: STRING_EMPTY,
+            birthdate = preferences[USER_DATE] ?: LONG_ZERO,
+            interest = preferences[USER_INTEREST] ?: STRING_EMPTY,
+            profilePictureUrl = preferences[USER_PROFILE_PHOTO] ?: STRING_EMPTY,
+            photos = preferences[USER_PHOTOS]?.split(STRING_SEPARATOR)?.toList().orEmpty(),
+            profileAbout = preferences[USER_ABOUT] ?: STRING_EMPTY,
+            profileOrientation = ProfileOrientation.fromStringOrDefault(preferences[USER_ORIENTATION]),
+            profileMarital = ProfileMarital.fromStringOrDefault(preferences[USER_MARITAL]),
+            profileChildren = ProfileChildren.fromStringOrDefault(preferences[USER_CHILDREN]),
+            profileHeight = UserHeight.fromStringOrDefault(preferences[USER_HEIGHT]),
+            profileZodiac = ProfileZodiac.fromStringOrDefault(preferences[USER_ZODIAC]),
+            profileAlcohol = ProfileAlcohol.fromStringOrDefault(preferences[USER_ALCOHOL]),
+            profileSmoke = ProfileSmoke.fromStringOrDefault(preferences[USER_SMOKE]),
+            profilePsyOrientation = ProfilePsyOrientation.fromStringOrDefault(preferences[USER_PSY_ORIENTATION]),
+            profileReligion = ProfileReligion.fromStringOrDefault(preferences[USER_RELIGION]),
+            profileLanguages = ProfileLanguage.fromStringOrDefault(preferences[USER_LANGUAGES]),
+            profilePets = ProfilePets.fromStringOrDefault(preferences[USER_PETS]),
+            profileWork = UserWork.fromStringOrDefault(preferences[USER_WORK])
+        )
+    }
 
     private companion object {
         val IS_USER_LOGGED = booleanPreferencesKey("isUserLogged")
@@ -130,5 +174,8 @@ class PreferenceRepository @Inject constructor(
         val USER_LANGUAGES = stringPreferencesKey("userLanguages")
         val USER_PETS = stringPreferencesKey("userPets")
         val USER_WORK = stringPreferencesKey("userWork")
+
+        val ACTIVATION_STATUS = booleanPreferencesKey("activationStatus")
+        val ACTIVATION_PERIOD = longPreferencesKey("activationPeriod")
     }
 }

@@ -1,0 +1,20 @@
+<!--
+  ~ Create by Medvediev Viktor
+  ~ last update: 18.07.23, 16:04
+  ~
+  ~ Copyright (c) 2023
+  ~
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="29dp"
+    android:height="28dp"
+    android:viewportWidth="29"
+    android:viewportHeight="28">
+    <path
+        android:pathData="M13.8,2.572C10.802,2.572 8.372,5.002 8.372,8C8.372,10.998 10.802,13.429 13.8,13.429C16.798,13.429 19.229,10.998 19.229,8C19.229,5.002 16.798,2.572 13.8,2.572Z"
+        android:fillColor="#939091" />
+    <path
+        android:pathData="M10.372,15.143C7.374,15.143 4.943,17.573 4.943,20.572C4.943,23.57 7.374,26 10.372,26H17.229C20.227,26 22.657,23.57 22.657,20.572C22.657,17.573 20.227,15.143 17.229,15.143H10.372Z"
+        android:fillColor="#939091" />
+</vector>
