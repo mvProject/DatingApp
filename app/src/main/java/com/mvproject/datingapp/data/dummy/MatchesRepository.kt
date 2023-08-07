@@ -273,12 +273,14 @@ fun chatMessages(
     UserChatMessage(
         message = "i'm fine",
         receiverId = sender,
+        isMessageRead = true,
         senderId = current,
         sendDate = System.currentTimeMillis() - 3.hours.inWholeMilliseconds
     ),
     UserChatMessage(
         message = "and you",
         receiverId = sender,
+        isMessageRead = true,
         senderId = current,
         isMessageLiked = true,
         sendDate = System.currentTimeMillis() - 2.hours.inWholeMilliseconds

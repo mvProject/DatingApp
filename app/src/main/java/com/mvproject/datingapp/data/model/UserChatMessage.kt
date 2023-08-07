@@ -15,6 +15,7 @@ data class UserChatMessage(
     val message: String = STRING_EMPTY,
     val senderId: String = STRING_EMPTY,
     val isMessageLiked: Boolean = false,
+    val isMessageRead: Boolean = false,
     val receiverId: String = STRING_EMPTY,
     val sendDate: Long = LONG_ZERO
 )

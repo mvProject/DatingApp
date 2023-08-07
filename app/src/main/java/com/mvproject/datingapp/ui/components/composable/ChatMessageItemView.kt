@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -150,18 +151,41 @@ fun ChatMessageItemView(
             }
         }
 
-        Text(
+        Row(
             modifier = Modifier
-                .padding(
-                    start = MaterialTheme.dimens.size6,
-                    end = MaterialTheme.dimens.size6
-                )
+                .wrapContentWidth()
                 .align(alignment),
-            text = userChatMessage.sendDate.toTimeReadableFormat(),
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            style = MaterialTheme.typography.bodySmall,
-            fontSize = MaterialTheme.dimens.font11
-        )
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                modifier = Modifier
+                    .padding(
+                        start = MaterialTheme.dimens.size6,
+                        end = MaterialTheme.dimens.size6
+                    ),
+                text = userChatMessage.sendDate.toTimeReadableFormat(),
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                style = MaterialTheme.typography.bodySmall
+            )
+
+            if (!messageReceived) {
+                Spacer(modifier = Modifier.width(MaterialTheme.dimens.size4))
+
+                val icon = if (userChatMessage.isMessageRead)
+                    R.drawable.ic_double_check
+                else
+                    R.drawable.ic_check
+
+                Icon(
+                    modifier = Modifier
+                        .height(MaterialTheme.dimens.size20)
+                        .width(MaterialTheme.dimens.size22),
+                    painter = painterResource(id = icon),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
     }
 }
 
