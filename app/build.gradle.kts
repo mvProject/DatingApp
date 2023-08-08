@@ -15,7 +15,7 @@ android {
     defaultConfig {
         minSdk = 26
         targetSdk = 33
-        versionCode = 43
+        versionCode = 44
         versionName = "0.0.9"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -124,6 +124,8 @@ dependencies {
 
     implementation("com.github.skydoves:landscapist-coil:2.2.3")
     implementation("com.github.skydoves:landscapist-transformation:2.2.3")
+
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.31.5-beta")
 
     // Tests
     testImplementation("junit:junit:4.13.2")

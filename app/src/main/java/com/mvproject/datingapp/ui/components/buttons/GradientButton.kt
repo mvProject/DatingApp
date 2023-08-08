@@ -32,13 +32,15 @@ import com.mvproject.datingapp.utils.gradientBackground
 fun GradientButton(
     modifier: Modifier = Modifier,
     title: String = stringResource(id = R.string.btn_title_continue),
+    enabled: Boolean = true,
     onClick: () -> Unit = {}
 ) {
     Button(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier,
         colors = ButtonDefaults.buttonColors(
             containerColor = Color.Transparent
         ),
+        enabled = enabled,
         contentPadding = PaddingValues(),
         onClick = onClick
     ) {

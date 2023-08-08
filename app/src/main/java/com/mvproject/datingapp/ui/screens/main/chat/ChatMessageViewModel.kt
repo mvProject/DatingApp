@@ -46,14 +46,28 @@ class ChatMessageViewModel @Inject constructor(
     private val senderUser =
         sympathyUsers.firstOrNull { it.id.toString() == chatMessageArgs.profileId }
 
+
     init {
         viewModelScope.launch {
             val current = preferenceRepository.getUser()
-            val messageList = chatMessages(
-                sender = senderUser?.id.toString(),
-                current = current.uid
-            )
-            _messages.addAll(messageList)
+            val greetingMessage = chatMessageArgs.profileMessage
+
+            if (!greetingMessage.isNullOrEmpty() && greetingMessage != "null") {
+                val newMessage = UserChatMessage(
+                    message = greetingMessage,
+                    receiverId = senderUser?.id.toString(),
+                    senderId = current.uid,
+                    sendDate = System.currentTimeMillis()
+                )
+                _messages.add(newMessage)
+            } else {
+                val messageList = chatMessages(
+                    sender = senderUser?.id.toString(),
+                    current = current.uid
+                )
+                _messages.addAll(messageList)
+            }
+
             _chatMessageState.update {
                 it.copy(
                     sender = senderUser,

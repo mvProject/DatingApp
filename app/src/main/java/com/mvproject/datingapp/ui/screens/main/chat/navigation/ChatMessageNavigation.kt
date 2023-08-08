@@ -21,15 +21,23 @@ import com.mvproject.datingapp.ui.screens.main.chat.ChatMessageScreen
 import com.mvproject.datingapp.ui.screens.main.chat.ChatMessageViewModel
 import com.mvproject.datingapp.utils.ANIM_DURATION_600
 
-fun NavController.navigateToChatMessageScreen(profileId: String) {
-    this.navigate("${AppRoutes.ChatMessage.route}/$profileId")
+fun NavController.navigateToChatMessageScreen(profileId: String, profileMessage: String? = null) {
+    this.navigate("${AppRoutes.ChatMessage.route}/$profileId/$profileMessage") {
+        if (profileMessage != null) {
+            this@navigateToChatMessageScreen.popBackStack()
+        }
+    }
 }
 
 private const val profileIdArg = "profileId"
+private const val profileMessageArg = "profileMessage"
 
-internal class ChatMessageArgs(val profileId: String) {
+internal class ChatMessageArgs(val profileId: String, val profileMessage: String?) {
     constructor(savedStateHandle: SavedStateHandle) :
-            this(checkNotNull(savedStateHandle[profileIdArg]) as String)
+            this(
+                profileId = checkNotNull(savedStateHandle[profileIdArg]) as String,
+                profileMessage = checkNotNull(savedStateHandle[profileMessageArg]) as String?
+            )
 }
 
 fun NavGraphBuilder.chatMessageScreen(
@@ -37,7 +45,7 @@ fun NavGraphBuilder.chatMessageScreen(
     onNavigationDetail: (String) -> Unit = {}
 ) {
     composable(
-        route = "${AppRoutes.ChatMessage.route}/{$profileIdArg}",
+        route = "${AppRoutes.ChatMessage.route}/{$profileIdArg}/{$profileMessageArg}",
         enterTransition = {
             fadeIn(animationSpec = tween(ANIM_DURATION_600))
         },

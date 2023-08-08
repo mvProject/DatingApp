@@ -36,6 +36,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -72,7 +73,8 @@ import timber.log.Timber
 fun DatingScreen(
     viewModel: DatingViewModel,
     onNavigationFilter: () -> Unit = {},
-    onNavigationDetail: (String) -> Unit = {}
+    onNavigationDetail: (String) -> Unit = {},
+    onNavigationMatch: (String) -> Unit = {}
 ) {
     val datingState by viewModel.datingState.collectAsStateWithLifecycle()
 
@@ -80,6 +82,7 @@ fun DatingScreen(
         state = datingState,
         onFilterClick = onNavigationFilter,
         onDetailClick = onNavigationDetail,
+        onMatch = onNavigationMatch,
         onAction = viewModel::processAction
     )
 }
@@ -90,6 +93,7 @@ fun DatingView(
     state: DatingState = DatingState(),
     onFilterClick: () -> Unit = {},
     onDetailClick: (String) -> Unit = {},
+    onMatch: (String) -> Unit = {},
     onAction: (DatingAction) -> Unit = {}
 ) {
     Scaffold(
@@ -131,6 +135,14 @@ fun DatingView(
         contentWindowInsets = WindowInsets.navigationBars
     ) { paddingValues ->
         when {
+            state.lastBothLikeUser != null -> {
+                LaunchedEffect(state.lastBothLikeUser) {
+                    Timber.w("testing state.lastBothLikeUser ${state.lastBothLikeUser}")
+                    onMatch(state.lastBothLikeUser.id.toString())
+                    onAction(DatingAction.BothMatchShown)
+                }
+            }
+
             state.candidates.isEmpty() -> {
                 EmptyCandidatesView(
                     modifier = Modifier.padding(paddingValues),

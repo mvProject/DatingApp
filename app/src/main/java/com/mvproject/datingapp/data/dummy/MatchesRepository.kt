@@ -9,6 +9,7 @@
 package com.mvproject.datingapp.data.dummy
 
 import com.mvproject.datingapp.R
+import com.mvproject.datingapp.data.enums.profile.ProfileGender
 import com.mvproject.datingapp.data.enums.profile.ProfileInterest
 import com.mvproject.datingapp.data.model.UserChatMessage
 import com.mvproject.datingapp.data.model.UserHeight
@@ -26,7 +27,8 @@ val matchCandidateUsers = listOf(
         birthdate = 775146117000L,
         profileWork = UserWork(
             jobTitle = "Desinger"
-        )
+        ),
+        gender = ProfileGender.MALE.name
     ),
     MatchUser(
         id = 2,
@@ -36,7 +38,9 @@ val matchCandidateUsers = listOf(
         interest = ProfileInterest.INTEREST_CHAT,
         profileHeight = UserHeight(isHeightNotVisible = true),
         photos = listOf(R.drawable.man_alter_1, R.drawable.man_alter_2, R.drawable.man_alter_3),
-        birthdate = 712074117000L
+        birthdate = 712074117000L,
+        isLiked = true,
+        gender = ProfileGender.MALE.name
     ),
     MatchUser(
         id = 3,
@@ -53,7 +57,9 @@ val matchCandidateUsers = listOf(
         profileWork = UserWork(
             jobTitle = "Desinger",
             jobCompany = "KinectPro"
-        )
+        ),
+        isLiked = true,
+        gender = ProfileGender.FEMALE.name
     ),
     MatchUser(
         id = 4,
@@ -62,7 +68,8 @@ val matchCandidateUsers = listOf(
         interest = ProfileInterest.INTEREST_MISC,
         profileHeight = UserHeight(isHeightNotVisible = true),
         photos = listOf(R.drawable.man_1, R.drawable.man_1, R.drawable.man_1),
-        birthdate = 964534917000L
+        birthdate = 964534917000L,
+        gender = ProfileGender.MALE.name
     ),
     MatchUser(
         id = 5,
@@ -79,7 +86,8 @@ val matchCandidateUsers = listOf(
         birthdate = 901376517000L,
         profileWork = UserWork(
             jobCompany = "KinectPro"
-        )
+        ),
+        gender = ProfileGender.FEMALE.name
     ),
     MatchUser(
         id = 6,
@@ -89,7 +97,8 @@ val matchCandidateUsers = listOf(
         interest = ProfileInterest.INTEREST_DATE,
         profileHeight = UserHeight(isHeightNotVisible = true),
         photos = listOf(R.drawable.man_alter_1, R.drawable.man_alter_2, R.drawable.man_alter_3),
-        birthdate = 712074117000L
+        birthdate = 712074117000L,
+        gender = ProfileGender.MALE.name
     ),
     MatchUser(
         id = 7,
@@ -101,7 +110,8 @@ val matchCandidateUsers = listOf(
         profileWork = UserWork(
             jobTitle = "Desinger",
             jobCompany = "KinectPro"
-        )
+        ),
+        gender = ProfileGender.MALE.name
     ),
     MatchUser(
         id = 8,
@@ -119,7 +129,9 @@ val matchCandidateUsers = listOf(
         birthdate = 838304517000L,
         profileWork = UserWork(
             jobCompany = "KinectPro"
-        )
+        ),
+        isLiked = true,
+        gender = ProfileGender.FEMALE.name
     ),
     MatchUser(
         id = 9,
@@ -130,7 +142,9 @@ val matchCandidateUsers = listOf(
         birthdate = 869840517000L,
         profileWork = UserWork(
             jobTitle = "Desinger"
-        )
+        ),
+        isLiked = true,
+        gender = ProfileGender.MALE.name
     )
 )
 

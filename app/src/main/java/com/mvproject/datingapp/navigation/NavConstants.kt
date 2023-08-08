@@ -17,6 +17,6 @@ object NavConstants {
     const val ROUTE_DATING = "dating"
     const val ROUTE_DATING_PROFILE = "datingProfile"
     const val ROUTE_DATING_FILTER = "datingFilter"
-
+    const val ROUTE_MATCH_PROFILE = "matchProfile"
     const val ROUTE_CHAT_MESSAGE = "chatMessage"
 }

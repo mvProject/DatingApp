@@ -53,4 +53,5 @@ data class MatchUser(
     val profileLanguages: List<ProfileLanguage> = defaultLanguageList,
     val profilePets: List<ProfilePets> = defaultPetList,
     val profileWork: UserWork = UserWork(),
+    val isLiked: Boolean = false,
 )

@@ -35,7 +35,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
+import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.ALPHA_40
 import com.mvproject.datingapp.utils.ALPHA_60
@@ -48,7 +50,7 @@ fun ChatMessageInput(
     modifier: Modifier = Modifier,
     initial: String = STRING_EMPTY,
     hint: String = stringResource(id = R.string.hint_message),
-    onSendMessage: (String) -> Unit
+    onSendMessage: (String) -> Unit = {}
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -113,5 +115,25 @@ fun ChatMessageInput(
                 contentDescription = null
             )
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewChatMessageInput() {
+    DatingAppTheme {
+        ChatMessageInput(
+            hint = "hint"
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DarkPreviewChatMessageInput() {
+    DatingAppTheme(darkTheme = true) {
+        ChatMessageInput(
+            hint = "hint"
+        )
     }
 }

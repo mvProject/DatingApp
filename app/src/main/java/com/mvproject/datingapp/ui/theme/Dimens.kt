@@ -79,6 +79,7 @@ data class Dimens(
     val font20: TextUnit = 20.sp,
     val font22: TextUnit = 22.sp,
     val font24: TextUnit = 24.sp,
+    val font32: TextUnit = 32.sp,
 
     val weight1: Float = 1f,
     val weight2: Float = 2f,

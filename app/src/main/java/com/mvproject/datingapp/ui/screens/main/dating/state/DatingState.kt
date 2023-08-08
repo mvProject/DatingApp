@@ -18,4 +18,5 @@ data class DatingState(
     val candidates: List<MatchUser> = emptyList(),
     val likeAnimationState: Boolean = false,
     val dislikeAnimationState: Boolean = false,
+    val lastBothLikeUser: MatchUser? = null,
 )

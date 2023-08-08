@@ -6,7 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import com.google.accompanist.navigation.animation.AnimatedNavHost
+import androidx.navigation.compose.NavHost
 import com.mvproject.datingapp.ui.screens.authorization.restoreAccess.navigation.forgotScreen
 import com.mvproject.datingapp.ui.screens.authorization.restoreAccess.navigation.navigateToForgot
 import com.mvproject.datingapp.ui.screens.authorization.signin.navigation.loginScreen
@@ -19,9 +19,11 @@ import com.mvproject.datingapp.ui.screens.main.chat.navigation.navigateToChatMes
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.datingFilterScreen
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.datingProfileScreen
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.datingScreen
+import com.mvproject.datingapp.ui.screens.main.dating.navigation.matchProfileScreen
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToDatingClearStack
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToDatingFilter
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToDatingProfile
+import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToMatchProfile
 import com.mvproject.datingapp.ui.screens.main.likes.likesScreen
 import com.mvproject.datingapp.ui.screens.main.likes.navigateToLikes
 import com.mvproject.datingapp.ui.screens.main.profile.changePassword.navigation.changePasswordScreen
@@ -36,6 +38,7 @@ import com.mvproject.datingapp.ui.screens.main.profile.view.navigation.navigateT
 import com.mvproject.datingapp.ui.screens.main.profile.view.navigation.profileScreen
 import com.mvproject.datingapp.ui.screens.main.questionaire.navigation.navigateToProfileQuestionsClearStack
 import com.mvproject.datingapp.ui.screens.main.questionaire.navigation.profileQuestionsScreen
+import timber.log.Timber
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -44,7 +47,7 @@ fun NavigationHost(
     navController: NavHostController,
     startDestination: String
 ) {
-    AnimatedNavHost(
+    NavHost(
         modifier = modifier,
         navController = navController,
         startDestination = startDestination
@@ -98,6 +101,7 @@ fun NavigationHost(
 
         datingScreen(
             onNavigationDetail = navController::navigateToDatingProfile,
+            onNavigationMatch = navController::navigateToMatchProfile,
             onNavigationFilter = navController::navigateToDatingFilter
         )
 
@@ -111,6 +115,11 @@ fun NavigationHost(
 
         likesScreen()
 
+        matchProfileScreen(
+            onNavigationBack = navController::popBackStack,
+            onNavigationChat = navController::navigateToChatMessageScreen
+        )
+
         chatScreen(
             onNavigationSympathy = { },
             onNavigationChat = navController::navigateToChatMessageScreen,
@@ -122,13 +131,13 @@ fun NavigationHost(
             onNavigationDetail = navController::navigateToDatingProfile
         )
 
-        /*        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-                    val cont = controller.currentBackStack.value
-                    Timber.e("testing after navigate to ${destination.route}")
-                    cont.forEach {
-                        Timber.e("testing stack is ${it.destination.route}")
-                    }
-                }*/
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            val cont = controller.currentBackStack.value
+            Timber.e("testing after navigate to ${destination.route}")
+            cont.forEach {
+                Timber.e("testing stack is ${it.destination.route}")
+            }
+        }
     }
 }
 

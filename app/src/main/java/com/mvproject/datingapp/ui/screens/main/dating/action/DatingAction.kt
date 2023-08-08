@@ -14,4 +14,5 @@ sealed class DatingAction {
     data class Like(val user: MatchUser) : DatingAction()
     data class Dislike(val user: MatchUser) : DatingAction()
     data object LastUserRevenue : DatingAction()
+    data object BothMatchShown : DatingAction()
 }
