@@ -55,22 +55,19 @@ class ActivationViewModel @Inject constructor(
     fun processAction(action: ActivationAction) {
         when (action) {
             ActivationAction.ActivatePlan -> {
-                val userActivation = if (activationDataState.value.activationStatus) {
-                    UserActivation()
-                } else {
-                    val init = Clock.System.now()
-                    val duration = init.plus(
-                        activationDataState.value.selectedPlan.monthDuration,
-                        DateTimeUnit.MONTH,
-                        TimeZone.currentSystemDefault()
-                    )
-                    val current = duration.toEpochMilliseconds()
-                    UserActivation(
-                        status = true,
-                        period = current,
-                        type = activationDataState.value.selectedPlan.planType
-                    )
-                }
+
+                val init = Clock.System.now()
+                val duration = init.plus(
+                    activationDataState.value.selectedPlan.monthDuration,
+                    DateTimeUnit.MONTH,
+                    TimeZone.currentSystemDefault()
+                )
+                val current = duration.toEpochMilliseconds()
+                val userActivation = UserActivation(
+                    status = true,
+                    period = current,
+                    type = activationDataState.value.selectedPlan.planType
+                )
 
                 viewModelScope.launch {
                     preferenceRepository.setActivationState(userActivation)
@@ -90,6 +87,20 @@ class ActivationViewModel @Inject constructor(
                     )
                 }
             }
+
+            ActivationAction.DeactivatePlan -> {
+                viewModelScope.launch {
+                    val userActivation = UserActivation()
+                    preferenceRepository.setActivationState(userActivation)
+                    _activationDataState.update {
+                        it.copy(
+                            activationStatus = userActivation.status,
+                            activationExpires = userActivation.period,
+                        )
+                    }
+                }
+            }
+
         }
     }
 }

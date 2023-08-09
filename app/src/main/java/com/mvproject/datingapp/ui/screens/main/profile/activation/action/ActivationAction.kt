@@ -13,4 +13,5 @@ import com.mvproject.datingapp.data.model.ActivationPlan
 sealed class ActivationAction {
     data class SelectPlan(val data: ActivationPlan) : ActivationAction()
     data object ActivatePlan : ActivationAction()
+    data object DeactivatePlan : ActivationAction()
 }

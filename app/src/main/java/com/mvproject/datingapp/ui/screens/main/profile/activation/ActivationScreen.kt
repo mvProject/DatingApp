@@ -42,6 +42,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -59,8 +61,10 @@ import com.mvproject.datingapp.data.ActivationData.activationInfos
 import com.mvproject.datingapp.data.ActivationData.activationPlans
 import com.mvproject.datingapp.data.enums.ActivationPlanType
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
+import com.mvproject.datingapp.ui.components.buttons.MenuButton
 import com.mvproject.datingapp.ui.components.composable.ActivationInfoCard
 import com.mvproject.datingapp.ui.components.composable.ActivationPlanCard
+import com.mvproject.datingapp.ui.components.dialog.BottomDialog
 import com.mvproject.datingapp.ui.screens.main.profile.activation.action.ActivationAction
 import com.mvproject.datingapp.ui.screens.main.profile.activation.state.ActivationDataState
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
@@ -118,6 +122,9 @@ fun ActivationView(
         bottomBar = { NavigationBar() {} },
         contentWindowInsets = WindowInsets.navigationBars
     ) { paddingValues ->
+
+        val isActivationMenuOpen = remember { mutableStateOf(false) }
+
         Column(
             modifier = Modifier
                 .padding(paddingValues)
@@ -252,9 +259,42 @@ fun ActivationView(
                     .padding(horizontal = MaterialTheme.dimens.size16),
                 title = buttonText,
                 onClick = {
-                    onAction(ActivationAction.ActivatePlan)
+                    if (state.activationStatus) {
+                        isActivationMenuOpen.value = true
+                    } else {
+                        onAction(ActivationAction.ActivatePlan)
+                    }
                 }
             )
+        }
+
+        BottomDialog(
+            modifier = Modifier.padding(paddingValues),
+            isVisible = isActivationMenuOpen
+        ) {
+            Column()
+            {
+                MenuButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    title = stringResource(id = R.string.btn_title_profile_deactivate),
+                    btnColor = MaterialTheme.colorScheme.surfaceVariant,
+                    titleColor = MaterialTheme.colorScheme.onPrimary,
+                    onClick = {
+                        onAction(ActivationAction.DeactivatePlan)
+                        isActivationMenuOpen.value = false
+                    }
+                )
+                MenuButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    title = stringResource(id = R.string.btn_title_cancel),
+                    btnColor = MaterialTheme.colorScheme.primary,
+                    titleColor = MaterialTheme.colorScheme.onPrimary,
+                    isBold = true,
+                    onClick = {
+                        isActivationMenuOpen.value = false
+                    }
+                )
+            }
         }
     }
 }

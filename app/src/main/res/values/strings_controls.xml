@@ -26,6 +26,7 @@
     <string name="btn_title_profile_activate_month">Activate for $%1$s (%2$s month)</string>
     <string name="btn_title_profile_activate_months">Activate for $%1$s (%2$s months)</string>
     <string name="btn_title_profile_activate_expires">Activated until %1$s</string>
+    <string name="btn_title_profile_deactivate">Deactivate</string>
     <string name="btn_title_sign_out">Sign out</string>
     <string name="btn_title_filter">Filter</string>
     <string name="btn_title_filter_apply">Apply filters</string>
