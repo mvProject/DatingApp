@@ -15,6 +15,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
+import com.mvproject.datingapp.data.enums.ActivationPlanType
 import com.mvproject.datingapp.data.enums.filter.FilterAlcohol
 import com.mvproject.datingapp.data.enums.filter.FilterCharacter
 import com.mvproject.datingapp.data.enums.filter.FilterChildren
@@ -55,7 +56,6 @@ import com.mvproject.datingapp.utils.STRING_EMPTY
 import com.mvproject.datingapp.utils.STRING_SEPARATOR
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
-import timber.log.Timber
 import javax.inject.Inject
 
 class PreferenceRepository @Inject constructor(
@@ -76,15 +76,17 @@ class PreferenceRepository @Inject constructor(
         dataStore.edit { settings ->
             settings[ACTIVATION_STATUS] = activation.status
             settings[ACTIVATION_PERIOD] = activation.period
-
+            settings[ACTIVATION_TYPE] = activation.type.name
         }
-        Timber.w("testing activation is saved")
     }
 
     suspend fun getActivationState() = dataStore.data.map { preferences ->
         UserActivation(
             status = preferences[ACTIVATION_STATUS] ?: false,
-            period = preferences[ACTIVATION_PERIOD] ?: LONG_ZERO
+            period = preferences[ACTIVATION_PERIOD] ?: LONG_ZERO,
+            type = ActivationPlanType.valueOf(
+                preferences[ACTIVATION_TYPE] ?: ActivationPlanType.BASE.name
+            )
         )
     }.first()
 
@@ -113,7 +115,6 @@ class PreferenceRepository @Inject constructor(
             settings[USER_PETS] = user.profilePets.joinToString(STRING_SEPARATOR)
             settings[USER_WORK] = user.profileWork.toString()
         }
-        Timber.w("testing user is saved")
     }
 
 
@@ -244,6 +245,7 @@ class PreferenceRepository @Inject constructor(
 
         val ACTIVATION_STATUS = booleanPreferencesKey("activationStatus")
         val ACTIVATION_PERIOD = longPreferencesKey("activationPeriod")
+        val ACTIVATION_TYPE = stringPreferencesKey("activationType")
 
         val FILTER_IS_HEIGHT_SET = booleanPreferencesKey("filterIsHeightSet")
         val FILTER_START_AGE = intPreferencesKey("filterStartAge")

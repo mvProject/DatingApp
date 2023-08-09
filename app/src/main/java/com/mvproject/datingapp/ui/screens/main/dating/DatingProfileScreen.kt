@@ -48,7 +48,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import com.mvproject.datingapp.R
-import com.mvproject.datingapp.ui.components.ChipInfo
+import com.mvproject.datingapp.ui.components.composable.ChipInfo
 import com.mvproject.datingapp.ui.components.indicators.StoryIndicator
 import com.mvproject.datingapp.ui.components.info.ShortProfileInfo
 import com.mvproject.datingapp.ui.screens.main.dating.state.DatingProfileState

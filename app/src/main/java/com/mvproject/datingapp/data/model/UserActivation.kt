@@ -8,9 +8,11 @@
 
 package com.mvproject.datingapp.data.model
 
+import com.mvproject.datingapp.data.enums.ActivationPlanType
 import com.mvproject.datingapp.utils.LONG_ZERO
 
 data class UserActivation(
     val status: Boolean = false,
-    val period: Long = LONG_ZERO
+    val period: Long = LONG_ZERO,
+    val type: ActivationPlanType = ActivationPlanType.BASE
 )
