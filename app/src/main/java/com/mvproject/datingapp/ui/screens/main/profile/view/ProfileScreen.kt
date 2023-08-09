@@ -73,6 +73,7 @@ fun ProfileScreen(
     viewModel: ProfileViewModel,
     onNavigationLogout: () -> Unit = {},
     onNavigationSettings: () -> Unit = {},
+    onNavigationActivation: () -> Unit = {},
     onNavigationEdit: () -> Unit = {}
 ) {
     val viewState by viewModel.profileUiState.collectAsStateWithLifecycle()
@@ -85,7 +86,7 @@ fun ProfileScreen(
         ProfileViewState.LoggedIn -> {
             ProfileView(
                 state = profileState,
-                onActivateClick = viewModel::activateFeatures,
+                onActivateClick = onNavigationActivation,
                 onSettingsClick = onNavigationSettings,
                 onEditClick = onNavigationEdit
             )

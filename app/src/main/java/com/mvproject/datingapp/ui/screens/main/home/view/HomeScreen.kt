@@ -68,7 +68,6 @@ fun HomeScreen(
         }
     ) { paddingValues ->
         NavigationHost(
-//            modifier = Modifier.padding(paddingValues.),
             navController = navController,
             startDestination = startScreen
         )
@@ -87,7 +86,7 @@ fun AppBottomNavigation(
     val currentDestination = navBackStackEntry?.destination
 
     val isBottomBarVisible = bottomNavigationItems
-        .any { it.route == currentDestination?.route }
+        .any { it.route == currentDestination?.route || currentDestination?.route == AppRoutes.Activation.route }
 
     if (isBottomBarVisible) {
         NavigationBar(
@@ -136,14 +135,6 @@ fun AppBottomNavigation(
 @Composable
 fun PreviewHomeView() {
     DatingAppTheme {
-        HomeScreen()
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewProfileView() {
-    DatingAppTheme(darkTheme = true) {
         HomeScreen()
     }
 }

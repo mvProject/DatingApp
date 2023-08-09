@@ -1,6 +1,5 @@
 package com.mvproject.datingapp.navigation
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
@@ -26,6 +25,8 @@ import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToDatin
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToMatchProfile
 import com.mvproject.datingapp.ui.screens.main.likes.likesScreen
 import com.mvproject.datingapp.ui.screens.main.likes.navigateToLikes
+import com.mvproject.datingapp.ui.screens.main.profile.activation.navigation.activationScreen
+import com.mvproject.datingapp.ui.screens.main.profile.activation.navigation.navigateToActivationScreen
 import com.mvproject.datingapp.ui.screens.main.profile.changePassword.navigation.changePasswordScreen
 import com.mvproject.datingapp.ui.screens.main.profile.changePassword.navigation.navigateToChangePassword
 import com.mvproject.datingapp.ui.screens.main.profile.edit.navigation.editOptionScreen
@@ -38,9 +39,7 @@ import com.mvproject.datingapp.ui.screens.main.profile.view.navigation.navigateT
 import com.mvproject.datingapp.ui.screens.main.profile.view.navigation.profileScreen
 import com.mvproject.datingapp.ui.screens.main.questionaire.navigation.navigateToProfileQuestionsClearStack
 import com.mvproject.datingapp.ui.screens.main.questionaire.navigation.profileQuestionsScreen
-import timber.log.Timber
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun NavigationHost(
     modifier: Modifier = Modifier,
@@ -76,7 +75,12 @@ fun NavigationHost(
         profileScreen(
             onNavigationLogout = navController::navigateToSignInClearStack,
             onNavigationSettings = navController::navigateToSettings,
-            onNavigationEdit = navController::navigateToEdit
+            onNavigationEdit = navController::navigateToEdit,
+            onNavigationActivation = navController::navigateToActivationScreen
+        )
+
+        activationScreen(
+            onNavigationBack = navController::popBackStack
         )
 
         settingsScreen(
@@ -131,13 +135,13 @@ fun NavigationHost(
             onNavigationDetail = navController::navigateToDatingProfile
         )
 
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            val cont = controller.currentBackStack.value
-            Timber.e("testing after navigate to ${destination.route}")
-            cont.forEach {
-                Timber.e("testing stack is ${it.destination.route}")
-            }
-        }
+        /*        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+                    val cont = controller.currentBackStack.value
+                    Timber.e("testing after navigate to ${destination.route}")
+                    cont.forEach {
+                        Timber.e("testing stack is ${it.destination.route}")
+                    }
+                }*/
     }
 }
 
