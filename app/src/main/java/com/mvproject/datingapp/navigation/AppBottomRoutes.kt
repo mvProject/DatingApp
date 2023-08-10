@@ -1,6 +1,7 @@
 package com.mvproject.datingapp.navigation
 
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import com.mvproject.datingapp.ui.screens.main.chat.navigation.Chat
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.Dating
 import com.mvproject.datingapp.ui.screens.main.likes.Likes
@@ -12,6 +13,7 @@ val AppBottomRoutes = listOf(
 
 data class BottomNavItem(
     val route: String,
+    @StringRes val title: Int,
     @DrawableRes val logo: Int,
     val isWithBadge: Boolean = false
 )

@@ -1,0 +1,14 @@
+<!--
+  ~ Create by Medvediev Viktor
+  ~ last update: 07.06.23, 12:03
+  ~
+  ~ Copyright (c) 2023
+  ~
+  -->
+
+<resources>
+    <string name="bottom_bar_dating_route">Dating</string>
+    <string name="bottom_bar_chat_route">Chat</string>
+    <string name="bottom_bar_likes_route">Likes</string>
+    <string name="bottom_bar_profile_route">Profile</string>
+</resources>

@@ -8,14 +8,13 @@
 
 package com.mvproject.datingapp.ui.screens.main.likes
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
-import com.google.accompanist.navigation.animation.composable
+import androidx.navigation.compose.composable
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.dummy.DummyScreen
 import com.mvproject.datingapp.navigation.BottomNavItem
@@ -23,13 +22,16 @@ import com.mvproject.datingapp.navigation.NavConstants
 import com.mvproject.datingapp.utils.ANIM_DURATION_600
 import timber.log.Timber
 
-val Likes = BottomNavItem(NavConstants.ROUTE_LIKES, R.drawable.ic_nav_likes)
+val Likes = BottomNavItem(
+    route = NavConstants.ROUTE_LIKES,
+    title = R.string.bottom_bar_likes_route,
+    logo = R.drawable.ic_nav_likes
+)
 
 fun NavController.navigateToLikes(navOptions: NavOptions? = null) {
     this.navigate(Likes.route, navOptions)
 }
 
-@OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.likesScreen(
     onAction: () -> Unit = {}
 ) {

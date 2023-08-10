@@ -14,7 +14,6 @@ import androidx.compose.animation.fadeOut
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.navigation.BottomNavItem
@@ -23,11 +22,11 @@ import com.mvproject.datingapp.ui.screens.main.profile.view.ProfileScreen
 import com.mvproject.datingapp.ui.screens.main.profile.view.ProfileViewModel
 import com.mvproject.datingapp.utils.ANIM_DURATION_600
 
-val Profile = BottomNavItem(NavConstants.ROUTE_PROFILE, R.drawable.ic_nav_profile)
-
-fun NavController.navigateToProfile(navOptions: NavOptions? = null) {
-    this.navigate(Profile.route, navOptions)
-}
+val Profile = BottomNavItem(
+    route = NavConstants.ROUTE_PROFILE,
+    title = R.string.bottom_bar_profile_route,
+    logo = R.drawable.ic_nav_profile
+)
 
 fun NavController.navigateToProfileClearStack() {
     this.navigate(Profile.route) {
