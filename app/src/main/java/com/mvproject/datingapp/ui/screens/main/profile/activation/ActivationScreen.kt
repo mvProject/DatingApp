@@ -17,11 +17,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
@@ -36,7 +34,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -69,8 +66,12 @@ import com.mvproject.datingapp.ui.screens.main.profile.activation.action.Activat
 import com.mvproject.datingapp.ui.screens.main.profile.activation.state.ActivationDataState
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
+import com.mvproject.datingapp.utils.ANIM_DURATION_500
+import com.mvproject.datingapp.utils.DELAY_2000
 import com.mvproject.datingapp.utils.FLOAT_ZERO
 import com.mvproject.datingapp.utils.INT_ZERO
+import com.mvproject.datingapp.utils.STEP_1
+import com.mvproject.datingapp.utils.WEIGHT_1
 import kotlinx.coroutines.delay
 
 @Composable
@@ -118,9 +119,7 @@ fun ActivationView(
                     }
                 }
             )
-        },
-        bottomBar = { NavigationBar() {} },
-        contentWindowInsets = WindowInsets.navigationBars
+        }
     ) { paddingValues ->
 
         val isActivationMenuOpen = remember { mutableStateOf(false) }
@@ -143,10 +142,10 @@ fun ActivationView(
             }
             LaunchedEffect(Unit) {
                 while (true) {
-                    delay(2000)
+                    delay(DELAY_2000)
                     pagerState.animateScrollToPage(
-                        page = (pagerState.currentPage + 1) % pagerState.pageCount,
-                        animationSpec = tween(500)
+                        page = (pagerState.currentPage + STEP_1) % pagerState.pageCount,
+                        animationSpec = tween(ANIM_DURATION_500)
                     )
                 }
             }
@@ -232,7 +231,7 @@ fun ActivationView(
                 textAlign = TextAlign.Center
             )
 
-            Spacer(modifier = Modifier.height(MaterialTheme.dimens.size16))
+            Spacer(modifier = Modifier.weight(WEIGHT_1))
 
             val buttonText = when (state.selectedPlan.planType) {
                 ActivationPlanType.BASE -> stringResource(
@@ -259,11 +258,7 @@ fun ActivationView(
                     .padding(horizontal = MaterialTheme.dimens.size16),
                 title = buttonText,
                 onClick = {
-                    if (state.activationStatus) {
-                        isActivationMenuOpen.value = true
-                    } else {
-                        onAction(ActivationAction.ActivatePlan)
-                    }
+                    isActivationMenuOpen.value = true
                 }
             )
         }
@@ -276,7 +271,20 @@ fun ActivationView(
             {
                 MenuButton(
                     modifier = Modifier.fillMaxWidth(),
-                    title = stringResource(id = R.string.btn_title_profile_deactivate),
+                    title = stringResource(id = R.string.btn_title_profile_enable),
+                    btnColor = MaterialTheme.colorScheme.surfaceVariant,
+                    titleColor = MaterialTheme.colorScheme.onPrimary,
+                    onClick = {
+                        onAction(ActivationAction.ActivatePlan)
+                        isActivationMenuOpen.value = false
+                    }
+                )
+                Divider(
+                    color = MaterialTheme.colorScheme.outline
+                )
+                MenuButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    title = stringResource(id = R.string.btn_title_profile_disable),
                     btnColor = MaterialTheme.colorScheme.surfaceVariant,
                     titleColor = MaterialTheme.colorScheme.onPrimary,
                     onClick = {

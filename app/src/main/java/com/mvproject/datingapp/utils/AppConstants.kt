@@ -14,8 +14,9 @@ const val ANIM_DURATION_600 = 600
 const val ANIM_DURATION_500 = 500
 const val ANIM_DURATION_900 = 900
 
-const val DELAY_1_SEC = 1000L
-const val DELAY_1_5_SEC = 1500L
+const val DELAY_1000 = 1000L
+const val DELAY_1500 = 1500L
+const val DELAY_2000 = 2000L
 const val DELAY_500 = 500L
 
 const val STRING_NEW_LINE = "\n"

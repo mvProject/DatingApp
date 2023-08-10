@@ -19,7 +19,7 @@ import com.mvproject.datingapp.ui.screens.authorization.restoreAccess.state.Rest
 import com.mvproject.datingapp.ui.screens.authorization.restoreAccess.state.RestoreAccessState.Companion.isStartState
 import com.mvproject.datingapp.ui.screens.authorization.restoreAccess.state.RestoreAccessState.Companion.nextState
 import com.mvproject.datingapp.ui.screens.authorization.restoreAccess.state.RestoreAccessState.Companion.previousState
-import com.mvproject.datingapp.utils.DELAY_1_SEC
+import com.mvproject.datingapp.utils.DELAY_1000
 import dagger.hilt.android.lifecycle.HiltViewModel
 import de.palm.composestateevents.consumed
 import de.palm.composestateevents.triggered
@@ -67,7 +67,7 @@ class RestoreAccessViewModel @Inject constructor(
                             code = DUMMY_CODE
                         )
                     }
-                    delay(DELAY_1_SEC)
+                    delay(DELAY_1000)
                     // todo send request
 
                     _restoreAccessDataState.update {
@@ -90,7 +90,7 @@ class RestoreAccessViewModel @Inject constructor(
                     _restoreAccessDataState.update {
                         it.copy(isLoading = true)
                     }
-                    delay(DELAY_1_SEC)
+                    delay(DELAY_1000)
                     // todo send request
 
                     _restoreAccessDataState.update {

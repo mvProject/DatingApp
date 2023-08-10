@@ -85,7 +85,7 @@ fun AppBottomNavigation(
     val currentDestination = navBackStackEntry?.destination
 
     val isBottomBarVisible = bottomNavigationItems
-        .any { it.route == currentDestination?.route || currentDestination?.route == AppRoutes.Activation.route }
+        .any { it.route == currentDestination?.route }
 
     if (isBottomBarVisible) {
         NavigationBar(
