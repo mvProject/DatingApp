@@ -78,7 +78,6 @@ fun DatingProfileView(
     state: DatingProfileState = DatingProfileState(),
     onBackClick: () -> Unit = {}
 ) {
-
     Column(
         modifier = Modifier
             .fillMaxSize()

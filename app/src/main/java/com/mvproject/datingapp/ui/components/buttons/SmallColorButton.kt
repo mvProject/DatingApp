@@ -8,7 +8,9 @@
 
 package com.mvproject.datingapp.ui.components.buttons
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
@@ -28,7 +30,7 @@ import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 
 @Composable
-fun ColorButton(
+fun SmallColorButton(
     modifier: Modifier = Modifier,
     title: String = stringResource(id = R.string.btn_title_continue),
     btnColor: Color = MaterialTheme.colorScheme.secondary,
@@ -37,17 +39,21 @@ fun ColorButton(
     onClick: () -> Unit = {}
 ) {
     Button(
-        modifier = modifier,
+        modifier = modifier.height(MaterialTheme.dimens.size32),
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
             containerColor = btnColor
         ),
-        shape = MaterialTheme.shapes.large
+        shape = MaterialTheme.shapes.large,
+        contentPadding = PaddingValues(
+            horizontal = MaterialTheme.dimens.size10,
+            vertical = MaterialTheme.dimens.size2
+        )
     ) {
         logo?.let { painter ->
             Icon(
                 painter = painter,
-                modifier = Modifier.size(MaterialTheme.dimens.size24),
+                modifier = Modifier.size(MaterialTheme.dimens.size20),
                 contentDescription = title,
                 tint = titleColor
             )
@@ -57,16 +63,16 @@ fun ColorButton(
         Text(
             text = title,
             color = titleColor,
-            style = MaterialTheme.typography.bodyLarge
+            style = MaterialTheme.typography.bodyMedium
         )
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewColorButton() {
+fun PreviewSmallColorButton() {
     DatingAppTheme {
-        ColorButton(
+        SmallColorButton(
             logo = painterResource(id = R.drawable.ic_profile_like)
         )
     }
