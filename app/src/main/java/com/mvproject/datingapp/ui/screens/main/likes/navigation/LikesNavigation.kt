@@ -1,26 +1,27 @@
 /*
  * Create by Medvediev Viktor
- * last update: 21.06.23, 14:01
+ * last update: 11.08.23, 10:05
  *
  * Copyright (c) 2023
  *
  */
 
-package com.mvproject.datingapp.ui.screens.main.likes
+package com.mvproject.datingapp.ui.screens.main.likes.navigation
 
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import com.mvproject.datingapp.R
-import com.mvproject.datingapp.data.dummy.DummyScreen
 import com.mvproject.datingapp.navigation.BottomNavItem
 import com.mvproject.datingapp.navigation.NavConstants
+import com.mvproject.datingapp.ui.screens.main.likes.LikesScreen
+import com.mvproject.datingapp.ui.screens.main.likes.LikesViewModel
 import com.mvproject.datingapp.utils.ANIM_DURATION_600
-import timber.log.Timber
 
 val Likes = BottomNavItem(
     route = NavConstants.ROUTE_LIKES,
@@ -33,7 +34,8 @@ fun NavController.navigateToLikes(navOptions: NavOptions? = null) {
 }
 
 fun NavGraphBuilder.likesScreen(
-    onAction: () -> Unit = {}
+    onNavigationActivation: () -> Unit = {},
+    onNavigationMatch: (String) -> Unit = {}
 ) {
     composable(
         route = Likes.route,
@@ -44,9 +46,12 @@ fun NavGraphBuilder.likesScreen(
             fadeOut(animationSpec = tween(ANIM_DURATION_600))
         }
     ) {
-        Timber.w("testing LikesNavigation")
-        DummyScreen(
-            title = Likes.route,
+        val likesViewModel = hiltViewModel<LikesViewModel>()
+
+        LikesScreen(
+            viewModel = likesViewModel,
+            onNavigationMatch = onNavigationMatch,
+            onNavigationActivation = onNavigationActivation
         )
     }
 }

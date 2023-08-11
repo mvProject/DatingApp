@@ -23,8 +23,8 @@ import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToDatin
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToDatingFilter
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToDatingProfile
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToMatchProfile
-import com.mvproject.datingapp.ui.screens.main.likes.likesScreen
-import com.mvproject.datingapp.ui.screens.main.likes.navigateToLikes
+import com.mvproject.datingapp.ui.screens.main.likes.navigation.likesScreen
+import com.mvproject.datingapp.ui.screens.main.likes.navigation.navigateToLikes
 import com.mvproject.datingapp.ui.screens.main.profile.activation.navigation.activationScreen
 import com.mvproject.datingapp.ui.screens.main.profile.activation.navigation.navigateToActivationScreen
 import com.mvproject.datingapp.ui.screens.main.profile.changePassword.navigation.changePasswordScreen
@@ -117,7 +117,10 @@ fun NavigationHost(
             onNavigationBack = navController::popBackStack
         )
 
-        likesScreen()
+        likesScreen(
+            onNavigationMatch = navController::navigateToMatchProfile,
+            onNavigationActivation = navController::navigateToActivationScreen
+        )
 
         matchProfileScreen(
             onNavigationBack = navController::popBackStack,

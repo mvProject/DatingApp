@@ -90,6 +90,16 @@ class PreferenceRepository @Inject constructor(
         )
     }.first()
 
+    suspend fun getActivationStateFlow() = dataStore.data.map { preferences ->
+        UserActivation(
+            status = preferences[ACTIVATION_STATUS] ?: false,
+            period = preferences[ACTIVATION_PERIOD] ?: LONG_ZERO,
+            type = ActivationPlanType.valueOf(
+                preferences[ACTIVATION_TYPE] ?: ActivationPlanType.BASE.name
+            )
+        )
+    }
+
     suspend fun saveUser(user: User) {
         dataStore.edit { settings ->
             settings[USER_EMAIL] = user.email
