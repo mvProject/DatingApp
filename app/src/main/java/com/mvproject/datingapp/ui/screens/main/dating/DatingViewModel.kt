@@ -10,8 +10,8 @@ package com.mvproject.datingapp.ui.screens.main.dating
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mvproject.datingapp.data.dummy.matchCandidateUsers
 import com.mvproject.datingapp.data.repository.PreferenceRepository
-import com.mvproject.datingapp.dummy.matchCandidateUsers
 import com.mvproject.datingapp.ui.screens.main.dating.action.DatingAction
 import com.mvproject.datingapp.ui.screens.main.dating.state.DatingState
 import com.mvproject.datingapp.utils.DELAY_500
@@ -84,17 +84,22 @@ class DatingViewModel @Inject constructor(
                             likeAnimationState = true
                         )
                     }
+
                     delay(DELAY_500)
+
                     val candidates = datingState.value.candidates.toMutableList().also {
                         it.remove(action.user)
                     }
                     val matched = datingState.value.matchedUsers + action.user
 
+                    val likedUser = if (action.user.isLiked) action.user else null
+
                     _datingState.update {
                         it.copy(
                             candidates = candidates,
                             matchedUsers = matched,
-                            likeAnimationState = false
+                            likeAnimationState = false,
+                            lastBothLikeUser = likedUser
                         )
                     }
                 }
@@ -111,6 +116,14 @@ class DatingViewModel @Inject constructor(
                             candidates = candidates,
                         )
                     }
+                }
+            }
+
+            DatingAction.BothMatchShown -> {
+                _datingState.update {
+                    it.copy(
+                        lastBothLikeUser = null
+                    )
                 }
             }
         }

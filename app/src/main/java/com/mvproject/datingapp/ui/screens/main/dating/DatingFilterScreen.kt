@@ -144,7 +144,7 @@ fun DatingFilterView(
                         onClick = onBackClick
                     ) {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_navigate_back),
+                            painter = painterResource(id = R.drawable.ic_close),
                             contentDescription = "Back",
                             tint = MaterialTheme.colorScheme.onBackground
                         )
@@ -537,7 +537,7 @@ fun DatingFilterView(
 
                     FilterProfileOption.HEIGHT -> {
                         FilterRangeSliderSelector(
-                            modifier = Modifier.fillMaxHeight(SCALE_25),
+                            modifier = Modifier.fillMaxHeight(SCALE_30),
                             initialStart = state.filterData.startHeight,
                             initialEnd = state.filterData.endHeight,
                             isCancelEnabled = true,

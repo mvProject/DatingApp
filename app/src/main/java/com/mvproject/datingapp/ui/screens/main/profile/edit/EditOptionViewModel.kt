@@ -11,7 +11,6 @@ package com.mvproject.datingapp.ui.screens.main.profile.edit
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mvproject.datingapp.data.model.UserLocation
 import com.mvproject.datingapp.data.repository.PreferenceRepository
 import com.mvproject.datingapp.ui.screens.main.profile.edit.action.EditOptionAction
 import com.mvproject.datingapp.ui.screens.main.profile.edit.navigation.EditOptionArgs
@@ -55,7 +54,7 @@ class EditOptionViewModel @Inject constructor(
                     profileLanguages = user.profileLanguages,
                     profilePets = user.profilePets,
                     profileWork = user.profileWork,
-                    profileLocation = UserLocation.fromString(user.location)
+                    profileLocation = user.location
                 )
             }
         }
@@ -70,7 +69,7 @@ class EditOptionViewModel @Inject constructor(
                 }
 
                 is EditOptionAction.UpdateLocation -> {
-                    user.copy(location = action.location.toString())
+                    user.copy(location = action.location)
                 }
 
                 is EditOptionAction.UpdateProfileAbout -> {

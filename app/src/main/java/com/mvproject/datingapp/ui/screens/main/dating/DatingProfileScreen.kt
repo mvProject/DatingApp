@@ -46,6 +46,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import coil.compose.AsyncImage
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.ui.components.ChipInfo
 import com.mvproject.datingapp.ui.components.indicators.StoryIndicator
@@ -88,7 +89,10 @@ fun DatingProfileView(
                 vertical = MaterialTheme.dimens.size16
             )
     ) {
-        val pages = state.profile.photos
+        val pages = if (state.isLocal)
+            state.userPhotos
+        else
+            state.matchPhotos
 
         val pagerState = rememberPagerState(
             initialPage = INT_ZERO,
@@ -113,12 +117,21 @@ fun DatingProfileView(
                         modifier = Modifier.fillMaxSize(),
                         shape = MaterialTheme.shapes.medium
                     ) {
-                        Image(
-                            modifier = Modifier.fillMaxSize(),
-                            painter = painterResource(id = pages[position]),
-                            contentDescription = null,
-                            contentScale = ContentScale.FillWidth
-                        )
+                        if (state.isLocal) {
+                            AsyncImage(
+                                modifier = Modifier.fillMaxSize(),
+                                model = state.userPhotos[position],
+                                contentDescription = null,
+                                contentScale = ContentScale.FillWidth
+                            )
+                        } else {
+                            Image(
+                                modifier = Modifier.fillMaxSize(),
+                                painter = painterResource(id = state.matchPhotos[position]),
+                                contentDescription = null,
+                                contentScale = ContentScale.FillWidth
+                            )
+                        }
                     }
                 }
             )
@@ -153,9 +166,9 @@ fun DatingProfileView(
         ShortProfileInfo(
             modifier = Modifier
                 .padding(horizontal = MaterialTheme.dimens.size8),
-            profileName = state.profile.name,
-            profileAge = calculatAgeMillis(state.profile.birthdate),
-            profileInterest = state.profile.interest
+            profileName = state.previewUser.name,
+            profileAge = calculatAgeMillis(state.previewUser.birthdate),
+            profileInterest = state.previewUser.interest
         )
 
         Spacer(modifier = Modifier.height(MaterialTheme.dimens.size16))
@@ -164,7 +177,7 @@ fun DatingProfileView(
             color = MaterialTheme.colorScheme.onSurface
         )
 
-        if (state.profile.profileAbout.isNotEmpty()) {
+        if (state.previewUser.profileAbout.isNotEmpty()) {
             Spacer(modifier = Modifier.height(MaterialTheme.dimens.size16))
 
             Text(
@@ -182,7 +195,7 @@ fun DatingProfileView(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = MaterialTheme.dimens.size8),
-                text = state.profile.profileAbout,
+                text = state.previewUser.profileAbout,
                 style = MaterialTheme.typography.labelLarge,
                 color = MaterialTheme.colorScheme.onPrimary
             )
@@ -213,80 +226,80 @@ fun DatingProfileView(
             horizontalArrangement = Arrangement.spacedBy(MaterialTheme.dimens.size8),
             verticalArrangement = Arrangement.spacedBy(MaterialTheme.dimens.size8)
         ) {
-            if (state.profile.profileOrientation.isValueSet) {
+            if (state.previewUser.profileOrientation.isValueSet) {
                 ChipInfo(
-                    text = stringResource(id = state.profile.profileOrientation.title),
-                    logo = painterResource(id = state.profile.profileOrientation.logo)
+                    text = stringResource(id = state.previewUser.profileOrientation.title),
+                    logo = painterResource(id = state.previewUser.profileOrientation.logo)
                 )
             }
 
-            if (state.profile.profileMarital.isValueSet) {
+            if (state.previewUser.profileMarital.isValueSet) {
                 ChipInfo(
-                    text = stringResource(id = state.profile.profileMarital.title),
-                    logo = painterResource(id = state.profile.profileMarital.logo)
+                    text = stringResource(id = state.previewUser.profileMarital.title),
+                    logo = painterResource(id = state.previewUser.profileMarital.logo)
                 )
             }
 
-            if (!state.profile.profileHeight.isHeightNotVisible) {
+            if (!state.previewUser.profileHeight.isHeightNotVisible) {
                 ChipInfo(
                     text = stringResource(
                         id = R.string.profile_edit_option_height_data,
-                        state.profile.profileHeight.height
+                        state.previewUser.profileHeight.height
                     ),
                     logo = painterResource(id = R.drawable.ic_edit_height)
                 )
             }
 
-            if (state.profile.profileChildren.isValueSet) {
+            if (state.previewUser.profileChildren.isValueSet) {
                 ChipInfo(
-                    text = stringResource(id = state.profile.profileChildren.title),
-                    logo = painterResource(id = state.profile.profileChildren.logo)
+                    text = stringResource(id = state.previewUser.profileChildren.title),
+                    logo = painterResource(id = state.previewUser.profileChildren.logo)
                 )
             }
 
-            if (state.profile.profileZodiac.isValueSet) {
+            if (state.previewUser.profileZodiac.isValueSet) {
                 ChipInfo(
-                    text = stringResource(id = state.profile.profileZodiac.title),
-                    logo = painterResource(id = state.profile.profileZodiac.logo)
+                    text = stringResource(id = state.previewUser.profileZodiac.title),
+                    logo = painterResource(id = state.previewUser.profileZodiac.logo)
                 )
             }
 
-            if (state.profile.profileAlcohol.isValueSet) {
+            if (state.previewUser.profileAlcohol.isValueSet) {
                 ChipInfo(
-                    text = stringResource(id = state.profile.profileAlcohol.title),
-                    logo = painterResource(id = state.profile.profileAlcohol.logo)
+                    text = stringResource(id = state.previewUser.profileAlcohol.title),
+                    logo = painterResource(id = state.previewUser.profileAlcohol.logo)
                 )
             }
 
-            if (state.profile.profileSmoke.isValueSet) {
+            if (state.previewUser.profileSmoke.isValueSet) {
                 ChipInfo(
-                    text = stringResource(id = state.profile.profileSmoke.title),
-                    logo = painterResource(id = state.profile.profileSmoke.logo)
+                    text = stringResource(id = state.previewUser.profileSmoke.title),
+                    logo = painterResource(id = state.previewUser.profileSmoke.logo)
                 )
             }
 
-            if (state.profile.profilePsyOrientation.isValueSet) {
+            if (state.previewUser.profilePsyOrientation.isValueSet) {
                 ChipInfo(
-                    text = stringResource(id = state.profile.profilePsyOrientation.title),
-                    logo = painterResource(id = state.profile.profilePsyOrientation.logo)
+                    text = stringResource(id = state.previewUser.profilePsyOrientation.title),
+                    logo = painterResource(id = state.previewUser.profilePsyOrientation.logo)
                 )
             }
 
-            if (state.profile.profileReligion.isValueSet) {
+            if (state.previewUser.profileReligion.isValueSet) {
                 ChipInfo(
-                    text = stringResource(id = state.profile.profileReligion.title),
-                    logo = painterResource(id = state.profile.profileReligion.logo)
+                    text = stringResource(id = state.previewUser.profileReligion.title),
+                    logo = painterResource(id = state.previewUser.profileReligion.logo)
                 )
             }
 
-            state.profile.profileLanguages.forEach { lang ->
+            state.previewUser.profileLanguages.forEach { lang ->
                 ChipInfo(
                     text = stringResource(id = lang.title),
                     logo = painterResource(id = lang.logo)
                 )
             }
 
-            state.profile.profilePets.forEach { pet ->
+            state.previewUser.profilePets.forEach { pet ->
                 ChipInfo(
                     text = stringResource(id = pet.title),
                     logo = painterResource(id = pet.logo)
@@ -301,7 +314,7 @@ fun DatingProfileView(
             color = MaterialTheme.colorScheme.onSurface
         )
 
-        if (!state.profile.profileWork.isBothEmpty) {
+        if (!state.previewUser.profileWork.isBothEmpty) {
             Spacer(modifier = Modifier.height(MaterialTheme.dimens.size16))
             Text(
                 modifier = Modifier
@@ -329,19 +342,19 @@ fun DatingProfileView(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = MaterialTheme.dimens.size8),
-                    text = if (state.profile.profileWork.isBothFilled) {
+                    text = if (state.previewUser.profileWork.isBothFilled) {
                         stringResource(
                             id = R.string.profile_edit_option_work_data,
-                            state.profile.profileWork.jobTitle,
-                            state.profile.profileWork.jobCompany
+                            state.previewUser.profileWork.jobTitle,
+                            state.previewUser.profileWork.jobCompany
                         )
                     } else {
                         when {
-                            state.profile.profileWork.jobTitle.isNotEmpty() ->
-                                state.profile.profileWork.jobTitle
+                            state.previewUser.profileWork.jobTitle.isNotEmpty() ->
+                                state.previewUser.profileWork.jobTitle
 
-                            state.profile.profileWork.jobCompany.isNotEmpty() ->
-                                state.profile.profileWork.jobCompany
+                            state.previewUser.profileWork.jobCompany.isNotEmpty() ->
+                                state.previewUser.profileWork.jobCompany
 
                             else -> stringResource(id = R.string.title_not_set)
                         }
@@ -384,7 +397,7 @@ fun DatingProfileView(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = MaterialTheme.dimens.size8),
-                text = state.profileLocation.display(),
+                text = state.previewUser.location.display(),
                 style = MaterialTheme.typography.labelLarge,
                 color = MaterialTheme.colorScheme.onPrimary
             )

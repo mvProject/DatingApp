@@ -34,6 +34,7 @@ fun NavController.navigateToEditClearStack() {
 
 fun NavGraphBuilder.editScreen(
     onNavigationBack: () -> Unit = {},
+    onNavigationPreview: (String) -> Unit = {},
     onNavigationChange: (String) -> Unit = {}
 ) {
     composable(
@@ -50,6 +51,7 @@ fun NavGraphBuilder.editScreen(
         EditScreen(
             viewModel = editViewModel,
             onNavigationChange = onNavigationChange,
+            onNavigationPreview = onNavigationPreview,
             onNavigationBack = onNavigationBack
         )
     }

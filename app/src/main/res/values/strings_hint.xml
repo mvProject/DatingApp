@@ -17,4 +17,5 @@
     <string name="hint_password_confirm">Confirm a new password</string>
     <string name="hint_job_title">Job title</string>
     <string name="hint_company">Company</string>
+    <string name="hint_message">Your Message</string>
 </resources>

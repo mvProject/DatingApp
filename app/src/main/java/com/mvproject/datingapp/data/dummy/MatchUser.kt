@@ -6,7 +6,7 @@
  *
  */
 
-package com.mvproject.datingapp.dummy
+package com.mvproject.datingapp.data.dummy
 
 import com.mvproject.datingapp.data.enums.profile.ProfileAlcohol
 import com.mvproject.datingapp.data.enums.profile.ProfileChildren
@@ -22,6 +22,7 @@ import com.mvproject.datingapp.data.enums.profile.ProfileReligion
 import com.mvproject.datingapp.data.enums.profile.ProfileSmoke
 import com.mvproject.datingapp.data.enums.profile.ProfileZodiac
 import com.mvproject.datingapp.data.model.UserHeight
+import com.mvproject.datingapp.data.model.UserLocation
 import com.mvproject.datingapp.data.model.UserWork
 import com.mvproject.datingapp.utils.INT_ZERO
 import com.mvproject.datingapp.utils.LONG_ZERO
@@ -36,7 +37,7 @@ data class MatchUser(
     val interest: ProfileInterest = ProfileInterest.INTEREST_DATE,
     val gender: String = STRING_EMPTY,
     val uid: String = STRING_EMPTY,
-    val location: String = STRING_EMPTY,
+    val location: UserLocation = UserLocation(),
     val profilePictureUrl: Int = INT_ZERO,
     val photos: List<Int> = emptyList(),
     val profileAbout: String = STRING_EMPTY,
@@ -52,4 +53,5 @@ data class MatchUser(
     val profileLanguages: List<ProfileLanguage> = defaultLanguageList,
     val profilePets: List<ProfilePets> = defaultPetList,
     val profileWork: UserWork = UserWork(),
+    val isLiked: Boolean = false,
 )

@@ -39,7 +39,8 @@ fun NavController.navigateToDatingClearStack() {
 
 fun NavGraphBuilder.datingScreen(
     onNavigationFilter: () -> Unit = {},
-    onNavigationDetail: (String) -> Unit = {}
+    onNavigationDetail: (String) -> Unit = {},
+    onNavigationMatch: (String) -> Unit = {}
 ) {
     composable(
         route = Dating.route,
@@ -55,7 +56,8 @@ fun NavGraphBuilder.datingScreen(
         DatingScreen(
             viewModel = datingViewModel,
             onNavigationFilter = onNavigationFilter,
-            onNavigationDetail = onNavigationDetail
+            onNavigationDetail = onNavigationDetail,
+            onNavigationMatch = onNavigationMatch
         )
     }
 }

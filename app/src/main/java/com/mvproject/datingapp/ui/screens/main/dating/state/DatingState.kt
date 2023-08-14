@@ -8,7 +8,7 @@
 
 package com.mvproject.datingapp.ui.screens.main.dating.state
 
-import com.mvproject.datingapp.dummy.MatchUser
+import com.mvproject.datingapp.data.dummy.MatchUser
 import com.mvproject.datingapp.utils.STRING_EMPTY
 
 data class DatingState(
@@ -18,4 +18,5 @@ data class DatingState(
     val candidates: List<MatchUser> = emptyList(),
     val likeAnimationState: Boolean = false,
     val dislikeAnimationState: Boolean = false,
+    val lastBothLikeUser: MatchUser? = null,
 )

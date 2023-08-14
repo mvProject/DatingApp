@@ -10,10 +10,10 @@ package com.mvproject.datingapp.ui.screens.authorization.signup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mvproject.datingapp.data.dummy.DUMMY_CODE
 import com.mvproject.datingapp.data.model.User
 import com.mvproject.datingapp.data.repository.PreferenceRepository
 import com.mvproject.datingapp.data.repository.StorageRepository
-import com.mvproject.datingapp.dummy.DUMMY_CODE
 import com.mvproject.datingapp.helper.FirebaseHelper
 import com.mvproject.datingapp.helper.TimerHelper
 import com.mvproject.datingapp.ui.screens.authorization.signup.actions.SignUpAction
@@ -30,7 +30,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -154,7 +153,6 @@ class SignUpViewModel @Inject constructor(
 
     private fun dataToUser(): User {
         val data = profileDataState.value
-        Timber.w("testing dataToUser")
         return User(
             name = data.name,
             birthdate = data.birthdate,
@@ -162,7 +160,7 @@ class SignUpViewModel @Inject constructor(
             password = data.password,
             interest = data.interest,
             gender = data.gender.name,
-            location = data.location.toString(),
+            location = data.location,
             profilePictureUrl = if (data.images.isNotEmpty()) data.images.first() else STRING_EMPTY,
             photos = data.images
         )
@@ -173,7 +171,6 @@ class SignUpViewModel @Inject constructor(
             val user = dataToUser()
             preferenceRepository.saveUser(user)
             preferenceRepository.setUserLoggedState(true)
-            Timber.w("testing registerUser")
         }
     }
 }

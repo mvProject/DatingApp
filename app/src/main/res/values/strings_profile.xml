@@ -52,4 +52,8 @@
     <string name="profile_candidate_over_title">Available profiles are over</string>
     <string name="profile_candidate_over_description">Change filter settings to see more partners</string>
 
+    <string name="profile_candidate_match_title">It\'s a match!</string>
+    <string name="profile_candidate_match_male_description">Don\'t waste time: send him a message.</string>
+    <string name="profile_candidate_match_female_description">Don\'t waste time: send her a message.</string>
+
 </resources>

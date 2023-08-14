@@ -30,7 +30,7 @@ data class User(
     val interest: ProfileInterest = ProfileInterest.INTEREST_DATE,
     val gender: String = STRING_EMPTY,
     val uid: String = STRING_EMPTY,
-    val location: String = STRING_EMPTY,
+    val location: UserLocation = UserLocation(),
     val profilePictureUrl: String = STRING_EMPTY,
     val photos: List<String> = emptyList(),
     val profileAbout: String = STRING_EMPTY,

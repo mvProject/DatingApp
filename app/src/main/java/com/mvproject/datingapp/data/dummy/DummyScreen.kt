@@ -6,7 +6,7 @@
  *
  */
 
-package com.mvproject.datingapp.dummy
+package com.mvproject.datingapp.data.dummy
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

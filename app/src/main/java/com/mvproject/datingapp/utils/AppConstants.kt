@@ -15,6 +15,7 @@ const val ANIM_DURATION_500 = 500
 const val ANIM_DURATION_900 = 900
 
 const val DELAY_1_SEC = 1000L
+const val DELAY_1_5_SEC = 1500L
 const val DELAY_500 = 500L
 
 const val STRING_NEW_LINE = "\n"
@@ -24,6 +25,8 @@ const val STRING_SLASH = "/"
 const val STRING_EMPTY = ""
 const val STRING_SEPARATOR = ";"
 const val STRING_ZERO = "0"
+
+const val LOCAL_USER = "Local"
 
 const val INT_ZERO = 0
 const val LONG_ZERO = 0L
@@ -43,8 +46,13 @@ const val SCALE_30 = 0.3f
 const val SCALE_25 = 0.25f
 
 const val ALPHA_10 = 0.1f
+const val ALPHA_3 = 0.03f
+const val ALPHA_5 = 0.05f
 const val ALPHA_25 = 0.25f
 const val ALPHA_35 = 0.35f
+const val ALPHA_40 = 0.4f
+const val ALPHA_50 = 0.5f
+const val ALPHA_60 = 0.6f
 
 const val STEP_1 = 1
 const val PHOTO_COLUMNS_COUNT = 3
@@ -64,8 +72,16 @@ const val DISTANCE_STEP_MULTIPLIER = 50
 val DEFAULT_HEIGHT_RANGE = 150f..200f
 val DEFAULT_AGE_RANGE = 18f..80f
 
+const val SHAPE_RADIUS_PERCENT_100 = 100
+
 const val DEFAULT_FILTER_AGE_MIN: Int = 18
 const val DEFAULT_FILTER_AGE_MAX: Int = 25
 const val DEFAULT_FILTER_HEIGHT_MIN: Int = 161
 const val DEFAULT_FILTER_HEIGHT_MAX: Int = 187
 const val DEFAULT_FILTER_DISTANCE: Int = 150
+
+const val EMO_GREETING_1 = "\uD83D\uDC4B"
+const val EMO_GREETING_2 = "\uD83D\uDE09"
+const val EMO_GREETING_3 = "\uD83D\uDE0D"
+const val EMO_GREETING_4 = "\u2764\uFE0F️"
+const val EMO_GREETING_5 = "\uD83E\uDD70"

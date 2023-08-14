@@ -8,10 +8,10 @@
 
 package com.mvproject.datingapp.data.model
 
-import com.mvproject.datingapp.dummy.DEFAULT_LOCATION_INDEX
-import com.mvproject.datingapp.dummy.cities
-import com.mvproject.datingapp.dummy.countries
-import com.mvproject.datingapp.dummy.regions
+import com.mvproject.datingapp.data.dummy.DEFAULT_LOCATION_INDEX
+import com.mvproject.datingapp.data.dummy.cities
+import com.mvproject.datingapp.data.dummy.countries
+import com.mvproject.datingapp.data.dummy.regions
 import com.mvproject.datingapp.utils.STRING_SEPARATOR
 
 data class UserLocation(
@@ -26,9 +26,10 @@ data class UserLocation(
     fun display() = "$country, $region, $city"
 
     companion object {
-        fun fromString(s: String): UserLocation {
-            val splitted = s.split(STRING_SEPARATOR)
+        fun fromStringOrDefault(s: String?): UserLocation {
+            if (s == null) return UserLocation()
             return try {
+                val splitted = s.split(STRING_SEPARATOR)
                 UserLocation(
                     country = splitted[0],
                     region = splitted[1],

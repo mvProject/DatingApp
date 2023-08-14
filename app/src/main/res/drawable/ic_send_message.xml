@@ -1,0 +1,35 @@
+<!--
+  ~ Create by Medvediev Viktor
+  ~ last update: 03.08.23, 21:08
+  ~
+  ~ Copyright (c) 2023
+  ~
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="36dp"
+    android:height="36dp"
+    android:viewportWidth="36"
+    android:viewportHeight="36">
+    <path android:pathData="M18,18m-18,0a18,18 0,1 1,36 0a18,18 0,1 1,-36 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="9.037"
+                android:startY="30.163"
+                android:endX="35.204"
+                android:endY="5.82"
+                android:type="linear">
+                <item
+                    android:offset="0"
+                    android:color="#FF9641ED" />
+                <item
+                    android:offset="1"
+                    android:color="#FFEA40AD" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:pathData="M27.942,18C27.942,18.638 27.53,19.206 26.814,19.565L12.462,26.741C12.112,26.916 11.771,27.003 11.457,27.003C11.001,27.003 10.6,26.811 10.346,26.471C10.128,26.173 9.918,25.657 10.172,24.818L11.789,19.425C11.841,19.268 11.876,19.076 11.894,18.874H20.748C21.229,18.874 21.622,18.481 21.622,18C21.622,17.52 21.229,17.126 20.748,17.126H11.894C11.875,16.925 11.84,16.733 11.789,16.576L10.172,11.182C9.918,10.343 10.128,9.828 10.347,9.531C10.775,8.954 11.588,8.823 12.462,9.26L26.815,16.436C27.531,16.794 27.942,17.362 27.942,18Z"
+        android:fillColor="#ffffff" />
+</vector>

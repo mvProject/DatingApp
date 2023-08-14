@@ -27,7 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
-import com.mvproject.datingapp.dummy.countries
+import com.mvproject.datingapp.data.dummy.countries
 import com.mvproject.datingapp.ui.components.buttons.DarkButton
 import com.mvproject.datingapp.ui.components.wheelselector.wheelpicker.FVerticalWheelPicker
 import com.mvproject.datingapp.ui.components.wheelselector.wheelpicker.rememberFWheelPickerState
