@@ -8,23 +8,17 @@
 
 package com.mvproject.datingapp.ui.screens.main.questionaire.navigation
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavOptions
-import com.google.accompanist.navigation.animation.composable
+import androidx.navigation.compose.composable
 import com.mvproject.datingapp.navigation.AppRoutes
 import com.mvproject.datingapp.ui.screens.main.questionaire.ProfileQuestionScreen
 import com.mvproject.datingapp.ui.screens.main.questionaire.ProfileQuestionViewModel
 import com.mvproject.datingapp.utils.ANIM_DURATION_600
-
-fun NavController.navigateToProfileQuestions(navOptions: NavOptions? = null) {
-    this.navigate(AppRoutes.ProfileQuestions.route, navOptions)
-}
 
 fun NavController.navigateToProfileQuestionsClearStack() {
     this.popBackStack()
@@ -33,7 +27,6 @@ fun NavController.navigateToProfileQuestionsClearStack() {
     }
 }
 
-@OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.profileQuestionsScreen(
     onNavigateNext: () -> Unit,
 ) {

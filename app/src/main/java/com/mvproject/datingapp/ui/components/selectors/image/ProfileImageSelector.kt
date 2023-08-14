@@ -141,13 +141,3 @@ fun PreviewProfileImageSelector() {
         )
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewProfileImageSelector() {
-    DatingAppTheme(darkTheme = true) {
-        ProfileImageSelector(
-
-        )
-    }
-}

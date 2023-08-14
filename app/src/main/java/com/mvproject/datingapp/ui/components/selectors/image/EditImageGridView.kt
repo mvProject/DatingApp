@@ -133,13 +133,3 @@ fun PreviewEditImageGridView() {
         )
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewEditImageGridView() {
-    DatingAppTheme(darkTheme = true) {
-        EditImageGridView(
-
-        )
-    }
-}

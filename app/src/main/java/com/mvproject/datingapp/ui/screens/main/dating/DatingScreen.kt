@@ -256,11 +256,3 @@ fun PreviewDatingView() {
         DatingView()
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewDatingView() {
-    DatingAppTheme(darkTheme = true) {
-        DatingView()
-    }
-}

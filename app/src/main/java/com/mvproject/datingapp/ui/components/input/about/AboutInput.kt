@@ -106,11 +106,3 @@ fun PreviewCodeAboutInput() {
         AboutInput(logo = R.drawable.questions_about)
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewAboutInput() {
-    DatingAppTheme(darkTheme = true) {
-        AboutInput(logo = R.drawable.questions_about)
-    }
-}

@@ -1,12 +1,12 @@
 /*
  * Create by Medvediev Viktor
- * last update: 10.08.23, 18:17
+ * last update: 11.08.23, 10:19
  *
  * Copyright (c) 2023
  *
  */
 
-package com.mvproject.datingapp.ui.components.composable
+package com.mvproject.datingapp.ui.components.composable.candidate
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

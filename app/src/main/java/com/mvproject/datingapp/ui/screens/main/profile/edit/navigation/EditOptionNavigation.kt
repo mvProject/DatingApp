@@ -15,26 +15,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import com.mvproject.datingapp.navigation.AppRoutes
 import com.mvproject.datingapp.ui.screens.main.profile.edit.EditOptionScreen
 import com.mvproject.datingapp.ui.screens.main.profile.edit.EditOptionViewModel
 import com.mvproject.datingapp.utils.ANIM_DURATION_600
 
-fun NavController.navigateToEditOption(navOptions: NavOptions? = null) {
-    this.navigate(AppRoutes.EditOption.route, navOptions)
-}
-
 fun NavController.navigateToEditOption(optionId: String) {
     this.navigate("${AppRoutes.EditOption.route}/$optionId")
-}
-
-fun NavController.navigateToEditOptionClearStack() {
-    this.popBackStack()
-    this.navigate(AppRoutes.EditOption.route) {
-        launchSingleTop = true
-    }
 }
 
 private const val optionIdArg = "optionId"

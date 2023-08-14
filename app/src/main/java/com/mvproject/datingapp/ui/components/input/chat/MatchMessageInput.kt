@@ -123,13 +123,3 @@ fun PreviewMatchMessageInput() {
         )
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewMatchMessageInput() {
-    DatingAppTheme(darkTheme = true) {
-        MatchMessageInput(
-            hint = "hint"
-        )
-    }
-}

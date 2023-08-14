@@ -49,7 +49,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.model.UserChatMessage
 import com.mvproject.datingapp.ui.components.buttons.MenuButton
-import com.mvproject.datingapp.ui.components.composable.ChatMessageItemView
+import com.mvproject.datingapp.ui.components.composable.chat.ChatMessageItemView
 import com.mvproject.datingapp.ui.components.dialog.BottomDialog
 import com.mvproject.datingapp.ui.components.input.chat.ChatMessageInput
 import com.mvproject.datingapp.ui.screens.main.chat.action.ChatAction
@@ -272,14 +272,6 @@ fun ChatMessageView(
 @Composable
 fun PreviewChatMessageView() {
     DatingAppTheme {
-        ChatMessageView()
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewChatMessageView() {
-    DatingAppTheme(darkTheme = true) {
         ChatMessageView()
     }
 }

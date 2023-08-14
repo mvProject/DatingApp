@@ -21,7 +21,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileFullPreviewViewModel @Inject constructor(
-    private val preferenceRepository: PreferenceRepository,
+    private val preferenceRepository: PreferenceRepository
 ) : ViewModel() {
 
     private val _profileFullPreviewState = MutableStateFlow(ProfileFullPreviewState())

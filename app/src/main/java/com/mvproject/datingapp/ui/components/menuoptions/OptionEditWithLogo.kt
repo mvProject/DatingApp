@@ -106,15 +106,3 @@ fun PreviewOptionEditWithLogo() {
         )
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewOptionEditWithLogo() {
-    DatingAppTheme(darkTheme = true) {
-        OptionEditWithLogo(
-            logo = painterResource(id = R.drawable.ic_edit_languages),
-            title = "Languages",
-            selected = "English, Ukrainian, Polish, English, Ukrainian, Polish,"
-        )
-    }
-}

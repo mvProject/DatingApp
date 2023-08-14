@@ -319,11 +319,3 @@ fun PreviewEditOptionView() {
         EditOptionView()
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewEditOptionView() {
-    DatingAppTheme(darkTheme = true) {
-        EditOptionView()
-    }
-}

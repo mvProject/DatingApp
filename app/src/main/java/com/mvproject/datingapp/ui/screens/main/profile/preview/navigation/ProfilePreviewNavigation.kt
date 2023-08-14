@@ -23,14 +23,6 @@ import com.mvproject.datingapp.utils.ANIM_DURATION_600
 fun NavController.navigateToProfilePreview() {
     this.navigate(AppRoutes.ProfilePreview.route)
 }
-
-fun NavController.navigateToProfilePreviewScreenClearStack() {
-    this.popBackStack()
-    this.navigate(AppRoutes.ProfilePreview.route) {
-        launchSingleTop = true
-    }
-}
-
 fun NavGraphBuilder.profilePreviewScreen(
     onNavigationBack: () -> Unit = {},
     onNavigationDetail: () -> Unit = {}

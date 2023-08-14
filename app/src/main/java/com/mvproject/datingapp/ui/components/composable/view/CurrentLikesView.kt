@@ -1,12 +1,12 @@
 /*
  * Create by Medvediev Viktor
- * last update: 01.08.23, 21:12
+ * last update: 08.08.23, 17:32
  *
  * Copyright (c) 2023
  *
  */
 
-package com.mvproject.datingapp.ui.components.composable
+package com.mvproject.datingapp.ui.components.composable.view
 
 import android.net.Uri
 import androidx.compose.foundation.background
@@ -119,14 +119,6 @@ fun CurrentLikesView(
 @Composable
 fun PreviewCurrentLikesView() {
     DatingAppTheme {
-        CurrentLikesView()
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewCurrentLikesView() {
-    DatingAppTheme(darkTheme = true) {
         CurrentLikesView()
     }
 }

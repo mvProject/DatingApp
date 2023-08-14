@@ -274,11 +274,3 @@ fun PreviewMatchProfileView() {
         MatchProfileView()
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewMatchProfileView() {
-    DatingAppTheme(darkTheme = true) {
-        MatchProfileView()
-    }
-}

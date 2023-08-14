@@ -86,14 +86,3 @@ fun PreviewOptionSettings() {
         )
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewOptionSettings() {
-    DatingAppTheme(darkTheme = true) {
-        OptionSettings(
-            title = "Title",
-            selected = "Not Set"
-        )
-    }
-}

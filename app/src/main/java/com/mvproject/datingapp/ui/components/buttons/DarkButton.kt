@@ -20,7 +20,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
+import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 
 @Composable
@@ -52,5 +54,13 @@ fun DarkButton(
             color = MaterialTheme.colorScheme.onTertiary,
             style = MaterialTheme.typography.titleSmall
         )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewDarkButton() {
+    DatingAppTheme {
+        DarkButton()
     }
 }

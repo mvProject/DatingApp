@@ -37,7 +37,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
+import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.STRING_EMPTY
 import com.mvproject.datingapp.utils.WEIGHT_1
@@ -53,7 +55,7 @@ fun ChatMessageInputFull(
     singleLine: Boolean = false,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     colors: TextFieldColors = OutlinedTextFieldDefaults.colors(),
-    onSendMessage: (String) -> Unit
+    onSendMessage: (String) -> Unit = {}
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -128,5 +130,15 @@ fun ChatMessageInputFull(
                 contentDescription = null
             )
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewChatMessageInputFull() {
+    DatingAppTheme {
+        ChatMessageInputFull(
+            hint = "hint"
+        )
     }
 }

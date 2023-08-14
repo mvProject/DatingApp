@@ -1,12 +1,12 @@
 /*
  * Create by Medvediev Viktor
- * last update: 03.08.23, 20:35
+ * last update: 08.08.23, 17:32
  *
  * Copyright (c) 2023
  *
  */
 
-package com.mvproject.datingapp.ui.components.composable
+package com.mvproject.datingapp.ui.components.composable.chat
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -198,22 +198,6 @@ fun PreviewChatListItem() {
                 message = "hello",
                 senderId = "1",
                 receiverId = "20",
-                sendDate = System.currentTimeMillis() - 4.hours.inWholeMilliseconds
-            ),
-            loggedUserId = "20"
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewChatListItem() {
-    DatingAppTheme(darkTheme = true) {
-        ChatMessageItemView(
-            userChatMessage = UserChatMessage(
-                message = "hello",
-                senderId = "20",
-                receiverId = "1",
                 sendDate = System.currentTimeMillis() - 4.hours.inWholeMilliseconds
             ),
             loggedUserId = "20"

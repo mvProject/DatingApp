@@ -1,12 +1,12 @@
 /*
  * Create by Medvediev Viktor
- * last update: 01.08.23, 18:01
+ * last update: 08.08.23, 17:32
  *
  * Copyright (c) 2023
  *
  */
 
-package com.mvproject.datingapp.ui.components.composable
+package com.mvproject.datingapp.ui.components.composable.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -96,16 +96,6 @@ fun PreviewSympathyUserView() {
     DatingAppTheme {
         SympathyUserView(
             sympathyUser = sympathyUsers.first()
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewSympathyUserView() {
-    DatingAppTheme(darkTheme = true) {
-        SympathyUserView(
-            sympathyUser = sympathyUsers.last()
         )
     }
 }

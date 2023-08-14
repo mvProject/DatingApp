@@ -1,12 +1,12 @@
 /*
  * Create by Medvediev Viktor
- * last update: 11.07.23, 11:38
+ * last update: 11.07.23, 11:39
  *
  * Copyright (c) 2023
  *
  */
 
-package com.mvproject.datingapp.ui.components
+package com.mvproject.datingapp.ui.components.composable.view
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -15,10 +15,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
-import androidx.compose.material3.Checkbox
-import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -31,12 +31,11 @@ import com.mvproject.datingapp.utils.borderColor
 import com.mvproject.datingapp.utils.textColor
 
 @Composable
-fun CheckSelector(
+fun RadioSelector(
     text: String,
     logo: Painter? = null,
     isSelected: Boolean,
-    onSelect: (String) -> Unit = {},
-    onDeselect: (String) -> Unit = {}
+    onSelect: (String) -> Unit = {}
 ) {
     Row(
         Modifier
@@ -44,11 +43,7 @@ fun CheckSelector(
             .selectable(
                 selected = isSelected,
                 onClick = {
-                    if (isSelected) {
-                        onDeselect(text)
-                    } else {
-                        onSelect(text)
-                    }
+                    onSelect(text)
                 }
             )
             .background(
@@ -83,18 +78,13 @@ fun CheckSelector(
             color = textColor(isSelected),
         )
 
-        Checkbox(
-            checked = isSelected,
-            onCheckedChange = {
-                if (isSelected) {
-                    onDeselect(text)
-                } else {
-                    onSelect(text)
-                }
+        RadioButton(
+            selected = isSelected,
+            onClick = {
+                onSelect(text)
             },
-            colors = CheckboxDefaults.colors(
-                checkedColor = MaterialTheme.colorScheme.secondaryContainer,
-                checkmarkColor = MaterialTheme.colorScheme.onPrimaryContainer
+            colors = RadioButtonDefaults.colors(
+                selectedColor = MaterialTheme.colorScheme.secondaryContainer,
             )
         )
     }

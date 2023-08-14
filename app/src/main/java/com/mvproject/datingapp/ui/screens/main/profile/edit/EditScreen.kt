@@ -401,11 +401,3 @@ fun PreviewEditView() {
         EditView()
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewEditView() {
-    DatingAppTheme(darkTheme = true) {
-        EditView()
-    }
-}

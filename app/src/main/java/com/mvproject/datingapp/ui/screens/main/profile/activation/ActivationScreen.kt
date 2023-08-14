@@ -59,8 +59,8 @@ import com.mvproject.datingapp.data.ActivationData.activationPlans
 import com.mvproject.datingapp.data.enums.ActivationPlanType
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
 import com.mvproject.datingapp.ui.components.buttons.MenuButton
-import com.mvproject.datingapp.ui.components.composable.ActivationInfoCard
-import com.mvproject.datingapp.ui.components.composable.ActivationPlanCard
+import com.mvproject.datingapp.ui.components.composable.activation.ActivationInfoCard
+import com.mvproject.datingapp.ui.components.composable.activation.ActivationPlanCard
 import com.mvproject.datingapp.ui.components.dialog.BottomDialog
 import com.mvproject.datingapp.ui.screens.main.profile.activation.action.ActivationAction
 import com.mvproject.datingapp.ui.screens.main.profile.activation.state.ActivationDataState
@@ -311,14 +311,6 @@ fun ActivationView(
 @Composable
 fun PreviewActivationView() {
     DatingAppTheme {
-        ActivationView()
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewActivationView() {
-    DatingAppTheme(darkTheme = true) {
         ActivationView()
     }
 }

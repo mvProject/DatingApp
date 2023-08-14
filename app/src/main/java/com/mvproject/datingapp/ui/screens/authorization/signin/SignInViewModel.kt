@@ -11,7 +11,6 @@ package com.mvproject.datingapp.ui.screens.authorization.signin
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mvproject.datingapp.data.repository.PreferenceRepository
-import com.mvproject.datingapp.helper.FirebaseHelper
 import com.mvproject.datingapp.helper.GoogleSignHelper
 import com.mvproject.datingapp.ui.screens.authorization.signin.action.SignInAction
 import com.mvproject.datingapp.ui.screens.authorization.signin.state.SignInViewState
@@ -24,7 +23,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignInViewModel @Inject constructor(
-    private val firebaseHelper: FirebaseHelper,
     private val preferenceRepository: PreferenceRepository,
     private val googleSignHelper: GoogleSignHelper
 ) : ViewModel() {

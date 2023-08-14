@@ -686,11 +686,3 @@ fun PreviewDatingFilterView() {
         DatingFilterView()
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewDatingFilterView() {
-    DatingAppTheme(darkTheme = true) {
-        DatingFilterView()
-    }
-}

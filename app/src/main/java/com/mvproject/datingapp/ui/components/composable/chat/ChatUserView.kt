@@ -1,12 +1,12 @@
 /*
  * Create by Medvediev Viktor
- * last update: 01.08.23, 19:47
+ * last update: 08.08.23, 17:32
  *
  * Copyright (c) 2023
  *
  */
 
-package com.mvproject.datingapp.ui.components.composable
+package com.mvproject.datingapp.ui.components.composable.chat
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -142,16 +142,6 @@ fun PreviewChatUserView() {
     DatingAppTheme {
         ChatUserView(
             chatUser = chatUsers.first()
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewChatUserView() {
-    DatingAppTheme(darkTheme = true) {
-        ChatUserView(
-            chatUser = chatUsers.last()
         )
     }
 }

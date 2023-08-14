@@ -77,11 +77,3 @@ fun PreviewInterestInfo() {
         InterestInfo(selectedInterest = ProfileInterest.INTEREST_CHAT)
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewInterestInfo() {
-    DatingAppTheme(darkTheme = true) {
-        InterestInfo(selectedInterest = ProfileInterest.INTEREST_DATE)
-    }
-}

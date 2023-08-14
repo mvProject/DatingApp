@@ -29,8 +29,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.enums.profile.ProfilePets
-import com.mvproject.datingapp.ui.components.CheckSelector
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
+import com.mvproject.datingapp.ui.components.composable.view.CheckSelector
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.WEIGHT_5
@@ -108,14 +108,6 @@ fun PetSelector(
 @Composable
 fun PreviewPetSelector() {
     DatingAppTheme {
-        PetSelector()
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewPetSelector() {
-    DatingAppTheme(darkTheme = true) {
         PetSelector()
     }
 }

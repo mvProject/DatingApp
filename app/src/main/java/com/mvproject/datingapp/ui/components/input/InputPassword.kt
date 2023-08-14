@@ -130,11 +130,3 @@ fun PreviewCodeInputPassword() {
         InputPassword()
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewInputPassword() {
-    DatingAppTheme(darkTheme = true) {
-        InputPassword()
-    }
-}

@@ -11,7 +11,6 @@ package com.mvproject.datingapp.ui.screens.main.previewFull.candidate
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.mvproject.datingapp.data.dummy.matchCandidateUsers
-import com.mvproject.datingapp.data.repository.PreferenceRepository
 import com.mvproject.datingapp.ui.screens.main.previewFull.candidate.navigation.CandidateFullPreviewArgs
 import com.mvproject.datingapp.ui.screens.main.previewFull.candidate.state.CandidateFullPreviewState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,8 +21,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CandidateFullPreviewViewModel @Inject constructor(
-    savedStateHandle: SavedStateHandle,
-    private val preferenceRepository: PreferenceRepository,
+    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     private val candidateFullPreviewArgs = CandidateFullPreviewArgs(savedStateHandle)
 

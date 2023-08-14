@@ -187,14 +187,3 @@ fun PreviewCodeInputTextWithDescription() {
         )
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewInputTextWithDescription() {
-    DatingAppTheme(darkTheme = true) {
-        InputTextWithDescription(
-            title = stringResource(id = R.string.scr_request_reset_password_title),
-            descriptionBottom = stringResource(id = R.string.scr_request_reset_password_description),
-        )
-    }
-}

@@ -25,13 +25,6 @@ fun NavController.navigateToEdit(navOptions: NavOptions? = null) {
     this.navigate(AppRoutes.Edit.route, navOptions)
 }
 
-fun NavController.navigateToEditClearStack() {
-    this.popBackStack()
-    this.navigate(AppRoutes.Edit.route) {
-        launchSingleTop = true
-    }
-}
-
 fun NavGraphBuilder.editScreen(
     onNavigationBack: () -> Unit = {},
     onNavigationPreview: () -> Unit = {},

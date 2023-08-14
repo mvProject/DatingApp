@@ -438,11 +438,3 @@ fun PreviewProfileQuestionView() {
         ProfileQuestionView(ProfileQuestionsDataState())
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewProfileQuestionView() {
-    DatingAppTheme(darkTheme = true) {
-        ProfileQuestionView(ProfileQuestionsDataState())
-    }
-}

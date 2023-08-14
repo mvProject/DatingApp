@@ -149,14 +149,6 @@ fun NavigationHost(
             onNavigationBack = navController::popBackStack,
             onNavigationDetail = navController::navigateToCandidateFullPreview
         )
-
-        /*        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-                    val cont = controller.currentBackStack.value
-                    Timber.e("testing after navigate to ${destination.route}")
-                    cont.forEach {
-                        Timber.e("testing stack is ${it.destination.route}")
-                    }
-                }*/
     }
 }
 

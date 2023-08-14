@@ -130,11 +130,3 @@ fun PreviewWorkInput() {
         WorkInput(logo = R.drawable.questions_work)
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewWorkInput() {
-    DatingAppTheme(darkTheme = true) {
-        WorkInput(logo = R.drawable.questions_work)
-    }
-}

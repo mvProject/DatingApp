@@ -1,12 +1,12 @@
 /*
  * Create by Medvediev Viktor
- * last update: 26.07.23, 12:55
+ * last update: 07.08.23, 12:36
  *
  * Copyright (c) 2023
  *
  */
 
-package com.mvproject.datingapp.ui.components.composable
+package com.mvproject.datingapp.ui.components.composable.view
 
 import android.net.Uri
 import androidx.compose.foundation.BorderStroke
@@ -185,14 +185,6 @@ fun EmptyCandidatesView(
 @Composable
 fun PreviewEmptyCandidatesView() {
     DatingAppTheme {
-        EmptyCandidatesView()
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewEmptyCandidatesView() {
-    DatingAppTheme(darkTheme = true) {
         EmptyCandidatesView()
     }
 }

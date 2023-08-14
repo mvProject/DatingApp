@@ -140,16 +140,3 @@ fun PreviewCodeOtpTextField() {
         )
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewOtpTextField() {
-    DatingAppTheme(darkTheme = true) {
-        OtpTextField(
-            otpText = "test",
-            onOtpTextChange = { s, d ->
-
-            }
-        )
-    }
-}

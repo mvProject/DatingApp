@@ -6,7 +6,7 @@
  *
  */
 
-package com.mvproject.datingapp.ui.components.composable
+package com.mvproject.datingapp.ui.components.composable.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

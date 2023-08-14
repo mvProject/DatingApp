@@ -29,8 +29,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.enums.profile.ProfileLanguage
-import com.mvproject.datingapp.ui.components.CheckSelector
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
+import com.mvproject.datingapp.ui.components.composable.view.CheckSelector
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.WEIGHT_5
@@ -103,14 +103,6 @@ fun LanguagesSelector(
 @Composable
 fun PreviewLanguageSelector() {
     DatingAppTheme {
-        LanguagesSelector()
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewLanguageSelector() {
-    DatingAppTheme(darkTheme = true) {
         LanguagesSelector()
     }
 }

@@ -173,11 +173,3 @@ fun PreviewCodeInputPasswordWithDelay() {
         InputPasswordWithDelay(hideDelay = 500)
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewInputPasswordWithDelay() {
-    DatingAppTheme(darkTheme = true) {
-        InputPasswordWithDelay(hideDelay = 500)
-    }
-}

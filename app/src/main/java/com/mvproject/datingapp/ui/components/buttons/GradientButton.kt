@@ -22,7 +22,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
+import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.bluevioletDark
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.ui.theme.hotpink
@@ -60,5 +62,13 @@ fun GradientButton(
                 style = MaterialTheme.typography.titleSmall
             )
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewGradientButton() {
+    DatingAppTheme {
+        GradientButton()
     }
 }

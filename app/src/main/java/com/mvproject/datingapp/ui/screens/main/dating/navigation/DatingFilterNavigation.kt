@@ -24,14 +24,6 @@ import com.mvproject.datingapp.utils.ANIM_DURATION_600
 fun NavController.navigateToDatingFilter(navOptions: NavOptions? = null) {
     this.navigate(AppRoutes.DatingFilter.route, navOptions)
 }
-
-fun NavController.navigateToDatingFilterClearStack() {
-    this.popBackStack()
-    this.navigate(AppRoutes.DatingFilter.route) {
-        launchSingleTop = true
-    }
-}
-
 fun NavGraphBuilder.datingFilterScreen(
     onNavigationBack: () -> Unit = {}
 ) {

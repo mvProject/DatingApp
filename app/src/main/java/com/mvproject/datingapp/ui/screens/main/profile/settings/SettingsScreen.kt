@@ -220,11 +220,3 @@ fun PreviewSettingsView() {
         SettingsView()
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewSettingsView() {
-    DatingAppTheme(darkTheme = true) {
-        SettingsView()
-    }
-}

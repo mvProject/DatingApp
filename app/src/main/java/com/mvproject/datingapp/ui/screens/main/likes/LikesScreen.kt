@@ -33,8 +33,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.ui.components.buttons.SmallColorButton
-import com.mvproject.datingapp.ui.components.composable.CandidateLikeBlurredView
-import com.mvproject.datingapp.ui.components.composable.CandidateLikeView
+import com.mvproject.datingapp.ui.components.composable.candidate.CandidateLikeBlurredView
+import com.mvproject.datingapp.ui.components.composable.candidate.CandidateLikeView
 import com.mvproject.datingapp.ui.screens.main.likes.action.LikesAction
 import com.mvproject.datingapp.ui.screens.main.likes.state.LikesState
 import com.mvproject.datingapp.ui.theme.DatingAppTheme

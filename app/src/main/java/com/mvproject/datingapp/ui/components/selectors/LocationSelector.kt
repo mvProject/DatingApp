@@ -185,11 +185,3 @@ fun PreviewLocationSelector() {
         LocationSelector()
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewLocationSelector() {
-    DatingAppTheme(darkTheme = true) {
-        LocationSelector()
-    }
-}
