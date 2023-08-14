@@ -16,15 +16,17 @@ import com.mvproject.datingapp.ui.screens.main.chat.navigation.chatMessageScreen
 import com.mvproject.datingapp.ui.screens.main.chat.navigation.chatScreen
 import com.mvproject.datingapp.ui.screens.main.chat.navigation.navigateToChatMessageScreen
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.datingFilterScreen
-import com.mvproject.datingapp.ui.screens.main.dating.navigation.datingProfileScreen
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.datingScreen
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.matchProfileScreen
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToDatingClearStack
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToDatingFilter
-import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToDatingProfile
 import com.mvproject.datingapp.ui.screens.main.dating.navigation.navigateToMatchProfile
 import com.mvproject.datingapp.ui.screens.main.likes.navigation.likesScreen
 import com.mvproject.datingapp.ui.screens.main.likes.navigation.navigateToLikes
+import com.mvproject.datingapp.ui.screens.main.previewFull.candidate.navigation.candidateFullPreviewScreen
+import com.mvproject.datingapp.ui.screens.main.previewFull.candidate.navigation.navigateToCandidateFullPreview
+import com.mvproject.datingapp.ui.screens.main.previewFull.profile.navigation.navigateToProfileFullPreview
+import com.mvproject.datingapp.ui.screens.main.previewFull.profile.navigation.profileFullPreviewScreen
 import com.mvproject.datingapp.ui.screens.main.profile.activation.navigation.activationScreen
 import com.mvproject.datingapp.ui.screens.main.profile.activation.navigation.navigateToActivationScreen
 import com.mvproject.datingapp.ui.screens.main.profile.changePassword.navigation.changePasswordScreen
@@ -33,6 +35,8 @@ import com.mvproject.datingapp.ui.screens.main.profile.edit.navigation.editOptio
 import com.mvproject.datingapp.ui.screens.main.profile.edit.navigation.editScreen
 import com.mvproject.datingapp.ui.screens.main.profile.edit.navigation.navigateToEdit
 import com.mvproject.datingapp.ui.screens.main.profile.edit.navigation.navigateToEditOption
+import com.mvproject.datingapp.ui.screens.main.profile.preview.navigation.navigateToProfilePreview
+import com.mvproject.datingapp.ui.screens.main.profile.preview.navigation.profilePreviewScreen
 import com.mvproject.datingapp.ui.screens.main.profile.settings.navigation.navigateToSettings
 import com.mvproject.datingapp.ui.screens.main.profile.settings.navigation.settingsScreen
 import com.mvproject.datingapp.ui.screens.main.profile.view.navigation.navigateToProfileClearStack
@@ -91,8 +95,13 @@ fun NavigationHost(
 
         editScreen(
             onNavigationChange = navController::navigateToEditOption,
-            onNavigationPreview = navController::navigateToDatingProfile,
+            onNavigationPreview = navController::navigateToProfilePreview,
             onNavigationBack = navController::popBackStack
+        )
+
+        profilePreviewScreen(
+            onNavigationBack = navController::popBackStack,
+            onNavigationDetail = navController::navigateToProfileFullPreview,
         )
 
         editOptionScreen(
@@ -104,12 +113,15 @@ fun NavigationHost(
         )
 
         datingScreen(
-            onNavigationDetail = navController::navigateToDatingProfile,
+            onNavigationDetail = navController::navigateToCandidateFullPreview,
             onNavigationMatch = navController::navigateToMatchProfile,
             onNavigationFilter = navController::navigateToDatingFilter
         )
 
-        datingProfileScreen(
+        candidateFullPreviewScreen(
+            onNavigationBack = navController::popBackStack,
+        )
+        profileFullPreviewScreen(
             onNavigationBack = navController::popBackStack,
         )
 
@@ -135,7 +147,7 @@ fun NavigationHost(
 
         chatMessageScreen(
             onNavigationBack = navController::popBackStack,
-            onNavigationDetail = navController::navigateToDatingProfile
+            onNavigationDetail = navController::navigateToCandidateFullPreview
         )
 
         /*        navController.addOnDestinationChangedListener { controller, destination, arguments ->

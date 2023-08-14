@@ -27,8 +27,6 @@ const val STRING_EMPTY = ""
 const val STRING_SEPARATOR = ";"
 const val STRING_ZERO = "0"
 
-const val LOCAL_USER = "Local"
-
 const val INT_ZERO = 0
 const val LONG_ZERO = 0L
 const val FLOAT_ZERO = 0f

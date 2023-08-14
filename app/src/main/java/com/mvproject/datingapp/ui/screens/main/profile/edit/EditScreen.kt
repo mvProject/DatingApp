@@ -43,7 +43,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.ui.components.buttons.MenuButton
-import com.mvproject.datingapp.ui.components.composable.StaticGrid
+import com.mvproject.datingapp.ui.components.composable.view.StaticGrid
 import com.mvproject.datingapp.ui.components.dialog.BottomDialog
 import com.mvproject.datingapp.ui.components.menuoptions.OptionEditInterest
 import com.mvproject.datingapp.ui.components.menuoptions.OptionEditWithLogo
@@ -55,7 +55,6 @@ import com.mvproject.datingapp.ui.screens.main.profile.edit.state.EditProfileOpt
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.INT_ZERO
-import com.mvproject.datingapp.utils.LOCAL_USER
 import com.mvproject.datingapp.utils.PHOTO_COLUMNS_COUNT
 import com.mvproject.datingapp.utils.STRING_COMA_SPACE
 import com.mvproject.datingapp.utils.notNullOrEmpty
@@ -65,7 +64,7 @@ import timber.log.Timber
 fun EditScreen(
     viewModel: EditViewModel,
     onNavigationBack: () -> Unit = {},
-    onNavigationPreview: (String) -> Unit = {},
+    onNavigationPreview: () -> Unit = {},
     onNavigationChange: (String) -> Unit = {}
 ) {
     val profileState by viewModel.profileState.collectAsStateWithLifecycle()
@@ -88,7 +87,7 @@ fun EditView(
     userPhotos: List<String> = emptyList(),
     onPhotoAction: (EditPhotoAction) -> Unit = {},
     onChangeClick: (String) -> Unit = {},
-    onPreviewClick: (String) -> Unit = {},
+    onPreviewClick: () -> Unit = {},
     onBackClick: () -> Unit = {}
 ) {
     Scaffold(
@@ -105,7 +104,7 @@ fun EditView(
                 actions = {
                     Text(
                         modifier = Modifier.clickable {
-                            onPreviewClick(LOCAL_USER)
+                            onPreviewClick()
                         },
                         text = stringResource(id = R.string.screen_title_profile_preview),
                         color = MaterialTheme.colorScheme.secondary,
