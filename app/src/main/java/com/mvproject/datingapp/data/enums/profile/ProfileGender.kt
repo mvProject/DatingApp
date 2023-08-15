@@ -11,5 +11,16 @@ package com.mvproject.datingapp.data.enums.profile
 
 enum class ProfileGender {
     MALE,
-    FEMALE
+    FEMALE;
+
+    companion object {
+        fun fromStringOrDefault(str: String?): ProfileGender {
+            if (str == null) return MALE
+            return try {
+                ProfileGender.valueOf(str)
+            } catch (ex: Exception) {
+                MALE
+            }
+        }
+    }
 }

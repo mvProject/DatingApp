@@ -10,6 +10,7 @@ package com.mvproject.datingapp.data.model
 
 import com.mvproject.datingapp.data.enums.profile.ProfileAlcohol
 import com.mvproject.datingapp.data.enums.profile.ProfileChildren
+import com.mvproject.datingapp.data.enums.profile.ProfileGender
 import com.mvproject.datingapp.data.enums.profile.ProfileInterest
 import com.mvproject.datingapp.data.enums.profile.ProfileLanguage
 import com.mvproject.datingapp.data.enums.profile.ProfileMarital
@@ -28,7 +29,7 @@ data class User(
     val email: String = STRING_EMPTY,
     val password: String = STRING_EMPTY,
     val interest: ProfileInterest = ProfileInterest.INTEREST_DATE,
-    val gender: String = STRING_EMPTY,
+    val gender: ProfileGender = ProfileGender.MALE,
     val uid: String = STRING_EMPTY,
     val location: UserLocation = UserLocation(),
     val profilePictureUrl: String = STRING_EMPTY,

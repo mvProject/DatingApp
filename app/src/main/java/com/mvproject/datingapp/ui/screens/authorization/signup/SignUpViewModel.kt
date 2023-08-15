@@ -156,7 +156,7 @@ class SignUpViewModel @Inject constructor(
             email = data.email,
             password = data.password,
             interest = data.interest,
-            gender = data.gender.name,
+            gender = data.gender,
             location = data.location,
             profilePictureUrl = if (data.images.isNotEmpty()) data.images.first() else STRING_EMPTY,
             photos = data.images

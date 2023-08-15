@@ -104,7 +104,7 @@ class PreferenceRepository @Inject constructor(
         dataStore.edit { settings ->
             settings[USER_EMAIL] = user.email
             settings[USER_PASS] = user.password
-            settings[USER_GENDER] = user.gender
+            settings[USER_GENDER] = user.gender.name
             settings[USER_NAME] = user.name
             settings[USER_DATE] = user.birthdate
             settings[USER_LOCATION] = user.location.toString()
@@ -132,7 +132,7 @@ class PreferenceRepository @Inject constructor(
         User(
             email = preferences[USER_EMAIL] ?: STRING_EMPTY,
             password = preferences[USER_PASS] ?: STRING_EMPTY,
-            gender = preferences[USER_GENDER] ?: ProfileGender.MALE.name,
+            gender = ProfileGender.fromStringOrDefault(preferences[USER_GENDER]),
             name = preferences[USER_NAME] ?: STRING_EMPTY,
             location = UserLocation.fromStringOrDefault(preferences[USER_LOCATION]),
             birthdate = preferences[USER_DATE] ?: LONG_ZERO,
@@ -159,7 +159,7 @@ class PreferenceRepository @Inject constructor(
         User(
             email = preferences[USER_EMAIL] ?: STRING_EMPTY,
             password = preferences[USER_PASS] ?: STRING_EMPTY,
-            gender = preferences[USER_GENDER] ?: STRING_EMPTY,
+            gender = ProfileGender.fromStringOrDefault(preferences[USER_GENDER]),
             name = preferences[USER_NAME] ?: STRING_EMPTY,
             location = UserLocation.fromStringOrDefault(preferences[USER_LOCATION]),
             birthdate = preferences[USER_DATE] ?: LONG_ZERO,
