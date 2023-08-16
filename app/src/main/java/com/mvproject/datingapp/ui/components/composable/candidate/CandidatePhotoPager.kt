@@ -10,10 +10,8 @@ package com.mvproject.datingapp.ui.components.composable.candidate
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.PagerDefaults
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
@@ -33,11 +31,6 @@ fun CandidatePhotoPager(
     HorizontalPager(
         modifier = modifier,
         state = pagerState,
-        pageNestedScrollConnection = PagerDefaults
-            .pageNestedScrollConnection(
-                state = pagerState,
-                orientation = Orientation.Horizontal
-            ),
         pageContent = { position ->
             Card(
                 modifier = Modifier.fillMaxSize(),

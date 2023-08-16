@@ -1,5 +1,7 @@
 @file:Suppress("UnstableApiUsage")
 
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -24,9 +26,20 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
+    val projectProperties = readProperties(file("../keystore.properties"))
+    signingConfigs {
+        register("configRelease").configure {
+            storeFile = file(projectProperties["storeFile"] as String)
+            storePassword = projectProperties["storePassword"] as String
+            keyAlias = projectProperties["keyAlias"] as String
+            keyPassword = projectProperties["keyPassword"] as String
+        }
+    }
+
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            signingConfig = signingConfigs.getByName("configRelease")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -60,6 +73,12 @@ android {
         unitTests.all {
             it.useJUnitPlatform()
         }
+    }
+}
+
+fun readProperties(propertiesFile: File) = Properties().apply {
+    propertiesFile.inputStream().use { fis ->
+        load(fis)
     }
 }
 
@@ -98,6 +117,7 @@ dependencies {
     // Navigation
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("androidx.navigation:navigation-compose:2.7.0")
+    implementation("com.google.accompanist:accompanist-navigation-animation:0.33.0-alpha")
 
     // Compose
     val composeBom = platform("androidx.compose:compose-bom:2023.08.00")
