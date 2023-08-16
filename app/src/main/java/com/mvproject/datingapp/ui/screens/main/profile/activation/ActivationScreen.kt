@@ -154,7 +154,10 @@ fun ActivationView(
                 modifier = Modifier.fillMaxWidth(),
                 state = pagerState,
                 pageNestedScrollConnection = PagerDefaults
-                    .pageNestedScrollConnection(Orientation.Horizontal),
+                    .pageNestedScrollConnection(
+                        state = pagerState,
+                        orientation = Orientation.Horizontal
+                    ),
                 pageContent = { position ->
                     ActivationInfoCard(activationInfo = pages[position])
                 }
@@ -163,7 +166,7 @@ fun ActivationView(
             Spacer(modifier = Modifier.height(MaterialTheme.dimens.size24))
 
             Row(
-                Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center
             ) {
                 repeat(pagerState.pageCount) { position ->
@@ -192,7 +195,7 @@ fun ActivationView(
             Spacer(modifier = Modifier.height(MaterialTheme.dimens.size24))
 
             Row(
-                Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 repeat(activationPlans.size) { position ->

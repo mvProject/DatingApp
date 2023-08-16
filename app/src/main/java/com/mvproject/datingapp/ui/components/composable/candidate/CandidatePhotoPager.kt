@@ -19,6 +19,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 
@@ -33,14 +34,19 @@ fun CandidatePhotoPager(
         modifier = modifier,
         state = pagerState,
         pageNestedScrollConnection = PagerDefaults
-            .pageNestedScrollConnection(Orientation.Horizontal),
+            .pageNestedScrollConnection(
+                state = pagerState,
+                orientation = Orientation.Horizontal
+            ),
         pageContent = { position ->
             Card(
                 modifier = Modifier.fillMaxSize(),
                 shape = MaterialTheme.shapes.medium
             ) {
                 Image(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clip(MaterialTheme.shapes.medium),
                     painter = painterResource(id = userPhotos[position]),
                     contentDescription = null,
                     contentScale = ContentScale.FillWidth

@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -10,11 +12,11 @@ plugins {
 
 android {
     namespace = "com.mvproject.datingapp"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 26
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 50
         versionName = "0.0.10"
 
@@ -77,8 +79,8 @@ dependencies {
     implementation("com.jakewharton.timber:timber:5.0.1")
 
     // Coroutine
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     // DI
     implementation("com.google.dagger:hilt-android:2.47")
@@ -95,11 +97,10 @@ dependencies {
 
     // Navigation
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-    implementation("androidx.navigation:navigation-compose:2.6.0")
-    implementation("com.google.accompanist:accompanist-navigation-animation:0.31.5-beta")
+    implementation("androidx.navigation:navigation-compose:2.7.0")
 
     // Compose
-    val composeBom = platform("androidx.compose:compose-bom:2023.06.01")
+    val composeBom = platform("androidx.compose:compose-bom:2023.08.00")
     implementation(composeBom)
 
     implementation("androidx.compose.ui:ui")
@@ -108,7 +109,7 @@ dependencies {
     implementation("androidx.compose.material3:material3")
 
     // Firebase
-    val firebaseBom = platform("com.google.firebase:firebase-bom:32.2.0")
+    val firebaseBom = platform("com.google.firebase:firebase-bom:32.2.2")
     implementation(firebaseBom)
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-auth-ktx")
@@ -122,10 +123,10 @@ dependencies {
     // Image
     implementation("io.coil-kt:coil-compose:2.4.0")
 
-    implementation("com.github.skydoves:landscapist-coil:2.2.3")
-    implementation("com.github.skydoves:landscapist-transformation:2.2.3")
+    implementation("com.github.skydoves:landscapist-coil:2.2.6")
+    implementation("com.github.skydoves:landscapist-transformation:2.2.6")
 
-    implementation("com.google.accompanist:accompanist-systemuicontroller:0.31.5-beta")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.33.0-alpha")
 
     // Tests
     testImplementation("junit:junit:4.13.2")

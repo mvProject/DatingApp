@@ -22,6 +22,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -53,10 +54,12 @@ fun ProfilePreviewShort(
             shape = MaterialTheme.shapes.medium
         ) {
             AsyncImage(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clip(MaterialTheme.shapes.medium),
                 model = currentUser.profilePictureUrl,
                 contentDescription = null,
-                contentScale = ContentScale.FillWidth
+                contentScale = ContentScale.FillBounds
             )
         }
 
