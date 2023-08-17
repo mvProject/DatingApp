@@ -10,6 +10,7 @@ package com.mvproject.datingapp.ui.components.buttons
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
@@ -42,7 +43,11 @@ fun GoogleButton(
             MaterialTheme.dimens.size1,
             MaterialTheme.colorScheme.outline
         ),
-        shape = MaterialTheme.shapes.large
+        shape = MaterialTheme.shapes.large,
+        contentPadding = PaddingValues(
+            horizontal = MaterialTheme.dimens.size10,
+            vertical = MaterialTheme.dimens.size12
+        )
     ) {
         Image(
             painter = painterResource(id = R.drawable.logo_google),

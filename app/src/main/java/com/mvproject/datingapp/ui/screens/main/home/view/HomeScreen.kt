@@ -65,7 +65,7 @@ fun HomeScreen(
                 onDestinationClick = navController::bottomNavigateToRoute
             )
         }
-    ) { paddingValues ->
+    ) { _ ->
         NavigationHost(
             navController = navController,
             startDestination = startScreen

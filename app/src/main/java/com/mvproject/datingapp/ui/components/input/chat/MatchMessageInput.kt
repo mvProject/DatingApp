@@ -33,7 +33,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
-import com.mvproject.datingapp.ui.components.buttons.GradientButton
+import com.mvproject.datingapp.ui.components.buttons.GradientSmallButton
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.STRING_EMPTY
@@ -99,7 +99,7 @@ fun MatchMessageInput(
                 }
             }
 
-            GradientButton(
+            GradientSmallButton(
                 modifier = Modifier
                     .width(MaterialTheme.dimens.size88)
                     .align(Alignment.CenterEnd),

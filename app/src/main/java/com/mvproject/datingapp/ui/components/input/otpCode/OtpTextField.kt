@@ -120,9 +120,12 @@ private fun CharView(
                 },
                 shape = MaterialTheme.shapes.small
             )
-            .padding(MaterialTheme.dimens.size2),
+            .padding(
+                vertical = MaterialTheme.dimens.size12,
+                horizontal = MaterialTheme.dimens.size14,
+            ),
         text = char,
-        style = MaterialTheme.typography.bodyLarge,
+        style = MaterialTheme.typography.labelLarge,
         color = MaterialTheme.colorScheme.onPrimary,
         textAlign = TextAlign.Center
     )

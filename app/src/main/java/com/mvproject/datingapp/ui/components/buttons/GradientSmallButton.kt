@@ -31,7 +31,7 @@ import com.mvproject.datingapp.ui.theme.hotpink
 import com.mvproject.datingapp.utils.gradientBackground
 
 @Composable
-fun GradientButton(
+fun GradientSmallButton(
     modifier: Modifier = Modifier,
     title: String = stringResource(id = R.string.btn_title_continue),
     enabled: Boolean = true,
@@ -54,7 +54,7 @@ fun GradientButton(
                 .clip(MaterialTheme.shapes.large)
                 .padding(
                     horizontal = MaterialTheme.dimens.size4,
-                    vertical = MaterialTheme.dimens.size14
+                    vertical = MaterialTheme.dimens.size8
                 ),
             contentAlignment = Alignment.Center
         ) {
@@ -69,8 +69,8 @@ fun GradientButton(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewGradientButton() {
+fun PreviewGradientSmallButton() {
     DatingAppTheme {
-        GradientButton(modifier = Modifier.fillMaxWidth())
+        GradientSmallButton(modifier = Modifier.fillMaxWidth())
     }
 }
