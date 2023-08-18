@@ -32,8 +32,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.enums.profile.ProfileInterest
-import com.mvproject.datingapp.ui.components.RadioSelector
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
+import com.mvproject.datingapp.ui.components.composable.view.RadioSelector
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.WEIGHT_1
@@ -118,16 +118,6 @@ fun PreviewInterestSelector() {
     DatingAppTheme {
         InterestSelector(
 
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewInterestSelector() {
-    DatingAppTheme(darkTheme = true) {
-        InterestSelector(
-            selectedOption = stringResource(id = R.string.scr_auth_interest_select_relationship)
         )
     }
 }

@@ -87,14 +87,3 @@ fun PreviewOptionEditWithTitle() {
         )
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewOptionEditWithTitle() {
-    DatingAppTheme(darkTheme = true) {
-        OptionEditWithTitle(
-            title = "Work",
-            selected = "Designer in company KinectPro"
-        )
-    }
-}

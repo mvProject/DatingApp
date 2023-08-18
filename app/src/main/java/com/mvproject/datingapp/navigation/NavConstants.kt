@@ -15,8 +15,12 @@ object NavConstants {
     const val ROUTE_CHAT = "chat"
     const val ROUTE_LIKES = "liking"
     const val ROUTE_DATING = "dating"
-    const val ROUTE_DATING_PROFILE = "datingProfile"
+    const val ROUTE_CANDIDATE_FULL_PREVIEW = "candidateFullPreview"
+    const val ROUTE_PROFILE_FULL_PREVIEW = "profileFullPreview"
+    const val ROUTE_PROFILE_PREVIEW = "profilePreview"
     const val ROUTE_DATING_FILTER = "datingFilter"
     const val ROUTE_MATCH_PROFILE = "matchProfile"
     const val ROUTE_CHAT_MESSAGE = "chatMessage"
+
+    const val ROUTE_ACTIVATION = "activation"
 }

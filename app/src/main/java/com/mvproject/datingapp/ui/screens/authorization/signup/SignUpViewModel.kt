@@ -14,7 +14,6 @@ import com.mvproject.datingapp.data.dummy.DUMMY_CODE
 import com.mvproject.datingapp.data.model.User
 import com.mvproject.datingapp.data.repository.PreferenceRepository
 import com.mvproject.datingapp.data.repository.StorageRepository
-import com.mvproject.datingapp.helper.FirebaseHelper
 import com.mvproject.datingapp.helper.TimerHelper
 import com.mvproject.datingapp.ui.screens.authorization.signup.actions.SignUpAction
 import com.mvproject.datingapp.ui.screens.authorization.signup.state.SignUpProfileDataState
@@ -32,10 +31,8 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
-    private val firebaseHelper: FirebaseHelper,
     private val storageRepository: StorageRepository,
     private val preferenceRepository: PreferenceRepository,
     private val timerHelper: TimerHelper
@@ -159,7 +156,7 @@ class SignUpViewModel @Inject constructor(
             email = data.email,
             password = data.password,
             interest = data.interest,
-            gender = data.gender.name,
+            gender = data.gender,
             location = data.location,
             profilePictureUrl = if (data.images.isNotEmpty()) data.images.first() else STRING_EMPTY,
             photos = data.images

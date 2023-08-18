@@ -182,13 +182,3 @@ fun PreviewUpdatePasswordWithConfirmation() {
         )
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewUpdatePasswordWithConfirmation() {
-    DatingAppTheme(darkTheme = true) {
-        UpdatePasswordWithConfirmation(
-            descriptionTop = stringResource(id = R.string.scr_reset_password_description),
-        )
-    }
-}

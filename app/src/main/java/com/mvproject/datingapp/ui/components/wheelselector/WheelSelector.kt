@@ -104,11 +104,3 @@ fun PreviewCodeWheelSelector() {
         WheelSelector(countries)
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewWheelSelector() {
-    DatingAppTheme(darkTheme = true) {
-        WheelSelector(countries)
-    }
-}

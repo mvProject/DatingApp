@@ -231,11 +231,3 @@ fun PreviewRestoreAccessView() {
         RestoreAccessView(state = RestoreAccessDataState())
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewRestoreAccessView() {
-    DatingAppTheme(darkTheme = true) {
-        RestoreAccessView(state = RestoreAccessDataState())
-    }
-}

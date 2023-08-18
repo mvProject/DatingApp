@@ -120,9 +120,12 @@ private fun CharView(
                 },
                 shape = MaterialTheme.shapes.small
             )
-            .padding(MaterialTheme.dimens.size2),
+            .padding(
+                vertical = MaterialTheme.dimens.size12,
+                horizontal = MaterialTheme.dimens.size14,
+            ),
         text = char,
-        style = MaterialTheme.typography.bodyLarge,
+        style = MaterialTheme.typography.labelLarge,
         color = MaterialTheme.colorScheme.onPrimary,
         textAlign = TextAlign.Center
     )
@@ -132,19 +135,6 @@ private fun CharView(
 @Composable
 fun PreviewCodeOtpTextField() {
     DatingAppTheme {
-        OtpTextField(
-            otpText = "test",
-            onOtpTextChange = { s, d ->
-
-            }
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewOtpTextField() {
-    DatingAppTheme(darkTheme = true) {
         OtpTextField(
             otpText = "test",
             onOtpTextChange = { s, d ->

@@ -14,7 +14,6 @@ import androidx.compose.animation.fadeOut
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.navigation.BottomNavItem
@@ -23,11 +22,11 @@ import com.mvproject.datingapp.ui.screens.main.dating.DatingScreen
 import com.mvproject.datingapp.ui.screens.main.dating.DatingViewModel
 import com.mvproject.datingapp.utils.ANIM_DURATION_600
 
-val Dating = BottomNavItem(NavConstants.ROUTE_DATING, R.drawable.ic_nav_dating)
-
-fun NavController.navigateToDating(navOptions: NavOptions? = null) {
-    this.navigate(Dating.route, navOptions)
-}
+val Dating = BottomNavItem(
+    route = NavConstants.ROUTE_DATING,
+    title = R.string.bottom_bar_dating_route,
+    logo = R.drawable.ic_nav_dating
+)
 
 fun NavController.navigateToDatingClearStack() {
     this.navigate(Dating.route) {

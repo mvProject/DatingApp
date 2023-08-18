@@ -31,8 +31,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.enums.ProfileCharacteristic
 import com.mvproject.datingapp.data.enums.profile.ProfileAlcohol
-import com.mvproject.datingapp.ui.components.RadioSelector
 import com.mvproject.datingapp.ui.components.buttons.ColorButton
+import com.mvproject.datingapp.ui.components.composable.view.RadioSelector
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.WEIGHT_5
@@ -100,14 +100,6 @@ fun FilterSingleSelector(
 @Composable
 fun PreviewFilterSingleSelector() {
     DatingAppTheme {
-        FilterSingleSelector()
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewFilterSingleSelector() {
-    DatingAppTheme(darkTheme = true) {
         FilterSingleSelector()
     }
 }

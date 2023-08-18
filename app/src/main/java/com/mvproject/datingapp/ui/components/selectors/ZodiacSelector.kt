@@ -30,8 +30,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.enums.profile.ProfileZodiac
-import com.mvproject.datingapp.ui.components.RadioSplitSelector
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
+import com.mvproject.datingapp.ui.components.composable.view.RadioSplitSelector
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.INT_ZERO
@@ -107,16 +107,6 @@ fun PreviewZodiacSelector() {
     DatingAppTheme {
         ZodiacSelector(
 
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewZodiacSelector() {
-    DatingAppTheme(darkTheme = true) {
-        ZodiacSelector(
-            selectedOption = stringResource(ProfileZodiac.ZODIAC_AQUARIUS.title)
         )
     }
 }

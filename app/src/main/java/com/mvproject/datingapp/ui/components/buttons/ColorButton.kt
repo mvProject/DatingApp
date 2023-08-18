@@ -20,8 +20,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
+import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 
 @Composable
@@ -55,6 +58,16 @@ fun ColorButton(
             text = title,
             color = titleColor,
             style = MaterialTheme.typography.bodyLarge
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewColorButton() {
+    DatingAppTheme {
+        ColorButton(
+            logo = painterResource(id = R.drawable.ic_profile_like)
         )
     }
 }

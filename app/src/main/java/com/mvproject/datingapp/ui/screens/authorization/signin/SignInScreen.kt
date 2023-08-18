@@ -300,11 +300,3 @@ fun PreviewSignInView() {
         SignInView()
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewSignInView() {
-    DatingAppTheme(darkTheme = true) {
-        SignInView()
-    }
-}

@@ -1,0 +1,29 @@
+<!--
+  ~ Create by Medvediev Viktor
+  ~ last update: 07.06.23, 12:03
+  ~
+  ~ Copyright (c) 2023
+  ~
+  -->
+
+<resources>
+    <string name="activation_view_likes_title">View likes</string>
+    <string name="activation_view_likes_description">You can see who liked you</string>
+    <string name="activation_unlimited_likes_title">Unlimited likes</string>
+    <string name="activation_unlimited_likes_description">You can swipe right an infinite amount</string>
+    <string name="activation_swipe_cancel_title">Cancel random swipe left</string>
+    <string name="activation_swipe_cancel_description">You can return the view of the previous profile</string>
+    <string name="activation_no_ads_title">No ads</string>
+    <string name="activation_no_ads_description">You can enjoy the app without any ads</string>
+
+    <string name="price_per_month">$%1$s/month</string>
+    <string name="activation_duration_month">%1$s month</string>
+    <string name="activation_duration_months">%1$s months</string>
+
+    <string name="activation_plan_popular">Popular</string>
+    <string name="activation_plan_favorable">Favorable</string>
+
+    <string name="terms_prefix">By clicking "Activate", you agree to our </string>
+    <string name="terms_main">Terms</string>
+    <string name="terms_suffix">. The amount will be debited and the subscription will be auto-renew for the selected period time and at the same price until you cancel it in settings</string>
+</resources>

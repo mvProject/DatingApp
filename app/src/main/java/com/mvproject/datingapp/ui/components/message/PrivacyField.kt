@@ -63,13 +63,3 @@ fun PreviewCodePrivacyMessage() {
         )
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewPrivacyMessage() {
-    DatingAppTheme(darkTheme = true) {
-        PrivacyField(
-            text = stringResource(id = R.string.scr_auth_privacy_email),
-        )
-    }
-}

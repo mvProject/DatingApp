@@ -104,11 +104,3 @@ fun PreviewCodeInputLimitedText() {
         InputLimitedText()
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewInputLimitedText() {
-    DatingAppTheme(darkTheme = true) {
-        InputLimitedText()
-    }
-}

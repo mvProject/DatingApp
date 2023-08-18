@@ -1,3 +1,7 @@
+@file:Suppress("UnstableApiUsage")
+
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -10,21 +14,33 @@ plugins {
 
 android {
     namespace = "com.mvproject.datingapp"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 26
-        targetSdk = 33
-        versionCode = 44
-        versionName = "0.0.9"
+        targetSdk = 34
+        versionCode = 51
+        versionName = "0.0.11"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
 
+    val projectProperties = readProperties(file("../keystore.properties"))
+    signingConfigs {
+        register("configRelease").configure {
+            storeFile = file(projectProperties["storeFile"] as String)
+            storePassword = projectProperties["storePassword"] as String
+            keyAlias = projectProperties["keyAlias"] as String
+            keyPassword = projectProperties["keyPassword"] as String
+        }
+    }
+
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            signingConfig = signingConfigs.getByName("configRelease")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -51,13 +67,22 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.0"
     }
-    packagingOptions {
-        resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
     }
     testOptions {
         unitTests.all {
             it.useJUnitPlatform()
         }
+    }
+}
+
+fun readProperties(propertiesFile: File) = Properties().apply {
+    propertiesFile.inputStream().use { fis ->
+        load(fis)
     }
 }
 
@@ -77,8 +102,8 @@ dependencies {
     implementation("com.jakewharton.timber:timber:5.0.1")
 
     // Coroutine
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     // DI
     implementation("com.google.dagger:hilt-android:2.47")
@@ -95,11 +120,11 @@ dependencies {
 
     // Navigation
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-    implementation("androidx.navigation:navigation-compose:2.6.0")
-    implementation("com.google.accompanist:accompanist-navigation-animation:0.31.5-beta")
+    implementation("androidx.navigation:navigation-compose:2.7.0")
+    implementation("com.google.accompanist:accompanist-navigation-animation:0.33.0-alpha")
 
     // Compose
-    val composeBom = platform("androidx.compose:compose-bom:2023.06.01")
+    val composeBom = platform("androidx.compose:compose-bom:2023.08.00")
     implementation(composeBom)
 
     implementation("androidx.compose.ui:ui")
@@ -108,7 +133,7 @@ dependencies {
     implementation("androidx.compose.material3:material3")
 
     // Firebase
-    val firebaseBom = platform("com.google.firebase:firebase-bom:32.2.0")
+    val firebaseBom = platform("com.google.firebase:firebase-bom:32.2.2")
     implementation(firebaseBom)
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-auth-ktx")
@@ -122,10 +147,10 @@ dependencies {
     // Image
     implementation("io.coil-kt:coil-compose:2.4.0")
 
-    implementation("com.github.skydoves:landscapist-coil:2.2.3")
-    implementation("com.github.skydoves:landscapist-transformation:2.2.3")
+    implementation("com.github.skydoves:landscapist-coil:2.2.6")
+    implementation("com.github.skydoves:landscapist-transformation:2.2.6")
 
-    implementation("com.google.accompanist:accompanist-systemuicontroller:0.31.5-beta")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.33.0-alpha")
 
     // Tests
     testImplementation("junit:junit:4.13.2")

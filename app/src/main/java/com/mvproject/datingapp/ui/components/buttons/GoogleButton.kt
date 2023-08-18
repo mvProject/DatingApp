@@ -10,6 +10,7 @@ package com.mvproject.datingapp.ui.components.buttons
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
@@ -22,7 +23,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
+import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 
 @Composable
@@ -40,7 +43,11 @@ fun GoogleButton(
             MaterialTheme.dimens.size1,
             MaterialTheme.colorScheme.outline
         ),
-        shape = MaterialTheme.shapes.large
+        shape = MaterialTheme.shapes.large,
+        contentPadding = PaddingValues(
+            horizontal = MaterialTheme.dimens.size10,
+            vertical = MaterialTheme.dimens.size12
+        )
     ) {
         Image(
             painter = painterResource(id = R.drawable.logo_google),
@@ -55,5 +62,13 @@ fun GoogleButton(
             style = MaterialTheme.typography.titleSmall,
             textAlign = TextAlign.Center
         )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewGoogleButton() {
+    DatingAppTheme {
+        GoogleButton()
     }
 }

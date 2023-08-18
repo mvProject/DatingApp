@@ -114,11 +114,3 @@ fun PreviewFilterSingleSliderSelector() {
         FilterSingleSliderSelector()
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewFilterSingleSliderSelector() {
-    DatingAppTheme(darkTheme = true) {
-        FilterSingleSliderSelector()
-    }
-}

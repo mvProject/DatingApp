@@ -158,19 +158,3 @@ fun PreviewInfoDialog() {
         )
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewInfoDialog() {
-    DatingAppTheme(darkTheme = true) {
-        val isDialogOpen = remember { mutableStateOf(true) }
-
-        InfoDialog(
-            isDialogOpen = isDialogOpen,
-            title = stringResource(id = R.string.scr_reset_password_title),
-            description = stringResource(id = R.string.scr_reset_password_description),
-            btnText = stringResource(id = R.string.btn_title_sign_in),
-            image = painterResource(id = R.drawable.ic_pswd_send)
-        )
-    }
-}

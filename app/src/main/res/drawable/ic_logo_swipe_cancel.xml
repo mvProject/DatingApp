@@ -1,0 +1,52 @@
+<!--
+  ~ Create by Medvediev Viktor
+  ~ last update: 09.08.23, 18:31
+  ~
+  ~ Copyright (c) 2023
+  ~
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="104dp"
+    android:height="104dp"
+    android:viewportWidth="104"
+    android:viewportHeight="104">
+    <path android:pathData="M50.92,0C8.94,-0.13 -13.11,50.33 16.8,79.86L14.53,100.29C14.34,101.58 15.75,102.69 16.97,102.21L42.19,93.06C45.11,93.59 48.05,93.86 50.92,93.86C114.5,91.28 114.51,2.59 50.92,0ZM50.92,90.2C47.8,90.41 44.56,89.43 41.42,89.46L18.48,97.77L20.53,79.37C20.59,78.81 20.39,78.25 19.98,77.85C-8.44,50.82 11.78,3.54 50.92,3.65C109.67,6.05 109.66,87.82 50.92,90.2Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="27"
+                android:startY="85.73"
+                android:endX="100.84"
+                android:endY="21.54"
+                android:type="linear">
+                <item
+                    android:offset="0"
+                    android:color="#FFEA40AD" />
+                <item
+                    android:offset="1"
+                    android:color="#FF9641ED" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M50.92,90.2C47.8,90.41 44.56,89.43 41.42,89.46L18.48,97.77L20.53,79.37C20.59,78.81 20.39,78.25 19.98,77.85C-8.44,50.82 11.78,3.54 50.92,3.65C109.67,6.05 109.66,87.82 50.92,90.2Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="27"
+                android:startY="85.73"
+                android:endX="100.84"
+                android:endY="21.54"
+                android:type="linear">
+                <item
+                    android:offset="0"
+                    android:color="#FFEA40AD" />
+                <item
+                    android:offset="1"
+                    android:color="#FF9641ED" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:pathData="M37,41.06L35.59,42.48L34.17,41.06L35.59,39.65L37,41.06ZM46.06,63C44.96,63 44.06,62.1 44.06,61C44.06,59.9 44.96,59 46.06,59L46.06,63ZM44.65,51.54L35.59,42.48L38.41,39.65L47.48,48.71L44.65,51.54ZM35.59,39.65L44.65,30.59L47.48,33.41L38.41,42.48L35.59,39.65ZM37,39.06L56.03,39.06L56.03,43.06L37,43.06L37,39.06ZM56.03,63L46.06,63L46.06,59L56.03,59L56.03,63ZM68,51.03C68,57.64 62.64,63 56.03,63L56.03,59C60.43,59 64,55.43 64,51.03L68,51.03ZM56.03,39.06C62.64,39.06 68,44.42 68,51.03L64,51.03C64,46.63 60.43,43.06 56.03,43.06L56.03,39.06Z"
+        android:fillColor="#ffffff" />
+</vector>

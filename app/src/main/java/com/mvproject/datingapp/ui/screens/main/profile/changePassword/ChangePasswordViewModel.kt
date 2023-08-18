@@ -13,7 +13,7 @@ import androidx.lifecycle.viewModelScope
 import com.mvproject.datingapp.data.repository.PreferenceRepository
 import com.mvproject.datingapp.ui.screens.main.profile.changePassword.action.ChangePasswordAction
 import com.mvproject.datingapp.ui.screens.main.profile.changePassword.state.ChangePasswordState
-import com.mvproject.datingapp.utils.DELAY_1_SEC
+import com.mvproject.datingapp.utils.DELAY_1000
 import dagger.hilt.android.lifecycle.HiltViewModel
 import de.palm.composestateevents.consumed
 import de.palm.composestateevents.triggered
@@ -56,7 +56,7 @@ class ChangePasswordViewModel @Inject constructor(
                     _profileState.update {
                         it.copy(isLoading = true)
                     }
-                    delay(DELAY_1_SEC)
+                    delay(DELAY_1000)
                     // todo send request
 
                     _profileState.update {

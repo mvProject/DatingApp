@@ -19,8 +19,8 @@ import com.mvproject.datingapp.data.repository.PreferenceRepository
 import com.mvproject.datingapp.ui.screens.main.chat.action.ChatAction
 import com.mvproject.datingapp.ui.screens.main.chat.navigation.ChatMessageArgs
 import com.mvproject.datingapp.ui.screens.main.chat.state.ChatMessageState
-import com.mvproject.datingapp.utils.DELAY_1_5_SEC
-import com.mvproject.datingapp.utils.DELAY_1_SEC
+import com.mvproject.datingapp.utils.DELAY_1000
+import com.mvproject.datingapp.utils.DELAY_1500
 import com.mvproject.datingapp.utils.STEP_1
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -91,10 +91,10 @@ class ChatMessageViewModel @Inject constructor(
                     _messages.add(newMessage)
 
                     val readMessage = newMessage.copy(isMessageRead = true)
-                    delay(DELAY_1_SEC)
+                    delay(DELAY_1000)
                     _messages[messages.size - STEP_1] = readMessage
 
-                    delay(DELAY_1_5_SEC)
+                    delay(DELAY_1500)
                     val newMessageResponse = UserChatMessage(
                         message = action.message,
                         senderId = senderUser?.id.toString(),

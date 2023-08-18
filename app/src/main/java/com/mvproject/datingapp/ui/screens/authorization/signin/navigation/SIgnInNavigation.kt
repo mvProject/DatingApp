@@ -8,19 +8,13 @@
 
 package com.mvproject.datingapp.ui.screens.authorization.signin.navigation
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavOptions
-import com.google.accompanist.navigation.animation.composable
+import androidx.navigation.compose.composable
 import com.mvproject.datingapp.navigation.AppRoutes
 import com.mvproject.datingapp.ui.screens.authorization.signin.SignInScreen
 import com.mvproject.datingapp.ui.screens.authorization.signin.SignInViewModel
-
-fun NavController.navigateToSignIn(navOptions: NavOptions? = null) {
-    this.navigate(AppRoutes.SignIn.route, navOptions)
-}
 
 fun NavController.navigateToSignInClearStack() {
     this.navigate(AppRoutes.SignIn.route) {
@@ -30,7 +24,6 @@ fun NavController.navigateToSignInClearStack() {
     }
 }
 
-@OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.loginScreen(
     onNavigationSignUp: () -> Unit = {},
     onNavigationHome: () -> Unit = {},

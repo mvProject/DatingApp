@@ -31,9 +31,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mvproject.datingapp.R
-import com.mvproject.datingapp.ui.components.composable.ChatUserView
-import com.mvproject.datingapp.ui.components.composable.CurrentLikesView
-import com.mvproject.datingapp.ui.components.composable.SympathyUserView
+import com.mvproject.datingapp.ui.components.composable.chat.ChatUserView
+import com.mvproject.datingapp.ui.components.composable.view.CurrentLikesView
+import com.mvproject.datingapp.ui.components.composable.view.SympathyUserView
 import com.mvproject.datingapp.ui.screens.main.chat.state.ChatState
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
@@ -159,15 +159,6 @@ fun PreviewChatView() {
         ChatView()
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewChatView() {
-    DatingAppTheme(darkTheme = true) {
-        ChatView()
-    }
-}
-
 
 
 

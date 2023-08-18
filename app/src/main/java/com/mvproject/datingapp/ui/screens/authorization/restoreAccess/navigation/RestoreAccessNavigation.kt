@@ -9,7 +9,6 @@
 package com.mvproject.datingapp.ui.screens.authorization.restoreAccess.navigation
 
 import androidx.compose.animation.AnimatedContentTransitionScope
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -17,7 +16,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
-import com.google.accompanist.navigation.animation.composable
+import androidx.navigation.compose.composable
 import com.mvproject.datingapp.navigation.AppRoutes
 import com.mvproject.datingapp.ui.screens.authorization.restoreAccess.RestoreAccessScreen
 import com.mvproject.datingapp.ui.screens.authorization.restoreAccess.RestoreAccessViewModel
@@ -27,7 +26,6 @@ fun NavController.navigateToForgot(navOptions: NavOptions? = null) {
     this.navigate(AppRoutes.RestoreAccess.route, navOptions)
 }
 
-@OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.forgotScreen(
     onNavigateNext: () -> Unit = {},
     onNavigateBack: () -> Unit = {}

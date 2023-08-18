@@ -29,8 +29,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.data.model.UserHeight
-import com.mvproject.datingapp.ui.components.CheckSelectorInverted
 import com.mvproject.datingapp.ui.components.buttons.GradientButton
+import com.mvproject.datingapp.ui.components.composable.view.CheckSelectorInverted
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.WEIGHT_1
@@ -114,16 +114,6 @@ fun HeightSelector(
 @Composable
 fun PreviewHeightSelector() {
     DatingAppTheme {
-        HeightSelector(
-
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewHeightSelector() {
-    DatingAppTheme(darkTheme = true) {
         HeightSelector(
 
         )

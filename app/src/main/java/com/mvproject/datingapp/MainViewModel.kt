@@ -13,7 +13,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mvproject.datingapp.utils.DELAY_1_SEC
+import com.mvproject.datingapp.utils.DELAY_1000
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -27,7 +27,7 @@ class MainViewModel @Inject constructor() : ViewModel() {
 
     init {
         viewModelScope.launch {
-            delay(DELAY_1_SEC)
+            delay(DELAY_1000)
             _isLoading.value = false
         }
     }

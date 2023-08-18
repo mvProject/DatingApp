@@ -61,7 +61,6 @@ fun CodeVerifier(
 
     Column(
         modifier = modifier
-            //  .imePadding()
             .fillMaxSize()
             .padding(vertical = MaterialTheme.dimens.size12),
         verticalArrangement = Arrangement.Top,
@@ -226,16 +225,6 @@ fun PreviewCodeCodeVerifier() {
     DatingAppTheme {
         CodeVerifier(
             email = "test@test.com"
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewCodeVerifier() {
-    DatingAppTheme(darkTheme = true) {
-        CodeVerifier(
-            email = "test@test.com",
         )
     }
 }

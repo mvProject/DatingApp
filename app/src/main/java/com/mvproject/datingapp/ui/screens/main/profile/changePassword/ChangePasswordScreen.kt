@@ -138,11 +138,3 @@ fun PreviewChangePasswordView() {
         ChangePasswordView()
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewChangePasswordView() {
-    DatingAppTheme(darkTheme = true) {
-        ChangePasswordView()
-    }
-}

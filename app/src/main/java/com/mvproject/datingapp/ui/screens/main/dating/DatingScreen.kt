@@ -15,19 +15,13 @@ import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -41,17 +35,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mvproject.datingapp.R
-import com.mvproject.datingapp.ui.components.buttons.CircleButton
-import com.mvproject.datingapp.ui.components.composable.EmptyCandidatesView
-import com.mvproject.datingapp.ui.components.indicators.StoryIndicator
-import com.mvproject.datingapp.ui.components.info.ShortProfileInfo
+import com.mvproject.datingapp.ui.components.composable.candidate.CandidatePreview
+import com.mvproject.datingapp.ui.components.composable.view.EmptyCandidatesView
 import com.mvproject.datingapp.ui.components.swipe.Direction
 import com.mvproject.datingapp.ui.components.swipe.rememberSwipeableCardState
 import com.mvproject.datingapp.ui.components.swipe.swipableCard
@@ -61,11 +51,8 @@ import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.utils.ALPHA_10
 import com.mvproject.datingapp.utils.ALPHA_35
-import com.mvproject.datingapp.utils.INT_ZERO
 import com.mvproject.datingapp.utils.SCALE_80
-import com.mvproject.datingapp.utils.STEP_1
 import com.mvproject.datingapp.utils.WEIGHT_1
-import com.mvproject.datingapp.utils.calculatAgeMillis
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -137,7 +124,6 @@ fun DatingView(
         when {
             state.lastBothLikeUser != null -> {
                 LaunchedEffect(state.lastBothLikeUser) {
-                    Timber.w("testing state.lastBothLikeUser ${state.lastBothLikeUser}")
                     onMatch(state.lastBothLikeUser.id.toString())
                     onAction(DatingAction.BothMatchShown)
                 }
@@ -163,115 +149,48 @@ fun DatingView(
 
                 swipeStates.forEach { (current, state) ->
                     if (state.swipedDirection == null) {
-                        Box(
+                        CandidatePreview(
                             modifier = Modifier
                                 .padding(paddingValues)
                                 .fillMaxSize()
                                 .padding(MaterialTheme.dimens.size16)
-                        ) {
-                            Card(
-                                modifier = Modifier
-                                    .fillMaxSize(),
-                                shape = MaterialTheme.shapes.medium
-                            ) {
-                                Image(
-                                    contentScale = ContentScale.Crop,
-                                    modifier = Modifier
-                                        .fillMaxSize()
-                                        .swipableCard(
-                                            state = state,
-                                            onSwiped = { direction ->
-                                                when (direction) {
-                                                    Direction.Left -> {
-                                                        onAction(DatingAction.Dislike(current))
-                                                    }
-
-                                                    Direction.Right -> {
-                                                        onAction(DatingAction.Like(current))
-                                                    }
-
-                                                    else -> {
-                                                        Timber.w("testing swipe ${state.swipedDirection}")
-                                                    }
-                                                }
-
-                                            },
-                                            onSwipeCancel = {
-                                                Timber.w("testing Cancelled swipe")
+                                .swipableCard(
+                                    state = state,
+                                    onSwiped = { direction ->
+                                        when (direction) {
+                                            Direction.Left -> {
+                                                onAction(DatingAction.Dislike(current))
                                             }
-                                        ),
-                                    painter = painterResource(id = current.profilePictureUrl),
-                                    contentDescription = null
-                                )
-                            }
 
-                            StoryIndicator(
-                                modifier = Modifier
-                                    .padding(top = MaterialTheme.dimens.size8)
-                                    .align(Alignment.TopStart),
-                                totalDots = current.photos.size - STEP_1,
-                                selectedIndex = INT_ZERO
-                            )
+                                            Direction.Right -> {
+                                                onAction(DatingAction.Like(current))
+                                            }
 
-                            ShortProfileInfo(
-                                modifier = Modifier
-                                    .padding(
-                                        top = MaterialTheme.dimens.size24,
-                                        start = MaterialTheme.dimens.size16
-                                    )
-                                    .align(Alignment.TopStart),
-                                frontColor = MaterialTheme.colorScheme.primary,
-                                backColor = Color.Transparent,
-                                profileName = current.name,
-                                profileAge = calculatAgeMillis(current.birthdate),
-                                profileInterest = current.interest
-                            )
+                                            else -> {
+                                                Timber.w("testing swipe ${state.swipedDirection}")
+                                            }
+                                        }
 
-                            Image(
-                                modifier = Modifier
-                                    .padding(
-                                        top = MaterialTheme.dimens.size24,
-                                        end = MaterialTheme.dimens.size16
-                                    )
-                                    .size(MaterialTheme.dimens.size40)
-                                    .clickable {
-                                        onDetailClick(current.id.toString())
+                                    },
+                                    onSwipeCancel = {
+                                        Timber.w("testing Cancelled swipe")
                                     }
-                                    .align(Alignment.TopEnd),
-                                painter = painterResource(id = R.drawable.ic_profile_about),
-                                contentDescription = null
-                            )
-
-                            Row(
-                                Modifier
-                                    .align(Alignment.BottomCenter)
-                                    .padding(
-                                        horizontal = MaterialTheme.dimens.size24,
-                                        vertical = MaterialTheme.dimens.size32
-                                    )
-                                    .fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceEvenly
-                            ) {
-                                CircleButton(
-                                    onClick = {
-                                        scope.launch {
-                                            state.swipe(Direction.Left)
-                                            onAction(DatingAction.Dislike(current))
-                                        }
-                                    },
-                                    logo = painterResource(id = R.drawable.ic_profile_dislike)
-                                )
-                                CircleButton(
-                                    onClick = {
-                                        scope.launch {
-                                            state.swipe(Direction.Right)
-                                            onAction(DatingAction.Like(current))
-                                        }
-                                    },
-                                    logo = painterResource(id = R.drawable.ic_profile_like)
-                                )
-                            }
-                        }
+                                ),
+                            currentUser = current,
+                            onLike = {
+                                scope.launch {
+                                    state.swipe(Direction.Right)
+                                    onAction(DatingAction.Like(current))
+                                }
+                            },
+                            onDislike = {
+                                scope.launch {
+                                    state.swipe(Direction.Left)
+                                    onAction(DatingAction.Dislike(current))
+                                }
+                            },
+                            onDetailClick = onDetailClick
+                        )
                     }
                 }
             }
@@ -334,14 +253,6 @@ fun DatingView(
 @Composable
 fun PreviewDatingView() {
     DatingAppTheme {
-        DatingView()
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewDatingView() {
-    DatingAppTheme(darkTheme = true) {
         DatingView()
     }
 }

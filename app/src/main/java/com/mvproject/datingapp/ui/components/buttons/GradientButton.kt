@@ -22,7 +22,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.mvproject.datingapp.R
+import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.bluevioletDark
 import com.mvproject.datingapp.ui.theme.dimens
 import com.mvproject.datingapp.ui.theme.hotpink
@@ -42,6 +44,7 @@ fun GradientButton(
         ),
         enabled = enabled,
         contentPadding = PaddingValues(),
+        shape = MaterialTheme.shapes.large,
         onClick = onClick
     ) {
         Box(
@@ -51,8 +54,9 @@ fun GradientButton(
                 .clip(MaterialTheme.shapes.large)
                 .padding(
                     horizontal = MaterialTheme.dimens.size4,
-                    vertical = MaterialTheme.dimens.size8
-                ), contentAlignment = Alignment.Center
+                    vertical = MaterialTheme.dimens.size14
+                ),
+            contentAlignment = Alignment.Center
         ) {
             Text(
                 text = title,
@@ -60,5 +64,13 @@ fun GradientButton(
                 style = MaterialTheme.typography.titleSmall
             )
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewGradientButton() {
+    DatingAppTheme {
+        GradientButton(modifier = Modifier.fillMaxWidth())
     }
 }

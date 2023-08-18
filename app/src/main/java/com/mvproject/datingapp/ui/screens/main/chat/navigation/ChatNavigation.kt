@@ -12,9 +12,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import com.mvproject.datingapp.R
 import com.mvproject.datingapp.navigation.BottomNavItem
@@ -23,11 +21,11 @@ import com.mvproject.datingapp.ui.screens.main.chat.ChatScreen
 import com.mvproject.datingapp.ui.screens.main.chat.ChatViewModel
 import com.mvproject.datingapp.utils.ANIM_DURATION_600
 
-val Chat = BottomNavItem(NavConstants.ROUTE_CHAT, R.drawable.ic_nav_chat)
-
-fun NavController.navigateToChat(navOptions: NavOptions? = null) {
-    this.navigate(Chat.route, navOptions)
-}
+val Chat = BottomNavItem(
+    route = NavConstants.ROUTE_CHAT,
+    title = R.string.bottom_bar_chat_route,
+    logo = R.drawable.ic_nav_chat
+)
 
 fun NavGraphBuilder.chatScreen(
     onNavigationLikes: () -> Unit = {},

@@ -112,11 +112,3 @@ fun PreviewShortProfileInfo() {
         ShortProfileInfo()
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewShortProfileInfo() {
-    DatingAppTheme(darkTheme = true) {
-        ShortProfileInfo()
-    }
-}

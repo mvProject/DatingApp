@@ -303,11 +303,3 @@ fun PreviewSignUpView() {
         SignUpView(SignUpProfileDataState())
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewSignUpView() {
-    DatingAppTheme(darkTheme = true) {
-        SignUpView(SignUpProfileDataState())
-    }
-}

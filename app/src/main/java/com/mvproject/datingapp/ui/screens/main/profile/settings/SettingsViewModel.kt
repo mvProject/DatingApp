@@ -10,7 +10,6 @@ package com.mvproject.datingapp.ui.screens.main.profile.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mvproject.datingapp.data.enums.profile.ProfileGender
 import com.mvproject.datingapp.data.repository.PreferenceRepository
 import com.mvproject.datingapp.helper.GoogleSignHelper
 import com.mvproject.datingapp.ui.screens.main.profile.settings.state.SettingsState
@@ -50,7 +49,7 @@ class SettingsViewModel @Inject constructor(
                 it.copy(
                     profileName = user.name,
                     profileEmail = user.email,
-                    profileGender = ProfileGender.valueOf(user.gender),
+                    profileGender = user.gender,
                     profileBirthDate = user.birthdate
                 )
             }

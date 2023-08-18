@@ -11,7 +11,6 @@ package com.mvproject.datingapp.ui.screens.main.home.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mvproject.datingapp.data.repository.PreferenceRepository
-import com.mvproject.datingapp.helper.FirebaseHelper
 import com.mvproject.datingapp.navigation.AppBottomRoutes
 import com.mvproject.datingapp.navigation.NavConstants
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,7 +21,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val firebaseHelper: FirebaseHelper,
     private val preferenceRepository: PreferenceRepository
 ) : ViewModel() {
 

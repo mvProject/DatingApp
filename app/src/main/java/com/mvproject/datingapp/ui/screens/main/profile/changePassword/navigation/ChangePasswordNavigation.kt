@@ -8,7 +8,6 @@
 
 package com.mvproject.datingapp.ui.screens.main.profile.changePassword.navigation
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -16,7 +15,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
-import com.google.accompanist.navigation.animation.composable
+import androidx.navigation.compose.composable
 import com.mvproject.datingapp.navigation.AppRoutes
 import com.mvproject.datingapp.ui.screens.main.profile.changePassword.ChangePasswordScreen
 import com.mvproject.datingapp.ui.screens.main.profile.changePassword.ChangePasswordViewModel
@@ -26,7 +25,6 @@ fun NavController.navigateToChangePassword(navOptions: NavOptions? = null) {
     this.navigate(AppRoutes.ChangePassword.route, navOptions)
 }
 
-@OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.changePasswordScreen(
     onNavigationBack: () -> Unit = {}
 ) {

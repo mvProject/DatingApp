@@ -172,11 +172,3 @@ fun PreviewGenderSelector() {
         GenderSelector()
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewGenderSelector() {
-    DatingAppTheme(darkTheme = true) {
-        GenderSelector()
-    }
-}

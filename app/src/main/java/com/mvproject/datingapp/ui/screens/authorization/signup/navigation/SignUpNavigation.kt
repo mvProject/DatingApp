@@ -8,7 +8,6 @@
 
 package com.mvproject.datingapp.ui.screens.authorization.signup.navigation
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -16,7 +15,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
-import com.google.accompanist.navigation.animation.composable
+import androidx.navigation.compose.composable
 import com.mvproject.datingapp.navigation.AppRoutes
 import com.mvproject.datingapp.ui.screens.authorization.signup.SignUpScreen
 import com.mvproject.datingapp.ui.screens.authorization.signup.SignUpViewModel
@@ -26,14 +25,6 @@ fun NavController.navigateToSignUp(navOptions: NavOptions? = null) {
     this.navigate(AppRoutes.SignUp.route, navOptions)
 }
 
-fun NavController.navigateToSignUpClearStack() {
-    this.popBackStack()
-    this.navigate(AppRoutes.SignUp.route) {
-        launchSingleTop = true
-    }
-}
-
-@OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.signUpScreen(
     onNavigateBack: () -> Unit,
     onNavigateNext: () -> Unit,

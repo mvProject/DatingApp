@@ -89,14 +89,3 @@ fun PreviewOptionEditInterest() {
         )
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewOptionEditInterest() {
-    DatingAppTheme(darkTheme = true) {
-        OptionEditInterest(
-            title = "What do I want?",
-            selectedInterest = ProfileInterest.INTEREST_RELATION
-        )
-    }
-}

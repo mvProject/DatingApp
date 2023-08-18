@@ -8,7 +8,6 @@
 
 package com.mvproject.datingapp.ui.screens.main.home.view
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -25,12 +24,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import androidx.navigation.compose.rememberNavController
 import com.mvproject.datingapp.navigation.AppRoutes
 import com.mvproject.datingapp.navigation.BottomNavItem
 import com.mvproject.datingapp.navigation.NavigationHost
@@ -40,10 +40,9 @@ import com.mvproject.datingapp.ui.screens.main.profile.view.navigation.Profile
 import com.mvproject.datingapp.ui.theme.DatingAppTheme
 import com.mvproject.datingapp.ui.theme.dimens
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun HomeScreen(
-    navController: NavHostController = rememberAnimatedNavController(),
+    navController: NavHostController = rememberNavController(),
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val authState by viewModel.authState.collectAsStateWithLifecycle()
@@ -66,9 +65,8 @@ fun HomeScreen(
                 onDestinationClick = navController::bottomNavigateToRoute
             )
         }
-    ) { paddingValues ->
+    ) { _ ->
         NavigationHost(
-//            modifier = Modifier.padding(paddingValues.),
             navController = navController,
             startDestination = startScreen
         )
@@ -112,7 +110,7 @@ fun AppBottomNavigation(
                     },
                     label = {
                         Text(
-                            text = screen.route,
+                            text = stringResource(id = screen.title),
                             style = MaterialTheme.typography.bodySmall,
                             fontSize = MaterialTheme.dimens.font10
                         )
@@ -136,14 +134,6 @@ fun AppBottomNavigation(
 @Composable
 fun PreviewHomeView() {
     DatingAppTheme {
-        HomeScreen()
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DarkPreviewProfileView() {
-    DatingAppTheme(darkTheme = true) {
         HomeScreen()
     }
 }
