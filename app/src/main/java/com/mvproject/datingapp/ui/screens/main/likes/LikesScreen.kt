@@ -76,12 +76,14 @@ fun LikesView(
                     )
                 },
                 actions = {
-                    SmallColorButton(
-                        modifier = Modifier.padding(end = MaterialTheme.dimens.size16),
-                        title = stringResource(id = R.string.btn_title_likes_activate),
-                        logo = painterResource(id = R.drawable.ic_buy_pro),
-                        onClick = onActivateClick
-                    )
+                    if (!state.isPlanActivated) {
+                        SmallColorButton(
+                            modifier = Modifier.padding(end = MaterialTheme.dimens.size16),
+                            title = stringResource(id = R.string.btn_title_likes_activate),
+                            logo = painterResource(id = R.drawable.ic_buy_pro),
+                            onClick = onActivateClick
+                        )
+                    }
                 }
             )
         },

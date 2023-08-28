@@ -198,7 +198,7 @@ fun SignUpView(
                                 title = stringResource(id = R.string.scr_auth_pswd_select_title),
                                 btnTitle = stringResource(id = R.string.btn_title_continue),
                                 verifyType = VerifyType.PASSWORD,
-                                descriptionBottom = stringResource(id = R.string.scr_auth_pswd_select_description),
+                                descriptionBottom = stringResource(id = R.string.scr_reset_password_description),
                                 onConfirmed = { text ->
                                     onAction(SignUpAction.UpdatePassword(text))
                                     isPasswordSetDialogOpen.value = true
